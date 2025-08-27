@@ -3,7 +3,7 @@
 
 title: Project Science Data
 author: Alif Fitrah
-logo: logo.png
+logo: me.png
 
 # Force re-execution of notebooks on each build.
 # See https://jupyterbook.org/content/execute.html
