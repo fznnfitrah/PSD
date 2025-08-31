@@ -148,8 +148,14 @@
   
   
   
+    
+    
+      
+    
+    
+    <img src="_static/me.jpg" class="logo__image only-light" alt="Project Science Data - Home"/>
+    <script>document.write(`<img src="_static/me.jpg" class="logo__image only-dark" alt="Project Science Data - Home"/>`);</script>
   
-    <p class="title logo__title">Project Science Data</p>
   
 </a></div>
         <div class="sidebar-primary-item">
@@ -347,7 +353,9 @@ document.write(`
   </button>
 `);
 </script>
-
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
 </div></div>
       
     </div>
@@ -363,6 +371,16 @@ document.write(`
     <div id="print-main-content">
         <div id="jb-print-toc">
             
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#pengertian-business-understanding"><strong>Pengertian Business Understanding</strong></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#tujuan-utama-business-understanding"><strong>Tujuan Utama Business Understanding</strong></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#aktivitas-utama-dalam-tahap-business-understanding"><strong>Aktivitas Utama dalam Tahap Business Understanding</strong></a></li>
+</ul>
+            </nav>
         </div>
     </div>
 </div>
@@ -373,7 +391,64 @@ document.write(`
                 <article class="bd-article">
                   
   <section class="tex2jax_ignore mathjax_ignore" id="pemahaman-bisnis">
-<h1>Pemahaman Bisnis<a class="headerlink" href="#pemahaman-bisnis" title="Link to this heading">#</a></h1>
+<h1><em><strong>Pemahaman Bisnis</strong></em><a class="headerlink" href="#pemahaman-bisnis" title="Link to this heading">#</a></h1>
+<section id="pengertian-business-understanding">
+<h2><strong>Pengertian Business Understanding</strong><a class="headerlink" href="#pengertian-business-understanding" title="Link to this heading">#</a></h2>
+<p>Business Understanding adalah tahap awal dan paling fundamental dalam sebuah proyek, terutama dalam proyek analisis data, <em>data science</em>, dan pengembangan bisnis. Pada intinya, tahap ini berfokus untuk memahami tujuan dan kebutuhan proyek dari sudut pandang bisnis sebelum memulai pekerjaan teknis apa pun.</p>
+<p>Sederhananya, ini adalah proses “menerjemahkan” masalah bisnis menjadi sebuah definisi proyek yang jelas. Fase ini memastikan bahwa solusi yang akan dikembangkan nantinya benar-benar menjawab permasalahan yang dihadapi perusahaan dan memberikan nilai tambah yang nyata.</p>
+<p>Tahap ini merupakan pilar utama dalam metodologi populer seperti <strong>CRISP-DM</strong> (<em>Cross-Industry Standard Process for Data Mining</em>), di mana ia menjadi langkah pertama yang menentukan arah keseluruhan proyek.</p>
+</section>
+<hr class="docutils" />
+<section id="tujuan-utama-business-understanding">
+<h2><strong>Tujuan Utama Business Understanding</strong><a class="headerlink" href="#tujuan-utama-business-understanding" title="Link to this heading">#</a></h2>
+<p>Tujuan utama dari fase ini adalah untuk menghindari “membangun solusi yang benar untuk masalah yang salah”. Secara spesifik, tujuannya meliputi:</p>
+<ol class="arabic simple">
+<li><p><strong>Mengidentifikasi Masalah Bisnis:</strong> Memahami dengan jelas apa masalah atau peluang yang ingin dipecahkan oleh perusahaan.</p></li>
+<li><p><strong>Menentukan Tujuan Bisnis:</strong> Mengetahui apa yang ingin dicapai oleh perusahaan, misalnya:</p>
+<ul class="simple">
+<li><p>Meningkatkan penjualan sebesar 15%.</p></li>
+<li><p>Mengurangi jumlah pelanggan yang berhenti berlangganan (<em>churn</em>) sebesar 10%.</p></li>
+<li><p>Meningkatkan efisiensi operasional.</p></li>
+</ul>
+</li>
+<li><p><strong>Menetapkan Kriteria Sukses:</strong> Mendefinisikan secara spesifik dan terukur bagaimana keberhasilan proyek akan dinilai dari sisi bisnis.</p></li>
+<li><p><strong>Menyelaraskan Ekspektasi:</strong> Memastikan semua pihak yang terlibat (<em>stakeholders</em>) memiliki pemahaman yang sama mengenai tujuan, batasan, dan hasil yang diharapkan dari proyek.</p></li>
+</ol>
+</section>
+<hr class="docutils" />
+<section id="aktivitas-utama-dalam-tahap-business-understanding">
+<h2><strong>Aktivitas Utama dalam Tahap Business Understanding</strong><a class="headerlink" href="#aktivitas-utama-dalam-tahap-business-understanding" title="Link to this heading">#</a></h2>
+<p>Untuk mencapai tujuan di atas, ada beberapa kegiatan utama yang dilakukan:</p>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head text-left"><p>Aktivitas</p></th>
+<th class="head text-left"><p>Deskripsi</p></th>
+<th class="head text-left"><p>Contoh Pertanyaan yang Harus Dijawab</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td class="text-left"><p><strong>1. Menentukan Tujuan Bisnis</strong></p></td>
+<td class="text-left"><p>Berdiskusi dengan <em>stakeholders</em> untuk memahami latar belakang, target utama, dan apa yang dianggap sebagai “kemenangan” bagi bisnis.</p></td>
+<td class="text-left"><p>- Apa masalah utama yang sedang dihadapi? &lt;br&gt; - Apa tujuan jangka pendek dan jangka panjang perusahaan? &lt;br&gt; - Bagaimana proyek ini akan membantu mencapai tujuan tersebut?</p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p><strong>2. Menilai Situasi Saat Ini</strong></p></td>
+<td class="text-left"><p>Menganalisis kondisi terkini, termasuk sumber daya yang tersedia, batasan (waktu, anggaran), risiko, dan asumsi yang ada.</p></td>
+<td class="text-left"><p>- Siapa saja yang akan terdampak oleh proyek ini? &lt;br&gt; - Apa saja batasan teknis dan anggaran yang ada? &lt;br&gt; - Apa risiko terbesar dari proyek ini?</p></td>
+</tr>
+<tr class="row-even"><td class="text-left"><p><strong>3. Menentukan Tujuan Teknis/Proyek</strong></p></td>
+<td class="text-left"><p>Menerjemahkan tujuan bisnis menjadi tujuan teknis yang lebih spesifik. Misalnya, dari “mengurangi <em>churn</em>” menjadi “membangun model prediksi untuk mengidentifikasi pelanggan yang berisiko <em>churn</em>.”</p></td>
+<td class="text-left"><p>- Data apa yang kita butuhkan untuk menyelesaikan masalah ini? &lt;br&gt; - Metrik teknis apa yang akan digunakan untuk mengukur keberhasilan model (misalnya, akurasi, presisi)?</p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p><strong>4. Membuat Rencana Proyek Awal</strong></p></td>
+<td class="text-left"><p>Merancang garis besar rencana kerja, termasuk tahapan proyek, jadwal, dan alat (<em>tools</em>) yang akan digunakan.</p></td>
+<td class="text-left"><p>- Apa saja langkah-langkah yang akan diambil dari awal hingga akhir? &lt;br&gt; - Siapa yang bertanggung jawab untuk setiap tahapan? &lt;br&gt; - Berapa estimasi waktu yang dibutuhkan?</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p><strong>Analogi Sederhana:</strong>
+Bayangkan <em>Business Understanding</em> seperti seorang dokter yang mendiagnosis pasien. Sebelum memberikan resep obat (solusi teknis), dokter harus terlebih dahulu memahami gejala, riwayat penyakit, dan kondisi pasien secara menyeluruh (tujuan bisnis dan situasi). Memberikan obat tanpa diagnosis yang tepat bisa jadi tidak efektif atau bahkan berbahaya.</p>
+</section>
 </section>
 
     <script type="text/x-thebe-config">
@@ -430,6 +505,23 @@ document.write(`
             </div>
             
             
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#pengertian-business-understanding"><strong>Pengertian Business Understanding</strong></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#tujuan-utama-business-understanding"><strong>Tujuan Utama Business Understanding</strong></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#aktivitas-utama-dalam-tahap-business-understanding"><strong>Aktivitas Utama dalam Tahap Business Understanding</strong></a></li>
+</ul>
+  </nav></div>
+
+</div></div>
               
             
           </div>
