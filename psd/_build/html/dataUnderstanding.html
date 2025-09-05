@@ -384,6 +384,95 @@ document.write(`
                   
   <section class="tex2jax_ignore mathjax_ignore" id="data-understanding">
 <h1><em><strong>DATA UNDERSTANDING</strong></em><a class="headerlink" href="#data-understanding" title="Link to this heading">#</a></h1>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">os</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">dotenv</span><span class="w"> </span><span class="kn">import</span> <span class="n">load_dotenv</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">sqlalchemy</span><span class="w"> </span><span class="kn">import</span> <span class="n">create_engine</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">load_dotenv</span><span class="p">()</span>
+
+<span class="c1"># Ambil variabel dari .env</span>
+<span class="n">db_user</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">getenv</span><span class="p">(</span><span class="s2">&quot;DB_USER&quot;</span><span class="p">)</span>
+<span class="n">db_password</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">getenv</span><span class="p">(</span><span class="s2">&quot;DB_PASSWORD&quot;</span><span class="p">)</span>
+<span class="n">db_host</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">getenv</span><span class="p">(</span><span class="s2">&quot;DB_HOST&quot;</span><span class="p">)</span>
+<span class="n">db_port</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">getenv</span><span class="p">(</span><span class="s2">&quot;DB_PORT&quot;</span><span class="p">)</span>
+<span class="n">db_name</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">getenv</span><span class="p">(</span><span class="s2">&quot;DB_NAME&quot;</span><span class="p">)</span>
+
+<span class="c1"># Buat connection string</span>
+<span class="n">connection_string</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;postgresql+psycopg2://</span><span class="si">{</span><span class="n">db_user</span><span class="si">}</span><span class="s2">:</span><span class="si">{</span><span class="n">db_password</span><span class="si">}</span><span class="s2">@</span><span class="si">{</span><span class="n">db_host</span><span class="si">}</span><span class="s2">:</span><span class="si">{</span><span class="n">db_port</span><span class="si">}</span><span class="s2">/</span><span class="si">{</span><span class="n">db_name</span><span class="si">}</span><span class="s2">&quot;</span>
+
+<span class="c1"># Buat engine SQLAlchemy</span>
+<span class="n">postgres_engine</span> <span class="o">=</span> <span class="n">create_engine</span><span class="p">(</span><span class="n">connection_string</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">pg_query</span> <span class="o">=</span> <span class="s1">&#39;SELECT * FROM &quot;shoes sales&quot;&#39;</span>
+<span class="n">pg_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_sql</span><span class="p">(</span><span class="n">pg_query</span><span class="p">,</span> <span class="n">postgres_engine</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">pg_df</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>           Date                Product Name Product Type       brand  gender  \
+0    2022-05-27  Fear of God Essentials Tee      T-shirt  Essentials  Unisex   
+1    2022-08-22             Yeezy Boost 350     Sneakers      Adidas  Unisex   
+2    2022-04-03               Nike Dunk Low     Sneakers        Nike   Women   
+3    2022-07-13            Nike Tech Fleece       Hoodie        Nike     Men   
+4    2022-08-25               Jordan 1 High     Sneakers        Nike   Women   
+..          ...                         ...          ...         ...     ...   
+348  2022-04-08               Jordan 1 High     Sneakers        Nike     Men   
+349  2022-08-03            Nike Tech Fleece       Hoodie        Nike   Women   
+350  2022-05-05                Puma Joggers      Joggers        Puma   Women   
+351  2022-05-19           Adidas Ultraboost     Sneakers      Adidas     Men   
+352  2022-07-17               Nike Dunk Low     Sneakers        Nike   Women   
+
+            category    country  quantity  Unit Price ($)  Amount ($)  \
+0    Limited Edition      Japan         5          141.82      709.10   
+1         Streetwear        USA         2          267.34      534.68   
+2    Limited Edition    Germany         1          292.00      292.00   
+3    Limited Edition        USA         4          245.44      981.76   
+4             Casual  Australia         2          184.51      369.02   
+..               ...        ...       ...             ...         ...   
+348           Casual      India         5           94.25      471.25   
+349           Casual    Germany         5          259.00     1295.00   
+350           Casual    Germany         4          299.73     1198.92   
+351           Casual     Canada         5           71.26      356.30   
+352  Limited Edition      Japan         5          270.14     1350.70   
+
+         Payment Mode  
+0                Card  
+1    Cash on Delivery  
+2    Cash on Delivery  
+3    Cash on Delivery  
+4    Cash on Delivery  
+..                ...  
+348            Wallet  
+349              Card  
+350  Cash on Delivery  
+351  Cash on Delivery  
+352            Wallet  
+
+[353 rows x 11 columns]
+</pre></div>
+</div>
+</div>
+</div>
 <p>Duis aliquip mollit exercitation laborum. Ea amet do in Lorem eu mollit. Reprehenderit ex non sunt ex consequat proident laborum sint voluptate est. Sunt Lorem duis ullamco sunt ad quis exercitation exercitation. Minim laboris sit magna qui adipisicing labore laborum. Cupidatat laborum occaecat aliqua ullamco. Fugiat laborum dolore velit sit anim pariatur exercitation ipsum.</p>
 <p>Consequat ad veniam sint Lorem in elit culpa velit magna cupidatat incididunt magna irure commodo. Consectetur pariatur anim do qui esse excepteur. Aute exercitation consectetur Lorem esse id magna nostrud. Fugiat ex reprehenderit mollit et voluptate proident excepteur mollit. Deserunt qui consequat tempor incididunt culpa qui elit qui. Deserunt minim excepteur amet id consectetur dolore aliqua ad magna.</p>
 <p>Quis reprehenderit sint deserunt velit ut eu adipisicing sit officia reprehenderit sunt officia do excepteur. Anim ex voluptate ad sit quis fugiat commodo elit cillum incididunt consequat ipsum. Laboris eiusmod laborum laborum non do sint veniam non elit duis irure sit.</p>
