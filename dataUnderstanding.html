@@ -357,7 +357,9 @@ document.write(`
   </button>
 `);
 </script>
-
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
 </div></div>
       
     </div>
@@ -373,6 +375,17 @@ document.write(`
     <div id="print-main-content">
         <div id="jb-print-toc">
             
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#tipe-data"><strong>Tipe Data</strong></a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#quality-check-data"><strong>Quality Check Data</strong></a></li>
+</ul>
+</li>
+</ul>
+            </nav>
         </div>
     </div>
 </div>
@@ -416,7 +429,7 @@ document.write(`
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">pg_query</span> <span class="o">=</span> <span class="s1">&#39;SELECT * FROM &quot;shoes sales&quot;&#39;</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">pg_query</span> <span class="o">=</span> <span class="s1">&#39;SELECT * FROM shoes_sales_cloud&#39;</span>
 <span class="n">pg_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_sql</span><span class="p">(</span><span class="n">pg_query</span><span class="p">,</span> <span class="n">postgres_engine</span><span class="p">)</span>
 </pre></div>
 </div>
@@ -473,10 +486,26 @@ document.write(`
 </div>
 </div>
 </div>
-<p>Duis aliquip mollit exercitation laborum. Ea amet do in Lorem eu mollit. Reprehenderit ex non sunt ex consequat proident laborum sint voluptate est. Sunt Lorem duis ullamco sunt ad quis exercitation exercitation. Minim laboris sit magna qui adipisicing labore laborum. Cupidatat laborum occaecat aliqua ullamco. Fugiat laborum dolore velit sit anim pariatur exercitation ipsum.</p>
-<p>Consequat ad veniam sint Lorem in elit culpa velit magna cupidatat incididunt magna irure commodo. Consectetur pariatur anim do qui esse excepteur. Aute exercitation consectetur Lorem esse id magna nostrud. Fugiat ex reprehenderit mollit et voluptate proident excepteur mollit. Deserunt qui consequat tempor incididunt culpa qui elit qui. Deserunt minim excepteur amet id consectetur dolore aliqua ad magna.</p>
-<p>Quis reprehenderit sint deserunt velit ut eu adipisicing sit officia reprehenderit sunt officia do excepteur. Anim ex voluptate ad sit quis fugiat commodo elit cillum incididunt consequat ipsum. Laboris eiusmod laborum laborum non do sint veniam non elit duis irure sit.</p>
-<p>Dolor ipsum enim velit magna occaecat laborum elit sint excepteur voluptate. Incididunt ad minim excepteur ad sint aliquip laboris enim consectetur laboris. Consectetur sunt laborum ea excepteur aliquip ut do aute sit voluptate amet nostrud non.</p>
+<section id="tipe-data">
+<h2><strong>Tipe Data</strong><a class="headerlink" href="#tipe-data" title="Link to this heading">#</a></h2>
+<p><img alt="tipe-data" src="_images/type-data-sneakers.png" /></p>
+<p><img alt="tipe-data-table" src="_images/type-data-table-sneakers.png" /></p>
+<section id="quality-check-data">
+<h3><strong>Quality Check Data</strong><a class="headerlink" href="#quality-check-data" title="Link to this heading">#</a></h3>
+<p><img alt="profiling-data-sneakers" src="_images/profiling-data-sneakers.png" /></p>
+<ul>
+<li><p><strong>Konsistensi data</strong></p>
+<p>Data bagus, jadi tidak ada data unik pada kolom yang memang datanya adalah klasifikasi.</p>
+</li>
+<li><p><strong>Missing Value</strong></p>
+<p>Tidak ditemukannya missing value, pembaca juga dapat melihat pada gambar yang sudah tersedia bahwa missing valuenya nol</p>
+</li>
+<li><p><strong>Outliers Detection</strong></p>
+<p>Untuk data yang outliers atau data yang aneh penulis harus menggunakan python untuk pengecekan secara akurat.</p>
+</li>
+</ul>
+</section>
+</section>
 <div class="toctree-wrapper compound">
 </div>
 </section>
@@ -535,6 +564,24 @@ document.write(`
             </div>
             
             
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#tipe-data"><strong>Tipe Data</strong></a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#quality-check-data"><strong>Quality Check Data</strong></a></li>
+</ul>
+</li>
+</ul>
+  </nav></div>
+
+</div></div>
               
             
           </div>
