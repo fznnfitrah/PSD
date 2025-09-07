@@ -181,9 +181,7 @@
         <ul class="current nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="bisnis.html">Bussines Understanding</a></li>
 <li class="toctree-l1 current active has-children"><a class="reference internal" href="dataUnderstanding.html">Data Understanding</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
-<li class="toctree-l2 current active"><a class="current reference internal" href="#"><em><strong>EXPLORATION DATA</strong></em></a></li>
-
-
+<li class="toctree-l2 current active"><a class="current reference internal" href="#">Exploration Data</a></li>
 </ul>
 </details></li>
 </ul>
@@ -381,25 +379,23 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#"><em><strong>EXPLORATION DATA</strong></em></a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#power-bi"><strong>POWER BI</strong></a><ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#tipe-data-dataset"><strong>Tipe Data Dataset</strong></a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#quality-check-data"><strong>Quality Check Data</strong></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#power-bi"><strong>POWER BI</strong></a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#tipe-data-dataset"><strong>Tipe Data Dataset</strong></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#quality-check-data"><strong>Quality Check Data</strong></a></li>
 </ul>
 </li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#python"><strong>Python</strong></a><ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#koneksi-dengan-postgressql"><strong>Koneksi dengan PostgresSQL</strong></a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id1"><strong>Tipe Data Dataset</strong></a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#eksplorasi-data"><strong>Eksplorasi Data</strong></a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#outliers-detection"><strong>Outliers Detection</strong></a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#konsistensi-data"><strong>Konsistensi Data</strong></a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#missing-value"><strong>Missing Value</strong></a></li>
-</ul>
-</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#python"><strong>Python</strong></a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#koneksi-dengan-postgressql"><strong>Koneksi dengan PostgresSQL</strong></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id1"><strong>Tipe Data Dataset</strong></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#eksplorasi-data"><strong>Eksplorasi Data</strong></a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#outliers-detection"><strong>Outliers Detection</strong></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#konsistensi-data"><strong>Konsistensi Data</strong></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#missing-value"><strong>Missing Value</strong></a></li>
 </ul>
 </li>
 </ul>
-
+</li>
+</ul>
             </nav>
         </div>
     </div>
@@ -412,17 +408,16 @@ document.write(`
                   
   <section class="tex2jax_ignore mathjax_ignore" id="exploration-data">
 <h1><em><strong>EXPLORATION DATA</strong></em><a class="headerlink" href="#exploration-data" title="Link to this heading">#</a></h1>
-</section>
-<section class="tex2jax_ignore mathjax_ignore" id="power-bi">
-<h1><strong>POWER BI</strong><a class="headerlink" href="#power-bi" title="Link to this heading">#</a></h1>
+<section id="power-bi">
+<h2><strong>POWER BI</strong><a class="headerlink" href="#power-bi" title="Link to this heading">#</a></h2>
 <section id="tipe-data-dataset">
-<h2><strong>Tipe Data Dataset</strong><a class="headerlink" href="#tipe-data-dataset" title="Link to this heading">#</a></h2>
+<h3><strong>Tipe Data Dataset</strong><a class="headerlink" href="#tipe-data-dataset" title="Link to this heading">#</a></h3>
 <p>Pertama tama kita akan mengentahui terlebih dahulu, kira kira apa tipe data dari setiap kolom yang ada pada dataset yang sudah kita kumpulkan. berikut ini adalah tipe datanya</p>
 <p><img alt="tipe-data" src="_images/type-data-sneakers.png" /></p>
 <p><img alt="tipe-data-table" src="_images/type-data-table-sneakers.png" /></p>
 </section>
 <section id="quality-check-data">
-<h2><strong>Quality Check Data</strong><a class="headerlink" href="#quality-check-data" title="Link to this heading">#</a></h2>
+<h3><strong>Quality Check Data</strong><a class="headerlink" href="#quality-check-data" title="Link to this heading">#</a></h3>
 <p>Pada power BI kita bisa melihat kualitas dari suatu data. Caranya adalah dengan mengklik tab Transformasi Data. Selanjutnya berikut ini adalah point point yang penulis akan cek.</p>
 <ul>
 <li><p><strong>Outliers Detection</strong></p>
@@ -440,10 +435,10 @@ document.write(`
 </ul>
 </section>
 </section>
-<section class="tex2jax_ignore mathjax_ignore" id="python">
-<h1><strong>Python</strong><a class="headerlink" href="#python" title="Link to this heading">#</a></h1>
+<section id="python">
+<h2><strong>Python</strong><a class="headerlink" href="#python" title="Link to this heading">#</a></h2>
 <section id="koneksi-dengan-postgressql">
-<h2><strong>Koneksi dengan PostgresSQL</strong><a class="headerlink" href="#koneksi-dengan-postgressql" title="Link to this heading">#</a></h2>
+<h3><strong>Koneksi dengan PostgresSQL</strong><a class="headerlink" href="#koneksi-dengan-postgressql" title="Link to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">os</span>
@@ -544,7 +539,7 @@ document.write(`
 </div>
 </section>
 <section id="id1">
-<h2><strong>Tipe Data Dataset</strong><a class="headerlink" href="#id1" title="Link to this heading">#</a></h2>
+<h3><strong>Tipe Data Dataset</strong><a class="headerlink" href="#id1" title="Link to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="nb">type</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;Date&#39;</span><span class="p">][</span><span class="mi">0</span><span class="p">]))</span>
@@ -575,9 +570,9 @@ document.write(`
 </div>
 </section>
 <section id="eksplorasi-data">
-<h2><strong>Eksplorasi Data</strong><a class="headerlink" href="#eksplorasi-data" title="Link to this heading">#</a></h2>
+<h3><strong>Eksplorasi Data</strong><a class="headerlink" href="#eksplorasi-data" title="Link to this heading">#</a></h3>
 <section id="outliers-detection">
-<h3><strong>Outliers Detection</strong><a class="headerlink" href="#outliers-detection" title="Link to this heading">#</a></h3>
+<h4><strong>Outliers Detection</strong><a class="headerlink" href="#outliers-detection" title="Link to this heading">#</a></h4>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
@@ -611,7 +606,7 @@ document.write(`
 </div>
 </section>
 <section id="konsistensi-data">
-<h3><strong>Konsistensi Data</strong><a class="headerlink" href="#konsistensi-data" title="Link to this heading">#</a></h3>
+<h4><strong>Konsistensi Data</strong><a class="headerlink" href="#konsistensi-data" title="Link to this heading">#</a></h4>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># ============================</span>
@@ -704,7 +699,7 @@ Index: []
 </div>
 </section>
 <section id="missing-value">
-<h3><strong>Missing Value</strong><a class="headerlink" href="#missing-value" title="Link to this heading">#</a></h3>
+<h4><strong>Missing Value</strong><a class="headerlink" href="#missing-value" title="Link to this heading">#</a></h4>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Jumlah missing value per kolom:&quot;</span><span class="p">)</span>
@@ -754,6 +749,7 @@ dtype: float64
 </div>
 </div>
 </div>
+</section>
 </section>
 </section>
 </section>
@@ -813,25 +809,23 @@ dtype: float64
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#"><em><strong>EXPLORATION DATA</strong></em></a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#power-bi"><strong>POWER BI</strong></a><ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#tipe-data-dataset"><strong>Tipe Data Dataset</strong></a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#quality-check-data"><strong>Quality Check Data</strong></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#power-bi"><strong>POWER BI</strong></a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#tipe-data-dataset"><strong>Tipe Data Dataset</strong></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#quality-check-data"><strong>Quality Check Data</strong></a></li>
 </ul>
 </li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#python"><strong>Python</strong></a><ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#koneksi-dengan-postgressql"><strong>Koneksi dengan PostgresSQL</strong></a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id1"><strong>Tipe Data Dataset</strong></a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#eksplorasi-data"><strong>Eksplorasi Data</strong></a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#outliers-detection"><strong>Outliers Detection</strong></a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#konsistensi-data"><strong>Konsistensi Data</strong></a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#missing-value"><strong>Missing Value</strong></a></li>
-</ul>
-</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#python"><strong>Python</strong></a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#koneksi-dengan-postgressql"><strong>Koneksi dengan PostgresSQL</strong></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id1"><strong>Tipe Data Dataset</strong></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#eksplorasi-data"><strong>Eksplorasi Data</strong></a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#outliers-detection"><strong>Outliers Detection</strong></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#konsistensi-data"><strong>Konsistensi Data</strong></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#missing-value"><strong>Missing Value</strong></a></li>
 </ul>
 </li>
 </ul>
-
+</li>
+</ul>
   </nav></div>
 
 </div></div>
