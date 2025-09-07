@@ -356,7 +356,9 @@ document.write(`
   </button>
 `);
 </script>
-
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
 </div></div>
       
     </div>
@@ -372,6 +374,15 @@ document.write(`
     <div id="print-main-content">
         <div id="jb-print-toc">
             
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#mengetahui-tipe-data"><strong>Mengetahui Tipe Data</strong></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#quality-check-data"><strong>Quality Check Data</strong></a></li>
+</ul>
+            </nav>
         </div>
     </div>
 </div>
@@ -381,12 +392,121 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article">
                   
-  <section id="exploration-data">
+  <section class="tex2jax_ignore mathjax_ignore" id="exploration-data">
 <h1><em><strong>EXPLORATION DATA</strong></em><a class="headerlink" href="#exploration-data" title="Link to this heading">#</a></h1>
-<p>Deserunt magna aute laborum excepteur commodo cupidatat excepteur aliqua enim commodo. Est pariatur quis aliqua do irure aliqua consequat officia nostrud labore sint sit. Qui ipsum nulla dolor nulla quis ex.</p>
-<p>Commodo eiusmod est mollit veniam non duis duis excepteur. Consequat eiusmod dolore aliquip nisi. Quis non nulla adipisicing irure esse culpa adipisicing minim officia. Laboris excepteur quis est aliqua aute ullamco ipsum incididunt eu. Pariatur nisi veniam nulla qui amet consectetur laborum.</p>
-<p>Velit qui adipisicing aliqua consectetur ex fugiat eu minim duis commodo consequat tempor. Ut tempor anim aliquip irure magna anim consequat in aliqua ullamco pariatur. Excepteur commodo incididunt nisi magna tempor voluptate tempor exercitation cupidatat esse esse quis et. Tempor do nisi ex nulla non ex est. Cupidatat nisi quis aute nulla eu. Ad ullamco cupidatat dolore eiusmod sunt.</p>
-<p>In deserunt consequat id minim enim ullamco do aute qui anim ea in. Non anim adipisicing amet incididunt non non duis consectetur deserunt anim ea esse minim. Id in adipisicing deserunt nulla irure sit esse aliquip irure velit commodo sit. Magna ea sunt Lorem eu. Occaecat ipsum esse ex culpa quis amet eiusmod exercitation culpa ex deserunt deserunt.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">os</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">dotenv</span><span class="w"> </span><span class="kn">import</span> <span class="n">load_dotenv</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">sqlalchemy</span><span class="w"> </span><span class="kn">import</span> <span class="n">create_engine</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">load_dotenv</span><span class="p">()</span>
+
+<span class="c1"># Ambil variabel dari .env</span>
+<span class="n">db_user</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">getenv</span><span class="p">(</span><span class="s2">&quot;DB_USER&quot;</span><span class="p">)</span>
+<span class="n">db_password</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">getenv</span><span class="p">(</span><span class="s2">&quot;DB_PASSWORD&quot;</span><span class="p">)</span>
+<span class="n">db_host</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">getenv</span><span class="p">(</span><span class="s2">&quot;DB_HOST&quot;</span><span class="p">)</span>
+<span class="n">db_port</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">getenv</span><span class="p">(</span><span class="s2">&quot;DB_PORT&quot;</span><span class="p">)</span>
+<span class="n">db_name</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">getenv</span><span class="p">(</span><span class="s2">&quot;DB_NAME&quot;</span><span class="p">)</span>
+
+<span class="c1"># Buat connection string</span>
+<span class="n">connection_string</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;postgresql+psycopg2://</span><span class="si">{</span><span class="n">db_user</span><span class="si">}</span><span class="s2">:</span><span class="si">{</span><span class="n">db_password</span><span class="si">}</span><span class="s2">@</span><span class="si">{</span><span class="n">db_host</span><span class="si">}</span><span class="s2">:</span><span class="si">{</span><span class="n">db_port</span><span class="si">}</span><span class="s2">/</span><span class="si">{</span><span class="n">db_name</span><span class="si">}</span><span class="s2">&quot;</span>
+
+<span class="c1"># Buat engine SQLAlchemy</span>
+<span class="n">postgres_engine</span> <span class="o">=</span> <span class="n">create_engine</span><span class="p">(</span><span class="n">connection_string</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">pg_query</span> <span class="o">=</span> <span class="s1">&#39;SELECT * FROM shoes_sales_cloud&#39;</span>
+<span class="n">pg_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_sql</span><span class="p">(</span><span class="n">pg_query</span><span class="p">,</span> <span class="n">postgres_engine</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">pg_df</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>           Date                Product Name Product Type       brand  gender  \
+0    2022-05-27  Fear of God Essentials Tee      T-shirt  Essentials  Unisex   
+1    2022-08-22             Yeezy Boost 350     Sneakers      Adidas  Unisex   
+2    2022-04-03               Nike Dunk Low     Sneakers        Nike   Women   
+3    2022-07-13            Nike Tech Fleece       Hoodie        Nike     Men   
+4    2022-08-25               Jordan 1 High     Sneakers        Nike   Women   
+..          ...                         ...          ...         ...     ...   
+348  2022-04-08               Jordan 1 High     Sneakers        Nike     Men   
+349  2022-08-03            Nike Tech Fleece       Hoodie        Nike   Women   
+350  2022-05-05                Puma Joggers      Joggers        Puma   Women   
+351  2022-05-19           Adidas Ultraboost     Sneakers      Adidas     Men   
+352  2022-07-17               Nike Dunk Low     Sneakers        Nike   Women   
+
+            category    country  quantity  Unit Price ($)  Amount ($)  \
+0    Limited Edition      Japan         5          141.82      709.10   
+1         Streetwear        USA         2          267.34      534.68   
+2    Limited Edition    Germany         1          292.00      292.00   
+3    Limited Edition        USA         4          245.44      981.76   
+4             Casual  Australia         2          184.51      369.02   
+..               ...        ...       ...             ...         ...   
+348           Casual      India         5           94.25      471.25   
+349           Casual    Germany         5          259.00     1295.00   
+350           Casual    Germany         4          299.73     1198.92   
+351           Casual     Canada         5           71.26      356.30   
+352  Limited Edition      Japan         5          270.14     1350.70   
+
+         Payment Mode  
+0                Card  
+1    Cash on Delivery  
+2    Cash on Delivery  
+3    Cash on Delivery  
+4    Cash on Delivery  
+..                ...  
+348            Wallet  
+349              Card  
+350  Cash on Delivery  
+351  Cash on Delivery  
+352            Wallet  
+
+[353 rows x 11 columns]
+</pre></div>
+</div>
+</div>
+</div>
+<section id="mengetahui-tipe-data">
+<h2><strong>Mengetahui Tipe Data</strong><a class="headerlink" href="#mengetahui-tipe-data" title="Link to this heading">#</a></h2>
+<p>Pertama tama kita akan mengentahui terlebih dahulu, kira kira apa tipe data dari setiap kolom yang ada pada dataset yang sudah kita kumpulkan. berikut ini adalah tipe datanya</p>
+<p><img alt="tipe-data" src="_images/type-data-sneakers.png" /></p>
+<p><img alt="tipe-data-table" src="_images/type-data-table-sneakers.png" /></p>
+</section>
+<section id="quality-check-data">
+<h2><strong>Quality Check Data</strong><a class="headerlink" href="#quality-check-data" title="Link to this heading">#</a></h2>
+<p>Pada power BI kita bisa melihat kualitas dari suatu data. Caranya adalah dengan mengklik tab Transformasi Data. Selanjutnya berikut ini adalah point point yang penulis akan cek.</p>
+<ul>
+<li><p><strong>Outliers Detection</strong></p>
+<p>Berikut ini adalah proses pengecekan outliers dengan menggunakan Power BI, dimana saya juga menjalankan script python untuk menampilkan scatter plotnya
+<img alt="outliers-detection-sneakers" src="_images/outliers-detection-sneakers.png" /></p>
+</li>
+<li><p><strong>Konsistensi Data</strong></p>
+<p>Data bagus, jadi tidak ada data unik pada kolom yang memang datanya adalah klasifikasi. Berikut ini adalah salah satu contoh gambar yang penulis berikan untuk mengecek konsistensi data. Dimana data gender tidak memiliki data unik dan tetap menggunakan 3 data saja antara Men, Women, Unisex
+<img alt="konstistensi-data-sneakers" src="_images/konsistensi-data-sneakers.png" /></p>
+</li>
+<li><p><strong>Missing Value</strong></p>
+<p>Pada dataset yang saya cari dan gunakah tidak ditemukan adanya missing value, bisa terlihat pada gambar yang ada dibawah ini bahwa nilai dari missing valuenya adalah nol. Jadi dataset yang saya gunakan cukup bagus.</p>
+<p><img alt="checking-missing-value" src="_images/checking-missing-value-sneakers.png" /></p>
+</li>
+</ul>
+</section>
 </section>
 
     <script type="text/x-thebe-config">
@@ -434,6 +554,22 @@ document.write(`
             </div>
             
             
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#mengetahui-tipe-data"><strong>Mengetahui Tipe Data</strong></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#quality-check-data"><strong>Quality Check Data</strong></a></li>
+</ul>
+  </nav></div>
+
+</div></div>
               
             
           </div>
