@@ -32,7 +32,7 @@
     <link rel="stylesheet" type="text/css" href="_static/styles/sphinx-book-theme.css?v=eba8b062" />
     <link rel="stylesheet" type="text/css" href="_static/togglebutton.css?v=13237357" />
     <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
-    <link rel="stylesheet" type="text/css" href="_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.8ecb98da25f57f5357bf6f572d296f466b2cfe2517ffebfabe82451661e28f02.css" />
     <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css?v=4fa983c6" />
     <link rel="stylesheet" type="text/css" href="_static/sphinx-design.min.css?v=95c83b7e" />
   
@@ -60,6 +60,7 @@
     <script>DOCUMENTATION_OPTIONS.pagename = 'explorationData';</script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="DATA PROCESSING" href="testing.html" />
     <link rel="prev" title="DATA UNDERSTANDING" href="dataUnderstanding.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
@@ -184,6 +185,7 @@
 <li class="toctree-l2 current active"><a class="current reference internal" href="#">Exploration Data</a></li>
 </ul>
 </details></li>
+<li class="toctree-l1"><a class="reference internal" href="testing.html">Data Processing</a></li>
 </ul>
 
     </div>
@@ -413,8 +415,8 @@ document.write(`
 <section id="tipe-data-dataset">
 <h3><strong>Tipe Data Dataset</strong><a class="headerlink" href="#tipe-data-dataset" title="Link to this heading">#</a></h3>
 <p>Pertama tama kita akan mengentahui terlebih dahulu, kira kira apa tipe data dari setiap kolom yang ada pada dataset yang sudah kita kumpulkan. berikut ini adalah tipe datanya</p>
-<p><img alt="tipe-data" src="_images/type-data-sneakers.png" /></p>
 <p><img alt="tipe-data-table" src="_images/type-data-table-sneakers.png" /></p>
+<p><img alt="tipe-data" src="_images/type-data-sneakers.png" /></p>
 </section>
 <section id="quality-check-data">
 <h3><strong>Quality Check Data</strong><a class="headerlink" href="#quality-check-data" title="Link to this heading">#</a></h3>
@@ -454,17 +456,23 @@ document.write(`
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">load_dotenv</span><span class="p">()</span>
 
 <span class="c1"># Ambil variabel dari .env</span>
-<span class="n">db_user</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">getenv</span><span class="p">(</span><span class="s2">&quot;DB_USER&quot;</span><span class="p">)</span>
-<span class="n">db_password</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">getenv</span><span class="p">(</span><span class="s2">&quot;DB_PASSWORD&quot;</span><span class="p">)</span>
-<span class="n">db_host</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">getenv</span><span class="p">(</span><span class="s2">&quot;DB_HOST&quot;</span><span class="p">)</span>
-<span class="n">db_port</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">getenv</span><span class="p">(</span><span class="s2">&quot;DB_PORT&quot;</span><span class="p">)</span>
-<span class="n">db_name</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">getenv</span><span class="p">(</span><span class="s2">&quot;DB_NAME&quot;</span><span class="p">)</span>
-
-<span class="c1"># Buat connection string</span>
+<span class="n">db_user</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">getenv</span><span class="p">(</span><span class="s2">&quot;USER_POSTGRES&quot;</span><span class="p">)</span>
+<span class="n">db_password</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">getenv</span><span class="p">(</span><span class="s2">&quot;PASS_POSTGRES&quot;</span><span class="p">)</span>
+<span class="n">db_host</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">getenv</span><span class="p">(</span><span class="s2">&quot;HOST_POSTGRES&quot;</span><span class="p">)</span>
+<span class="n">db_port</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">getenv</span><span class="p">(</span><span class="s2">&quot;PORT_POSTGRES&quot;</span><span class="p">)</span>
+<span class="n">db_name</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">getenv</span><span class="p">(</span><span class="s2">&quot;DB_POSTGRES&quot;</span><span class="p">)</span>
+    
 <span class="n">connection_string</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;postgresql+psycopg2://</span><span class="si">{</span><span class="n">db_user</span><span class="si">}</span><span class="s2">:</span><span class="si">{</span><span class="n">db_password</span><span class="si">}</span><span class="s2">@</span><span class="si">{</span><span class="n">db_host</span><span class="si">}</span><span class="s2">:</span><span class="si">{</span><span class="n">db_port</span><span class="si">}</span><span class="s2">/</span><span class="si">{</span><span class="n">db_name</span><span class="si">}</span><span class="s2">&quot;</span>
 
-<span class="c1"># Buat engine SQLAlchemy</span>
 <span class="n">postgres_engine</span> <span class="o">=</span> <span class="n">create_engine</span><span class="p">(</span><span class="n">connection_string</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>python-dotenv could not parse statement starting at line 13
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>python-dotenv could not parse statement starting at line 17
 </pre></div>
 </div>
 </div>
@@ -601,7 +609,7 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/2df6ff6586e8cc387ab34c1ecf950965b7b8453bdba29e90b962f8957ac39b73.png" src="_images/2df6ff6586e8cc387ab34c1ecf950965b7b8453bdba29e90b962f8957ac39b73.png" />
+<img alt="_images/7b7b9c67eb8f76c92f19c808b8b9ce0b77d66e649c265d84b54e5b72b0d4744b.png" src="_images/7b7b9c67eb8f76c92f19c808b8b9ce0b77d66e649c265d84b54e5b72b0d4744b.png" />
 </div>
 </div>
 </section>
@@ -792,6 +800,15 @@ dtype: float64
         <p class="prev-next-subtitle">previous</p>
         <p class="prev-next-title"><em><strong>DATA UNDERSTANDING</strong></em></p>
       </div>
+    </a>
+    <a class="right-next"
+       href="testing.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title"><em><strong>DATA PROCESSING</strong></em></p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
     </a>
 </div>
                 </footer>
