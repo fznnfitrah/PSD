@@ -5,6 +5,7 @@
 - Pertemuan 1: Pengenalan Mata Kuliah Proyek Sains Data.
 - Pertemuan 2: Pengenalan pada aplikasi power BI.
 - Pertemuan 3: Membahas materi bagaimana cara menghubungkan Power BI dengan Database kita menggunakan python
+- Pertemuan 4: Membahas tentang bagaimana cara mencari outliers dari suatu data dengan beberapa algoritma yaitu: knn, ABOD, clustering
 
 ## Tugas:
 
@@ -14,9 +15,10 @@
 
 
 
+
 ### Run code ini menjalankan Virtual Environment
 
-        .\venv\Scripts\activate
+        .venv\Scripts\activate
 
 ### Run code ini untuk mengeskpor Package python
 
