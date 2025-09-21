@@ -186,7 +186,7 @@
 </ul>
 </details></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="dataProcessing.html">Data Processing</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
-<li class="toctree-l2"><a class="reference internal" href="outlier_detection.html"><em><strong>DATA PROCESSING</strong></em></a></li>
+<li class="toctree-l2"><a class="reference internal" href="outlier_detection.html">Outliers Detection</a></li>
 </ul>
 </details></li>
 </ul>
@@ -495,51 +495,6 @@ document.write(`
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Berikut ini adalah dataset yang akan saya gunakan dalam tugas ini: 
-           Date                Product Name Product Type       brand  gender  \
-0    2022-05-27  Fear of God Essentials Tee      T-shirt  Essentials  Unisex   
-1    2022-08-22             Yeezy Boost 350     Sneakers      Adidas  Unisex   
-2    2022-04-03               Nike Dunk Low     Sneakers        Nike   Women   
-3    2022-07-13            Nike Tech Fleece       Hoodie        Nike     Men   
-4    2022-08-25               Jordan 1 High     Sneakers        Nike   Women   
-..          ...                         ...          ...         ...     ...   
-348  2022-04-08               Jordan 1 High     Sneakers        Nike     Men   
-349  2022-08-03            Nike Tech Fleece       Hoodie        Nike   Women   
-350  2022-05-05                Puma Joggers      Joggers        Puma   Women   
-351  2022-05-19           Adidas Ultraboost     Sneakers      Adidas     Men   
-352  2022-07-17               Nike Dunk Low     Sneakers        Nike   Women   
-
-            category    country  quantity  Unit Price ($)  Amount ($)  \
-0    Limited Edition      Japan         5          141.82      709.10   
-1         Streetwear        USA         2          267.34      534.68   
-2    Limited Edition    Germany         1          292.00      292.00   
-3    Limited Edition        USA         4          245.44      981.76   
-4             Casual  Australia         2          184.51      369.02   
-..               ...        ...       ...             ...         ...   
-348           Casual      India         5           94.25      471.25   
-349           Casual    Germany         5          259.00     1295.00   
-350           Casual    Germany         4          299.73     1198.92   
-351           Casual     Canada         5           71.26      356.30   
-352  Limited Edition      Japan         5          270.14     1350.70   
-
-         Payment Mode  
-0                Card  
-1    Cash on Delivery  
-2    Cash on Delivery  
-3    Cash on Delivery  
-4    Cash on Delivery  
-..                ...  
-348            Wallet  
-349              Card  
-350  Cash on Delivery  
-351  Cash on Delivery  
-352            Wallet  
-
-[353 rows x 11 columns]
-</pre></div>
-</div>
-</div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -562,19 +517,6 @@ document.write(`
 <span class="nb">print</span><span class="p">(</span><span class="nb">type</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;Unit Price ($)&#39;</span><span class="p">][</span><span class="mi">0</span><span class="p">]))</span>
 <span class="nb">print</span><span class="p">(</span><span class="nb">type</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;Amount ($)&#39;</span><span class="p">][</span><span class="mi">0</span><span class="p">]))</span>
 <span class="nb">print</span><span class="p">(</span><span class="nb">type</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;Payment Mode&#39;</span><span class="p">][</span><span class="mi">0</span><span class="p">]))</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;class &#39;str&#39;&gt;
-&lt;class &#39;str&#39;&gt;
-&lt;class &#39;str&#39;&gt;
-&lt;class &#39;str&#39;&gt;
-&lt;class &#39;str&#39;&gt;
-&lt;class &#39;str&#39;&gt;
-&lt;class &#39;numpy.float64&#39;&gt;
-&lt;class &#39;numpy.float64&#39;&gt;
-&lt;class &#39;str&#39;&gt;
 </pre></div>
 </div>
 </div>
@@ -610,9 +552,6 @@ document.write(`
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
-</div>
-<div class="cell_output docutils container">
-<img alt="_images/7b7b9c67eb8f76c92f19c808b8b9ce0b77d66e649c265d84b54e5b72b0d4744b.png" src="_images/7b7b9c67eb8f76c92f19c808b8b9ce0b77d66e649c265d84b54e5b72b0d4744b.png" />
 </div>
 </div>
 </section>
@@ -674,39 +613,6 @@ document.write(`
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>=== Data dengan format tanggal tidak valid ===
-Empty DataFrame
-Columns: [Date, Product Name, Product Type, brand, gender, category, country, quantity, Unit Price ($), Amount ($), Payment Mode, Outlier, valid_date]
-Index: []
-
-=== Data dengan gender tidak valid ===
-Empty DataFrame
-Columns: [Date, Product Name, Product Type, brand, gender, category, country, quantity, Unit Price ($), Amount ($), Payment Mode, Outlier, valid_date]
-Index: []
-
-=== Data dengan quantity tidak valid ===
-Empty DataFrame
-Columns: [Date, Product Name, Product Type, brand, gender, category, country, quantity, Unit Price ($), Amount ($), Payment Mode, Outlier, valid_date]
-Index: []
-
-=== Data dengan amount tidak konsisten ===
-Empty DataFrame
-Columns: [Date, Product Name, Product Type, brand, gender, category, country, quantity, Unit Price ($), Amount ($), Payment Mode, Outlier, valid_date, calc_amount]
-Index: []
-
-=== Data dengan payment mode tidak valid ===
-Empty DataFrame
-Columns: [Date, Product Name, Product Type, brand, gender, category, country, quantity, Unit Price ($), Amount ($), Payment Mode, Outlier, valid_date, calc_amount]
-Index: []
-
-=== Data duplikat ===
-Empty DataFrame
-Columns: [Date, Product Name, Product Type, brand, gender, category, country, quantity, Unit Price ($), Amount ($), Payment Mode, Outlier, valid_date, calc_amount]
-Index: []
-</pre></div>
-</div>
-</div>
 </div>
 </section>
 <section id="missing-value">
@@ -719,43 +625,6 @@ Index: []
 <span class="n">missing_percentage</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">isnull</span><span class="p">()</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span> <span class="o">*</span> <span class="mi">100</span>
 <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Persentase missing value per kolom:&quot;</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">missing_percentage</span><span class="p">,</span> <span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Jumlah missing value per kolom:
-Date              0
-Product Name      0
-Product Type      0
-brand             0
-gender            0
-category          0
-country           0
-quantity          0
-Unit Price ($)    0
-Amount ($)        0
-Payment Mode      0
-Outlier           0
-valid_date        0
-calc_amount       0
-dtype: int64 
-
-Persentase missing value per kolom:
-Date              0.0
-Product Name      0.0
-Product Type      0.0
-brand             0.0
-gender            0.0
-category          0.0
-country           0.0
-quantity          0.0
-Unit Price ($)    0.0
-Amount ($)        0.0
-Payment Mode      0.0
-Outlier           0.0
-valid_date        0.0
-calc_amount       0.0
-dtype: float64 
 </pre></div>
 </div>
 </div>
