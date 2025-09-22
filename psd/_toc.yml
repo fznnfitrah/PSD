@@ -18,6 +18,6 @@ chapters:
     title: Data Processing
     sections:
       - file: outlier_detection
-        title:  Outliers Detection
-
-    
+        title: Outliers Detection
+      - file: oversampling-data
+        title: Oversampling Data
