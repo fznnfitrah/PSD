@@ -21,3 +21,4 @@ chapters:
         title: Outliers Detection
       - file: oversampling-data
         title: Oversampling Data
+      - file: bagging_method
