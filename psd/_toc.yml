@@ -23,3 +23,4 @@ chapters:
         title: Oversampling Data
       - file: ensembleLearning
         title: Ensemble learning
+      - file: bagging_method
