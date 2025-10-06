@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>OVERSAMPLING DATA &#8212; Project Science Data</title>
+    <title>Menghapus Dataset &#8212; Project Science Data</title>
   
   
   
@@ -57,11 +57,10 @@
     <script async="async" src="_static/sphinx-thebe.js?v=c100c467"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
-    <script>DOCUMENTATION_OPTIONS.pagename = 'oversampling-data';</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'ensembleLearning';</script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="Menghapus Dataset" href="ensembleLearning.html" />
-    <link rel="prev" title="DATA PROCESSING" href="outlier_detection.html" />
+    <link rel="prev" title="OVERSAMPLING DATA" href="oversampling-data.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -187,8 +186,8 @@
 </details></li>
 <li class="toctree-l1 current active has-children"><a class="reference internal" href="dataProcessing.html">Data Processing</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="outlier_detection.html">Outliers Detection</a></li>
-<li class="toctree-l2 current active"><a class="current reference internal" href="#">Oversampling Data</a></li>
-<li class="toctree-l2"><a class="reference internal" href="ensembleLearning.html"><strong>Menghapus Dataset</strong></a></li>
+<li class="toctree-l2"><a class="reference internal" href="oversampling-data.html">Oversampling Data</a></li>
+<li class="toctree-l2 current active"><a class="current reference internal" href="#"><strong>Menghapus Dataset</strong></a></li>
 
 
 </ul>
@@ -264,7 +263,7 @@
       
       
       
-      <li><a href="https://github.com/executablebooks/jupyter-book/issues/new?title=Issue%20on%20page%20%2Foversampling-data.html&body=Your%20issue%20content%20here." target="_blank"
+      <li><a href="https://github.com/executablebooks/jupyter-book/issues/new?title=Issue%20on%20page%20%2FensembleLearning.html&body=Your%20issue%20content%20here." target="_blank"
    class="btn btn-sm btn-source-issues-button dropdown-item"
    title="Open an issue"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -294,7 +293,7 @@
       
       
       
-      <li><a href="_sources/oversampling-data.ipynb" target="_blank"
+      <li><a href="_sources/ensembleLearning.ipynb" target="_blank"
    class="btn btn-sm btn-download-source-button dropdown-item"
    title="Download source file"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -378,7 +377,7 @@ document.write(`
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1>OVERSAMPLING DATA</h1>
+    <h1>Menghapus Dataset</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
@@ -388,23 +387,23 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#koneksi-ke-database"><strong>Koneksi ke database</strong></a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#menghapus-data-dengan-class-setosa"><strong>Menghapus data dengan class setosa</strong></a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#syntesis-dataset-dengan-algoritma-smote"><strong>Syntesis Dataset dengan Algoritma SMOTE</strong></a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#melakukan-klasifikasi"><strong>Melakukan Klasifikasi</strong></a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#dataset-iris-tidak-seimbang"><em>Dataset Iris Tidak Seimbang</em></a><ul class="nav section-nav flex-column">
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#metode-naive-bayes">Metode Naive Bayes</a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#metode-svm">Metode SVM</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#"><strong>Menghapus Dataset</strong></a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#syntesis-dataset-dengan-algoritma-smote"><strong>Syntesis Dataset dengan Algoritma SMOTE</strong></a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#melakukan-klasifikasi"><strong>Melakukan Klasifikasi</strong></a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#dataset-iris-tidak-seimbang"><em>Dataset Iris Tidak Seimbang</em></a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#bagging-classifier-with-base-model-svm">Bagging Classifier with base model SVM</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#bagging-classifier-with-base-model-naive-bayes">Bagging Classifier with base model Naive Bayes</a></li>
 </ul>
 </li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#dataset-iris-seimbang"><em>Dataset Iris Seimbang</em></a><ul class="nav section-nav flex-column">
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">Metode Naive Bayes</a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">Metode SVM</a></li>
-</ul>
-</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#dataset-iris-seimbang"><em>Dataset Iris Seimbang</em></a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">Bagging Classifier with base model SVM</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">Bagging Classifier with base model Naive Bayes</a></li>
 </ul>
 </li>
 </ul>
+</li>
+</ul>
+
             </nav>
         </div>
     </div>
@@ -415,9 +414,7 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article">
                   
-  <section class="tex2jax_ignore mathjax_ignore" id="oversampling-data">
-<h1><em><strong>OVERSAMPLING DATA</strong></em><a class="headerlink" href="#oversampling-data" title="Link to this heading">#</a></h1>
-<div class="cell docutils container">
+  <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">os</span>
 <span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
@@ -434,12 +431,12 @@ document.write(`
 <span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.model_selection</span><span class="w"> </span><span class="kn">import</span> <span class="n">train_test_split</span>
 
 <span class="kn">import</span><span class="w"> </span><span class="nn">seaborn</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">sns</span>
+
+<span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.ensemble</span><span class="w"> </span><span class="kn">import</span> <span class="n">BaggingClassifier</span>
 </pre></div>
 </div>
 </div>
 </div>
-<section id="koneksi-ke-database">
-<h2><strong>Koneksi ke database</strong><a class="headerlink" href="#koneksi-ke-database" title="Link to this heading">#</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">load_dotenv</span><span class="p">()</span>
@@ -469,9 +466,7 @@ document.write(`
 </div>
 <div class="cell_output docutils container">
 <div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>python-dotenv could not parse statement starting at line 16
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>python-dotenv could not parse statement starting at line 19
+python-dotenv could not parse statement starting at line 19
 </pre></div>
 </div>
 </div>
@@ -524,9 +519,8 @@ document.write(`
 </div>
 </div>
 </div>
-</section>
-<section id="menghapus-data-dengan-class-setosa">
-<h2><strong>Menghapus data dengan class setosa</strong><a class="headerlink" href="#menghapus-data-dengan-class-setosa" title="Link to this heading">#</a></h2>
+<section id="menghapus-dataset">
+<h1><strong>Menghapus Dataset</strong><a class="headerlink" href="#menghapus-dataset" title="Link to this heading">#</a></h1>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Ambil semua iris-setosa</span>
@@ -557,27 +551,6 @@ Name: count, dtype: int64
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
-
-<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">8</span><span class="p">,</span><span class="mi">6</span><span class="p">))</span>
-<span class="k">for</span> <span class="n">species</span> <span class="ow">in</span> <span class="n">table_iris</span><span class="p">[</span><span class="s2">&quot;class&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">unique</span><span class="p">():</span>
-    <span class="n">subset</span> <span class="o">=</span> <span class="n">table_iris</span><span class="p">[</span><span class="n">table_iris</span><span class="p">[</span><span class="s2">&quot;class&quot;</span><span class="p">]</span> <span class="o">==</span> <span class="n">species</span><span class="p">]</span>
-    <span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">subset</span><span class="p">[</span><span class="s2">&quot;sepal_length&quot;</span><span class="p">],</span> <span class="n">subset</span><span class="p">[</span><span class="s2">&quot;sepal_width&quot;</span><span class="p">],</span> <span class="n">label</span><span class="o">=</span><span class="n">species</span><span class="p">)</span>
-
-<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;Sepal Length&quot;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;Sepal Width&quot;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;Scatter Plot Iris Dataset&quot;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<img alt="_images/d1d1f0c55566b37f9c624e53994ea52a5fe21298f74d80a00068cd11e8caea98.png" src="_images/d1d1f0c55566b37f9c624e53994ea52a5fe21298f74d80a00068cd11e8caea98.png" />
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">table_iris</span><span class="p">[</span><span class="s2">&quot;class&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">value_counts</span><span class="p">()</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">kind</span><span class="o">=</span><span class="s2">&quot;bar&quot;</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">6</span><span class="p">,</span><span class="mi">4</span><span class="p">))</span>
 
 <span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;Jumlah Data per Class&quot;</span><span class="p">)</span>
@@ -601,58 +574,9 @@ Name: count, dtype: int64
 </div>
 </div>
 </div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># PCA</span>
-<span class="n">pca</span> <span class="o">=</span> <span class="n">PCA</span><span class="p">(</span><span class="n">n_components</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
-<span class="n">X_r</span> <span class="o">=</span> <span class="n">pca</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X</span><span class="p">)</span><span class="o">.</span><span class="n">transform</span><span class="p">(</span><span class="n">X</span><span class="p">)</span>
-
-<span class="c1"># LDA</span>
-<span class="n">lda</span> <span class="o">=</span> <span class="n">LinearDiscriminantAnalysis</span><span class="p">(</span><span class="n">n_components</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
-<span class="n">X_r2</span> <span class="o">=</span> <span class="n">lda</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span><span class="o">.</span><span class="n">transform</span><span class="p">(</span><span class="n">X</span><span class="p">)</span>
-
-<span class="c1"># Percentage of variance explained for each components</span>
-<span class="nb">print</span><span class="p">(</span>
-    <span class="s2">&quot;explained variance ratio (first two components): </span><span class="si">%s</span><span class="s2">&quot;</span>
-    <span class="o">%</span> <span class="nb">str</span><span class="p">(</span><span class="n">pca</span><span class="o">.</span><span class="n">explained_variance_ratio_</span><span class="p">)</span>
-<span class="p">)</span>
-
-<span class="c1"># Plot PCA</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">()</span>
-<span class="n">colors</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;navy&quot;</span><span class="p">,</span> <span class="s2">&quot;turquoise&quot;</span><span class="p">,</span> <span class="s2">&quot;darkorange&quot;</span><span class="p">]</span>
-<span class="n">lw</span> <span class="o">=</span> <span class="mi">2</span>
-
-<span class="k">for</span> <span class="n">color</span><span class="p">,</span> <span class="n">i</span><span class="p">,</span> <span class="n">target_name</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">colors</span><span class="p">,</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">],</span> <span class="n">target_names</span><span class="p">):</span>
-    <span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span>
-        <span class="n">X_r</span><span class="p">[</span><span class="n">y</span> <span class="o">==</span> <span class="n">i</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span> <span class="n">X_r</span><span class="p">[</span><span class="n">y</span> <span class="o">==</span> <span class="n">i</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span> <span class="n">color</span><span class="o">=</span><span class="n">color</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.8</span><span class="p">,</span> <span class="n">lw</span><span class="o">=</span><span class="n">lw</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="n">target_name</span>
-    <span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">loc</span><span class="o">=</span><span class="s2">&quot;best&quot;</span><span class="p">,</span> <span class="n">shadow</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">scatterpoints</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;PCA of Modified IRIS dataset&quot;</span><span class="p">)</span>
-
-<span class="c1"># Plot LDA</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">()</span>
-<span class="k">for</span> <span class="n">color</span><span class="p">,</span> <span class="n">i</span><span class="p">,</span> <span class="n">target_name</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">colors</span><span class="p">,</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">],</span> <span class="n">target_names</span><span class="p">):</span>
-    <span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span>
-        <span class="n">X_r2</span><span class="p">[</span><span class="n">y</span> <span class="o">==</span> <span class="n">i</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span> <span class="n">X_r2</span><span class="p">[</span><span class="n">y</span> <span class="o">==</span> <span class="n">i</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.8</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="n">color</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="n">target_name</span>
-    <span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">loc</span><span class="o">=</span><span class="s2">&quot;best&quot;</span><span class="p">,</span> <span class="n">shadow</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">scatterpoints</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;LDA of Modified IRIS dataset&quot;</span><span class="p">)</span>
-
-<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>explained variance ratio (first two components): [0.89519775 0.06768835]
-</pre></div>
-</div>
-<img alt="_images/2fd8fe6d2447eb374659a2e8b6774d314f118b013b5f0bf309485a457a1dcc75.png" src="_images/2fd8fe6d2447eb374659a2e8b6774d314f118b013b5f0bf309485a457a1dcc75.png" />
-<img alt="_images/8fd3efc4d0d3d20059564730b86dc3358e5505dec1738ce672d1b41bce225cbd.png" src="_images/8fd3efc4d0d3d20059564730b86dc3358e5505dec1738ce672d1b41bce225cbd.png" />
-</div>
-</div>
 </section>
 <section id="syntesis-dataset-dengan-algoritma-smote">
-<h2><strong>Syntesis Dataset dengan Algoritma SMOTE</strong><a class="headerlink" href="#syntesis-dataset-dengan-algoritma-smote" title="Link to this heading">#</a></h2>
+<h1><strong>Syntesis Dataset dengan Algoritma SMOTE</strong><a class="headerlink" href="#syntesis-dataset-dengan-algoritma-smote" title="Link to this heading">#</a></h1>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">imblearn.over_sampling</span><span class="w"> </span><span class="kn">import</span> <span class="n">SMOTE</span>
@@ -682,21 +606,9 @@ Name: count, dtype: int64
 </div>
 </div>
 </div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">table_iris_balanced</span><span class="p">[</span><span class="s2">&quot;class&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">value_counts</span><span class="p">()</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">kind</span><span class="o">=</span><span class="s2">&quot;bar&quot;</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">6</span><span class="p">,</span><span class="mi">4</span><span class="p">))</span>
-
-<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;Jumlah Data per Class&quot;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;Class&quot;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;Jumlah&quot;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<img alt="_images/abd2babb488c4663ac180ac30751c154b7134ae1fd0942e7d1e3f21152b1384f.png" src="_images/abd2babb488c4663ac180ac30751c154b7134ae1fd0942e7d1e3f21152b1384f.png" />
-</div>
-</div>
+</section>
+<section id="melakukan-klasifikasi">
+<h1><strong>Melakukan Klasifikasi</strong><a class="headerlink" href="#melakukan-klasifikasi" title="Link to this heading">#</a></h1>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">table_iris</span><span class="p">[</span><span class="s2">&quot;class&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">value_counts</span><span class="p">())</span>
@@ -729,11 +641,15 @@ Name: count, dtype: int64
 </div>
 </div>
 </div>
-</section>
-<section id="melakukan-klasifikasi">
-<h2><strong>Melakukan Klasifikasi</strong><a class="headerlink" href="#melakukan-klasifikasi" title="Link to this heading">#</a></h2>
 <section id="dataset-iris-tidak-seimbang">
-<h3><em>Dataset Iris Tidak Seimbang</em><a class="headerlink" href="#dataset-iris-tidak-seimbang" title="Link to this heading">#</a></h3>
+<h2><em>Dataset Iris Tidak Seimbang</em><a class="headerlink" href="#dataset-iris-tidak-seimbang" title="Link to this heading">#</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">class_mapping</span> <span class="o">=</span> <span class="n">table_iris</span><span class="p">[</span><span class="s2">&quot;class&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="s2">&quot;category&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">cat</span><span class="o">.</span><span class="n">categories</span><span class="o">.</span><span class="n">tolist</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">X_not_balance</span> <span class="o">=</span> <span class="n">table_iris</span><span class="p">[[</span><span class="s2">&quot;sepal_length&quot;</span><span class="p">,</span> <span class="s2">&quot;sepal_width&quot;</span><span class="p">,</span> <span class="s2">&quot;petal_length&quot;</span><span class="p">,</span> <span class="s2">&quot;petal_width&quot;</span><span class="p">]]</span><span class="o">.</span><span class="n">values</span>
@@ -744,68 +660,38 @@ Name: count, dtype: int64
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">X_train</span><span class="p">,</span> <span class="n">X_test</span><span class="p">,</span> <span class="n">y_train</span><span class="p">,</span> <span class="n">y_test</span> <span class="o">=</span> <span class="n">train_test_split</span><span class="p">(</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">X_train_not_balance</span><span class="p">,</span> <span class="n">X_test_not_balance</span><span class="p">,</span> <span class="n">y_train_not_balance</span><span class="p">,</span> <span class="n">y_test_not_balance</span> <span class="o">=</span> <span class="n">train_test_split</span><span class="p">(</span>
     <span class="n">X_not_balance</span><span class="p">,</span> <span class="n">y_not_balance</span><span class="p">,</span> <span class="n">test_size</span><span class="o">=</span><span class="mf">0.2</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">42</span><span class="p">,</span> <span class="n">stratify</span><span class="o">=</span><span class="n">y_not_balance</span>
 <span class="p">)</span>
 </pre></div>
 </div>
 </div>
 </div>
-<section id="metode-naive-bayes">
-<h4>Metode Naive Bayes<a class="headerlink" href="#metode-naive-bayes" title="Link to this heading">#</a></h4>
+<section id="bagging-classifier-with-base-model-svm">
+<h3>Bagging Classifier with base model SVM<a class="headerlink" href="#bagging-classifier-with-base-model-svm" title="Link to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Model</span>
-<span class="n">nb_model</span> <span class="o">=</span> <span class="n">GaussianNB</span><span class="p">()</span>
-<span class="n">nb_model</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">base_svm</span> <span class="o">=</span> <span class="n">SVC</span><span class="p">(</span><span class="n">kernel</span><span class="o">=</span><span class="s1">&#39;rbf&#39;</span><span class="p">,</span> <span class="n">probability</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">42</span><span class="p">)</span>
 
-<span class="c1"># Prediksi</span>
-<span class="n">y_pred_nb</span> <span class="o">=</span> <span class="n">nb_model</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X_test</span><span class="p">)</span>
-<span class="c1"># Evaluasi</span>
-<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Accuracy:&quot;</span><span class="p">,</span> <span class="n">accuracy_score</span><span class="p">(</span><span class="n">y_test</span><span class="p">,</span> <span class="n">y_pred_nb</span><span class="p">))</span>
-<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">Classification Report:</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">classification_report</span><span class="p">(</span><span class="n">y_test</span><span class="p">,</span> <span class="n">y_pred_nb</span><span class="p">))</span>
-<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">Confusion Matrix:</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">confusion_matrix</span><span class="p">(</span><span class="n">y_test</span><span class="p">,</span> <span class="n">y_pred_nb</span><span class="p">))</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Accuracy: 1.0
+<span class="c1"># 3. Bagging dengan SVM</span>
+<span class="n">bagging_svm</span> <span class="o">=</span> <span class="n">BaggingClassifier</span><span class="p">(</span>
+    <span class="n">estimator</span><span class="o">=</span><span class="n">base_svm</span><span class="p">,</span>   <span class="c1"># pakai SVM</span>
+    <span class="n">n_estimators</span><span class="o">=</span><span class="mi">20</span><span class="p">,</span>      <span class="c1"># jumlah SVM</span>
+    <span class="n">max_samples</span><span class="o">=</span><span class="mf">0.8</span><span class="p">,</span>      <span class="c1"># ambil 80% data tiap estimator</span>
+    <span class="n">bootstrap</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+    <span class="n">random_state</span><span class="o">=</span><span class="mi">42</span><span class="p">,</span>
+    <span class="n">n_jobs</span><span class="o">=-</span><span class="mi">1</span>             <span class="c1"># paralel supaya lebih cepat</span>
+<span class="p">)</span>
 
-Classification Report:
-               precision    recall  f1-score   support
+<span class="c1"># 4. Latih model</span>
+<span class="n">bagging_svm</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train_not_balance</span><span class="p">,</span> <span class="n">y_train_not_balance</span><span class="p">)</span>
 
-           0       1.00      1.00      1.00         3
-           1       1.00      1.00      1.00        10
-           2       1.00      1.00      1.00        10
+<span class="c1"># 5. Prediksi</span>
+<span class="n">y_pred</span> <span class="o">=</span> <span class="n">bagging_svm</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X_test_not_balance</span><span class="p">)</span>
 
-    accuracy                           1.00        23
-   macro avg       1.00      1.00      1.00        23
-weighted avg       1.00      1.00      1.00        23
-
-
-Confusion Matrix:
- [[ 3  0  0]
- [ 0 10  0]
- [ 0  0 10]]
-</pre></div>
-</div>
-</div>
-</div>
-</section>
-<section id="metode-svm">
-<h4>Metode SVM<a class="headerlink" href="#metode-svm" title="Link to this heading">#</a></h4>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">svm_model</span> <span class="o">=</span> <span class="n">SVC</span><span class="p">(</span><span class="n">kernel</span><span class="o">=</span><span class="s1">&#39;linear&#39;</span><span class="p">,</span> <span class="n">C</span><span class="o">=</span><span class="mf">1.0</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">42</span><span class="p">)</span> 
-
-<span class="n">svm_model</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">)</span>
-
-<span class="n">y_pred_svm</span> <span class="o">=</span> <span class="n">svm_model</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X_test</span><span class="p">)</span>
-
-<span class="c1"># 5. Evaluasi</span>
-<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Akurasi:&quot;</span><span class="p">,</span> <span class="n">accuracy_score</span><span class="p">(</span><span class="n">y_test</span><span class="p">,</span> <span class="n">y_pred_svm</span><span class="p">))</span>
-<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">Classification Report:</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">classification_report</span><span class="p">(</span><span class="n">y_test</span><span class="p">,</span> <span class="n">y_pred_svm</span><span class="p">))</span>
-<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">Confusion Matrix:</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">confusion_matrix</span><span class="p">(</span><span class="n">y_test</span><span class="p">,</span> <span class="n">y_pred_svm</span><span class="p">))</span>
+<span class="c1"># 6. Evaluasi</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Akurasi:&quot;</span><span class="p">,</span> <span class="n">accuracy_score</span><span class="p">(</span><span class="n">y_test_not_balance</span><span class="p">,</span> <span class="n">y_pred</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">Classification Report:</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">classification_report</span><span class="p">(</span><span class="n">y_test_not_balance</span><span class="p">,</span> <span class="n">y_pred</span><span class="p">,</span> <span class="n">target_names</span><span class="o">=</span><span class="n">class_mapping</span><span class="p">))</span>
 </pre></div>
 </div>
 </div>
@@ -813,20 +699,71 @@ Confusion Matrix:
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Akurasi: 1.0
 
 Classification Report:
-               precision    recall  f1-score   support
+                  precision    recall  f1-score   support
 
-           0       1.00      1.00      1.00         3
-           1       1.00      1.00      1.00        10
-           2       1.00      1.00      1.00        10
+    Iris-setosa       1.00      1.00      1.00         3
+Iris-versicolor       1.00      1.00      1.00        10
+ Iris-virginica       1.00      1.00      1.00        10
 
-    accuracy                           1.00        23
-   macro avg       1.00      1.00      1.00        23
-weighted avg       1.00      1.00      1.00        23
+       accuracy                           1.00        23
+      macro avg       1.00      1.00      1.00        23
+   weighted avg       1.00      1.00      1.00        23
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="bagging-classifier-with-base-model-naive-bayes">
+<h3>Bagging Classifier with base model Naive Bayes<a class="headerlink" href="#bagging-classifier-with-base-model-naive-bayes" title="Link to this heading">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">base_nb</span> <span class="o">=</span> <span class="n">GaussianNB</span><span class="p">()</span>
+
+<span class="c1"># 4. Bagging dengan Naive Bayes</span>
+<span class="n">bagging_nb</span> <span class="o">=</span> <span class="n">BaggingClassifier</span><span class="p">(</span>
+    <span class="n">estimator</span><span class="o">=</span><span class="n">base_nb</span><span class="p">,</span>     <span class="c1"># base estimator = Naive Bayes</span>
+    <span class="n">n_estimators</span><span class="o">=</span><span class="mi">20</span><span class="p">,</span>       <span class="c1"># jumlah estimator (default 10, di sini coba 20)</span>
+    <span class="n">max_samples</span><span class="o">=</span><span class="mf">0.8</span><span class="p">,</span>       <span class="c1"># ambil 80% data untuk tiap estimator</span>
+    <span class="n">bootstrap</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>        <span class="c1"># sampling dengan pengembalian (bootstrap)</span>
+    <span class="n">random_state</span><span class="o">=</span><span class="mi">42</span><span class="p">,</span>
+    <span class="n">n_jobs</span><span class="o">=-</span><span class="mi">1</span>              <span class="c1"># paralel supaya lebih cepat</span>
+<span class="p">)</span>
+
+<span class="c1"># 5. Latih model</span>
+<span class="n">bagging_nb</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train_not_balance</span><span class="p">,</span> <span class="n">y_train_not_balance</span><span class="p">)</span>
+
+<span class="c1"># 6. Prediksi</span>
+<span class="n">y_pred</span> <span class="o">=</span> <span class="n">bagging_nb</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X_test_not_balance</span><span class="p">)</span>
+
+<span class="c1"># 7. Evaluasi</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Akurasi:&quot;</span><span class="p">,</span> <span class="n">accuracy_score</span><span class="p">(</span><span class="n">y_test_not_balance</span><span class="p">,</span> <span class="n">y_pred</span><span class="p">))</span>
+
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">Classification Report:</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">,</span>
+      <span class="n">classification_report</span><span class="p">(</span><span class="n">y_test_not_balance</span><span class="p">,</span> <span class="n">y_pred</span><span class="p">,</span> <span class="n">target_names</span><span class="o">=</span><span class="n">class_mapping</span><span class="p">))</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">Confusion Matrix:</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">confusion_matrix</span><span class="p">(</span><span class="n">y_test_not_balance</span><span class="p">,</span> <span class="n">y_pred</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Akurasi: 0.9565217391304348
+
+Classification Report:
+                  precision    recall  f1-score   support
+
+    Iris-setosa       1.00      1.00      1.00         3
+Iris-versicolor       1.00      0.90      0.95        10
+ Iris-virginica       0.91      1.00      0.95        10
+
+       accuracy                           0.96        23
+      macro avg       0.97      0.97      0.97        23
+   weighted avg       0.96      0.96      0.96        23
 
 
 Confusion Matrix:
  [[ 3  0  0]
- [ 0 10  0]
+ [ 0  9  1]
  [ 0  0 10]]
 </pre></div>
 </div>
@@ -835,7 +772,14 @@ Confusion Matrix:
 </section>
 </section>
 <section id="dataset-iris-seimbang">
-<h3><em>Dataset Iris Seimbang</em><a class="headerlink" href="#dataset-iris-seimbang" title="Link to this heading">#</a></h3>
+<h2><em>Dataset Iris Seimbang</em><a class="headerlink" href="#dataset-iris-seimbang" title="Link to this heading">#</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">class_mapping_balance</span> <span class="o">=</span> <span class="n">table_iris_balanced</span><span class="p">[</span><span class="s2">&quot;class&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="s2">&quot;category&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">cat</span><span class="o">.</span><span class="n">categories</span><span class="o">.</span><span class="n">tolist</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">X_balance</span> <span class="o">=</span> <span class="n">table_iris_balanced</span><span class="p">[[</span><span class="s2">&quot;sepal_length&quot;</span><span class="p">,</span> <span class="s2">&quot;sepal_width&quot;</span><span class="p">,</span> <span class="s2">&quot;petal_length&quot;</span><span class="p">,</span> <span class="s2">&quot;petal_width&quot;</span><span class="p">]]</span><span class="o">.</span><span class="n">values</span>
@@ -846,9 +790,7 @@ Confusion Matrix:
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.model_selection</span><span class="w"> </span><span class="kn">import</span> <span class="n">train_test_split</span>
-
-<span class="n">X_train</span><span class="p">,</span> <span class="n">X_test</span><span class="p">,</span> <span class="n">y_train</span><span class="p">,</span> <span class="n">y_test</span> <span class="o">=</span> <span class="n">train_test_split</span><span class="p">(</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">X_train_balance</span><span class="p">,</span> <span class="n">X_test_balance</span><span class="p">,</span> <span class="n">y_train_balance</span><span class="p">,</span> <span class="n">y_test_balance</span> <span class="o">=</span> <span class="n">train_test_split</span><span class="p">(</span>
     <span class="n">X_balance</span><span class="p">,</span> <span class="n">y_balance</span><span class="p">,</span> <span class="n">test_size</span><span class="o">=</span><span class="mf">0.2</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">42</span><span class="p">,</span> <span class="n">stratify</span><span class="o">=</span><span class="n">y_balance</span>
 <span class="p">)</span>
 </pre></div>
@@ -856,36 +798,96 @@ Confusion Matrix:
 </div>
 </div>
 <section id="id1">
-<h4>Metode Naive Bayes<a class="headerlink" href="#id1" title="Link to this heading">#</a></h4>
+<h3>Bagging Classifier with base model SVM<a class="headerlink" href="#id1" title="Link to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Model</span>
-<span class="n">nb_model</span> <span class="o">=</span> <span class="n">GaussianNB</span><span class="p">()</span>
-<span class="n">nb_model</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">base_svm</span> <span class="o">=</span> <span class="n">SVC</span><span class="p">(</span><span class="n">kernel</span><span class="o">=</span><span class="s1">&#39;rbf&#39;</span><span class="p">,</span> <span class="n">probability</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">42</span><span class="p">)</span>
 
-<span class="c1"># Prediksi</span>
-<span class="n">y_pred</span> <span class="o">=</span> <span class="n">nb_model</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X_test</span><span class="p">)</span>
+<span class="c1"># 3. Bagging dengan SVM</span>
+<span class="n">bagging_svm</span> <span class="o">=</span> <span class="n">BaggingClassifier</span><span class="p">(</span>
+    <span class="n">estimator</span><span class="o">=</span><span class="n">base_svm</span><span class="p">,</span>   <span class="c1"># pakai SVM</span>
+    <span class="n">n_estimators</span><span class="o">=</span><span class="mi">20</span><span class="p">,</span>      <span class="c1"># jumlah SVM</span>
+    <span class="n">max_samples</span><span class="o">=</span><span class="mf">0.8</span><span class="p">,</span>      <span class="c1"># ambil 80% data tiap estimator</span>
+    <span class="n">bootstrap</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+    <span class="n">random_state</span><span class="o">=</span><span class="mi">42</span><span class="p">,</span>
+    <span class="n">n_jobs</span><span class="o">=-</span><span class="mi">1</span>             <span class="c1"># paralel supaya lebih cepat</span>
+<span class="p">)</span>
 
-<span class="c1"># Evaluasi</span>
-<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Accuracy:&quot;</span><span class="p">,</span> <span class="n">accuracy_score</span><span class="p">(</span><span class="n">y_test</span><span class="p">,</span> <span class="n">y_pred</span><span class="p">))</span>
-<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">Classification Report:</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">classification_report</span><span class="p">(</span><span class="n">y_test</span><span class="p">,</span> <span class="n">y_pred</span><span class="p">))</span>
-<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">Confusion Matrix:</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">confusion_matrix</span><span class="p">(</span><span class="n">y_test</span><span class="p">,</span> <span class="n">y_pred</span><span class="p">))</span>
+<span class="c1"># 4. Latih model</span>
+<span class="n">bagging_svm</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train_balance</span><span class="p">,</span> <span class="n">y_train_balance</span><span class="p">)</span>
+
+<span class="c1"># 5. Prediksi</span>
+<span class="n">y_pred</span> <span class="o">=</span> <span class="n">bagging_svm</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X_test_balance</span><span class="p">)</span>
+
+<span class="c1"># 6. Evaluasi</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Akurasi:&quot;</span><span class="p">,</span> <span class="n">accuracy_score</span><span class="p">(</span><span class="n">y_test_balance</span><span class="p">,</span> <span class="n">y_pred</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">Classification Report:</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">classification_report</span><span class="p">(</span><span class="n">y_test_balance</span><span class="p">,</span> <span class="n">y_pred</span><span class="p">,</span> <span class="n">target_names</span><span class="o">=</span><span class="n">class_mapping_balance</span><span class="p">))</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Accuracy: 0.9666666666666667
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Akurasi: 0.9333333333333333
 
 Classification Report:
-               precision    recall  f1-score   support
+                  precision    recall  f1-score   support
 
-           0       0.91      1.00      0.95        10
-           1       1.00      1.00      1.00        10
-           2       1.00      0.90      0.95        10
+    Iris-setosa       0.90      0.90      0.90        10
+Iris-versicolor       1.00      1.00      1.00        10
+ Iris-virginica       0.90      0.90      0.90        10
 
-    accuracy                           0.97        30
-   macro avg       0.97      0.97      0.97        30
-weighted avg       0.97      0.97      0.97        30
+       accuracy                           0.93        30
+      macro avg       0.93      0.93      0.93        30
+   weighted avg       0.93      0.93      0.93        30
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="id2">
+<h3>Bagging Classifier with base model Naive Bayes<a class="headerlink" href="#id2" title="Link to this heading">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">base_nb</span> <span class="o">=</span> <span class="n">GaussianNB</span><span class="p">()</span>
+
+<span class="c1"># 4. Bagging dengan Naive Bayes</span>
+<span class="n">bagging_nb</span> <span class="o">=</span> <span class="n">BaggingClassifier</span><span class="p">(</span>
+    <span class="n">estimator</span><span class="o">=</span><span class="n">base_nb</span><span class="p">,</span>     <span class="c1"># base estimator = Naive Bayes</span>
+    <span class="n">n_estimators</span><span class="o">=</span><span class="mi">20</span><span class="p">,</span>       <span class="c1"># jumlah estimator (default 10, di sini coba 20)</span>
+    <span class="n">max_samples</span><span class="o">=</span><span class="mf">0.8</span><span class="p">,</span>       <span class="c1"># ambil 80% data untuk tiap estimator</span>
+    <span class="n">bootstrap</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>        <span class="c1"># sampling dengan pengembalian (bootstrap)</span>
+    <span class="n">random_state</span><span class="o">=</span><span class="mi">42</span><span class="p">,</span>
+    <span class="n">n_jobs</span><span class="o">=-</span><span class="mi">1</span>              <span class="c1"># paralel supaya lebih cepat</span>
+<span class="p">)</span>
+
+<span class="c1"># 5. Latih model</span>
+<span class="n">bagging_nb</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train_balance</span><span class="p">,</span> <span class="n">y_train_balance</span><span class="p">)</span>
+
+<span class="c1"># 6. Prediksi</span>
+<span class="n">y_pred</span> <span class="o">=</span> <span class="n">bagging_nb</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X_test_balance</span><span class="p">)</span>
+
+<span class="c1"># 7. Evaluasi</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Akurasi:&quot;</span><span class="p">,</span> <span class="n">accuracy_score</span><span class="p">(</span><span class="n">y_test_balance</span><span class="p">,</span> <span class="n">y_pred</span><span class="p">))</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">Classification Report:</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">,</span>
+      <span class="n">classification_report</span><span class="p">(</span><span class="n">y_test_balance</span><span class="p">,</span> <span class="n">y_pred</span><span class="p">,</span> <span class="n">target_names</span><span class="o">=</span><span class="n">class_mapping_balance</span><span class="p">))</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">Confusion Matrix:</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">confusion_matrix</span><span class="p">(</span><span class="n">y_test_balance</span><span class="p">,</span> <span class="n">y_pred</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Akurasi: 0.9666666666666667
+
+Classification Report:
+                  precision    recall  f1-score   support
+
+    Iris-setosa       0.91      1.00      0.95        10
+Iris-versicolor       1.00      1.00      1.00        10
+ Iris-virginica       1.00      0.90      0.95        10
+
+       accuracy                           0.97        30
+      macro avg       0.97      0.97      0.97        30
+   weighted avg       0.97      0.97      0.97        30
 
 
 Confusion Matrix:
@@ -896,48 +898,6 @@ Confusion Matrix:
 </div>
 </div>
 </div>
-</section>
-<section id="id2">
-<h4>Metode SVM<a class="headerlink" href="#id2" title="Link to this heading">#</a></h4>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">svm_model</span> <span class="o">=</span> <span class="n">SVC</span><span class="p">(</span><span class="n">kernel</span><span class="o">=</span><span class="s1">&#39;linear&#39;</span><span class="p">,</span> <span class="n">C</span><span class="o">=</span><span class="mf">1.0</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">42</span><span class="p">)</span> 
-
-<span class="n">svm_model</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">)</span>
-
-<span class="n">y_pred</span> <span class="o">=</span> <span class="n">svm_model</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X_test</span><span class="p">)</span>
-
-<span class="c1"># 5. Evaluasi</span>
-<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Akurasi:&quot;</span><span class="p">,</span> <span class="n">accuracy_score</span><span class="p">(</span><span class="n">y_test</span><span class="p">,</span> <span class="n">y_pred</span><span class="p">))</span>
-<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">Classification Report:</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">classification_report</span><span class="p">(</span><span class="n">y_test</span><span class="p">,</span> <span class="n">y_pred</span><span class="p">))</span>
-<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">Confusion Matrix:</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">confusion_matrix</span><span class="p">(</span><span class="n">y_test</span><span class="p">,</span> <span class="n">y_pred</span><span class="p">))</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Akurasi: 1.0
-
-Classification Report:
-               precision    recall  f1-score   support
-
-           0       1.00      1.00      1.00        10
-           1       1.00      1.00      1.00        10
-           2       1.00      1.00      1.00        10
-
-    accuracy                           1.00        30
-   macro avg       1.00      1.00      1.00        30
-weighted avg       1.00      1.00      1.00        30
-
-
-Confusion Matrix:
- [[10  0  0]
- [ 0 10  0]
- [ 0  0 10]]
-</pre></div>
-</div>
-</div>
-</div>
-</section>
 </section>
 </section>
 </section>
@@ -973,22 +933,13 @@ Confusion Matrix:
                   
 <div class="prev-next-area">
     <a class="left-prev"
-       href="outlier_detection.html"
+       href="oversampling-data.html"
        title="previous page">
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title"><em><strong>DATA PROCESSING</strong></em></p>
+        <p class="prev-next-title"><em><strong>OVERSAMPLING DATA</strong></em></p>
       </div>
-    </a>
-    <a class="right-next"
-       href="ensembleLearning.html"
-       title="next page">
-      <div class="prev-next-info">
-        <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title"><strong>Menghapus Dataset</strong></p>
-      </div>
-      <i class="fa-solid fa-angle-right"></i>
     </a>
 </div>
                 </footer>
@@ -1006,23 +957,23 @@ Confusion Matrix:
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#koneksi-ke-database"><strong>Koneksi ke database</strong></a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#menghapus-data-dengan-class-setosa"><strong>Menghapus data dengan class setosa</strong></a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#syntesis-dataset-dengan-algoritma-smote"><strong>Syntesis Dataset dengan Algoritma SMOTE</strong></a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#melakukan-klasifikasi"><strong>Melakukan Klasifikasi</strong></a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#dataset-iris-tidak-seimbang"><em>Dataset Iris Tidak Seimbang</em></a><ul class="nav section-nav flex-column">
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#metode-naive-bayes">Metode Naive Bayes</a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#metode-svm">Metode SVM</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#"><strong>Menghapus Dataset</strong></a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#syntesis-dataset-dengan-algoritma-smote"><strong>Syntesis Dataset dengan Algoritma SMOTE</strong></a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#melakukan-klasifikasi"><strong>Melakukan Klasifikasi</strong></a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#dataset-iris-tidak-seimbang"><em>Dataset Iris Tidak Seimbang</em></a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#bagging-classifier-with-base-model-svm">Bagging Classifier with base model SVM</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#bagging-classifier-with-base-model-naive-bayes">Bagging Classifier with base model Naive Bayes</a></li>
 </ul>
 </li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#dataset-iris-seimbang"><em>Dataset Iris Seimbang</em></a><ul class="nav section-nav flex-column">
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">Metode Naive Bayes</a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">Metode SVM</a></li>
-</ul>
-</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#dataset-iris-seimbang"><em>Dataset Iris Seimbang</em></a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">Bagging Classifier with base model SVM</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">Bagging Classifier with base model Naive Bayes</a></li>
 </ul>
 </li>
 </ul>
+</li>
+</ul>
+
   </nav></div>
 
 </div></div>
