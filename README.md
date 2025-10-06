@@ -7,6 +7,7 @@
 - Pertemuan 3: Membahas materi bagaimana cara menghubungkan Power BI dengan Database kita menggunakan python
 - Pertemuan 4: Membahas tentang bagaimana cara mencari outliers dari suatu data dengan beberapa algoritma yaitu: knn, ABOD, clustering
 - Pertemuan 5: Membahas mengani data yang mempunyai data oversampling dan metode yang digunakan untuk dataset oversampling. metode ADASYN akan membangkitkan data sintetis jika ada disekita mayoritas dan minoritas. sedangkan metode SMOTE akan membangkitkan data sintetis jika disekitar minor saja
+- Pertemuan 6: Materi baru Ensemble learning metode yang digunakan adalah bagging classifier dan random forrest. Teorinya adalah dengan kita menggunakan metode ini diibaratkan kita
 
 ## Tugas:
 

@@ -21,3 +21,5 @@ chapters:
         title: Outliers Detection
       - file: oversampling-data
         title: Oversampling Data
+      - file: ensembleLearning
+        title: Ensemble learning
