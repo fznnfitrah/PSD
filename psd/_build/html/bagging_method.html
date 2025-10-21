@@ -60,6 +60,7 @@
     <script>DOCUMENTATION_OPTIONS.pagename = 'bagging_method';</script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Project Time Series Using NO2 from Copernicus" href="project-timeseries-single.html" />
     <link rel="prev" title="Menghapus Dataset" href="ensembleLearning.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
@@ -193,6 +194,7 @@
 <li class="toctree-l2 current active"><a class="current reference internal" href="#"><em><strong>Bagging Method</strong></em></a></li>
 </ul>
 </details></li>
+<li class="toctree-l1"><a class="reference internal" href="project-timeseries-single.html">Tugas project</a></li>
 </ul>
 
     </div>
@@ -461,46 +463,26 @@ document.write(`
 <span class="g g-Whitespace">     </span><span class="mi">18</span> <span class="kn">import</span><span class="w"> </span><span class="nn">threadpoolctl</span>
 <span class="g g-Whitespace">     </span><span class="mi">20</span> <span class="kn">import</span><span class="w"> </span><span class="nn">sklearn</span>
 
-<span class="n">File</span> <span class="n">d</span><span class="p">:</span>\<span class="n">Perkuliahan</span>\<span class="n">Semester</span> <span class="mi">5</span>\<span class="n">Poyek</span> <span class="n">Sains</span> <span class="n">Data</span>\<span class="n">PSD</span>\<span class="o">.</span><span class="n">venv</span>\<span class="n">Lib</span>\<span class="n">site</span><span class="o">-</span><span class="n">packages</span>\<span class="n">scipy</span>\<span class="n">stats</span>\<span class="fm">__init__</span><span class="o">.</span><span class="n">py</span><span class="p">:</span><span class="mi">608</span>
-<span class="g g-Whitespace">      </span><span class="mi">1</span><span class="w"> </span><span class="sd">&quot;&quot;&quot;</span>
-<span class="g g-Whitespace">      </span><span class="mi">2</span><span class="sd"> .. _statsrefmanual:</span>
-<span class="g g-Whitespace">      </span><span class="mi">3</span><span class="sd"> </span>
-<span class="sd">   (...)    603 </span>
-<span class="g g-Whitespace">    </span><span class="mi">604</span><span class="sd"> &quot;&quot;&quot;</span>
-<span class="g g-Whitespace">    </span><span class="mi">606</span> <span class="kn">from</span><span class="w"> </span><span class="nn">._warnings_errors</span><span class="w"> </span><span class="kn">import</span> <span class="p">(</span><span class="n">ConstantInputWarning</span><span class="p">,</span> <span class="n">NearConstantInputWarning</span><span class="p">,</span>
-<span class="g g-Whitespace">    </span><span class="mi">607</span>                                <span class="n">DegenerateDataWarning</span><span class="p">,</span> <span class="n">FitError</span><span class="p">)</span>
-<span class="ne">--&gt; </span><span class="mi">608</span> <span class="kn">from</span><span class="w"> </span><span class="nn">._stats_py</span><span class="w"> </span><span class="kn">import</span> <span class="o">*</span>
-<span class="g g-Whitespace">    </span><span class="mi">609</span> <span class="kn">from</span><span class="w"> </span><span class="nn">._variation</span><span class="w"> </span><span class="kn">import</span> <span class="n">variation</span>
+<span class="n">File</span> <span class="n">d</span><span class="p">:</span>\<span class="n">Perkuliahan</span>\<span class="n">Semester</span> <span class="mi">5</span>\<span class="n">Poyek</span> <span class="n">Sains</span> <span class="n">Data</span>\<span class="n">PSD</span>\<span class="o">.</span><span class="n">venv</span>\<span class="n">Lib</span>\<span class="n">site</span><span class="o">-</span><span class="n">packages</span>\<span class="n">scipy</span>\<span class="n">stats</span>\<span class="fm">__init__</span><span class="o">.</span><span class="n">py</span><span class="p">:</span><span class="mi">612</span>
 <span class="g g-Whitespace">    </span><span class="mi">610</span> <span class="kn">from</span><span class="w"> </span><span class="nn">.distributions</span><span class="w"> </span><span class="kn">import</span> <span class="o">*</span>
-
-<span class="n">File</span> <span class="n">d</span><span class="p">:</span>\<span class="n">Perkuliahan</span>\<span class="n">Semester</span> <span class="mi">5</span>\<span class="n">Poyek</span> <span class="n">Sains</span> <span class="n">Data</span>\<span class="n">PSD</span>\<span class="o">.</span><span class="n">venv</span>\<span class="n">Lib</span>\<span class="n">site</span><span class="o">-</span><span class="n">packages</span>\<span class="n">scipy</span>\<span class="n">stats</span>\<span class="n">_stats_py</span><span class="o">.</span><span class="n">py</span><span class="p">:</span><span class="mi">55</span>
-<span class="g g-Whitespace">     </span><span class="mi">53</span> <span class="kn">from</span><span class="w"> </span><span class="nn">._hypotests</span><span class="w"> </span><span class="kn">import</span> <span class="n">_all_partitions</span>
-<span class="g g-Whitespace">     </span><span class="mi">54</span> <span class="kn">from</span><span class="w"> </span><span class="nn">._stats_pythran</span><span class="w"> </span><span class="kn">import</span> <span class="n">_compute_outer_prob_inside_method</span>
-<span class="ne">---&gt; </span><span class="mi">55</span> <span class="kn">from</span><span class="w"> </span><span class="nn">._resampling</span><span class="w"> </span><span class="kn">import</span> <span class="p">(</span><span class="n">MonteCarloMethod</span><span class="p">,</span> <span class="n">PermutationMethod</span><span class="p">,</span> <span class="n">BootstrapMethod</span><span class="p">,</span>
-<span class="g g-Whitespace">     </span><span class="mi">56</span>                           <span class="n">monte_carlo_test</span><span class="p">,</span> <span class="n">permutation_test</span><span class="p">,</span> <span class="n">bootstrap</span><span class="p">,</span>
-<span class="g g-Whitespace">     </span><span class="mi">57</span>                           <span class="n">_batch_generator</span><span class="p">)</span>
-<span class="g g-Whitespace">     </span><span class="mi">58</span> <span class="kn">from</span><span class="w"> </span><span class="nn">._axis_nan_policy</span><span class="w"> </span><span class="kn">import</span> <span class="p">(</span><span class="n">_axis_nan_policy_factory</span><span class="p">,</span>
-<span class="g g-Whitespace">     </span><span class="mi">59</span>                                <span class="n">_broadcast_concatenate</span><span class="p">)</span>
-<span class="g g-Whitespace">     </span><span class="mi">60</span> <span class="kn">from</span><span class="w"> </span><span class="nn">._binomtest</span><span class="w"> </span><span class="kn">import</span> <span class="n">_binary_search_for_binom_tst</span> <span class="k">as</span> <span class="n">_binary_search</span>
-
-<span class="n">File</span> <span class="n">d</span><span class="p">:</span>\<span class="n">Perkuliahan</span>\<span class="n">Semester</span> <span class="mi">5</span>\<span class="n">Poyek</span> <span class="n">Sains</span> <span class="n">Data</span>\<span class="n">PSD</span>\<span class="o">.</span><span class="n">venv</span>\<span class="n">Lib</span>\<span class="n">site</span><span class="o">-</span><span class="n">packages</span>\<span class="n">scipy</span>\<span class="n">stats</span>\<span class="n">_resampling</span><span class="o">.</span><span class="n">py</span><span class="p">:</span><span class="mi">14</span>
-<span class="g g-Whitespace">     </span><span class="mi">12</span> <span class="kn">from</span><span class="w"> </span><span class="nn">dataclasses</span><span class="w"> </span><span class="kn">import</span> <span class="n">dataclass</span>
-<span class="g g-Whitespace">     </span><span class="mi">13</span> <span class="kn">from</span><span class="w"> </span><span class="nn">._common</span><span class="w"> </span><span class="kn">import</span> <span class="n">ConfidenceInterval</span>
-<span class="ne">---&gt; </span><span class="mi">14</span> <span class="kn">from</span><span class="w"> </span><span class="nn">._axis_nan_policy</span><span class="w"> </span><span class="kn">import</span> <span class="n">_broadcast_concatenate</span><span class="p">,</span> <span class="n">_broadcast_arrays</span>
-<span class="g g-Whitespace">     </span><span class="mi">15</span> <span class="kn">from</span><span class="w"> </span><span class="nn">._warnings_errors</span><span class="w"> </span><span class="kn">import</span> <span class="n">DegenerateDataWarning</span>
-<span class="g g-Whitespace">     </span><span class="mi">17</span> <span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;bootstrap&#39;</span><span class="p">,</span> <span class="s1">&#39;monte_carlo_test&#39;</span><span class="p">,</span> <span class="s1">&#39;permutation_test&#39;</span><span class="p">]</span>
+<span class="g g-Whitespace">    </span><span class="mi">611</span> <span class="kn">from</span><span class="w"> </span><span class="nn">._morestats</span><span class="w"> </span><span class="kn">import</span> <span class="o">*</span>
+<span class="ne">--&gt; </span><span class="mi">612</span> <span class="kn">from</span><span class="w"> </span><span class="nn">._multicomp</span><span class="w"> </span><span class="kn">import</span> <span class="o">*</span>
+<span class="g g-Whitespace">    </span><span class="mi">613</span> <span class="kn">from</span><span class="w"> </span><span class="nn">._binomtest</span><span class="w"> </span><span class="kn">import</span> <span class="n">binomtest</span>
+<span class="g g-Whitespace">    </span><span class="mi">614</span> <span class="kn">from</span><span class="w"> </span><span class="nn">._binned_statistic</span><span class="w"> </span><span class="kn">import</span> <span class="o">*</span>
 
 <span class="nn">File &lt;frozen importlib._bootstrap&gt;:1176,</span> in <span class="ni">_find_and_load</span><span class="nt">(name, import_)</span>
 
-<span class="nn">File &lt;frozen importlib._bootstrap&gt;:1147,</span> in <span class="ni">_find_and_load_unlocked</span><span class="nt">(name, import_)</span>
+<span class="nn">File &lt;frozen importlib._bootstrap&gt;:1138,</span> in <span class="ni">_find_and_load_unlocked</span><span class="nt">(name, import_)</span>
 
-<span class="nn">File &lt;frozen importlib._bootstrap&gt;:690,</span> in <span class="ni">_load_unlocked</span><span class="nt">(spec)</span>
+<span class="nn">File &lt;frozen importlib._bootstrap&gt;:1078,</span> in <span class="ni">_find_spec</span><span class="nt">(name, path, target)</span>
 
-<span class="nn">File &lt;frozen importlib._bootstrap_external&gt;:936,</span> in <span class="ni">exec_module</span><span class="nt">(self, module)</span>
+<span class="nn">File &lt;frozen importlib._bootstrap_external&gt;:1507,</span> in <span class="ni">find_spec</span><span class="nt">(cls, fullname, path, target)</span>
 
-<span class="nn">File &lt;frozen importlib._bootstrap_external&gt;:1032,</span> in <span class="ni">get_code</span><span class="nt">(self, fullname)</span>
+<span class="nn">File &lt;frozen importlib._bootstrap_external&gt;:1479,</span> in <span class="ni">_get_spec</span><span class="nt">(cls, fullname, path, target)</span>
 
-<span class="nn">File &lt;frozen importlib._bootstrap_external&gt;:1130,</span> in <span class="ni">get_data</span><span class="nt">(self, path)</span>
+<span class="nn">File &lt;frozen importlib._bootstrap_external&gt;:1615,</span> in <span class="ni">find_spec</span><span class="nt">(self, fullname, target)</span>
+
+<span class="nn">File &lt;frozen importlib._bootstrap_external&gt;:147,</span> in <span class="ni">_path_stat</span><span class="nt">(path)</span>
 
 <span class="ne">KeyboardInterrupt</span>: 
 </pre></div>
@@ -679,6 +661,15 @@ C:\Users\ASUS\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.11_qbz5n2
         <p class="prev-next-subtitle">previous</p>
         <p class="prev-next-title"><strong>Menghapus Dataset</strong></p>
       </div>
+    </a>
+    <a class="right-next"
+       href="project-timeseries-single.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title"><em><strong>Project Time Series Using NO2 from Copernicus</strong></em></p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
     </a>
 </div>
                 </footer>

@@ -24,3 +24,6 @@ chapters:
       - file: ensembleLearning
         title: Ensemble learning
       - file: bagging_method
+
+  - file: project-timeseries-single
+    title: Tugas project

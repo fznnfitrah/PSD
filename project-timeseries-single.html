@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>DATA UNDERSTANDING &#8212; Project Science Data</title>
+    <title>Project Time Series Using NO2 from Copernicus &#8212; Project Science Data</title>
   
   
   
@@ -57,11 +57,10 @@
     <script async="async" src="_static/sphinx-thebe.js?v=c100c467"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
-    <script>DOCUMENTATION_OPTIONS.pagename = 'dataUnderstanding';</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'project-timeseries-single';</script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="EXPLORATION DATA" href="explorationData.html" />
-    <link rel="prev" title="Pemahaman Bisnis" href="bisnis.html" />
+    <link rel="prev" title="Bagging Method" href="bagging_method.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -181,7 +180,7 @@
         </ul>
         <ul class="current nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="bisnis.html">Bussines Understanding</a></li>
-<li class="toctree-l1 current active has-children"><a class="current reference internal" href="#">Data Understanding</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l1 has-children"><a class="reference internal" href="dataUnderstanding.html">Data Understanding</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2"><a class="reference internal" href="explorationData.html">Exploration Data</a></li>
 </ul>
 </details></li>
@@ -194,7 +193,7 @@
 <li class="toctree-l2"><a class="reference internal" href="bagging_method.html"><em><strong>Bagging Method</strong></em></a></li>
 </ul>
 </details></li>
-<li class="toctree-l1"><a class="reference internal" href="project-timeseries-single.html">Tugas project</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Tugas project</a></li>
 </ul>
 
     </div>
@@ -266,7 +265,7 @@
       
       
       
-      <li><a href="https://github.com/executablebooks/jupyter-book/issues/new?title=Issue%20on%20page%20%2FdataUnderstanding.html&body=Your%20issue%20content%20here." target="_blank"
+      <li><a href="https://github.com/executablebooks/jupyter-book/issues/new?title=Issue%20on%20page%20%2Fproject-timeseries-single.html&body=Your%20issue%20content%20here." target="_blank"
    class="btn btn-sm btn-source-issues-button dropdown-item"
    title="Open an issue"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -296,7 +295,7 @@
       
       
       
-      <li><a href="_sources/dataUnderstanding.ipynb" target="_blank"
+      <li><a href="_sources/project-timeseries-single.ipynb" target="_blank"
    class="btn btn-sm btn-download-source-button dropdown-item"
    title="Download source file"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -380,7 +379,7 @@ document.write(`
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1>DATA UNDERSTANDING</h1>
+    <h1>Project Time Series Using NO2 from Copernicus</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
@@ -390,9 +389,7 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#pengertian-data-understanding"><strong>Pengertian Data Understanding</strong></a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#tujuan-data-understanding"><strong>Tujuan Data Understanding</strong></a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#aktivitas-dalam-data-understanding"><strong>Aktivitas dalam Data Understanding</strong></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#taking-dataset-from-copernicus"><strong>Taking Dataset From Copernicus</strong></a></li>
 </ul>
             </nav>
         </div>
@@ -404,62 +401,103 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article">
                   
-  <section class="tex2jax_ignore mathjax_ignore" id="data-understanding">
-<h1><em><strong>DATA UNDERSTANDING</strong></em><a class="headerlink" href="#data-understanding" title="Link to this heading">#</a></h1>
-<section id="pengertian-data-understanding">
-<h2><strong>Pengertian Data Understanding</strong><a class="headerlink" href="#pengertian-data-understanding" title="Link to this heading">#</a></h2>
-<p>Data Understanding adalah tahap kedua dalam metodologi <em>CRISP-DM (Cross-Industry Standard Process for Data Mining)</em> setelah <em>Business Understanding</em>. Tahap ini berfokus pada mengenali, mengumpulkan, dan memahami data yang tersedia agar sesuai dengan tujuan analisis atau pemodelan.</p>
-<p>Singkatnya: <strong>Data Understanding = mengenal data, mengecek kualitasnya, dan memahami pola awal yang ada di dalamnya.</strong></p>
-</section>
-<hr class="docutils" />
-<section id="tujuan-data-understanding">
-<h2><strong>Tujuan Data Understanding</strong><a class="headerlink" href="#tujuan-data-understanding" title="Link to this heading">#</a></h2>
-<p>Tujuan utama dari Data Understanding antara lain:</p>
-<ul class="simple">
-<li><p>✅ <strong>Memahami isi data</strong>: jenis variabel, jumlah data, format, dan struktur dataset.</p></li>
-<li><p>✅ <strong>Menilai kualitas data</strong>: apakah ada <em>missing values</em>, data duplikat, atau anomali.</p></li>
-<li><p>✅ <strong>Mengeksplorasi karakteristik data</strong>: distribusi, statistik deskriptif, korelasi antar variabel.</p></li>
-<li><p>✅ <strong>Menemukan insight awal</strong>: pola, tren, atau indikasi yang mungkin relevan dengan masalah bisnis.</p></li>
-<li><p>✅ <strong>Menentukan arah tahap berikutnya (Data Preparation)</strong>: misalnya apakah data perlu dibersihkan, ditransformasi, atau ditambah dengan data lain.</p></li>
-</ul>
-</section>
-<hr class="docutils" />
-<section id="aktivitas-dalam-data-understanding">
-<h2><strong>Aktivitas dalam Data Understanding</strong><a class="headerlink" href="#aktivitas-dalam-data-understanding" title="Link to this heading">#</a></h2>
-<p>Ada empat aktivitas utama yang biasanya dilakukan di tahap ini:</p>
-<ol class="arabic simple">
-<li><p><em>Data Collection</em></p>
-<ul class="simple">
-<li><p>Mengumpulkan data dari berbagai sumber (database, file CSV/Excel, API, data sensor, dsb).</p></li>
-<li><p>Memastikan data yang terkumpul relevan dengan tujuan analisis.</p></li>
-</ul>
-</li>
-<li><p><em>Data Description</em></p>
-<ul class="simple">
-<li><p>Melakukan deskripsi awal data.</p></li>
-<li><p>Menghitung statistik sederhana (jumlah baris, jumlah kolom, rata-rata, nilai maksimum/minimum, frekuensi kategori, dsb).</p></li>
-<li><p>Memberikan gambaran umum tentang struktur dataset.</p></li>
-</ul>
-</li>
-<li><p><em>Data Exploration</em></p>
-<ul class="simple">
-<li><p>Mengeksplorasi data secara mendalam menggunakan visualisasi (histogram, scatter plot, boxplot, heatmap korelasi).</p></li>
-<li><p>Mendeteksi distribusi data, hubungan antar variabel, dan potensi pola awal.</p></li>
-<li><p>Mengidentifikasi <em>outliers</em> atau anomali.</p></li>
-</ul>
-</li>
-<li><p><em>Data Quality Verification</em></p>
-<ul class="simple">
-<li><p>Memeriksa apakah ada data yang hilang (<em>missing values</em>), tidak konsisten, atau salah input.</p></li>
-<li><p>Menilai apakah kualitas data sudah memadai untuk analisis lebih lanjut.</p></li>
-</ul>
-</li>
-</ol>
-<hr class="docutils" />
-<p>Kesimpulan dari penjelasan Data Understanding = tahap mengenal data → tujuannya memahami &amp; menilai kualitas → aktivitasnya meliputi pengumpulan, deskripsi, eksplorasi, dan verifikasi kualitas data.</p>
-</section>
-<div class="toctree-wrapper compound">
+  <section class="tex2jax_ignore mathjax_ignore" id="project-time-series-using-no2-from-copernicus">
+<h1><em><strong>Project Time Series Using NO2 from Copernicus</strong></em><a class="headerlink" href="#project-time-series-using-no2-from-copernicus" title="Link to this heading">#</a></h1>
+<section id="taking-dataset-from-copernicus">
+<h2><strong>Taking Dataset From Copernicus</strong><a class="headerlink" href="#taking-dataset-from-copernicus" title="Link to this heading">#</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">openeo</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
+</pre></div>
 </div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># ==============================================================================</span>
+<span class="c1"># 1. KONEKSI &amp; 2. DEFINISI AREA (AOI)</span>
+<span class="c1"># (Tidak ada perubahan di sini)</span>
+<span class="c1"># ==============================================================================</span>
+<span class="n">connection</span> <span class="o">=</span> <span class="n">openeo</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="s2">&quot;openeo.dataspace.copernicus.eu&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">authenticate_oidc</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Authenticated using refresh token.
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">aoi</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;Polygon&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;coordinates&quot;</span><span class="p">:</span> <span class="p">[</span>
+        <span class="p">[</span>
+            <span class="p">[</span><span class="mf">113.76938301228396</span><span class="p">,</span> <span class="o">-</span><span class="mf">7.0503186921347223</span><span class="p">],</span>
+            <span class="p">[</span><span class="mf">113.76938301228396</span><span class="p">,</span> <span class="o">-</span><span class="mf">7.050631550698786</span><span class="p">],</span>
+            <span class="p">[</span><span class="mf">113.80355738445064</span><span class="p">,</span> <span class="o">-</span><span class="mf">7.050631550698786</span><span class="p">],</span>
+            <span class="p">[</span><span class="mf">113.80355738445064</span><span class="p">,</span> <span class="o">-</span><span class="mf">7.0503186921347223</span><span class="p">],</span>
+            <span class="p">[</span><span class="mf">113.76938301228396</span><span class="p">,</span> <span class="o">-</span><span class="mf">7.0503186921347223</span><span class="p">]</span>
+        <span class="p">]</span>
+    <span class="p">]</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">s5p_no2</span> <span class="o">=</span> <span class="n">connection</span><span class="o">.</span><span class="n">load_collection</span><span class="p">(</span>
+    <span class="s2">&quot;SENTINEL_5P_L2&quot;</span><span class="p">,</span>
+    <span class="n">temporal_extent</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;2022-10-19&quot;</span><span class="p">,</span> <span class="s2">&quot;2025-10-19&quot;</span><span class="p">],</span>
+    <span class="n">spatial_extent</span><span class="o">=</span><span class="p">{</span>
+        <span class="s2">&quot;west&quot;</span><span class="p">:</span> <span class="mf">113.749308389220396</span><span class="p">,</span>
+        <span class="s2">&quot;south&quot;</span><span class="p">:</span> <span class="o">-</span><span class="mf">7.05063150609786</span><span class="p">,</span>
+        <span class="s2">&quot;east&quot;</span><span class="p">:</span> <span class="mf">113.80355730445064</span><span class="p">,</span>
+        <span class="s2">&quot;north&quot;</span><span class="p">:</span> <span class="o">-</span><span class="mf">7.003180921347223</span><span class="p">,</span>
+    <span class="p">},</span>
+    <span class="n">bands</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;NO2&quot;</span><span class="p">],</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># 4. Hitung rata-rata harian</span>
+<span class="n">s5p_no2_daily</span> <span class="o">=</span> <span class="n">s5p_no2</span><span class="o">.</span><span class="n">aggregate_temporal_period</span><span class="p">(</span>
+    <span class="n">period</span><span class="o">=</span><span class="s2">&quot;day&quot;</span><span class="p">,</span>
+    <span class="n">reducer</span><span class="o">=</span><span class="s2">&quot;mean&quot;</span>
+<span class="p">)</span>
+
+<span class="c1"># 5. Hitung rata-rata spasial berdasarkan AOI</span>
+<span class="n">s5p_no2_aoi</span> <span class="o">=</span> <span class="n">s5p_no2_daily</span><span class="o">.</span><span class="n">aggregate_spatial</span><span class="p">(</span>
+    <span class="n">geometries</span><span class="o">=</span><span class="n">aoi</span><span class="p">,</span>
+    <span class="n">reducer</span><span class="o">=</span><span class="s2">&quot;mean&quot;</span>
+<span class="p">)</span>
+
+<span class="n">job</span> <span class="o">=</span> <span class="n">s5p_no2</span><span class="o">.</span><span class="n">execute_batch</span><span class="p">(</span><span class="n">title</span><span class="o">=</span><span class="s2">&quot;NO2 in Lenteng&quot;</span><span class="p">,</span> <span class="n">outputfile</span><span class="o">=</span><span class="s2">&quot;NO2_in_Lenteng(1).nc&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0:00:00 Job &#39;j-2510211053034a82931ff44571a42560&#39;: send &#39;start&#39;
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0:00:14 Job &#39;j-2510211053034a82931ff44571a42560&#39;: running (progress N/A)
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0:00:19 Job &#39;j-2510211053034a82931ff44571a42560&#39;: running (progress N/A)
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0:00:27 Job &#39;j-2510211053034a82931ff44571a42560&#39;: running (progress N/A)
+</pre></div>
+</div>
+</div>
+</div>
+</section>
 </section>
 
     <script type="text/x-thebe-config">
@@ -493,22 +531,13 @@ document.write(`
                   
 <div class="prev-next-area">
     <a class="left-prev"
-       href="bisnis.html"
+       href="bagging_method.html"
        title="previous page">
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title"><em><strong>Pemahaman Bisnis</strong></em></p>
+        <p class="prev-next-title"><em><strong>Bagging Method</strong></em></p>
       </div>
-    </a>
-    <a class="right-next"
-       href="explorationData.html"
-       title="next page">
-      <div class="prev-next-info">
-        <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title"><em><strong>EXPLORATION DATA</strong></em></p>
-      </div>
-      <i class="fa-solid fa-angle-right"></i>
     </a>
 </div>
                 </footer>
@@ -526,9 +555,7 @@ document.write(`
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#pengertian-data-understanding"><strong>Pengertian Data Understanding</strong></a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#tujuan-data-understanding"><strong>Tujuan Data Understanding</strong></a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#aktivitas-dalam-data-understanding"><strong>Aktivitas dalam Data Understanding</strong></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#taking-dataset-from-copernicus"><strong>Taking Dataset From Copernicus</strong></a></li>
 </ul>
   </nav></div>
 
