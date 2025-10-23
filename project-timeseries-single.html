@@ -193,7 +193,7 @@
 <li class="toctree-l2"><a class="reference internal" href="bagging_method.html"><em><strong>Bagging Method</strong></em></a></li>
 </ul>
 </details></li>
-<li class="toctree-l1 current active"><a class="current reference internal" href="#">Tugas project</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Project TimeSeries Single Thread</a></li>
 </ul>
 
     </div>
@@ -389,7 +389,19 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#taking-dataset-from-copernicus"><strong>Taking Dataset From Copernicus</strong></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#dataset-dari-copernicus"><strong>Dataset dari Copernicus</strong></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#data-processing"><strong>Data Processing</strong></a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#proses-interpolasi"><em>Proses Interpolasi</em></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#dataset-supervised"><em>Dataset SUPERVISED</em></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#memisahkan-antara-data-testing-dan-traning"><em>Memisahkan Antara Data Testing dan Traning</em></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#normaliasi-dataset-min-max-scaler"><em>Normaliasi Dataset MIN-MAX SCALER</em></a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#modeling"><strong>Modeling</strong></a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#membangun-model"><em>Membangun Model</em></a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#mencari-nilai-k-optimal"><strong>Mencari nilai K Optimal</strong></a></li>
 </ul>
             </nav>
         </div>
@@ -403,12 +415,17 @@ document.write(`
                   
   <section class="tex2jax_ignore mathjax_ignore" id="project-time-series-using-no2-from-copernicus">
 <h1><em><strong>Project Time Series Using NO2 from Copernicus</strong></em><a class="headerlink" href="#project-time-series-using-no2-from-copernicus" title="Link to this heading">#</a></h1>
-<section id="taking-dataset-from-copernicus">
-<h2><strong>Taking Dataset From Copernicus</strong><a class="headerlink" href="#taking-dataset-from-copernicus" title="Link to this heading">#</a></h2>
+<section id="dataset-dari-copernicus">
+<h2><strong>Dataset dari Copernicus</strong><a class="headerlink" href="#dataset-dari-copernicus" title="Link to this heading">#</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">openeo</span>
 <span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.preprocessing</span><span class="w"> </span><span class="kn">import</span> <span class="n">MinMaxScaler</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.neighbors</span><span class="w"> </span><span class="kn">import</span> <span class="n">KNeighborsRegressor</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.metrics</span><span class="w"> </span><span class="kn">import</span> <span class="n">mean_squared_error</span><span class="p">,</span> <span class="n">r2_score</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
 </pre></div>
 </div>
 </div>
@@ -483,16 +500,519 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0:00:00 Job &#39;j-2510211053034a82931ff44571a42560&#39;: send &#39;start&#39;
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0:00:00 Job &#39;j-25102322061249feb976818450af02d7&#39;: send &#39;start&#39;
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0:00:14 Job &#39;j-2510211053034a82931ff44571a42560&#39;: running (progress N/A)
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0:00:16 Job &#39;j-25102322061249feb976818450af02d7&#39;: created (progress 0%)
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0:00:19 Job &#39;j-2510211053034a82931ff44571a42560&#39;: running (progress N/A)
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0:00:22 Job &#39;j-25102322061249feb976818450af02d7&#39;: created (progress 0%)
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0:00:27 Job &#39;j-2510211053034a82931ff44571a42560&#39;: running (progress N/A)
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">file_path</span> <span class="o">=</span> <span class="s1">&#39;NO2_in_Lenteng.csv&#39;</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Mengimpor data dari CSV</span>
+<span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="n">file_path</span><span class="p">)</span>
+
+<span class="c1"># Melakukan konversi tanggal (tetap penting)</span>
+<span class="n">df</span><span class="p">[</span><span class="s1">&#39;date&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">to_datetime</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;t&#39;</span><span class="p">],</span> <span class="n">errors</span><span class="o">=</span><span class="s1">&#39;coerce&#39;</span><span class="p">)</span>
+<span class="n">df</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">set_index</span><span class="p">(</span><span class="s1">&#39;t&#39;</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">df</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>                    x         y  crs           NO2       date
+t                                                            
+2024-10-19  113.77659 -7.020542  b&#39;&#39;  1.340432e-05 2024-10-19
+2024-10-19  113.77659 -7.055264  b&#39;&#39;  1.340432e-05 2024-10-19
+2024-10-20  113.77659 -7.020542  b&#39;&#39;  1.174169e-05 2024-10-20
+2024-10-20  113.77659 -7.055264  b&#39;&#39;  1.174169e-05 2024-10-20
+2024-10-21  113.77659 -7.020542  b&#39;&#39;           NaN 2024-10-21
+...               ...       ...  ...           ...        ...
+2025-10-16  113.77659 -7.055264  b&#39;&#39;  1.563201e-05 2025-10-16
+2025-10-17  113.77659 -7.020542  b&#39;&#39;  9.747071e-07 2025-10-17
+2025-10-17  113.77659 -7.055264  b&#39;&#39;  1.937528e-05 2025-10-17
+2025-10-18  113.77659 -7.020542  b&#39;&#39;  1.624941e-05 2025-10-18
+2025-10-18  113.77659 -7.055264  b&#39;&#39;  1.261915e-05 2025-10-18
+
+[728 rows x 5 columns]
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="data-processing">
+<h2><strong>Data Processing</strong><a class="headerlink" href="#data-processing" title="Link to this heading">#</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">dataNO2</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">dropna</span><span class="p">(</span><span class="n">subset</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;date&#39;</span><span class="p">],</span> <span class="n">inplace</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Menjadikan kolom &#39;date&#39; sebagai index DataFrame</span>
+<span class="n">df</span><span class="o">.</span><span class="n">set_index</span><span class="p">(</span><span class="s1">&#39;date&#39;</span><span class="p">,</span> <span class="n">inplace</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+<span class="c1"># Memilih hanya kolom NO2 yang akan kita proses</span>
+<span class="n">df_no2</span> <span class="o">=</span> <span class="n">df</span><span class="p">[[</span><span class="s1">&#39;NO2&#39;</span><span class="p">]]</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<section id="proses-interpolasi">
+<h3><em>Proses Interpolasi</em><a class="headerlink" href="#proses-interpolasi" title="Link to this heading">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># ==============================================================================</span>
+<span class="c1"># 2. PROSES INTERPOLASI</span>
+<span class="c1"># ==============================================================================</span>
+<span class="n">df_no2</span><span class="p">[</span><span class="s1">&#39;NO2_interpolated&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">df_no2</span><span class="p">[</span><span class="s1">&#39;NO2&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">interpolate</span><span class="p">(</span><span class="n">method</span><span class="o">=</span><span class="s1">&#39;time&#39;</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Proses interpolasi selesai. Berikut adalah perbandingan data:&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Proses interpolasi selesai. Berikut adalah perbandingan data:
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">df_no2</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">10</span><span class="p">))</span> <span class="c1"># Menampilkan 10 baris pertama</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>                 NO2  NO2_interpolated
+date                                  
+2024-10-19  0.000013          0.000013
+2024-10-19  0.000013          0.000013
+2024-10-20  0.000012          0.000012
+2024-10-20  0.000012          0.000012
+2024-10-21       NaN          0.000009
+2024-10-21       NaN          0.000009
+2024-10-22       NaN          0.000006
+2024-10-22  0.000006          0.000006
+2024-10-23  0.000021          0.000021
+2024-10-23       NaN          0.000021
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># ==============================================================================</span>
+<span class="c1"># 3. VISUALISASI HASIL</span>
+<span class="c1"># ==============================================================================</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">style</span><span class="o">.</span><span class="n">use</span><span class="p">(</span><span class="s1">&#39;seaborn-v0_8-whitegrid&#39;</span><span class="p">)</span> <span class="c1"># Mengatur style grafik agar lebih bagus</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">15</span><span class="p">,</span> <span class="mi">7</span><span class="p">))</span> <span class="c1"># Mengatur ukuran gambar</span>
+
+<span class="c1"># Plot data asli (akan terlihat putus-putus di bagian yang kosong)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">df_no2</span><span class="o">.</span><span class="n">index</span><span class="p">,</span> <span class="n">df_no2</span><span class="p">[</span><span class="s1">&#39;NO2&#39;</span><span class="p">],</span> 
+         <span class="n">marker</span><span class="o">=</span><span class="s1">&#39;o&#39;</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s1">&#39;--&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;red&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Data Asli (dengan Missing Value)&#39;</span><span class="p">)</span>
+
+<span class="c1"># Plot data yang sudah diinterpolasi (garisnya akan menyambung)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">df_no2</span><span class="o">.</span><span class="n">index</span><span class="p">,</span> <span class="n">df_no2</span><span class="p">[</span><span class="s1">&#39;NO2_interpolated&#39;</span><span class="p">],</span> 
+         <span class="n">marker</span><span class="o">=</span><span class="s1">&#39;x&#39;</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s1">&#39;-&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;blue&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Data Hasil Interpolasi&#39;</span><span class="p">)</span>
+
+<span class="c1"># Memberi judul dan label</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Perbandingan Data NO₂ Asli dan Hasil Interpolasi&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">16</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Tanggal&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">12</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Konsentrasi NO₂ (mol/m²)&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">12</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
+
+<span class="c1"># Menampilkan grafik</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>C:\Users\MyBook Z Series\AppData\Local\Temp\ipykernel_15868\3383062614.py:20: UserWarning: Glyph 8322 (\N{SUBSCRIPT TWO}) missing from current font.
+  plt.tight_layout()
+d:\Perkuliahan\Semester 5\Poyek Sains Data\PSD\.venv\Lib\site-packages\IPython\core\pylabtools.py:170: UserWarning: Glyph 8322 (\N{SUBSCRIPT TWO}) missing from current font.
+  fig.canvas.print_figure(bytes_io, **kw)
+</pre></div>
+</div>
+<img alt="_images/f05f0c9f72959f894be018c83f5f458a8b603606347ae6c07619598d7f428ff6.png" src="_images/f05f0c9f72959f894be018c83f5f458a8b603606347ae6c07619598d7f428ff6.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">df_no2</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>                     NO2  NO2_interpolated
+date                                      
+2024-10-19  1.340432e-05      1.340432e-05
+2024-10-19  1.340432e-05      1.340432e-05
+2024-10-20  1.174169e-05      1.174169e-05
+2024-10-20  1.174169e-05      1.174169e-05
+2024-10-21           NaN      8.866901e-06
+...                  ...               ...
+2025-10-16  1.563201e-05      1.563201e-05
+2025-10-17  9.747071e-07      9.747071e-07
+2025-10-17  1.937528e-05      1.937528e-05
+2025-10-18  1.624941e-05      1.624941e-05
+2025-10-18  1.261915e-05      1.261915e-05
+
+[728 rows x 2 columns]
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Mengambil data kolom NO2 saja</span>
+<span class="n">data</span> <span class="o">=</span> <span class="n">df_no2</span><span class="p">[[</span><span class="s1">&#39;NO2_interpolated&#39;</span><span class="p">]]</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>            NO2_interpolated
+date                        
+2024-10-19      1.340432e-05
+2024-10-19      1.340432e-05
+2024-10-20      1.174169e-05
+2024-10-20      1.174169e-05
+2024-10-21      8.866901e-06
+...                      ...
+2025-10-16      1.563201e-05
+2025-10-17      9.747071e-07
+2025-10-17      1.937528e-05
+2025-10-18      1.624941e-05
+2025-10-18      1.261915e-05
+
+[728 rows x 1 columns]
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="dataset-supervised">
+<h3><em>Dataset SUPERVISED</em><a class="headerlink" href="#dataset-supervised" title="Link to this heading">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># ==============================================================================</span>
+<span class="c1"># MEMBUAT DATASET SUPERVISED (LAG FEATURES)</span>
+<span class="c1"># ==============================================================================</span>
+<span class="c1"># Fungsi ini akan mengubah data time series menjadi format X dan y</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">series_to_supervised</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">n_in</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">n_out</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">dropnan</span><span class="o">=</span><span class="kc">True</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Mengubah time series menjadi dataset supervised.</span>
+<span class="sd">    n_in: Jumlah observasi lampau (X).</span>
+<span class="sd">    n_out: Jumlah observasi masa depan (y).</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">n_vars</span> <span class="o">=</span> <span class="mi">1</span> <span class="k">if</span> <span class="nb">type</span><span class="p">(</span><span class="n">data</span><span class="p">)</span> <span class="ow">is</span> <span class="nb">list</span> <span class="k">else</span> <span class="n">data</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+    <span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
+    <span class="n">cols</span><span class="p">,</span> <span class="n">names</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(),</span> <span class="nb">list</span><span class="p">()</span>
+    <span class="c1"># Input sequence (t-n, ... t-1)</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n_in</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">):</span>
+        <span class="n">cols</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">shift</span><span class="p">(</span><span class="n">i</span><span class="p">))</span>
+        <span class="n">names</span> <span class="o">+=</span> <span class="p">[(</span><span class="s1">&#39;var</span><span class="si">%d</span><span class="s1">(t-</span><span class="si">%d</span><span class="s1">)&#39;</span> <span class="o">%</span> <span class="p">(</span><span class="n">j</span><span class="o">+</span><span class="mi">1</span><span class="p">,</span> <span class="n">i</span><span class="p">))</span> <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n_vars</span><span class="p">)]</span>
+    <span class="c1"># Forecast sequence (t, t+1, ... t+n)</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">n_out</span><span class="p">):</span>
+        <span class="n">cols</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">shift</span><span class="p">(</span><span class="o">-</span><span class="n">i</span><span class="p">))</span>
+        <span class="k">if</span> <span class="n">i</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="n">names</span> <span class="o">+=</span> <span class="p">[(</span><span class="s1">&#39;var</span><span class="si">%d</span><span class="s1">(t)&#39;</span> <span class="o">%</span> <span class="p">(</span><span class="n">j</span><span class="o">+</span><span class="mi">1</span><span class="p">))</span> <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n_vars</span><span class="p">)]</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">names</span> <span class="o">+=</span> <span class="p">[(</span><span class="s1">&#39;var</span><span class="si">%d</span><span class="s1">(t+</span><span class="si">%d</span><span class="s1">)&#39;</span> <span class="o">%</span> <span class="p">(</span><span class="n">j</span><span class="o">+</span><span class="mi">1</span><span class="p">,</span> <span class="n">i</span><span class="p">))</span> <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n_vars</span><span class="p">)]</span>
+    <span class="c1"># Gabungkan semua</span>
+    <span class="n">agg</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">concat</span><span class="p">(</span><span class="n">cols</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+    <span class="n">agg</span><span class="o">.</span><span class="n">columns</span> <span class="o">=</span> <span class="n">names</span>
+    <span class="c1"># Hapus baris dengan nilai NaN</span>
+    <span class="k">if</span> <span class="n">dropnan</span><span class="p">:</span>
+        <span class="n">agg</span><span class="o">.</span><span class="n">dropna</span><span class="p">(</span><span class="n">inplace</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">agg</span>
+
+<span class="c1"># --- Menggunakan fungsi ---</span>
+<span class="c1"># Kita akan menggunakan data 3 hari sebelumnya (t-3, t-2, t-1) untuk memprediksi hari ini (t)</span>
+<span class="n">n_lags</span> <span class="o">=</span> <span class="mi">4</span>
+<span class="n">supervised_data</span> <span class="o">=</span> <span class="n">series_to_supervised</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">n_lags</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+
+<span class="c1"># Mengganti nama kolom agar lebih mudah dibaca</span>
+<span class="n">supervised_data</span><span class="o">.</span><span class="n">rename</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="p">{</span>
+    <span class="s1">&#39;var1(t-4)&#39;</span><span class="p">:</span> <span class="s1">&#39;NO2(t-4)&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;var1(t-3)&#39;</span><span class="p">:</span> <span class="s1">&#39;NO2(t-3)&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;var1(t-2)&#39;</span><span class="p">:</span> <span class="s1">&#39;NO2(t-2)&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;var1(t-1)&#39;</span><span class="p">:</span> <span class="s1">&#39;NO2(t-1)&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;var1(t)&#39;</span><span class="p">:</span> <span class="s1">&#39;Target_NO2(t)&#39;</span>
+<span class="p">},</span> <span class="n">inplace</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;--- Dataset Setelah Diubah ke Format Supervised ---&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">supervised_data</span><span class="o">.</span><span class="n">head</span><span class="p">())</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>--- Dataset Setelah Diubah ke Format Supervised ---
+            NO2(t-4)  NO2(t-3)  NO2(t-2)  NO2(t-1)  Target_NO2(t)
+date                                                             
+2024-10-21  0.000013  0.000013  0.000012  0.000012       0.000009
+2024-10-21  0.000013  0.000012  0.000012  0.000009       0.000009
+2024-10-22  0.000012  0.000012  0.000009  0.000009       0.000006
+2024-10-22  0.000012  0.000009  0.000009  0.000006       0.000006
+2024-10-23  0.000009  0.000009  0.000006  0.000006       0.000021
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="memisahkan-antara-data-testing-dan-traning">
+<h3><em>Memisahkan Antara Data Testing dan Traning</em><a class="headerlink" href="#memisahkan-antara-data-testing-dan-traning" title="Link to this heading">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># ==============================================================================</span>
+<span class="c1"># 3. PEMISAHAN DATA: TRAINING &amp; TESTING</span>
+<span class="c1"># ==============================================================================</span>
+<span class="c1"># Penting: Untuk time series, kita tidak boleh mengacak data. Kita membaginya berdasarkan urutan waktu.</span>
+<span class="n">values</span> <span class="o">=</span> <span class="n">supervised_data</span><span class="o">.</span><span class="n">values</span>
+<span class="n">train_size</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">values</span><span class="p">)</span> <span class="o">*</span> <span class="mf">0.8</span><span class="p">)</span>  <span class="c1"># 80% untuk training</span>
+<span class="n">train</span><span class="p">,</span> <span class="n">test</span> <span class="o">=</span> <span class="n">values</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="n">train_size</span><span class="p">],</span> <span class="n">values</span><span class="p">[</span><span class="n">train_size</span><span class="p">:</span><span class="nb">len</span><span class="p">(</span><span class="n">values</span><span class="p">)]</span>
+
+<span class="c1"># Pisahkan antara fitur (X) dan target (y)</span>
+<span class="c1"># X adalah semua kolom kecuali kolom terakhir</span>
+<span class="c1"># y adalah kolom terakhir (target)</span>
+<span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span> <span class="o">=</span> <span class="n">train</span><span class="p">[:,</span> <span class="p">:</span><span class="o">-</span><span class="mi">1</span><span class="p">],</span> <span class="n">train</span><span class="p">[:,</span> <span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+<span class="n">X_test</span><span class="p">,</span> <span class="n">y_test</span> <span class="o">=</span> <span class="n">test</span><span class="p">[:,</span> <span class="p">:</span><span class="o">-</span><span class="mi">1</span><span class="p">],</span> <span class="n">test</span><span class="p">[:,</span> <span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">Jumlah data training: </span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">X_train</span><span class="p">)</span><span class="si">}</span><span class="s2"> baris&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Jumlah data testing: </span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">X_test</span><span class="p">)</span><span class="si">}</span><span class="s2"> baris&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Jumlah data training: 579 baris
+Jumlah data testing: 145 baris
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="normaliasi-dataset-min-max-scaler">
+<h3><em>Normaliasi Dataset MIN-MAX SCALER</em><a class="headerlink" href="#normaliasi-dataset-min-max-scaler" title="Link to this heading">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># ==============================================================================</span>
+<span class="c1"># 4. NORMALISASI DATA DENGAN MIN-MAX SCALER</span>
+<span class="c1"># ==============================================================================</span>
+<span class="c1"># Normalisasi mengubah rentang nilai data menjadi antara 0 dan 1.</span>
+
+<span class="c1"># --- Normalisasi Fitur (X) ---</span>
+<span class="c1"># PENTING: Scaler di-&quot;fit&quot; HANYA pada data training untuk mencegah kebocoran data</span>
+<span class="n">scaler_X</span> <span class="o">=</span> <span class="n">MinMaxScaler</span><span class="p">(</span><span class="n">feature_range</span><span class="o">=</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">))</span>
+<span class="n">scaler_X</span> <span class="o">=</span> <span class="n">scaler_X</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train</span><span class="p">)</span>
+
+<span class="n">X_train_scaled</span> <span class="o">=</span> <span class="n">scaler_X</span><span class="o">.</span><span class="n">transform</span><span class="p">(</span><span class="n">X_train</span><span class="p">)</span>
+<span class="n">X_test_scaled</span> <span class="o">=</span> <span class="n">scaler_X</span><span class="o">.</span><span class="n">transform</span><span class="p">(</span><span class="n">X_test</span><span class="p">)</span>
+
+<span class="c1"># --- Normalisasi Target (y) ---</span>
+<span class="c1"># Kita juga perlu menormalisasi target, dan harus menggunakan scaler terpisah</span>
+<span class="n">scaler_y</span> <span class="o">=</span> <span class="n">MinMaxScaler</span><span class="p">(</span><span class="n">feature_range</span><span class="o">=</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">))</span>
+<span class="c1"># y perlu diubah bentuknya menjadi 2D untuk scaler</span>
+<span class="n">y_train_reshaped</span> <span class="o">=</span> <span class="n">y_train</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+<span class="n">y_test_reshaped</span> <span class="o">=</span> <span class="n">y_test</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+
+<span class="n">scaler_y</span> <span class="o">=</span> <span class="n">scaler_y</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">y_train_reshaped</span><span class="p">)</span>
+<span class="n">y_train_scaled</span> <span class="o">=</span> <span class="n">scaler_y</span><span class="o">.</span><span class="n">transform</span><span class="p">(</span><span class="n">y_train_reshaped</span><span class="p">)</span>
+<span class="n">y_test_scaled</span> <span class="o">=</span> <span class="n">scaler_y</span><span class="o">.</span><span class="n">transform</span><span class="p">(</span><span class="n">y_test_reshaped</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">--- Contoh Data Setelah Normalisasi ---&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;X_train_scaled (5 baris pertama):&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">X_train_scaled</span><span class="p">[:</span><span class="mi">5</span><span class="p">])</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">y_train_scaled (5 baris pertama):&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">y_train_scaled</span><span class="p">[:</span><span class="mi">5</span><span class="p">])</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">✅ Proses selesai. Data sekarang siap untuk dilatih menggunakan model machine learning.&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>--- Contoh Data Setelah Normalisasi ---
+X_train_scaled (5 baris pertama):
+[[0.4808927  0.4808927  0.45034895 0.45034895]
+ [0.4808927  0.45034895 0.45034895 0.39753689]
+ [0.45034895 0.45034895 0.39753689 0.39753689]
+ [0.45034895 0.39753689 0.39753689 0.34472482]
+ [0.39753689 0.39753689 0.34472482 0.34472482]]
+
+y_train_scaled (5 baris pertama):
+[[0.39753689]
+ [0.39753689]
+ [0.34472482]
+ [0.34472482]
+ [0.62289271]]
+
+✅ Proses selesai. Data sekarang siap untuk dilatih menggunakan model machine learning.
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+</section>
+<section id="modeling">
+<h2><strong>Modeling</strong><a class="headerlink" href="#modeling" title="Link to this heading">#</a></h2>
+<section id="membangun-model">
+<h3><em>Membangun Model</em><a class="headerlink" href="#membangun-model" title="Link to this heading">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># ==============================================================================</span>
+<span class="c1"># MEMBANGUN &amp; MELATIH MODEL KNN 🧠</span>
+<span class="c1"># ==============================================================================</span>
+
+<span class="n">k_value</span> <span class="o">=</span> <span class="mi">14</span>
+<span class="n">knn_model</span> <span class="o">=</span> <span class="n">KNeighborsRegressor</span><span class="p">(</span><span class="n">n_neighbors</span><span class="o">=</span><span class="n">k_value</span><span class="p">)</span>
+
+<span class="n">knn_model</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train_scaled</span><span class="p">,</span> <span class="n">y_train_scaled</span><span class="o">.</span><span class="n">ravel</span><span class="p">())</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;✅ Model KNN dengan k=</span><span class="si">{</span><span class="n">k_value</span><span class="si">}</span><span class="s2"> berhasil dilatih.&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>✅ Model KNN dengan k=14 berhasil dilatih.
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># ==============================================================================</span>
+<span class="c1"># MEMBUAT PREDIKSI PADA DATA UJI 🎯</span>
+<span class="c1"># ==============================================================================</span>
+<span class="c1"># Model akan memprediksi data uji (X_test_scaled)</span>
+<span class="n">y_pred_scaled</span> <span class="o">=</span> <span class="n">knn_model</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X_test_scaled</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Mengembalikan prediksi ke skala asli</span>
+<span class="n">y_pred</span> <span class="o">=</span> <span class="n">scaler_y</span><span class="o">.</span><span class="n">inverse_transform</span><span class="p">(</span><span class="n">y_pred_scaled</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">))</span>
+
+<span class="c1"># Mengembalikan data uji (y_test) yang sebenarnya ke skala asli untuk perbandingan</span>
+<span class="n">y_test_actual</span> <span class="o">=</span> <span class="n">scaler_y</span><span class="o">.</span><span class="n">inverse_transform</span><span class="p">(</span><span class="n">y_test_scaled</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">mse</span> <span class="o">=</span> <span class="n">mean_squared_error</span><span class="p">(</span><span class="n">y_test_actual</span><span class="p">,</span> <span class="n">y_pred</span><span class="p">)</span>
+<span class="n">rmse</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">mse</span><span class="p">)</span>
+<span class="n">r2</span> <span class="o">=</span> <span class="n">r2_score</span><span class="p">(</span><span class="n">y_test_actual</span><span class="p">,</span> <span class="n">y_pred</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">--- Hasil Evaluasi Model ---&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Root Mean Squared Error (RMSE): </span><span class="si">{</span><span class="n">rmse</span><span class="si">:</span><span class="s2">.10f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;R-squared (R²): </span><span class="si">{</span><span class="n">r2</span><span class="si">:</span><span class="s2">.4f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>--- Hasil Evaluasi Model ---
+Root Mean Squared Error (RMSE): 0.0000079656
+R-squared (R²): 0.0155
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># ==============================================================================</span>
+<span class="c1"># VISUALISASI HASIL PREDIKSI</span>
+<span class="c1"># ==============================================================================</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">15</span><span class="p">,</span> <span class="mi">7</span><span class="p">))</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">y_test_actual</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Nilai NO₂ Aktual&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;blue&#39;</span><span class="p">,</span> <span class="n">marker</span><span class="o">=</span><span class="s1">&#39;.&#39;</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s1">&#39;-&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">y_pred</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="sa">f</span><span class="s1">&#39;Nilai NO₂ Prediksi (KNN, k=</span><span class="si">{</span><span class="n">k_value</span><span class="si">}</span><span class="s1">)&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;red&#39;</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s1">&#39;--&#39;</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Perbandingan Nilai Aktual vs. Prediksi pada Data Uji&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">16</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Urutan Sampel Data Uji&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">12</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Konsentrasi NO₂ (mol/m²)&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">12</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>d:\Perkuliahan\Semester 5\Poyek Sains Data\PSD\.venv\Lib\site-packages\IPython\core\pylabtools.py:170: UserWarning: Glyph 8322 (\N{SUBSCRIPT TWO}) missing from current font.
+  fig.canvas.print_figure(bytes_io, **kw)
+</pre></div>
+</div>
+<img alt="_images/1ebc731327d45f2caf3320dcf62de18ceecc5a3f109ad2c14aa71fa57c4f6d01.png" src="_images/1ebc731327d45f2caf3320dcf62de18ceecc5a3f109ad2c14aa71fa57c4f6d01.png" />
+</div>
+</div>
+</section>
+</section>
+<section id="mencari-nilai-k-optimal">
+<h2><strong>Mencari nilai K Optimal</strong><a class="headerlink" href="#mencari-nilai-k-optimal" title="Link to this heading">#</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">error_rates</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="n">k_range</span> <span class="o">=</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">31</span><span class="p">)</span> <span class="c1"># Mencoba nilai k dari 1 sampai 30</span>
+
+<span class="k">for</span> <span class="n">k</span> <span class="ow">in</span> <span class="n">k_range</span><span class="p">:</span>
+    <span class="n">model</span> <span class="o">=</span> <span class="n">KNeighborsRegressor</span><span class="p">(</span><span class="n">n_neighbors</span><span class="o">=</span><span class="n">k</span><span class="p">)</span>
+    <span class="n">model</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train_scaled</span><span class="p">,</span> <span class="n">y_train_scaled</span><span class="o">.</span><span class="n">ravel</span><span class="p">())</span>
+    <span class="n">pred_k_scaled</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X_test_scaled</span><span class="p">)</span>
+
+    <span class="c1"># Kembalikan ke skala asli untuk menghitung error</span>
+    <span class="n">pred_k</span> <span class="o">=</span> <span class="n">scaler_y</span><span class="o">.</span><span class="n">inverse_transform</span><span class="p">(</span><span class="n">pred_k_scaled</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">))</span>
+    <span class="n">rmse</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">mean_squared_error</span><span class="p">(</span><span class="n">y_test_actual</span><span class="p">,</span> <span class="n">pred_k</span><span class="p">))</span>
+    <span class="n">error_rates</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">rmse</span><span class="p">)</span>
+
+<span class="c1"># Plotting hasilnya</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">12</span><span class="p">,</span> <span class="mi">6</span><span class="p">))</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">k_range</span><span class="p">,</span> <span class="n">error_rates</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;blue&#39;</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s1">&#39;dashed&#39;</span><span class="p">,</span> <span class="n">marker</span><span class="o">=</span><span class="s1">&#39;o&#39;</span><span class="p">,</span>
+         <span class="n">markerfacecolor</span><span class="o">=</span><span class="s1">&#39;red&#39;</span><span class="p">,</span> <span class="n">markersize</span><span class="o">=</span><span class="mi">8</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Error (RMSE) vs. Nilai K&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">16</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Nilai K&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">12</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Root Mean Squared Error (RMSE)&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">12</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xticks</span><span class="p">(</span><span class="n">k_range</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+
+<span class="c1"># Cari nilai k dengan RMSE terendah</span>
+<span class="n">best_k</span> <span class="o">=</span> <span class="n">k_range</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">argmin</span><span class="p">(</span><span class="n">error_rates</span><span class="p">)]</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">💡 Nilai &#39;k&#39; terbaik ditemukan pada k = </span><span class="si">{</span><span class="n">best_k</span><span class="si">}</span><span class="s2"> dengan RMSE terendah.&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/d91e098567ce8adcc5de805e7c121bf4b60e95717e4cc5e2ef0c98185a8b74d6.png" src="_images/d91e098567ce8adcc5de805e7c121bf4b60e95717e4cc5e2ef0c98185a8b74d6.png" />
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>💡 Nilai &#39;k&#39; terbaik ditemukan pada k = 14 dengan RMSE terendah.
 </pre></div>
 </div>
 </div>
@@ -555,7 +1075,19 @@ document.write(`
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#taking-dataset-from-copernicus"><strong>Taking Dataset From Copernicus</strong></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#dataset-dari-copernicus"><strong>Dataset dari Copernicus</strong></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#data-processing"><strong>Data Processing</strong></a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#proses-interpolasi"><em>Proses Interpolasi</em></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#dataset-supervised"><em>Dataset SUPERVISED</em></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#memisahkan-antara-data-testing-dan-traning"><em>Memisahkan Antara Data Testing dan Traning</em></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#normaliasi-dataset-min-max-scaler"><em>Normaliasi Dataset MIN-MAX SCALER</em></a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#modeling"><strong>Modeling</strong></a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#membangun-model"><em>Membangun Model</em></a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#mencari-nilai-k-optimal"><strong>Mencari nilai K Optimal</strong></a></li>
 </ul>
   </nav></div>
 

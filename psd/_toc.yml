@@ -26,4 +26,4 @@ chapters:
       - file: bagging_method
 
   - file: project-timeseries-single
-    title: Tugas project
+    title: Project TimeSeries Single Thread
