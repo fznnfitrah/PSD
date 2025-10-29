@@ -60,7 +60,7 @@
     <script>DOCUMENTATION_OPTIONS.pagename = 'bagging_method';</script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="Project Time Series Using NO2 from Copernicus" href="project-timeseries-single.html" />
+    <link rel="next" title="Project Time Series Using NO2 from Copernicus" href="project-timeseries-forecasting.html" />
     <link rel="prev" title="Menghapus Dataset" href="ensembleLearning.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
@@ -194,7 +194,10 @@
 <li class="toctree-l2 current active"><a class="current reference internal" href="#"><em><strong>Bagging Method</strong></em></a></li>
 </ul>
 </details></li>
-<li class="toctree-l1"><a class="reference internal" href="project-timeseries-single.html">Project TimeSeries Single Thread</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="project-timeseries-forecasting.html">Project TimeSeries Forecasting</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="project-timeseries-autoCorrelation.html">TimeSeries Auto Correlation with Feature Selection (Revisi)</a></li>
+</ul>
+</details></li>
 </ul>
 
     </div>
@@ -408,81 +411,6 @@ document.write(`
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
-<span class="ne">KeyboardInterrupt</span><span class="g g-Whitespace">                         </span>Traceback (most recent call last)
-<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">line</span> <span class="mi">4</span>
-<span class="g g-Whitespace">      </span><span class="mi">2</span> <span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.model_selection</span><span class="w"> </span><span class="kn">import</span> <span class="n">train_test_split</span>
-<span class="g g-Whitespace">      </span><span class="mi">3</span> <span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.preprocessing</span><span class="w"> </span><span class="kn">import</span> <span class="n">LabelEncoder</span>
-<span class="ne">----&gt; </span><span class="mi">4</span> <span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.ensemble</span><span class="w"> </span><span class="kn">import</span> <span class="n">BaggingClassifier</span>
-<span class="g g-Whitespace">      </span><span class="mi">5</span> <span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.naive_bayes</span><span class="w"> </span><span class="kn">import</span> <span class="n">GaussianNB</span>
-<span class="g g-Whitespace">      </span><span class="mi">6</span> <span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.svm</span><span class="w"> </span><span class="kn">import</span> <span class="n">SVC</span>
-
-<span class="n">File</span> <span class="n">d</span><span class="p">:</span>\<span class="n">Perkuliahan</span>\<span class="n">Semester</span> <span class="mi">5</span>\<span class="n">Poyek</span> <span class="n">Sains</span> <span class="n">Data</span>\<span class="n">PSD</span>\<span class="o">.</span><span class="n">venv</span>\<span class="n">Lib</span>\<span class="n">site</span><span class="o">-</span><span class="n">packages</span>\<span class="n">sklearn</span>\<span class="n">ensemble</span>\<span class="fm">__init__</span><span class="o">.</span><span class="n">py</span><span class="p">:</span><span class="mi">5</span>
-<span class="g g-Whitespace">      </span><span class="mi">1</span><span class="w"> </span><span class="sd">&quot;&quot;&quot;</span>
-<span class="g g-Whitespace">      </span><span class="mi">2</span><span class="sd"> The :mod:`sklearn.ensemble` module includes ensemble-based methods for</span>
-<span class="g g-Whitespace">      </span><span class="mi">3</span><span class="sd"> classification, regression and anomaly detection.</span>
-<span class="g g-Whitespace">      </span><span class="mi">4</span><span class="sd"> &quot;&quot;&quot;</span>
-<span class="ne">----&gt; </span><span class="mi">5</span> <span class="kn">from</span><span class="w"> </span><span class="nn">._bagging</span><span class="w"> </span><span class="kn">import</span> <span class="n">BaggingClassifier</span><span class="p">,</span> <span class="n">BaggingRegressor</span>
-<span class="g g-Whitespace">      </span><span class="mi">6</span> <span class="kn">from</span><span class="w"> </span><span class="nn">._base</span><span class="w"> </span><span class="kn">import</span> <span class="n">BaseEnsemble</span>
-<span class="g g-Whitespace">      </span><span class="mi">7</span> <span class="kn">from</span><span class="w"> </span><span class="nn">._forest</span><span class="w"> </span><span class="kn">import</span> <span class="p">(</span>
-<span class="g g-Whitespace">      </span><span class="mi">8</span>     <span class="n">ExtraTreesClassifier</span><span class="p">,</span>
-<span class="g g-Whitespace">      </span><span class="mi">9</span>     <span class="n">ExtraTreesRegressor</span><span class="p">,</span>
-   <span class="p">(</span><span class="o">...</span><span class="p">)</span>     <span class="mi">12</span>     <span class="n">RandomTreesEmbedding</span><span class="p">,</span>
-<span class="g g-Whitespace">     </span><span class="mi">13</span> <span class="p">)</span>
-
-<span class="n">File</span> <span class="n">d</span><span class="p">:</span>\<span class="n">Perkuliahan</span>\<span class="n">Semester</span> <span class="mi">5</span>\<span class="n">Poyek</span> <span class="n">Sains</span> <span class="n">Data</span>\<span class="n">PSD</span>\<span class="o">.</span><span class="n">venv</span>\<span class="n">Lib</span>\<span class="n">site</span><span class="o">-</span><span class="n">packages</span>\<span class="n">sklearn</span>\<span class="n">ensemble</span>\<span class="n">_bagging</span><span class="o">.</span><span class="n">py</span><span class="p">:</span><span class="mi">18</span>
-<span class="g g-Whitespace">     </span><span class="mi">16</span> <span class="kn">from</span><span class="w"> </span><span class="nn">..base</span><span class="w"> </span><span class="kn">import</span> <span class="n">ClassifierMixin</span><span class="p">,</span> <span class="n">RegressorMixin</span><span class="p">,</span> <span class="n">_fit_context</span>
-<span class="g g-Whitespace">     </span><span class="mi">17</span> <span class="kn">from</span><span class="w"> </span><span class="nn">..metrics</span><span class="w"> </span><span class="kn">import</span> <span class="n">accuracy_score</span><span class="p">,</span> <span class="n">r2_score</span>
-<span class="ne">---&gt; </span><span class="mi">18</span> <span class="kn">from</span><span class="w"> </span><span class="nn">..tree</span><span class="w"> </span><span class="kn">import</span> <span class="n">DecisionTreeClassifier</span><span class="p">,</span> <span class="n">DecisionTreeRegressor</span>
-<span class="g g-Whitespace">     </span><span class="mi">19</span> <span class="kn">from</span><span class="w"> </span><span class="nn">..utils</span><span class="w"> </span><span class="kn">import</span> <span class="n">check_random_state</span><span class="p">,</span> <span class="n">column_or_1d</span><span class="p">,</span> <span class="n">indices_to_mask</span>
-<span class="g g-Whitespace">     </span><span class="mi">20</span> <span class="kn">from</span><span class="w"> </span><span class="nn">..utils._param_validation</span><span class="w"> </span><span class="kn">import</span> <span class="n">HasMethods</span><span class="p">,</span> <span class="n">Interval</span><span class="p">,</span> <span class="n">RealNotInt</span>
-
-<span class="n">File</span> <span class="n">d</span><span class="p">:</span>\<span class="n">Perkuliahan</span>\<span class="n">Semester</span> <span class="mi">5</span>\<span class="n">Poyek</span> <span class="n">Sains</span> <span class="n">Data</span>\<span class="n">PSD</span>\<span class="o">.</span><span class="n">venv</span>\<span class="n">Lib</span>\<span class="n">site</span><span class="o">-</span><span class="n">packages</span>\<span class="n">sklearn</span>\<span class="n">tree</span>\<span class="fm">__init__</span><span class="o">.</span><span class="n">py</span><span class="p">:</span><span class="mi">6</span>
-<span class="g g-Whitespace">      </span><span class="mi">1</span><span class="w"> </span><span class="sd">&quot;&quot;&quot;</span>
-<span class="g g-Whitespace">      </span><span class="mi">2</span><span class="sd"> The :mod:`sklearn.tree` module includes decision tree-based models for</span>
-<span class="g g-Whitespace">      </span><span class="mi">3</span><span class="sd"> classification and regression.</span>
-<span class="g g-Whitespace">      </span><span class="mi">4</span><span class="sd"> &quot;&quot;&quot;</span>
-<span class="ne">----&gt; </span><span class="mi">6</span> <span class="kn">from</span><span class="w"> </span><span class="nn">._classes</span><span class="w"> </span><span class="kn">import</span> <span class="p">(</span>
-<span class="g g-Whitespace">      </span><span class="mi">7</span>     <span class="n">BaseDecisionTree</span><span class="p">,</span>
-<span class="g g-Whitespace">      </span><span class="mi">8</span>     <span class="n">DecisionTreeClassifier</span><span class="p">,</span>
-<span class="g g-Whitespace">      </span><span class="mi">9</span>     <span class="n">DecisionTreeRegressor</span><span class="p">,</span>
-<span class="g g-Whitespace">     </span><span class="mi">10</span>     <span class="n">ExtraTreeClassifier</span><span class="p">,</span>
-<span class="g g-Whitespace">     </span><span class="mi">11</span>     <span class="n">ExtraTreeRegressor</span><span class="p">,</span>
-<span class="g g-Whitespace">     </span><span class="mi">12</span> <span class="p">)</span>
-<span class="g g-Whitespace">     </span><span class="mi">13</span> <span class="kn">from</span><span class="w"> </span><span class="nn">._export</span><span class="w"> </span><span class="kn">import</span> <span class="n">export_graphviz</span><span class="p">,</span> <span class="n">export_text</span><span class="p">,</span> <span class="n">plot_tree</span>
-<span class="g g-Whitespace">     </span><span class="mi">15</span> <span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span>
-<span class="g g-Whitespace">     </span><span class="mi">16</span>     <span class="s2">&quot;BaseDecisionTree&quot;</span><span class="p">,</span>
-<span class="g g-Whitespace">     </span><span class="mi">17</span>     <span class="s2">&quot;DecisionTreeClassifier&quot;</span><span class="p">,</span>
-   <span class="p">(</span><span class="o">...</span><span class="p">)</span>     <span class="mi">23</span>     <span class="s2">&quot;export_text&quot;</span><span class="p">,</span>
-<span class="g g-Whitespace">     </span><span class="mi">24</span> <span class="p">]</span>
-
-<span class="n">File</span> <span class="n">d</span><span class="p">:</span>\<span class="n">Perkuliahan</span>\<span class="n">Semester</span> <span class="mi">5</span>\<span class="n">Poyek</span> <span class="n">Sains</span> <span class="n">Data</span>\<span class="n">PSD</span>\<span class="o">.</span><span class="n">venv</span>\<span class="n">Lib</span>\<span class="n">site</span><span class="o">-</span><span class="n">packages</span>\<span class="n">sklearn</span>\<span class="n">tree</span>\<span class="n">_classes</span><span class="o">.</span><span class="n">py</span><span class="p">:</span><span class="mi">44</span>
-<span class="g g-Whitespace">     </span><span class="mi">37</span> <span class="kn">from</span><span class="w"> </span><span class="nn">..utils.multiclass</span><span class="w"> </span><span class="kn">import</span> <span class="n">check_classification_targets</span>
-<span class="g g-Whitespace">     </span><span class="mi">38</span> <span class="kn">from</span><span class="w"> </span><span class="nn">..utils.validation</span><span class="w"> </span><span class="kn">import</span> <span class="p">(</span>
-<span class="g g-Whitespace">     </span><span class="mi">39</span>     <span class="n">_assert_all_finite_element_wise</span><span class="p">,</span>
-<span class="g g-Whitespace">     </span><span class="mi">40</span>     <span class="n">_check_sample_weight</span><span class="p">,</span>
-<span class="g g-Whitespace">     </span><span class="mi">41</span>     <span class="n">assert_all_finite</span><span class="p">,</span>
-<span class="g g-Whitespace">     </span><span class="mi">42</span>     <span class="n">check_is_fitted</span><span class="p">,</span>
-<span class="g g-Whitespace">     </span><span class="mi">43</span> <span class="p">)</span>
-<span class="ne">---&gt; </span><span class="mi">44</span> <span class="kn">from</span><span class="w"> </span><span class="nn">.</span><span class="w"> </span><span class="kn">import</span> <span class="n">_criterion</span><span class="p">,</span> <span class="n">_splitter</span><span class="p">,</span> <span class="n">_tree</span>
-<span class="g g-Whitespace">     </span><span class="mi">45</span> <span class="kn">from</span><span class="w"> </span><span class="nn">._criterion</span><span class="w"> </span><span class="kn">import</span> <span class="n">Criterion</span>
-<span class="g g-Whitespace">     </span><span class="mi">46</span> <span class="kn">from</span><span class="w"> </span><span class="nn">._splitter</span><span class="w"> </span><span class="kn">import</span> <span class="n">Splitter</span>
-
-<span class="nn">File sklearn\\tree\\_criterion.pyx:1,</span> in <span class="ni">init sklearn.tree._criterion</span><span class="nt">()</span>
-
-<span class="nn">File sklearn\\tree\\_splitter.pyx:1,</span> in <span class="ni">init sklearn.tree._splitter</span><span class="nt">()</span>
-
-<span class="nn">File sklearn\\tree\\_tree.pyx:1,</span> in <span class="ni">init sklearn.tree._tree</span><span class="nt">()</span>
-
-<span class="nn">File sklearn\\neighbors\\_quad_tree.pyx:1,</span> in <span class="ni">init sklearn.neighbors._quad_tree</span><span class="nt">()</span>
-
-<span class="nn">File &lt;frozen importlib._bootstrap&gt;:405,</span> in <span class="ni">parent</span><span class="nt">(self)</span>
-
-<span class="ne">KeyboardInterrupt</span>: 
-</pre></div>
-</div>
-</div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -582,36 +510,16 @@ weighted avg       0.80      0.80      0.80     14620
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>C:\Users\ASUS\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.11_qbz5n2kfra8p0\LocalCache\local-packages\Python311\site-packages\sklearn\svm\_base.py:297: ConvergenceWarning: Solver terminated early (max_iter=3000).  Consider pre-processing your data with StandardScaler or MinMaxScaler.
-  warnings.warn(
-C:\Users\ASUS\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.11_qbz5n2kfra8p0\LocalCache\local-packages\Python311\site-packages\sklearn\svm\_base.py:297: ConvergenceWarning: Solver terminated early (max_iter=3000).  Consider pre-processing your data with StandardScaler or MinMaxScaler.
-  warnings.warn(
-C:\Users\ASUS\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.11_qbz5n2kfra8p0\LocalCache\local-packages\Python311\site-packages\sklearn\svm\_base.py:297: ConvergenceWarning: Solver terminated early (max_iter=3000).  Consider pre-processing your data with StandardScaler or MinMaxScaler.
-  warnings.warn(
-C:\Users\ASUS\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.11_qbz5n2kfra8p0\LocalCache\local-packages\Python311\site-packages\sklearn\svm\_base.py:297: ConvergenceWarning: Solver terminated early (max_iter=3000).  Consider pre-processing your data with StandardScaler or MinMaxScaler.
-  warnings.warn(
-C:\Users\ASUS\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.11_qbz5n2kfra8p0\LocalCache\local-packages\Python311\site-packages\sklearn\svm\_base.py:297: ConvergenceWarning: Solver terminated early (max_iter=3000).  Consider pre-processing your data with StandardScaler or MinMaxScaler.
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>D:\Perkuliahan\Semester 5\Poyek Sains Data\PSD\venv_py3.11\Lib\site-packages\sklearn\svm\_base.py:297: ConvergenceWarning: Solver terminated early (max_iter=3000).  Consider pre-processing your data with StandardScaler or MinMaxScaler.
   warnings.warn(
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>=== Bagging dengan SVM ===
-Accuracy: 0.5
-              precision    recall  f1-score   support
-
-           0       0.00      0.00      0.00      7310
-           1       0.50      1.00      0.67      7310
-
-    accuracy                           0.50     14620
-   macro avg       0.25      0.50      0.33     14620
-weighted avg       0.25      0.50      0.33     14620
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>D:\Perkuliahan\Semester 5\Poyek Sains Data\PSD\venv_py3.11\Lib\site-packages\sklearn\svm\_base.py:297: ConvergenceWarning: Solver terminated early (max_iter=3000).  Consider pre-processing your data with StandardScaler or MinMaxScaler.
+  warnings.warn(
 </pre></div>
 </div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>C:\Users\ASUS\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.11_qbz5n2kfra8p0\LocalCache\local-packages\Python311\site-packages\sklearn\metrics\_classification.py:1509: UndefinedMetricWarning: Precision is ill-defined and being set to 0.0 in labels with no predicted samples. Use `zero_division` parameter to control this behavior.
-  _warn_prf(average, modifier, f&quot;{metric.capitalize()} is&quot;, len(result))
-C:\Users\ASUS\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.11_qbz5n2kfra8p0\LocalCache\local-packages\Python311\site-packages\sklearn\metrics\_classification.py:1509: UndefinedMetricWarning: Precision is ill-defined and being set to 0.0 in labels with no predicted samples. Use `zero_division` parameter to control this behavior.
-  _warn_prf(average, modifier, f&quot;{metric.capitalize()} is&quot;, len(result))
-C:\Users\ASUS\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.11_qbz5n2kfra8p0\LocalCache\local-packages\Python311\site-packages\sklearn\metrics\_classification.py:1509: UndefinedMetricWarning: Precision is ill-defined and being set to 0.0 in labels with no predicted samples. Use `zero_division` parameter to control this behavior.
-  _warn_prf(average, modifier, f&quot;{metric.capitalize()} is&quot;, len(result))
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>D:\Perkuliahan\Semester 5\Poyek Sains Data\PSD\venv_py3.11\Lib\site-packages\sklearn\svm\_base.py:297: ConvergenceWarning: Solver terminated early (max_iter=3000).  Consider pre-processing your data with StandardScaler or MinMaxScaler.
+  warnings.warn(
 </pre></div>
 </div>
 </div>
@@ -658,7 +566,7 @@ C:\Users\ASUS\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.11_qbz5n2
       </div>
     </a>
     <a class="right-next"
-       href="project-timeseries-single.html"
+       href="project-timeseries-forecasting.html"
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
