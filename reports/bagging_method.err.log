@@ -1,45 +1,38 @@
 Traceback (most recent call last):
-  File "d:\Perkuliahan\Semester 5\Poyek Sains Data\PSD\.venv\Lib\site-packages\jupyter_core\utils\__init__.py", line 154, in wrapped
+  File "D:\Perkuliahan\Semester 5\Poyek Sains Data\PSD\venv_py3.11\Lib\site-packages\jupyter_core\utils\__init__.py", line 154, in wrapped
     asyncio.get_running_loop()
 RuntimeError: no running event loop
 
 During handling of the above exception, another exception occurred:
 
 Traceback (most recent call last):
-  File "d:\Perkuliahan\Semester 5\Poyek Sains Data\PSD\.venv\Lib\site-packages\jupyter_cache\executors\utils.py", line 58, in single_nb_execution
+  File "D:\Perkuliahan\Semester 5\Poyek Sains Data\PSD\venv_py3.11\Lib\site-packages\jupyter_cache\executors\utils.py", line 58, in single_nb_execution
     executenb(
-  File "d:\Perkuliahan\Semester 5\Poyek Sains Data\PSD\.venv\Lib\site-packages\nbclient\client.py", line 1319, in execute
+  File "D:\Perkuliahan\Semester 5\Poyek Sains Data\PSD\venv_py3.11\Lib\site-packages\nbclient\client.py", line 1319, in execute
     return NotebookClient(nb=nb, resources=resources, km=km, **kwargs).execute()
            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "d:\Perkuliahan\Semester 5\Poyek Sains Data\PSD\.venv\Lib\site-packages\jupyter_core\utils\__init__.py", line 158, in wrapped
+  File "D:\Perkuliahan\Semester 5\Poyek Sains Data\PSD\venv_py3.11\Lib\site-packages\jupyter_core\utils\__init__.py", line 158, in wrapped
     return loop.run_until_complete(inner)
            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "C:\Program Files\WindowsApps\PythonSoftwareFoundation.Python.3.11_3.11.2544.0_x64__qbz5n2kfra8p0\Lib\asyncio\base_events.py", line 654, in run_until_complete
+  File "C:\Users\MyBook Z Series\AppData\Local\Python\pythoncore-3.11-64\Lib\asyncio\base_events.py", line 654, in run_until_complete
     return future.result()
            ^^^^^^^^^^^^^^^
-  File "d:\Perkuliahan\Semester 5\Poyek Sains Data\PSD\.venv\Lib\site-packages\nbclient\client.py", line 709, in async_execute
+  File "D:\Perkuliahan\Semester 5\Poyek Sains Data\PSD\venv_py3.11\Lib\site-packages\nbclient\client.py", line 709, in async_execute
     await self.async_execute_cell(
-  File "d:\Perkuliahan\Semester 5\Poyek Sains Data\PSD\.venv\Lib\site-packages\nbclient\client.py", line 1005, in async_execute_cell
+  File "D:\Perkuliahan\Semester 5\Poyek Sains Data\PSD\venv_py3.11\Lib\site-packages\nbclient\client.py", line 1005, in async_execute_cell
     exec_reply = await self.task_poll_for_reply
                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "d:\Perkuliahan\Semester 5\Poyek Sains Data\PSD\.venv\Lib\site-packages\nbclient\client.py", line 806, in _async_poll_for_reply
+  File "D:\Perkuliahan\Semester 5\Poyek Sains Data\PSD\venv_py3.11\Lib\site-packages\nbclient\client.py", line 806, in _async_poll_for_reply
     error_on_timeout_execute_reply = await self._async_handle_timeout(timeout, cell)
                                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "d:\Perkuliahan\Semester 5\Poyek Sains Data\PSD\.venv\Lib\site-packages\nbclient\client.py", line 856, in _async_handle_timeout
+  File "D:\Perkuliahan\Semester 5\Poyek Sains Data\PSD\venv_py3.11\Lib\site-packages\nbclient\client.py", line 856, in _async_handle_timeout
     raise CellTimeoutError.error_from_timeout_and_cell(
 nbclient.exceptions.CellTimeoutError: A cell timed out while it was being executed, after 30 seconds.
 The message was: Cell execution timed out.
 Here is a preview of the cell contents:
 -------------------
-import pandas as pd
-from sklearn.model_selection import train_test_split
-from sklearn.preprocessing import LabelEncoder
-from sklearn.ensemble import BaggingClassifier
-from sklearn.naive_bayes import GaussianNB
-from sklearn.svm import SVC
-from imblearn.over_sampling import SMOTE
-from sklearn.metrics import accuracy_score, classification_report, confusion_matrix
-from collections import Counter
-
+['# Bagging dengan SVM', 'bagging_svm = BaggingClassifier(', '    estimator=SVC(random_state=42, max_iter=3000),', '    n_estimators=5,  # jangan terlalu besar karena SVM cukup berat', '    random_state=42']
+...
+['y_pred_svm = bagging_svm.predict(X_test)', '', 'print("\\n=== Bagging dengan SVM ===")', 'print("Accuracy:", accuracy_score(y_test, y_pred_svm))', 'print(classification_report(y_test, y_pred_svm))']
 -------------------
 

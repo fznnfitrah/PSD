@@ -11,6 +11,8 @@
 - Pertemuan 7: -
 - Pertemuan 8: Melakukan Ujian Tengah Semester
 - Pertemuan 9: Belajar bagaimana cara mengambil data dari website Copernicus. sekaligus uji coba website tersebut dengan menggunakan jupyterlab. 
+- Pertemuan 10: Review Ulang(Penjelasan mengenai bagaimana normalisasi bekerja dan setelah selesai di denormalisasi. mencari korelasi target dengan setiap fitur pada superviced di timeseries.) Menganalisis Audio dan menambahkan 20 fitur statistika 
+
 
 ## Tugas:
 
@@ -23,6 +25,7 @@
 - Tugas 7: Mencoba menganalisis data dengan menggunakan aplikasi KNIME 
 - Tugas UTS
 - Tugas 9: Dengan menggunakan website Copernicus, Cari data NO2 dari daerah masing masing lalu lakukan pemrosesan data dari dataset tersebut.
+- Tugas 10: Memperbaiki bab project timeseries. Outliers detection, Auto korelasi, evaluasi MAPE, membuat model untuk implementasi, menghasilkan kualitas udara. Membuat interface seperti berikut ini : Input data --> Model Normalisasi --> Model KNN --> Model Denormalisasi --> Output data --> Memunculkan Kualitas Udara!!. Tambahan membuat model untuk mendeteksi suara 100 buka dan 100 tutup. 
 
 
 

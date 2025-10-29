@@ -25,5 +25,10 @@ chapters:
         title: Ensemble learning
       - file: bagging_method
 
-  - file: project-timeseries-single
-    title: Project TimeSeries Single Thread
+  - file: project-timeseries-forecasting
+    title: Project TimeSeries Forecasting
+    sections: 
+      - file: project-timeseries-autoCorrelation
+        title: TimeSeries Auto Correlation with Feature Selection (Revisi)
+      - file: project-timeseries-audio
+        title: TimeSeries Analisis Audio Fitur Analitik
