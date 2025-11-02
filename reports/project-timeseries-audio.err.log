@@ -31,8 +31,8 @@ nbclient.exceptions.CellTimeoutError: A cell timed out while it was being execut
 The message was: Cell execution timed out.
 Here is a preview of the cell contents:
 -------------------
-['# 4. Hitung rata-rata harian', 's5p_no2_daily = s5p_no2.aggregate_temporal_period(', '    period="day",', '    reducer="mean"', ')']
+['# -- Proses Pemuatan Data --', 'data_list = []', '', 'print("Memulai proses pembacaan file audio...")', '']
 ...
-['    geometries=aoi,', '    reducer="mean"', ')', '', 'job = s5p_no2.execute_batch(title="NO2 in Lenteng(5 tahun)", outputfile="dataset/NO2-dataset/NO2_in_Lenteng(5 tahun).nc")']
+['            except Exception as e:', '                # Memberi tahu jika ada file yang gagal dibaca', '                print(f"Error saat membaca file {file_path}: {e}")', '', 'print("Proses pembacaan data selesai.")']
 -------------------
 

@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>Project Time Series with &#8212; Project Science Data</title>
+    <title>Project Time Series with AutoCorrelation &#8212; Project Science Data</title>
   
   
   
@@ -60,7 +60,7 @@
     <script>DOCUMENTATION_OPTIONS.pagename = 'project-timeseries-autoCorrelation';</script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="&lt;no title&gt;" href="project-timeseries-audio.html" />
+    <link rel="next" title="Project Time Series Audio Dataset" href="project-timeseries-audio.html" />
     <link rel="prev" title="Project Time Series Using NO2 from Copernicus" href="project-timeseries-forecasting.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
@@ -191,11 +191,12 @@
 <li class="toctree-l2"><a class="reference internal" href="ensembleLearning.html"><strong>Menghapus Dataset</strong></a></li>
 
 
-<li class="toctree-l2"><a class="reference internal" href="bagging_method.html"><em><strong>Bagging Method</strong></em></a></li>
+<li class="toctree-l2"><a class="reference internal" href="bagging_method.html">Bagging Metode</a></li>
 </ul>
 </details></li>
 <li class="toctree-l1 current active has-children"><a class="reference internal" href="project-timeseries-forecasting.html">Project TimeSeries Forecasting</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
-<li class="toctree-l2 current active"><a class="current reference internal" href="#">TimeSeries Auto Correlation with Feature Selection (Revisi)</a></li>
+<li class="toctree-l2 current active"><a class="current reference internal" href="#">TimeSeries Forecasting with Feature Selection (Revisi)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="project-timeseries-audio.html">TimeSeries Analisis Audio Fitur Analitik</a></li>
 </ul>
 </details></li>
 </ul>
@@ -383,7 +384,7 @@ document.write(`
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1>Project Time Series with</h1>
+    <h1>Project Time Series with AutoCorrelation</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
@@ -424,8 +425,8 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article">
                   
-  <section class="tex2jax_ignore mathjax_ignore" id="project-time-series-with">
-<h1><em><strong>Project Time Series with</strong></em><a class="headerlink" href="#project-time-series-with" title="Link to this heading">#</a></h1>
+  <section class="tex2jax_ignore mathjax_ignore" id="project-time-series-with-autocorrelation">
+<h1><em><strong>Project Time Series with AutoCorrelation</strong></em><a class="headerlink" href="#project-time-series-with-autocorrelation" title="Link to this heading">#</a></h1>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
@@ -443,7 +444,7 @@ document.write(`
 <h2><strong>Read Dataset</strong><a class="headerlink" href="#read-dataset" title="Link to this heading">#</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">file_path</span> <span class="o">=</span> <span class="s2">&quot;NO2_in_Lenteng(2 tahun).csv&quot;</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">file_path</span> <span class="o">=</span> <span class="s2">&quot;dataset/NO2-dataset/NO2_in_Lenteng(5 tahun).csv&quot;</span>
 </pre></div>
 </div>
 </div>
@@ -460,17 +461,17 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>            t          x         y  crs       NO2
-0  2023-10-19  113.77659 -7.020542  b&#39;&#39;  0.000005
-1  2023-10-19  113.77659 -7.055264  b&#39;&#39;  0.000017
-2  2023-10-20  113.77659 -7.020542  b&#39;&#39;  0.000008
-3  2023-10-20  113.77659 -7.055264  b&#39;&#39;  0.000018
-4  2023-10-21  113.77659 -7.020542  b&#39;&#39;  0.000012
-5  2023-10-21  113.77659 -7.055264  b&#39;&#39;  0.000012
-6  2023-10-22  113.77659 -7.020542  b&#39;&#39;  0.000023
-7  2023-10-22  113.77659 -7.055264  b&#39;&#39;  0.000026
-8  2023-10-23  113.77659 -7.020542  b&#39;&#39;  0.000017
-9  2023-10-23  113.77659 -7.055264  b&#39;&#39;  0.000013
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>            t          x         y  crs  NO2
+0  2020-10-19  113.77659 -7.020542  b&#39;&#39;  NaN
+1  2020-10-19  113.77659 -7.055264  b&#39;&#39;  NaN
+2  2020-10-20  113.77659 -7.020542  b&#39;&#39;  NaN
+3  2020-10-20  113.77659 -7.055264  b&#39;&#39;  NaN
+4  2020-10-21  113.77659 -7.020542  b&#39;&#39;  NaN
+5  2020-10-21  113.77659 -7.055264  b&#39;&#39;  NaN
+6  2020-10-22  113.77659 -7.020542  b&#39;&#39;  NaN
+7  2020-10-22  113.77659 -7.055264  b&#39;&#39;  NaN
+8  2020-10-23  113.77659 -7.020542  b&#39;&#39;  NaN
+9  2020-10-23  113.77659 -7.055264  b&#39;&#39;  NaN
 </pre></div>
 </div>
 </div>
@@ -485,19 +486,19 @@ document.write(`
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Informasi Dasar Dataset
 &lt;bound method DataFrame.info of                t          x         y  crs           NO2
-0     2023-10-19  113.77659 -7.020542  b&#39;&#39;  5.481532e-06
-1     2023-10-19  113.77659 -7.055264  b&#39;&#39;  1.739039e-05
-2     2023-10-20  113.77659 -7.020542  b&#39;&#39;  7.618822e-06
-3     2023-10-20  113.77659 -7.055264  b&#39;&#39;  1.763296e-05
-4     2023-10-21  113.77659 -7.020542  b&#39;&#39;  1.180687e-05
+0     2020-10-19  113.77659 -7.020542  b&#39;&#39;           NaN
+1     2020-10-19  113.77659 -7.055264  b&#39;&#39;           NaN
+2     2020-10-20  113.77659 -7.020542  b&#39;&#39;           NaN
+3     2020-10-20  113.77659 -7.055264  b&#39;&#39;           NaN
+4     2020-10-21  113.77659 -7.020542  b&#39;&#39;           NaN
 ...          ...        ...       ...  ...           ...
-1445  2025-10-16  113.77659 -7.055264  b&#39;&#39;  1.462123e-05
-1446  2025-10-17  113.77659 -7.020542  b&#39;&#39; -3.795632e-07
-1447  2025-10-17  113.77659 -7.055264  b&#39;&#39;  1.804137e-05
-1448  2025-10-18  113.77659 -7.020542  b&#39;&#39;  1.320828e-05
-1449  2025-10-18  113.77659 -7.055264  b&#39;&#39;  9.687136e-06
+3615  2025-10-16  113.77659 -7.055264  b&#39;&#39;  1.462123e-05
+3616  2025-10-17  113.77659 -7.020542  b&#39;&#39; -3.795632e-07
+3617  2025-10-17  113.77659 -7.055264  b&#39;&#39;  1.804137e-05
+3618  2025-10-18  113.77659 -7.020542  b&#39;&#39;  1.320828e-05
+3619  2025-10-18  113.77659 -7.055264  b&#39;&#39;  9.687136e-06
 
-[1450 rows x 5 columns]&gt;
+[3620 rows x 5 columns]&gt;
 </pre></div>
 </div>
 </div>
@@ -515,22 +516,22 @@ document.write(`
 </div>
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Statistik Deskriptif
-                  x            y         NO2
-count  1.450000e+03  1450.000000  697.000000
-mean   1.137766e+02    -7.037903    0.000012
-std    1.421576e-14     0.017367    0.000009
-min    1.137766e+02    -7.055264   -0.000021
-25%    1.137766e+02    -7.055264    0.000006
-50%    1.137766e+02    -7.037903    0.000012
-75%    1.137766e+02    -7.020542    0.000018
-max    1.137766e+02    -7.020542    0.000042
+                  x            y          NO2
+count  3.620000e+03  3620.000000  1656.000000
+mean   1.137766e+02    -7.037903     0.000011
+std    4.263845e-14     0.017364     0.000009
+min    1.137766e+02    -7.055264    -0.000024
+25%    1.137766e+02    -7.055264     0.000005
+50%    1.137766e+02    -7.037903     0.000012
+75%    1.137766e+02    -7.020542     0.000018
+max    1.137766e+02    -7.020542     0.000042
 
 Jumlah Missing Value
-t        0
-x        0
-y        0
-crs      0
-NO2    753
+t         0
+x         0
+y         0
+crs       0
+NO2    1964
 dtype: int64
 </pre></div>
 </div>
@@ -560,13 +561,13 @@ dtype: int64
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>C:\Users\MyBook Z Series\AppData\Local\Temp\ipykernel_12816\22787649.py:15: UserWarning: Glyph 8322 (\N{SUBSCRIPT TWO}) missing from current font.
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>C:\Users\MyBook Z Series\AppData\Local\Temp\ipykernel_6572\22787649.py:15: UserWarning: Glyph 8322 (\N{SUBSCRIPT TWO}) missing from current font.
   plt.tight_layout()
 D:\Perkuliahan\Semester 5\Poyek Sains Data\PSD\venv_py3.11\Lib\site-packages\IPython\core\pylabtools.py:170: UserWarning: Glyph 8322 (\N{SUBSCRIPT TWO}) missing from current font.
   fig.canvas.print_figure(bytes_io, **kw)
 </pre></div>
 </div>
-<img alt="_images/605cd683234ae2d31a6c21753d24372525a370c816dddb7fff6d7eedf7da700a.png" src="_images/605cd683234ae2d31a6c21753d24372525a370c816dddb7fff6d7eedf7da700a.png" />
+<img alt="_images/e43ea5c1fd5c8161f03c27dda85ec891b8aafbcf3b7e942425b0c171479cdd3b.png" src="_images/e43ea5c1fd5c8161f03c27dda85ec891b8aafbcf3b7e942425b0c171479cdd3b.png" />
 </div>
 </div>
 </section>
@@ -591,19 +592,19 @@ D:\Perkuliahan\Semester 5\Poyek Sains Data\PSD\venv_py3.11\Lib\site-packages\IPy
 </div>
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>              t           NO2
-0    2023-10-19  5.481532e-06
-1    2023-10-19  1.739039e-05
-2    2023-10-20  7.618822e-06
-3    2023-10-20  1.763296e-05
-4    2023-10-21  1.180687e-05
+0    2020-10-19           NaN
+1    2020-10-19           NaN
+2    2020-10-20           NaN
+3    2020-10-20           NaN
+4    2020-10-21           NaN
 ...         ...           ...
-1445 2025-10-16  1.462123e-05
-1446 2025-10-17 -3.795632e-07
-1447 2025-10-17  1.804137e-05
-1448 2025-10-18  1.320828e-05
-1449 2025-10-18  9.687136e-06
+3615 2025-10-16  1.462123e-05
+3616 2025-10-17 -3.795632e-07
+3617 2025-10-17  1.804137e-05
+3618 2025-10-18  1.320828e-05
+3619 2025-10-18  9.687136e-06
 
-[1450 rows x 2 columns]
+[3620 rows x 2 columns]
 </pre></div>
 </div>
 </div>
@@ -619,8 +620,8 @@ D:\Perkuliahan\Semester 5\Poyek Sains Data\PSD\venv_py3.11\Lib\site-packages\IPy
 </div>
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Jumlah missing value setelah nilai negatif diubah menjadi NaN:
-t        0
-NO2    817
+t         0
+NO2    2132
 dtype: int64
 </pre></div>
 </div>
@@ -653,15 +654,15 @@ dtype: int64
 </div>
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Jumlah Missing Value setelah interpolasi
-t      0
-NO2    0
+t       0
+NO2    10
 dtype: int64
-           t       NO2
-0 2023-10-19  0.000005
-1 2023-10-19  0.000017
-2 2023-10-20  0.000008
-3 2023-10-20  0.000018
-4 2023-10-21  0.000012
+           t  NO2
+0 2020-10-19  NaN
+1 2020-10-19  NaN
+2 2020-10-20  NaN
+3 2020-10-20  NaN
+4 2020-10-21  NaN
 </pre></div>
 </div>
 </div>
@@ -694,13 +695,13 @@ dtype: int64
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>C:\Users\MyBook Z Series\AppData\Local\Temp\ipykernel_12816\2466481591.py:19: UserWarning: Glyph 8322 (\N{SUBSCRIPT TWO}) missing from current font.
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>C:\Users\MyBook Z Series\AppData\Local\Temp\ipykernel_6572\2466481591.py:19: UserWarning: Glyph 8322 (\N{SUBSCRIPT TWO}) missing from current font.
   plt.tight_layout()
 D:\Perkuliahan\Semester 5\Poyek Sains Data\PSD\venv_py3.11\Lib\site-packages\IPython\core\pylabtools.py:170: UserWarning: Glyph 8322 (\N{SUBSCRIPT TWO}) missing from current font.
   fig.canvas.print_figure(bytes_io, **kw)
 </pre></div>
 </div>
-<img alt="_images/aa95a014cf99256f0414c44fa8173bc910654f25685d2729b41d58af5dab11a0.png" src="_images/aa95a014cf99256f0414c44fa8173bc910654f25685d2729b41d58af5dab11a0.png" />
+<img alt="_images/da64584921f8915d631696037369365f771e1b74666fa68ed4e755299385cdf9.png" src="_images/da64584921f8915d631696037369365f771e1b74666fa68ed4e755299385cdf9.png" />
 </div>
 </div>
 </section>
@@ -733,9 +734,9 @@ D:\Perkuliahan\Semester 5\Poyek Sains Data\PSD\venv_py3.11\Lib\site-packages\IPy
 </div>
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>## 1. Menganalisis Outlier dengan Metode IQR ##
-Batas Bawah (Lower Bound): -7.061156345833329e-06
-Batas Atas (Upper Bound): 3.724596624305555e-05
-IQR: 1.107678064722222e-05
+Batas Bawah (Lower Bound): -7.772320741071428e-06
+Batas Atas (Upper Bound): 3.5247606901785713e-05
+IQR: 1.0754981910714286e-05
 </pre></div>
 </div>
 </div>
@@ -766,19 +767,22 @@ IQR: 1.107678064722222e-05
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>🔍 Ditemukan 5 outlier:
-             t       NO2
-42  2023-11-09  0.000040
-43  2023-11-09  0.000040
-352 2024-04-16  0.000042
-353 2024-04-16  0.000042
-953 2025-02-12  0.000042
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>🔍 Ditemukan 8 outlier:
+              t       NO2
+1552 2022-12-12  0.000036
+1553 2022-12-12  0.000036
+2059 2023-08-24  0.000038
+2212 2023-11-09  0.000040
+2213 2023-11-09  0.000040
+2522 2024-04-16  0.000042
+2523 2024-04-16  0.000042
+3123 2025-02-12  0.000042
 ----------------------------------------
 
 ## 2. Visualisasi dengan Box Plot ##
 </pre></div>
 </div>
-<img alt="_images/ef7862841e4b2b3913cee66c636d794eae2881b80599e080caa27eaff84ef208.png" src="_images/ef7862841e4b2b3913cee66c636d794eae2881b80599e080caa27eaff84ef208.png" />
+<img alt="_images/09d8316326be1e871d58f12600e6234b526974204b1bb3a2d1abb97c61191971.png" src="_images/09d8316326be1e871d58f12600e6234b526974204b1bb3a2d1abb97c61191971.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -814,19 +818,19 @@ IQR: 1.107678064722222e-05
 
 ## Verifikasi Setelah Capping ##
 Statistik deskriptif kolom NO2 setelah di-capping:
-count    1.450000e+03
-mean     1.535476e-05
-std      7.509187e-06
-min      2.543488e-07
-25%      9.554015e-06
-50%      1.497787e-05
-75%      2.063080e-05
-max      3.724597e-05
+count    3.610000e+03
+mean     1.399737e-05
+std      7.360056e-06
+min      2.149697e-08
+25%      8.360152e-06
+50%      1.348377e-05
+75%      1.911513e-05
+max      3.524761e-05
 Name: NO2, dtype: float64
 
 Contoh Perubahan Data Outlier (index 42):
-Nilai Asli:   4.0356037e-05
-Nilai Baru:   3.724596624305555e-05
+Nilai Asli:   2.0146636e-05
+Nilai Baru:   2.0146636e-05
 </pre></div>
 </div>
 </div>
@@ -859,9 +863,9 @@ Nilai Baru:   3.724596624305555e-05
 </div>
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>## 1. Menganalisis Outlier dengan Metode IQR ##
-Batas Bawah (Lower Bound): -7.061156345833329e-06
-Batas Atas (Upper Bound): 3.724596624305555e-05
-IQR: 1.107678064722222e-05
+Batas Bawah (Lower Bound): -7.772320741071428e-06
+Batas Atas (Upper Bound): 3.5247606901785713e-05
+IQR: 1.0754981910714286e-05
 </pre></div>
 </div>
 </div>
@@ -947,29 +951,29 @@ IQR: 1.107678064722222e-05
 </div>
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>✅ Konversi ke dataset supervised berhasil.
-Dimensi data baru: (1420, 31)
+Dimensi data baru: (3580, 31)
 
 5 baris pertama dari dataset supervised:
         t-30      t-29      t-28      t-27      t-26      t-25      t-24  \
-30  0.000005  0.000017  0.000008  0.000018  0.000012  0.000012  0.000023   
-31  0.000017  0.000008  0.000018  0.000012  0.000012  0.000023  0.000026   
-32  0.000008  0.000018  0.000012  0.000012  0.000023  0.000026  0.000017   
-33  0.000018  0.000012  0.000012  0.000023  0.000026  0.000017  0.000013   
-34  0.000012  0.000012  0.000023  0.000026  0.000017  0.000013  0.000026   
+40  0.000015  0.000001  0.000014  0.000019  0.000020  0.000020  0.000022   
+41  0.000001  0.000014  0.000019  0.000020  0.000020  0.000022  0.000030   
+42  0.000014  0.000019  0.000020  0.000020  0.000022  0.000030  0.000020   
+43  0.000019  0.000020  0.000020  0.000022  0.000030  0.000020  0.000029   
+44  0.000020  0.000020  0.000022  0.000030  0.000020  0.000029  0.000015   
 
         t-23      t-22      t-21  ...       t-9       t-8       t-7       t-6  \
-30  0.000026  0.000017  0.000013  ...  0.000025  0.000019  0.000018  0.000005   
-31  0.000017  0.000013  0.000026  ...  0.000019  0.000018  0.000005  0.000015   
-32  0.000013  0.000026  0.000016  ...  0.000018  0.000005  0.000015  0.000027   
-33  0.000026  0.000016  0.000019  ...  0.000005  0.000015  0.000027  0.000011   
-34  0.000016  0.000019  0.000019  ...  0.000015  0.000027  0.000011  0.000019   
+40  0.000030  0.000020  0.000029  ...  0.000015  0.000004  0.000008  0.000013   
+41  0.000020  0.000029  0.000015  ...  0.000004  0.000008  0.000013  0.000008   
+42  0.000029  0.000015  0.000015  ...  0.000008  0.000013  0.000008  0.000016   
+43  0.000015  0.000015  0.000016  ...  0.000013  0.000008  0.000016  0.000017   
+44  0.000015  0.000016  0.000016  ...  0.000008  0.000016  0.000017  0.000014   
 
-         t-5       t-4       t-3       t-2       t-1        target  
-30  0.000015  0.000027  0.000011  0.000019  0.000019  1.009665e-05  
-31  0.000027  0.000011  0.000019  0.000019  0.000010  1.009665e-05  
-32  0.000011  0.000019  0.000019  0.000010  0.000010  8.041047e-06  
-33  0.000019  0.000019  0.000010  0.000010  0.000008  1.969830e-06  
-34  0.000019  0.000010  0.000010  0.000008  0.000002  7.381482e-07  
+         t-5       t-4           t-3           t-2           t-1        target  
+40  0.000008  0.000016  1.714258e-05  1.368251e-05  1.368251e-05  1.022243e-05  
+41  0.000016  0.000017  1.368251e-05  1.368251e-05  1.022243e-05  7.885361e-07  
+42  0.000017  0.000014  1.368251e-05  1.022243e-05  7.885361e-07  2.014664e-05  
+43  0.000014  0.000014  1.022243e-05  7.885361e-07  2.014664e-05  2.014664e-05  
+44  0.000014  0.000010  7.885361e-07  2.014664e-05  2.014664e-05  1.455194e-05  
 
 [5 rows x 31 columns]
 </pre></div>
@@ -996,36 +1000,36 @@ Dimensi data baru: (1420, 31)
 </div>
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>## Korelasi Setiap Fitur Lag terhadap &#39;target&#39; ##
-t-1     0.716344
-t-2     0.599494
-t-3     0.519994
-t-4     0.460369
-t-5     0.425198
-t-6     0.400362
-t-7     0.368422
-t-8     0.340096
-t-9     0.308701
-t-10    0.287869
-t-11    0.263851
-t-12    0.248537
-t-13    0.244163
-t-14    0.232686
-t-15    0.222765
-t-16    0.222144
-t-17    0.208154
-t-23    0.199605
-t-19    0.199357
-t-27    0.199320
-t-26    0.198679
-t-24    0.198330
-t-20    0.192717
-t-22    0.191882
-t-21    0.191090
-t-25    0.188442
-t-18    0.188319
-t-30    0.166325
-t-29    0.162485
-t-28    0.162372
+t-1     0.702854
+t-2     0.588018
+t-3     0.524412
+t-4     0.457409
+t-5     0.418501
+t-6     0.392566
+t-7     0.349264
+t-8     0.322246
+t-9     0.291042
+t-10    0.265082
+t-11    0.242011
+t-12    0.223917
+t-13    0.210899
+t-14    0.178874
+t-15    0.166681
+t-16    0.164545
+t-17    0.148384
+t-20    0.139239
+t-18    0.138040
+t-19    0.137162
+t-21    0.130247
+t-23    0.121678
+t-22    0.119621
+t-24    0.114985
+t-25    0.112414
+t-26    0.109587
+t-27    0.101112
+t-28    0.078151
+t-29    0.064488
+t-30    0.058235
 Name: target, dtype: float64
 --------------------------------------------------
 </pre></div>
@@ -1047,14 +1051,14 @@ Name: target, dtype: float64
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>C:\Users\MyBook Z Series\AppData\Local\Temp\ipykernel_12816\2271241154.py:2: FutureWarning: 
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>C:\Users\MyBook Z Series\AppData\Local\Temp\ipykernel_6572\2271241154.py:2: FutureWarning: 
 
 Passing `palette` without assigning `hue` is deprecated and will be removed in v0.14.0. Assign the `y` variable to `hue` and set `legend=False` for the same effect.
 
   sns.barplot(x=target_corr.values, y=target_corr.index, palette=&#39;viridis&#39;)
 </pre></div>
 </div>
-<img alt="_images/df29387eaf4079f28097e375feb657f834976e65720a5a1da962f828d3e1b6ac.png" src="_images/df29387eaf4079f28097e375feb657f834976e65720a5a1da962f828d3e1b6ac.png" />
+<img alt="_images/3253ab766c6b356621a374def651dda518986fbfd19786c7a872d63cda3e4225.png" src="_images/3253ab766c6b356621a374def651dda518986fbfd19786c7a872d63cda3e4225.png" />
 </div>
 </div>
 </section>
@@ -1137,16 +1141,16 @@ Nama-nama fitur yang terpilih:
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>✅ Pembagian data selesai.
 ----------------------------------------
-Jumlah total baris data: 1420
-Titik pembagian (indeks): 1136
+Jumlah total baris data: 3580
+Titik pembagian (indeks): 2864
 
 Dimensi Data Latih (Training):
-X_train: (1136, 3)
-y_train: (1136,)
+X_train: (2864, 3)
+y_train: (2864,)
 
 Dimensi Data Uji (Testing):
-X_test: (284, 3)
-y_test: (284,)
+X_test: (716, 3)
+y_test: (716,)
 </pre></div>
 </div>
 </div>
@@ -1184,15 +1188,15 @@ y_test: (284,)
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>✅ Normalisasi Min-Max selesai.
 ----------------------------------------
-Dimensi X_train setelah di-scaling: (1136, 3)
-Dimensi X_test setelah di-scaling: (284, 3)
+Dimensi X_train setelah di-scaling: (2864, 3)
+Dimensi X_test setelah di-scaling: (716, 3)
 
 Contoh 5 baris pertama dari X_train yang sudah dinormalisasi:
-[[0.49210435 0.49210435 0.30193381]
- [0.26425078 0.49210435 0.49210435]
- [0.26425078 0.26425078 0.49210435]
- [0.20854387 0.26425078 0.26425078]
- [0.0440133  0.20854387 0.26425078]]
+[[0.3878093  0.3878093  0.48603403]
+ [0.28958457 0.3878093  0.3878093 ]
+ [0.02177473 0.28958457 0.3878093 ]
+ [0.57131313 0.02177473 0.28958457]
+ [0.57131313 0.57131313 0.02177473]]
 
 Nilai min dari data yang sudah dinormalisasi: 0.0
 Nilai max dari data yang sudah dinormalisasi: 1.0
@@ -1208,7 +1212,7 @@ Nilai max dari data yang sudah dinormalisasi: 1.0
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Inisialisasi dan Latih Model KNN</span>
 
-<span class="n">value_knn</span> <span class="o">=</span> <span class="mi">29</span>
+<span class="n">value_knn</span> <span class="o">=</span> <span class="mi">19</span>
 
 <span class="c1"># Inisialisasi Model KNN</span>
 <span class="n">knn_model</span> <span class="o">=</span> <span class="n">KNeighborsRegressor</span><span class="p">(</span><span class="n">n_neighbors</span><span class="o">=</span><span class="n">value_knn</span><span class="p">)</span>
@@ -1280,16 +1284,16 @@ Nilai max dari data yang sudah dinormalisasi: 1.0
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>## Perbandingan Nilai Aktual vs Hasil Prediksi ##
    Nilai Aktual  Hasil Prediksi KNN
-0      0.000014            0.000019
-1      0.000014            0.000015
-2      0.000007            0.000014
-3      0.000028            0.000011
-4      0.000024            0.000019
-5      0.000024            0.000019
-6      0.000019            0.000023
-7      0.000019            0.000020
-8      0.000015            0.000017
-9      0.000015            0.000015
+0      0.000019            0.000013
+1      0.000019            0.000018
+2      0.000014            0.000019
+3      0.000008            0.000013
+4      0.000011            0.000012
+5      0.000011            0.000010
+6      0.000029            0.000012
+7      0.000029            0.000020
+8      0.000025            0.000017
+9      0.000017            0.000027
 </pre></div>
 </div>
 </div>
@@ -1330,9 +1334,9 @@ Nilai max dari data yang sudah dinormalisasi: 1.0
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>## Hasil Evaluasi Kinerja Model KNN ##
 ----------------------------------------
 Mean Squared Error (MSE): 0.0000000000
-R-squared (R2 Score):     0.1459
-Mean Absolute Percentage Error (MAPE): 118.92%
-Mean Relative Error (MRE): -96.96%
+R-squared (R2 Score):     0.6808
+Mean Absolute Percentage Error (MAPE): 50.94%
+Mean Relative Error (MRE): -36.92%
 </pre></div>
 </div>
 </div>
@@ -1352,7 +1356,7 @@ Mean Relative Error (MRE): -96.96%
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/4bb95155b5c56a9da8a4cbc17bf9dd7554f47adf2fdf11daa5b359cb6873feb0.png" src="_images/4bb95155b5c56a9da8a4cbc17bf9dd7554f47adf2fdf11daa5b359cb6873feb0.png" />
+<img alt="_images/05a13e88874bd92c8a0118c40e5415628bb5a246f234697133cfbef7e8b0348a.png" src="_images/05a13e88874bd92c8a0118c40e5415628bb5a246f234697133cfbef7e8b0348a.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -1404,8 +1408,8 @@ Mean Relative Error (MRE): -96.96%
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Memulai pencarian nilai k optimal...
 Pencarian selesai.
 ----------------------------------------
-✅ Nilai &#39;k&#39; paling optimal ditemukan: 29
-   Dengan Skor R-squared (R2) terbaik: 0.1459
+✅ Nilai &#39;k&#39; paling optimal ditemukan: 19
+   Dengan Skor R-squared (R2) terbaik: 0.6808
 </pre></div>
 </div>
 </div>
@@ -1430,7 +1434,44 @@ Pencarian selesai.
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/1c62547b3deeecc48baeead0f19d76f8b4bea38d869390186d7da7bcfb8dcdbd.png" src="_images/1c62547b3deeecc48baeead0f19d76f8b4bea38d869390186d7da7bcfb8dcdbd.png" />
+<img alt="_images/5ede967db0da2c16093271f6d60200b676b238668fdbc687f4deb6fe45bb90e5.png" src="_images/5ede967db0da2c16093271f6d60200b676b238668fdbc687f4deb6fe45bb90e5.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">joblib</span> 
+
+<span class="c1"># Melatih model final knn</span>
+<span class="n">final_knn_model</span> <span class="o">=</span> <span class="n">KNeighborsRegressor</span><span class="p">(</span><span class="n">n_neighbors</span><span class="o">=</span><span class="n">best_k</span><span class="p">)</span>
+
+<span class="n">final_knn_model</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train_scaled</span><span class="p">,</span> <span class="n">y_train_scaled</span><span class="o">.</span><span class="n">ravel</span><span class="p">())</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Selesai Melatih Model&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Selesai Melatih Model
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># # Simpan semua model</span>
+
+<span class="c1"># # Menyimpan model knn</span>
+<span class="c1"># joblib.dump(final_knn_model, &#39;saved_models/knn_model_optimal.joblib&#39;)</span>
+
+<span class="c1"># # Menyimpan scaler untuk fitur (X)</span>
+<span class="c1"># joblib.dump(scaler_X, &#39;saved_models/scaler_X.joblib&#39;)</span>
+
+<span class="c1"># # Menyimpan scaler untuk target (y)</span>
+<span class="c1"># joblib.dump(scaler_y, &#39;saved_models/scaler_y.joblib&#39;)</span>
+
+<span class="c1"># print(&quot;\n✅ Semua model berhasil disimpan:&quot;)</span>
+</pre></div>
+</div>
 </div>
 </div>
 </section>
@@ -1480,7 +1521,7 @@ Pencarian selesai.
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">&lt;no title&gt;</p>
+        <p class="prev-next-title"><em><strong>Project Time Series Audio Dataset</strong></em></p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
