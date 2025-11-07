@@ -60,6 +60,7 @@
     <script>DOCUMENTATION_OPTIONS.pagename = 'project-timeseries-audio';</script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Membaca Dataset" href="project-timeseries-audio-multilabel.html" />
     <link rel="prev" title="Project Time Series with AutoCorrelation" href="project-timeseries-autoCorrelation.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
@@ -196,6 +197,9 @@
 <li class="toctree-l1 current active has-children"><a class="reference internal" href="project-timeseries-forecasting.html">Project TimeSeries Forecasting</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="project-timeseries-autoCorrelation.html">TimeSeries Forecasting with Feature Selection (Revisi)</a></li>
 <li class="toctree-l2 current active"><a class="current reference internal" href="#">TimeSeries Analisis Audio Fitur Analitik</a></li>
+<li class="toctree-l2"><a class="reference internal" href="project-timeseries-audio-multilabel.html"><strong>Membaca Dataset</strong></a></li>
+
+
 </ul>
 </details></li>
 </ul>
@@ -505,134 +509,9 @@ document.write(`
 </div>
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Memulai proses pembacaan file audio...
-Membaca file dari folder: dataset/audio\buka
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>C:\Users\MyBook Z Series\AppData\Local\Temp\ipykernel_19188\2445009650.py:27: UserWarning: PySoundFile failed. Trying audioread instead.
-  audio_signal, sr = librosa.load(file_path, sr=None)
-D:\Perkuliahan\Semester 5\Poyek Sains Data\PSD\venv_py3.11\Lib\site-packages\librosa\core\audio.py:184: FutureWarning: librosa.core.audio.__audioread_load
-	Deprecated as of librosa version 0.10.0.
-	It will be removed in librosa version 1.0.
-  y, sr_native = __audioread_load(path, offset, duration, dtype)
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>C:\Users\MyBook Z Series\AppData\Local\Temp\ipykernel_19188\2445009650.py:27: UserWarning: PySoundFile failed. Trying audioread instead.
-  audio_signal, sr = librosa.load(file_path, sr=None)
-D:\Perkuliahan\Semester 5\Poyek Sains Data\PSD\venv_py3.11\Lib\site-packages\librosa\core\audio.py:184: FutureWarning: librosa.core.audio.__audioread_load
-	Deprecated as of librosa version 0.10.0.
-	It will be removed in librosa version 1.0.
-  y, sr_native = __audioread_load(path, offset, duration, dtype)
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Membaca file dari folder: dataset/audio\tutup
-</pre></div>
-</div>
-<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
-<span class="ne">LibsndfileError</span><span class="g g-Whitespace">                           </span>Traceback (most recent call last)
-<span class="nn">File D:\Perkuliahan\Semester 5\Poyek Sains Data\PSD\venv_py3.11\Lib\site-packages\librosa\core\audio.py:176,</span> in <span class="ni">load</span><span class="nt">(path, sr, mono, offset, duration, dtype, res_type)</span>
-<span class="g g-Whitespace">    </span><span class="mi">175</span> <span class="k">try</span><span class="p">:</span>
-<span class="ne">--&gt; </span><span class="mi">176</span>     <span class="n">y</span><span class="p">,</span> <span class="n">sr_native</span> <span class="o">=</span> <span class="n">__soundfile_load</span><span class="p">(</span><span class="n">path</span><span class="p">,</span> <span class="n">offset</span><span class="p">,</span> <span class="n">duration</span><span class="p">,</span> <span class="n">dtype</span><span class="p">)</span>
-<span class="g g-Whitespace">    </span><span class="mi">178</span> <span class="k">except</span> <span class="n">sf</span><span class="o">.</span><span class="n">SoundFileRuntimeError</span> <span class="k">as</span> <span class="n">exc</span><span class="p">:</span>
-<span class="g g-Whitespace">    </span><span class="mi">179</span>     <span class="c1"># If soundfile failed, try audioread instead</span>
-
-<span class="nn">File D:\Perkuliahan\Semester 5\Poyek Sains Data\PSD\venv_py3.11\Lib\site-packages\librosa\core\audio.py:209,</span> in <span class="ni">__soundfile_load</span><span class="nt">(path, offset, duration, dtype)</span>
-<span class="g g-Whitespace">    </span><span class="mi">207</span> <span class="k">else</span><span class="p">:</span>
-<span class="g g-Whitespace">    </span><span class="mi">208</span>     <span class="c1"># Otherwise, create the soundfile object</span>
-<span class="ne">--&gt; </span><span class="mi">209</span>     <span class="n">context</span> <span class="o">=</span> <span class="n">sf</span><span class="o">.</span><span class="n">SoundFile</span><span class="p">(</span><span class="n">path</span><span class="p">)</span>
-<span class="g g-Whitespace">    </span><span class="mi">211</span> <span class="k">with</span> <span class="n">context</span> <span class="k">as</span> <span class="n">sf_desc</span><span class="p">:</span>
-
-<span class="nn">File D:\Perkuliahan\Semester 5\Poyek Sains Data\PSD\venv_py3.11\Lib\site-packages\soundfile.py:690,</span> in <span class="ni">SoundFile.__init__</span><span class="nt">(self, file, mode, samplerate, channels, subtype, endian, format, closefd, compression_level, bitrate_mode)</span>
-<span class="g g-Whitespace">    </span><span class="mi">688</span> <span class="bp">self</span><span class="o">.</span><span class="n">_info</span> <span class="o">=</span> <span class="n">_create_info_struct</span><span class="p">(</span><span class="n">file</span><span class="p">,</span> <span class="n">mode</span><span class="p">,</span> <span class="n">samplerate</span><span class="p">,</span> <span class="n">channels</span><span class="p">,</span>
-<span class="g g-Whitespace">    </span><span class="mi">689</span>                                  <span class="nb">format</span><span class="p">,</span> <span class="n">subtype</span><span class="p">,</span> <span class="n">endian</span><span class="p">)</span>
-<span class="ne">--&gt; </span><span class="mi">690</span> <span class="bp">self</span><span class="o">.</span><span class="n">_file</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_open</span><span class="p">(</span><span class="n">file</span><span class="p">,</span> <span class="n">mode_int</span><span class="p">,</span> <span class="n">closefd</span><span class="p">)</span>
-<span class="g g-Whitespace">    </span><span class="mi">691</span> <span class="k">if</span> <span class="nb">set</span><span class="p">(</span><span class="n">mode</span><span class="p">)</span><span class="o">.</span><span class="n">issuperset</span><span class="p">(</span><span class="s1">&#39;r+&#39;</span><span class="p">)</span> <span class="ow">and</span> <span class="bp">self</span><span class="o">.</span><span class="n">seekable</span><span class="p">():</span>
-<span class="g g-Whitespace">    </span><span class="mi">692</span>     <span class="c1"># Move write position to 0 (like in Python file objects)</span>
-
-<span class="nn">File D:\Perkuliahan\Semester 5\Poyek Sains Data\PSD\venv_py3.11\Lib\site-packages\soundfile.py:1265,</span> in <span class="ni">SoundFile._open</span><span class="nt">(self, file, mode_int, closefd)</span>
-<span class="g g-Whitespace">   </span><span class="mi">1264</span>     <span class="n">err</span> <span class="o">=</span> <span class="n">_snd</span><span class="o">.</span><span class="n">sf_error</span><span class="p">(</span><span class="n">file_ptr</span><span class="p">)</span>
-<span class="ne">-&gt; </span><span class="mi">1265</span>     <span class="k">raise</span> <span class="n">LibsndfileError</span><span class="p">(</span><span class="n">err</span><span class="p">,</span> <span class="n">prefix</span><span class="o">=</span><span class="s2">&quot;Error opening </span><span class="si">{0!r}</span><span class="s2">: &quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">name</span><span class="p">))</span>
-<span class="g g-Whitespace">   </span><span class="mi">1266</span> <span class="k">if</span> <span class="n">mode_int</span> <span class="o">==</span> <span class="n">_snd</span><span class="o">.</span><span class="n">SFM_WRITE</span><span class="p">:</span>
-<span class="g g-Whitespace">   </span><span class="mi">1267</span>     <span class="c1"># Due to a bug in libsndfile version &lt;= 1.0.25, frames != 0</span>
-<span class="g g-Whitespace">   </span><span class="mi">1268</span>     <span class="c1"># when opening a named pipe in SFM_WRITE mode.</span>
-<span class="g g-Whitespace">   </span><span class="mi">1269</span>     <span class="c1"># See http://github.com/erikd/libsndfile/issues/77.</span>
-
-<span class="ne">LibsndfileError</span>: Error opening &#39;dataset/audio\\tutup\\20251031_142701.aac&#39;: Format not recognised.
-
-<span class="n">During</span> <span class="n">handling</span> <span class="n">of</span> <span class="n">the</span> <span class="n">above</span> <span class="n">exception</span><span class="p">,</span> <span class="n">another</span> <span class="n">exception</span> <span class="n">occurred</span><span class="p">:</span>
-
-<span class="ne">KeyboardInterrupt</span><span class="g g-Whitespace">                         </span>Traceback (most recent call last)
-<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">3</span><span class="p">],</span> <span class="n">line</span> <span class="mi">27</span>
-<span class="g g-Whitespace">     </span><span class="mi">20</span> <span class="n">file_path</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">label_path</span><span class="p">,</span> <span class="n">filename</span><span class="p">)</span>
-<span class="g g-Whitespace">     </span><span class="mi">22</span> <span class="k">try</span><span class="p">:</span>
-<span class="g g-Whitespace">     </span><span class="mi">23</span>     <span class="c1"># librosa.load akan membaca file audio dan mengubahnya menjadi:</span>
-<span class="g g-Whitespace">     </span><span class="mi">24</span>     <span class="c1"># 1. audio_signal: Array NumPy yang merepresentasikan gelombang suara.</span>
-<span class="g g-Whitespace">     </span><span class="mi">25</span>     <span class="c1"># 2. sr: Sampling rate dari audio tersebut (jumlah sampel per detik).</span>
-<span class="g g-Whitespace">     </span><span class="mi">26</span>     <span class="c1"># sr=None berarti kita akan menggunakan sampling rate asli dari file audio.</span>
-<span class="ne">---&gt; </span><span class="mi">27</span>     <span class="n">audio_signal</span><span class="p">,</span> <span class="n">sr</span> <span class="o">=</span> <span class="n">librosa</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="n">file_path</span><span class="p">,</span> <span class="n">sr</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span>
-<span class="g g-Whitespace">     </span><span class="mi">29</span>     <span class="c1"># Tambahkan data yang sudah dibaca ke dalam list</span>
-<span class="g g-Whitespace">     </span><span class="mi">30</span>     <span class="n">data_list</span><span class="o">.</span><span class="n">append</span><span class="p">({</span>
-<span class="g g-Whitespace">     </span><span class="mi">31</span>         <span class="s1">&#39;filename&#39;</span><span class="p">:</span> <span class="n">filename</span><span class="p">,</span>
-<span class="g g-Whitespace">     </span><span class="mi">32</span>         <span class="s1">&#39;audio_signal&#39;</span><span class="p">:</span> <span class="n">audio_signal</span><span class="p">,</span>
-<span class="g g-Whitespace">     </span><span class="mi">33</span>         <span class="s1">&#39;sampling_rate&#39;</span><span class="p">:</span> <span class="n">sr</span><span class="p">,</span>
-<span class="g g-Whitespace">     </span><span class="mi">34</span>         <span class="s1">&#39;label&#39;</span><span class="p">:</span> <span class="n">label</span>
-<span class="g g-Whitespace">     </span><span class="mi">35</span>     <span class="p">})</span>
-
-<span class="nn">File D:\Perkuliahan\Semester 5\Poyek Sains Data\PSD\venv_py3.11\Lib\site-packages\librosa\core\audio.py:184,</span> in <span class="ni">load</span><span class="nt">(path, sr, mono, offset, duration, dtype, res_type)</span>
-<span class="g g-Whitespace">    </span><span class="mi">180</span> <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">path</span><span class="p">,</span> <span class="p">(</span><span class="nb">str</span><span class="p">,</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">PurePath</span><span class="p">)):</span>
-<span class="g g-Whitespace">    </span><span class="mi">181</span>     <span class="n">warnings</span><span class="o">.</span><span class="n">warn</span><span class="p">(</span>
-<span class="g g-Whitespace">    </span><span class="mi">182</span>         <span class="s2">&quot;PySoundFile failed. Trying audioread instead.&quot;</span><span class="p">,</span> <span class="n">stacklevel</span><span class="o">=</span><span class="mi">2</span>
-<span class="g g-Whitespace">    </span><span class="mi">183</span>     <span class="p">)</span>
-<span class="ne">--&gt; </span><span class="mi">184</span>     <span class="n">y</span><span class="p">,</span> <span class="n">sr_native</span> <span class="o">=</span> <span class="n">__audioread_load</span><span class="p">(</span><span class="n">path</span><span class="p">,</span> <span class="n">offset</span><span class="p">,</span> <span class="n">duration</span><span class="p">,</span> <span class="n">dtype</span><span class="p">)</span>
-<span class="g g-Whitespace">    </span><span class="mi">185</span> <span class="k">else</span><span class="p">:</span>
-<span class="g g-Whitespace">    </span><span class="mi">186</span>     <span class="k">raise</span> <span class="n">exc</span>
-
-<span class="nn">File D:\Perkuliahan\Semester 5\Poyek Sains Data\PSD\venv_py3.11\Lib\site-packages\decorator.py:235,</span> in <span class="ni">decorate.&lt;locals&gt;.fun</span><span class="nt">(*args, **kw)</span>
-<span class="g g-Whitespace">    </span><span class="mi">233</span> <span class="k">if</span> <span class="ow">not</span> <span class="n">kwsyntax</span><span class="p">:</span>
-<span class="g g-Whitespace">    </span><span class="mi">234</span>     <span class="n">args</span><span class="p">,</span> <span class="n">kw</span> <span class="o">=</span> <span class="n">fix</span><span class="p">(</span><span class="n">args</span><span class="p">,</span> <span class="n">kw</span><span class="p">,</span> <span class="n">sig</span><span class="p">)</span>
-<span class="ne">--&gt; </span><span class="mi">235</span> <span class="k">return</span> <span class="n">caller</span><span class="p">(</span><span class="n">func</span><span class="p">,</span> <span class="o">*</span><span class="p">(</span><span class="n">extras</span> <span class="o">+</span> <span class="n">args</span><span class="p">),</span> <span class="o">**</span><span class="n">kw</span><span class="p">)</span>
-
-<span class="nn">File D:\Perkuliahan\Semester 5\Poyek Sains Data\PSD\venv_py3.11\Lib\site-packages\librosa\util\decorators.py:63,</span> in <span class="ni">deprecated.&lt;locals&gt;.__wrapper</span><span class="nt">(func, *args, **kwargs)</span>
-<span class="g g-Whitespace">     </span><span class="mi">54</span><span class="w"> </span><span class="sd">&quot;&quot;&quot;Warn the user, and then proceed.&quot;&quot;&quot;</span>
-<span class="g g-Whitespace">     </span><span class="mi">55</span> <span class="n">warnings</span><span class="o">.</span><span class="n">warn</span><span class="p">(</span>
-<span class="g g-Whitespace">     </span><span class="mi">56</span>     <span class="s2">&quot;</span><span class="si">{:s}</span><span class="s2">.</span><span class="si">{:s}</span><span class="se">\n\t</span><span class="s2">Deprecated as of librosa version </span><span class="si">{:s}</span><span class="s2">.&quot;</span>
-<span class="g g-Whitespace">     </span><span class="mi">57</span>     <span class="s2">&quot;</span><span class="se">\n\t</span><span class="s2">It will be removed in librosa version </span><span class="si">{:s}</span><span class="s2">.&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span>
-   <span class="p">(</span><span class="o">...</span><span class="p">)</span>     <span class="mi">61</span>     <span class="n">stacklevel</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span>  <span class="c1"># Would be 2, but the decorator adds a level</span>
-<span class="g g-Whitespace">     </span><span class="mi">62</span> <span class="p">)</span>
-<span class="ne">---&gt; </span><span class="mi">63</span> <span class="k">return</span> <span class="n">func</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
-
-<span class="nn">File D:\Perkuliahan\Semester 5\Poyek Sains Data\PSD\venv_py3.11\Lib\site-packages\librosa\core\audio.py:240,</span> in <span class="ni">__audioread_load</span><span class="nt">(path, offset, duration, dtype)</span>
-<span class="g g-Whitespace">    </span><span class="mi">237</span>     <span class="n">reader</span> <span class="o">=</span> <span class="n">path</span>
-<span class="g g-Whitespace">    </span><span class="mi">238</span> <span class="k">else</span><span class="p">:</span>
-<span class="g g-Whitespace">    </span><span class="mi">239</span>     <span class="c1"># If the input was not an audioread object, try to open it</span>
-<span class="ne">--&gt; </span><span class="mi">240</span>     <span class="n">reader</span> <span class="o">=</span> <span class="n">audioread</span><span class="o">.</span><span class="n">audio_open</span><span class="p">(</span><span class="n">path</span><span class="p">)</span>
-<span class="g g-Whitespace">    </span><span class="mi">242</span> <span class="k">with</span> <span class="n">reader</span> <span class="k">as</span> <span class="n">input_file</span><span class="p">:</span>
-<span class="g g-Whitespace">    </span><span class="mi">243</span>     <span class="n">sr_native</span> <span class="o">=</span> <span class="n">input_file</span><span class="o">.</span><span class="n">samplerate</span>
-
-<span class="nn">File D:\Perkuliahan\Semester 5\Poyek Sains Data\PSD\venv_py3.11\Lib\site-packages\audioread\__init__.py:126,</span> in <span class="ni">audio_open</span><span class="nt">(path, backends)</span>
-<span class="g g-Whitespace">    </span><span class="mi">124</span> <span class="k">for</span> <span class="n">BackendClass</span> <span class="ow">in</span> <span class="n">backends</span><span class="p">:</span>
-<span class="g g-Whitespace">    </span><span class="mi">125</span>     <span class="k">try</span><span class="p">:</span>
-<span class="ne">--&gt; </span><span class="mi">126</span>         <span class="k">return</span> <span class="n">BackendClass</span><span class="p">(</span><span class="n">path</span><span class="p">)</span>
-<span class="g g-Whitespace">    </span><span class="mi">127</span>     <span class="k">except</span> <span class="n">DecodeError</span><span class="p">:</span>
-<span class="g g-Whitespace">    </span><span class="mi">128</span>         <span class="k">pass</span>
-
-<span class="nn">File D:\Perkuliahan\Semester 5\Poyek Sains Data\PSD\venv_py3.11\Lib\site-packages\audioread\ffdec.py:171,</span> in <span class="ni">FFmpegAudioFile.__init__</span><span class="nt">(self, filename, block_size)</span>
-<span class="g g-Whitespace">    </span><span class="mi">168</span> <span class="bp">self</span><span class="o">.</span><span class="n">stdout_reader</span><span class="o">.</span><span class="n">start</span><span class="p">()</span>
-<span class="g g-Whitespace">    </span><span class="mi">170</span> <span class="c1"># Read relevant information from stderr.</span>
-<span class="ne">--&gt; </span><span class="mi">171</span> <span class="bp">self</span><span class="o">.</span><span class="n">_get_info</span><span class="p">()</span>
-<span class="g g-Whitespace">    </span><span class="mi">173</span> <span class="c1"># Start a separate thread to read the rest of the data from</span>
-<span class="g g-Whitespace">    </span><span class="mi">174</span> <span class="c1"># stderr. This (a) avoids filling up the OS buffer and (b)</span>
-<span class="g g-Whitespace">    </span><span class="mi">175</span> <span class="c1"># collects the error output for diagnosis.</span>
-<span class="g g-Whitespace">    </span><span class="mi">176</span> <span class="bp">self</span><span class="o">.</span><span class="n">stderr_reader</span> <span class="o">=</span> <span class="n">QueueReaderThread</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">proc</span><span class="o">.</span><span class="n">stderr</span><span class="p">)</span>
-
-<span class="nn">File D:\Perkuliahan\Semester 5\Poyek Sains Data\PSD\venv_py3.11\Lib\site-packages\audioread\ffdec.py:215,</span> in <span class="ni">FFmpegAudioFile._get_info</span><span class="nt">(self)</span>
-<span class="g g-Whitespace">    </span><span class="mi">213</span> <span class="n">out_parts</span> <span class="o">=</span> <span class="p">[]</span>
-<span class="g g-Whitespace">    </span><span class="mi">214</span> <span class="k">while</span> <span class="kc">True</span><span class="p">:</span>
-<span class="ne">--&gt; </span><span class="mi">215</span>     <span class="n">line</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">proc</span><span class="o">.</span><span class="n">stderr</span><span class="o">.</span><span class="n">readline</span><span class="p">()</span>
-<span class="g g-Whitespace">    </span><span class="mi">216</span>     <span class="k">if</span> <span class="ow">not</span> <span class="n">line</span><span class="p">:</span>
-<span class="g g-Whitespace">    </span><span class="mi">217</span>         <span class="c1"># EOF and data not found.</span>
-<span class="g g-Whitespace">    </span><span class="mi">218</span>         <span class="k">raise</span> <span class="n">CommunicationError</span><span class="p">(</span><span class="s2">&quot;stream info not found&quot;</span><span class="p">)</span>
-
-<span class="ne">KeyboardInterrupt</span>: 
+Peringatan: Folder untuk label &#39;buka&#39; tidak ditemukan di &#39;dataset/audio\buka&#39;
+Peringatan: Folder untuk label &#39;tutup&#39; tidak ditemukan di &#39;dataset/audio\tutup&#39;
+Proses pembacaan data selesai.
 </pre></div>
 </div>
 </div>
@@ -664,42 +543,7 @@ D:\Perkuliahan\Semester 5\Poyek Sains Data\PSD\venv_py3.11\Lib\site-packages\lib
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>--- Ringkasan Dataset ---
-Total file yang berhasil dibaca: 200
-
-Contoh 5 data pertama:
-              filename                                       audio_signal  \
-0  20251030_183541.aac  [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, ...   
-1  20251030_183623.aac  [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, ...   
-2  20251030_183635.aac  [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, ...   
-3  20251030_183717.aac  [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, ...   
-4  20251030_183723.aac  [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, ...   
-
-   sampling_rate label  
-0          44100  buka  
-1          44100  buka  
-2          44100  buka  
-3          44100  buka  
-4          44100  buka  
-
-Informasi DataFrame:
-&lt;class &#39;pandas.core.frame.DataFrame&#39;&gt;
-RangeIndex: 200 entries, 0 to 199
-Data columns (total 4 columns):
- #   Column         Non-Null Count  Dtype 
----  ------         --------------  ----- 
- 0   filename       200 non-null    object
- 1   audio_signal   200 non-null    object
- 2   sampling_rate  200 non-null    int64 
- 3   label          200 non-null    object
-dtypes: int64(1), object(3)
-memory usage: 6.4+ KB
-
-Jumlah data per label:
-label
-buka     100
-tutup    100
-Name: count, dtype: int64
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Tidak ada data yang berhasil dibaca. Pastikan path dan nama file sudah benar.
 </pre></div>
 </div>
 </div>
@@ -766,38 +610,7 @@ Name: count, dtype: int64
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Memulai proses ekstraksi fitur dengan TSFEL...
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  0%|          | 0/200 [00:00&lt;?, ?it/s]
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>100%|██████████| 200/200 [02:49&lt;00:00,  1.18it/s]
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Proses ekstraksi fitur selesai.
-
---- Ringkasan DataFrame Fitur ---
-Jumlah baris (sampel): 200
-Jumlah kolom (fitur + label): 157
-
-Contoh 5 data pertama dari DataFrame Fitur:
-   0_Absolute energy  0_Area under the curve  0_Autocorrelation  \
-0         990.102982                0.089328               13.0   
-1         702.588011                0.069497               13.0   
-2         666.529384                0.099788               12.0   
-3         482.823340                0.062194               17.0   
-4        1261.127433                0.130005               13.0   
-
-   0_Average power  0_Centroid  
-0       576.226216    1.150631  
-1       530.850160    0.885468  
-2       239.210490    1.525034  
-3       266.586237    1.351923  
-4       764.971456    1.023790  
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>DataFrame awal kosong, proses ekstraksi fitur dilewati.
 </pre></div>
 </div>
 </div>
@@ -836,8 +649,18 @@ Contoh 5 data pertama dari DataFrame Fitur:
 </div>
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>--- Mempersiapkan Data untuk Seleksi Fitur ---
-Label &#39;buka&#39; diubah menjadi 0, dan &#39;tutup&#39; diubah menjadi 1.
-Data siap untuk seleksi fitur.
+</pre></div>
+</div>
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">NameError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
+<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">6</span><span class="p">],</span> <span class="n">line</span> <span class="mi">5</span>
+<span class="g g-Whitespace">      </span><span class="mi">2</span> <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">--- Mempersiapkan Data untuk Seleksi Fitur ---&quot;</span><span class="p">)</span>
+<span class="g g-Whitespace">      </span><span class="mi">4</span> <span class="c1"># Menghapus kolom yang mungkin mengandung nilai NaN (Not a Number) atau Infinity</span>
+<span class="ne">----&gt; </span><span class="mi">5</span> <span class="n">features_df</span><span class="o">.</span><span class="n">replace</span><span class="p">([</span><span class="n">np</span><span class="o">.</span><span class="n">inf</span><span class="p">,</span> <span class="o">-</span><span class="n">np</span><span class="o">.</span><span class="n">inf</span><span class="p">],</span> <span class="n">np</span><span class="o">.</span><span class="n">nan</span><span class="p">,</span> <span class="n">inplace</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="g g-Whitespace">      </span><span class="mi">6</span> <span class="n">features_df</span><span class="o">.</span><span class="n">dropna</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">inplace</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span> <span class="c1"># Menghapus kolom jika ada NaN</span>
+<span class="g g-Whitespace">      </span><span class="mi">8</span> <span class="c1"># Memisahkan antara fitur (X) dan label (y)</span>
+
+<span class="ne">NameError</span>: name &#39;features_df&#39; is not defined
 </pre></div>
 </div>
 </div>
@@ -1496,6 +1319,15 @@ Passing `palette` without assigning `hue` is deprecated and will be removed in v
         <p class="prev-next-subtitle">previous</p>
         <p class="prev-next-title"><em><strong>Project Time Series with AutoCorrelation</strong></em></p>
       </div>
+    </a>
+    <a class="right-next"
+       href="project-timeseries-audio-multilabel.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title"><strong>Membaca Dataset</strong></p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
     </a>
 </div>
                 </footer>

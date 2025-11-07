@@ -1,0 +1,1203 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="./" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Membaca Dataset &#8212; Project Science Data</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+
+  
+  <link href="_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=03e43079" />
+    <link rel="stylesheet" type="text/css" href="_static/styles/sphinx-book-theme.css?v=eba8b062" />
+    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.8ecb98da25f57f5357bf6f572d296f466b2cfe2517ffebfabe82451661e28f02.css" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-design.min.css?v=95c83b7e" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+    <script src="_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="_static/doctools.js?v=9a2dae69"></script>
+    <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="_static/copybutton.js?v=f281be69"></script>
+    <script src="_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="_static/togglebutton.js?v=4a39c7ea"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="_static/design-tabs.js?v=f930bc37"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'project-timeseries-audio-multilabel';</script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="prev" title="Project Time Series Audio Dataset" href="project-timeseries-audio.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="intro.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="_static/me.jpg" class="logo__image only-light" alt="Project Science Data - Home"/>
+    <script>document.write(`<img src="_static/me.jpg" class="logo__image only-dark" alt="Project Science Data - Home"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="intro.html">
+                    Welcome to My Jupyter Book
+                </a>
+            </li>
+        </ul>
+        <ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="bisnis.html">Bussines Understanding</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="dataUnderstanding.html">Data Understanding</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="explorationData.html">Exploration Data</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="dataProcessing.html">Data Processing</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="outlier_detection.html">Outliers Detection</a></li>
+<li class="toctree-l2"><a class="reference internal" href="oversampling-data.html">Oversampling Data</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ensembleLearning.html"><strong>Menghapus Dataset</strong></a></li>
+
+
+<li class="toctree-l2"><a class="reference internal" href="bagging_method.html">Bagging Metode</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="project-timeseries-forecasting.html">Project TimeSeries Forecasting</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="project-timeseries-autoCorrelation.html">TimeSeries Forecasting with Feature Selection (Revisi)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="project-timeseries-audio.html">TimeSeries Analisis Audio Fitur Analitik</a></li>
+<li class="toctree-l2 current active"><a class="current reference internal" href="#"><strong>Membaca Dataset</strong></a></li>
+
+
+</ul>
+</details></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/executablebooks/jupyter-book" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/executablebooks/jupyter-book/issues/new?title=Issue%20on%20page%20%2Fproject-timeseries-audio-multilabel.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="_sources/project-timeseries-audio-multilabel.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Membaca Dataset</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#"><strong>Membaca Dataset</strong></a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#ekstraksi-fitur"><strong>Ekstraksi Fitur</strong></a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#feature-selection-using-information-gain"><strong>Feature Selection using Information Gain</strong></a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#show-score-information-gain"><em>Show Score Information Gain</em></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#show-score-valuation-with-reduce-feature"><em>Show Score Valuation with Reduce Feature</em></a></li>
+</ul>
+</li>
+</ul>
+
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">os</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">librosa</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">warnings</span>
+
+<span class="kn">import</span><span class="w"> </span><span class="nn">tsfel</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">tqdm</span><span class="w"> </span><span class="kn">import</span> <span class="n">tqdm</span>
+
+<span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">seaborn</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">sns</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.preprocessing</span><span class="w"> </span><span class="kn">import</span> <span class="n">LabelEncoder</span><span class="p">,</span> <span class="n">MinMaxScaler</span>
+
+<span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.impute</span><span class="w"> </span><span class="kn">import</span> <span class="n">SimpleImputer</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.feature_selection</span><span class="w"> </span><span class="kn">import</span> <span class="n">mutual_info_classif</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
+
+<span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.model_selection</span><span class="w"> </span><span class="kn">import</span> <span class="n">train_test_split</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.neighbors</span><span class="w"> </span><span class="kn">import</span> <span class="n">KNeighborsClassifier</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.metrics</span><span class="w"> </span><span class="kn">import</span> <span class="n">accuracy_score</span>
+</pre></div>
+</div>
+</div>
+</div>
+<section id="membaca-dataset">
+<h1><strong>Membaca Dataset</strong><a class="headerlink" href="#membaca-dataset" title="Link to this heading">#</a></h1>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># -- Mengabaikan peringatan dari librosa terkait format non-wav --</span>
+<span class="n">warnings</span><span class="o">.</span><span class="n">filterwarnings</span><span class="p">(</span><span class="s1">&#39;ignore&#39;</span><span class="p">,</span> <span class="n">category</span><span class="o">=</span><span class="ne">UserWarning</span><span class="p">,</span> <span class="n">module</span><span class="o">=</span><span class="s1">&#39;librosa&#39;</span><span class="p">)</span>
+
+<span class="c1"># Konfigurasi Path dan Label </span>
+<span class="n">dataset_path</span> <span class="o">=</span> <span class="s1">&#39;dataset/audio&#39;</span> 
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">load_audio_dataset</span><span class="p">(</span><span class="n">dataset_path</span><span class="o">=</span><span class="n">dataset_path</span><span class="p">,</span> <span class="n">valid_exts</span><span class="o">=</span><span class="p">(</span><span class="s1">&#39;.aac&#39;</span><span class="p">,</span> <span class="s1">&#39;.mp3&#39;</span><span class="p">)):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Membaca seluruh file audio dari dataset dengan struktur multi-label.</span>
+<span class="sd">    Return: list berisi dictionary (filename, audio_signal, sr, label_aksi, label_identitas)</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">exists</span><span class="p">(</span><span class="n">dataset_path</span><span class="p">):</span>
+        <span class="k">raise</span> <span class="ne">FileNotFoundError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;❌ Folder &#39;</span><span class="si">{</span><span class="n">dataset_path</span><span class="si">}</span><span class="s2">&#39; tidak ditemukan.&quot;</span><span class="p">)</span>
+
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;🚀 Memulai proses pembacaan file audio dari struktur multi-label...</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span>
+    <span class="n">data_list</span> <span class="o">=</span> <span class="p">[]</span>
+
+    <span class="c1"># Ambil semua folder label di dalam dataset/audio</span>
+    <span class="n">label_folders</span> <span class="o">=</span> <span class="p">[</span>
+        <span class="n">f</span> <span class="k">for</span> <span class="n">f</span> <span class="ow">in</span> <span class="n">os</span><span class="o">.</span><span class="n">listdir</span><span class="p">(</span><span class="n">dataset_path</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">isdir</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">dataset_path</span><span class="p">,</span> <span class="n">f</span><span class="p">))</span>
+    <span class="p">]</span>
+
+    <span class="c1"># Loop tiap folder (contoh: &#39;buka fauzan&#39;, &#39;tutup fikri&#39;)</span>
+    <span class="k">for</span> <span class="n">folder_name</span> <span class="ow">in</span> <span class="n">label_folders</span><span class="p">:</span>
+        <span class="n">folder_path</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">dataset_path</span><span class="p">,</span> <span class="n">folder_name</span><span class="p">)</span>
+
+        <span class="c1"># Pisahkan nama folder menjadi dua label</span>
+        <span class="k">try</span><span class="p">:</span>
+            <span class="n">label_aksi</span><span class="p">,</span> <span class="n">label_identitas</span> <span class="o">=</span> <span class="n">folder_name</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39; &#39;</span><span class="p">)</span>
+        <span class="k">except</span> <span class="ne">ValueError</span><span class="p">:</span>
+            <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;⚠️  Format folder &#39;</span><span class="si">{</span><span class="n">folder_name</span><span class="si">}</span><span class="s2">&#39; tidak sesuai (harus &#39;aksi identitas&#39;). Dilewati.</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span>
+            <span class="k">continue</span>
+
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;📂 Membaca folder: </span><span class="si">{</span><span class="n">folder_name</span><span class="si">}</span><span class="s2"> ...&quot;</span><span class="p">)</span>
+
+        <span class="c1"># Loop semua file audio di dalam folder</span>
+        <span class="k">for</span> <span class="n">filename</span> <span class="ow">in</span> <span class="n">os</span><span class="o">.</span><span class="n">listdir</span><span class="p">(</span><span class="n">folder_path</span><span class="p">):</span>
+            <span class="k">if</span> <span class="n">filename</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span><span class="o">.</span><span class="n">endswith</span><span class="p">(</span><span class="n">valid_exts</span><span class="p">):</span>
+                <span class="n">file_path</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">folder_path</span><span class="p">,</span> <span class="n">filename</span><span class="p">)</span>
+
+                <span class="k">try</span><span class="p">:</span>
+                    <span class="c1"># Membaca file audio</span>
+                    <span class="n">audio_signal</span><span class="p">,</span> <span class="n">sr</span> <span class="o">=</span> <span class="n">librosa</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="n">file_path</span><span class="p">,</span> <span class="n">sr</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span>
+                    <span class="n">data_list</span><span class="o">.</span><span class="n">append</span><span class="p">({</span>
+                        <span class="s1">&#39;filename&#39;</span><span class="p">:</span> <span class="n">filename</span><span class="p">,</span>
+                        <span class="s1">&#39;audio_signal&#39;</span><span class="p">:</span> <span class="n">audio_signal</span><span class="p">,</span>
+                        <span class="s1">&#39;sampling_rate&#39;</span><span class="p">:</span> <span class="n">sr</span><span class="p">,</span>
+                        <span class="s1">&#39;label_aksi&#39;</span><span class="p">:</span> <span class="n">label_aksi</span><span class="p">,</span>
+                        <span class="s1">&#39;label_identitas&#39;</span><span class="p">:</span> <span class="n">label_identitas</span>
+                    <span class="p">})</span>
+
+                <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+                    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;  ❌ Error membaca file &#39;</span><span class="si">{</span><span class="n">filename</span><span class="si">}</span><span class="s2">&#39;: </span><span class="si">{</span><span class="n">e</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">✅ Proses pembacaan data selesai.&quot;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;📊 Total file berhasil dibaca: </span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">data_list</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">data_list</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="ekstraksi-fitur">
+<h1><strong>Ekstraksi Fitur</strong><a class="headerlink" href="#ekstraksi-fitur" title="Link to this heading">#</a></h1>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">extract_features_tsfel</span><span class="p">(</span><span class="n">data_list</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Mengekstraksi fitur dari setiap sinyal audio menggunakan TSFEL.</span>
+<span class="sd">    data_list: list hasil dari load_audio_dataset()</span>
+<span class="sd">    return: DataFrame berisi fitur + label</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="c1"># 1️⃣ Ambil konfigurasi default TSFEL (fitur temporal, statistical, spectral)</span>
+    <span class="n">cfg</span> <span class="o">=</span> <span class="n">tsfel</span><span class="o">.</span><span class="n">get_features_by_domain</span><span class="p">()</span>
+
+    <span class="n">feature_dfs</span> <span class="o">=</span> <span class="p">[]</span>  <span class="c1"># Menyimpan hasil ekstraksi per file</span>
+
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;🚀 Memulai proses ekstraksi fitur menggunakan TSFEL...</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span>
+
+    <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">data</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">data_list</span><span class="p">,</span> <span class="mi">1</span><span class="p">):</span>
+        <span class="n">signal</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="s1">&#39;audio_signal&#39;</span><span class="p">]</span>
+        <span class="n">sr</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="s1">&#39;sampling_rate&#39;</span><span class="p">]</span>
+
+        <span class="k">try</span><span class="p">:</span>
+            <span class="c1"># 2️⃣ Ekstraksi fitur untuk satu sinyal</span>
+            <span class="n">features</span> <span class="o">=</span> <span class="n">tsfel</span><span class="o">.</span><span class="n">time_series_features_extractor</span><span class="p">(</span><span class="n">cfg</span><span class="p">,</span> <span class="n">signal</span><span class="p">,</span> <span class="n">fs</span><span class="o">=</span><span class="n">sr</span><span class="p">,</span> <span class="n">verbose</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+
+            <span class="c1"># 3️⃣ Tambahkan label &amp; metadata ke hasil fitur</span>
+            <span class="n">features</span><span class="p">[</span><span class="s1">&#39;filename&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="s1">&#39;filename&#39;</span><span class="p">]</span>
+            <span class="n">features</span><span class="p">[</span><span class="s1">&#39;label_aksi&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="s1">&#39;label_aksi&#39;</span><span class="p">]</span>
+            <span class="n">features</span><span class="p">[</span><span class="s1">&#39;label_identitas&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="s1">&#39;label_identitas&#39;</span><span class="p">]</span>
+
+            <span class="n">feature_dfs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">features</span><span class="p">)</span>
+
+            <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;✅ [</span><span class="si">{</span><span class="n">i</span><span class="si">}</span><span class="s2">/</span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">data_list</span><span class="p">)</span><span class="si">}</span><span class="s2">] Fitur diekstrak untuk file: </span><span class="si">{</span><span class="n">data</span><span class="p">[</span><span class="s1">&#39;filename&#39;</span><span class="p">]</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+
+        <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+            <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;❌ Error saat ekstraksi fitur </span><span class="si">{</span><span class="n">data</span><span class="p">[</span><span class="s1">&#39;filename&#39;</span><span class="p">]</span><span class="si">}</span><span class="s2">: </span><span class="si">{</span><span class="n">e</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+
+    <span class="c1"># 4️⃣ Gabungkan semua hasil fitur menjadi satu DataFrame besar</span>
+    <span class="n">feature_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">concat</span><span class="p">(</span><span class="n">feature_dfs</span><span class="p">,</span> <span class="n">ignore_index</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">🎉 Ekstraksi fitur selesai!&quot;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;📊 Total data fitur: </span><span class="si">{</span><span class="n">feature_df</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="si">}</span><span class="s2"> baris, </span><span class="si">{</span><span class="n">feature_df</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="si">}</span><span class="s2"> kolom&quot;</span><span class="p">)</span>
+
+    <span class="k">return</span> <span class="n">feature_df</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s2">&quot;__main__&quot;</span><span class="p">:</span>
+    <span class="c1"># Jalankan kode membaca dataset</span>
+    <span class="n">dataset</span> <span class="o">=</span> <span class="n">load_audio_dataset</span><span class="p">()</span>
+    <span class="n">features_df</span> <span class="o">=</span> <span class="n">extract_features_tsfel</span><span class="p">(</span><span class="n">dataset</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>🚀 Memulai proses pembacaan file audio dari struktur multi-label...
+
+📂 Membaca folder: buka fauzan ...
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>C:\Users\MyBook Z Series\AppData\Local\Temp\ipykernel_13700\2150380174.py:38: UserWarning: PySoundFile failed. Trying audioread instead.
+  audio_signal, sr = librosa.load(file_path, sr=None)
+D:\Perkuliahan\Semester 5\Poyek Sains Data\PSD\venv_py\Lib\site-packages\librosa\core\audio.py:184: FutureWarning: librosa.core.audio.__audioread_load
+	Deprecated as of librosa version 0.10.0.
+	It will be removed in librosa version 1.0.
+  y, sr_native = __audioread_load(path, offset, duration, dtype)
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>C:\Users\MyBook Z Series\AppData\Local\Temp\ipykernel_13700\2150380174.py:38: UserWarning: PySoundFile failed. Trying audioread instead.
+  audio_signal, sr = librosa.load(file_path, sr=None)
+D:\Perkuliahan\Semester 5\Poyek Sains Data\PSD\venv_py\Lib\site-packages\librosa\core\audio.py:184: FutureWarning: librosa.core.audio.__audioread_load
+	Deprecated as of librosa version 0.10.0.
+	It will be removed in librosa version 1.0.
+  y, sr_native = __audioread_load(path, offset, duration, dtype)
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>📂 Membaca folder: buka fikri ...
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>📂 Membaca folder: tutup fauzan ...
+</pre></div>
+</div>
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">LibsndfileError</span><span class="g g-Whitespace">                           </span>Traceback (most recent call last)
+<span class="nn">File D:\Perkuliahan\Semester 5\Poyek Sains Data\PSD\venv_py\Lib\site-packages\librosa\core\audio.py:176,</span> in <span class="ni">load</span><span class="nt">(path, sr, mono, offset, duration, dtype, res_type)</span>
+<span class="g g-Whitespace">    </span><span class="mi">175</span> <span class="k">try</span><span class="p">:</span>
+<span class="ne">--&gt; </span><span class="mi">176</span>     <span class="n">y</span><span class="p">,</span> <span class="n">sr_native</span> <span class="o">=</span> <span class="n">__soundfile_load</span><span class="p">(</span><span class="n">path</span><span class="p">,</span> <span class="n">offset</span><span class="p">,</span> <span class="n">duration</span><span class="p">,</span> <span class="n">dtype</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">178</span> <span class="k">except</span> <span class="n">sf</span><span class="o">.</span><span class="n">SoundFileRuntimeError</span> <span class="k">as</span> <span class="n">exc</span><span class="p">:</span>
+<span class="g g-Whitespace">    </span><span class="mi">179</span>     <span class="c1"># If soundfile failed, try audioread instead</span>
+
+<span class="nn">File D:\Perkuliahan\Semester 5\Poyek Sains Data\PSD\venv_py\Lib\site-packages\librosa\core\audio.py:209,</span> in <span class="ni">__soundfile_load</span><span class="nt">(path, offset, duration, dtype)</span>
+<span class="g g-Whitespace">    </span><span class="mi">207</span> <span class="k">else</span><span class="p">:</span>
+<span class="g g-Whitespace">    </span><span class="mi">208</span>     <span class="c1"># Otherwise, create the soundfile object</span>
+<span class="ne">--&gt; </span><span class="mi">209</span>     <span class="n">context</span> <span class="o">=</span> <span class="n">sf</span><span class="o">.</span><span class="n">SoundFile</span><span class="p">(</span><span class="n">path</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">211</span> <span class="k">with</span> <span class="n">context</span> <span class="k">as</span> <span class="n">sf_desc</span><span class="p">:</span>
+
+<span class="nn">File D:\Perkuliahan\Semester 5\Poyek Sains Data\PSD\venv_py\Lib\site-packages\soundfile.py:690,</span> in <span class="ni">SoundFile.__init__</span><span class="nt">(self, file, mode, samplerate, channels, subtype, endian, format, closefd, compression_level, bitrate_mode)</span>
+<span class="g g-Whitespace">    </span><span class="mi">688</span> <span class="bp">self</span><span class="o">.</span><span class="n">_info</span> <span class="o">=</span> <span class="n">_create_info_struct</span><span class="p">(</span><span class="n">file</span><span class="p">,</span> <span class="n">mode</span><span class="p">,</span> <span class="n">samplerate</span><span class="p">,</span> <span class="n">channels</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">689</span>                                  <span class="nb">format</span><span class="p">,</span> <span class="n">subtype</span><span class="p">,</span> <span class="n">endian</span><span class="p">)</span>
+<span class="ne">--&gt; </span><span class="mi">690</span> <span class="bp">self</span><span class="o">.</span><span class="n">_file</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_open</span><span class="p">(</span><span class="n">file</span><span class="p">,</span> <span class="n">mode_int</span><span class="p">,</span> <span class="n">closefd</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">691</span> <span class="k">if</span> <span class="nb">set</span><span class="p">(</span><span class="n">mode</span><span class="p">)</span><span class="o">.</span><span class="n">issuperset</span><span class="p">(</span><span class="s1">&#39;r+&#39;</span><span class="p">)</span> <span class="ow">and</span> <span class="bp">self</span><span class="o">.</span><span class="n">seekable</span><span class="p">():</span>
+<span class="g g-Whitespace">    </span><span class="mi">692</span>     <span class="c1"># Move write position to 0 (like in Python file objects)</span>
+
+<span class="nn">File D:\Perkuliahan\Semester 5\Poyek Sains Data\PSD\venv_py\Lib\site-packages\soundfile.py:1265,</span> in <span class="ni">SoundFile._open</span><span class="nt">(self, file, mode_int, closefd)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1264</span>     <span class="n">err</span> <span class="o">=</span> <span class="n">_snd</span><span class="o">.</span><span class="n">sf_error</span><span class="p">(</span><span class="n">file_ptr</span><span class="p">)</span>
+<span class="ne">-&gt; </span><span class="mi">1265</span>     <span class="k">raise</span> <span class="n">LibsndfileError</span><span class="p">(</span><span class="n">err</span><span class="p">,</span> <span class="n">prefix</span><span class="o">=</span><span class="s2">&quot;Error opening </span><span class="si">{0!r}</span><span class="s2">: &quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">name</span><span class="p">))</span>
+<span class="g g-Whitespace">   </span><span class="mi">1266</span> <span class="k">if</span> <span class="n">mode_int</span> <span class="o">==</span> <span class="n">_snd</span><span class="o">.</span><span class="n">SFM_WRITE</span><span class="p">:</span>
+<span class="g g-Whitespace">   </span><span class="mi">1267</span>     <span class="c1"># Due to a bug in libsndfile version &lt;= 1.0.25, frames != 0</span>
+<span class="g g-Whitespace">   </span><span class="mi">1268</span>     <span class="c1"># when opening a named pipe in SFM_WRITE mode.</span>
+<span class="g g-Whitespace">   </span><span class="mi">1269</span>     <span class="c1"># See http://github.com/erikd/libsndfile/issues/77.</span>
+
+<span class="ne">LibsndfileError</span>: Error opening &#39;dataset/audio\\tutup fauzan\\20251102_094619.aac&#39;: Format not recognised.
+
+<span class="n">During</span> <span class="n">handling</span> <span class="n">of</span> <span class="n">the</span> <span class="n">above</span> <span class="n">exception</span><span class="p">,</span> <span class="n">another</span> <span class="n">exception</span> <span class="n">occurred</span><span class="p">:</span>
+
+<span class="ne">KeyboardInterrupt</span><span class="g g-Whitespace">                         </span>Traceback (most recent call last)
+<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">5</span><span class="p">],</span> <span class="n">line</span> <span class="mi">3</span>
+<span class="g g-Whitespace">      </span><span class="mi">1</span> <span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s2">&quot;__main__&quot;</span><span class="p">:</span>
+<span class="g g-Whitespace">      </span><span class="mi">2</span>     <span class="c1"># Jalankan kode membaca dataset</span>
+<span class="ne">----&gt; </span><span class="mi">3</span>     <span class="n">dataset</span> <span class="o">=</span> <span class="n">load_audio_dataset</span><span class="p">()</span>
+<span class="g g-Whitespace">      </span><span class="mi">4</span>     <span class="n">features_df</span> <span class="o">=</span> <span class="n">extract_features_tsfel</span><span class="p">(</span><span class="n">dataset</span><span class="p">)</span>
+
+<span class="nn">Cell In[3], line 38,</span> in <span class="ni">load_audio_dataset</span><span class="nt">(dataset_path, valid_exts)</span>
+<span class="g g-Whitespace">     </span><span class="mi">34</span> <span class="n">file_path</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">folder_path</span><span class="p">,</span> <span class="n">filename</span><span class="p">)</span>
+<span class="g g-Whitespace">     </span><span class="mi">36</span> <span class="k">try</span><span class="p">:</span>
+<span class="g g-Whitespace">     </span><span class="mi">37</span>     <span class="c1"># Membaca file audio</span>
+<span class="ne">---&gt; </span><span class="mi">38</span>     <span class="n">audio_signal</span><span class="p">,</span> <span class="n">sr</span> <span class="o">=</span> <span class="n">librosa</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="n">file_path</span><span class="p">,</span> <span class="n">sr</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span>
+<span class="g g-Whitespace">     </span><span class="mi">39</span>     <span class="n">data_list</span><span class="o">.</span><span class="n">append</span><span class="p">({</span>
+<span class="g g-Whitespace">     </span><span class="mi">40</span>         <span class="s1">&#39;filename&#39;</span><span class="p">:</span> <span class="n">filename</span><span class="p">,</span>
+<span class="g g-Whitespace">     </span><span class="mi">41</span>         <span class="s1">&#39;audio_signal&#39;</span><span class="p">:</span> <span class="n">audio_signal</span><span class="p">,</span>
+   <span class="p">(</span><span class="o">...</span><span class="p">)</span>     <span class="mi">44</span>         <span class="s1">&#39;label_identitas&#39;</span><span class="p">:</span> <span class="n">label_identitas</span>
+<span class="g g-Whitespace">     </span><span class="mi">45</span>     <span class="p">})</span>
+<span class="g g-Whitespace">     </span><span class="mi">47</span> <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+
+<span class="nn">File D:\Perkuliahan\Semester 5\Poyek Sains Data\PSD\venv_py\Lib\site-packages\librosa\core\audio.py:184,</span> in <span class="ni">load</span><span class="nt">(path, sr, mono, offset, duration, dtype, res_type)</span>
+<span class="g g-Whitespace">    </span><span class="mi">180</span> <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">path</span><span class="p">,</span> <span class="p">(</span><span class="nb">str</span><span class="p">,</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">PurePath</span><span class="p">)):</span>
+<span class="g g-Whitespace">    </span><span class="mi">181</span>     <span class="n">warnings</span><span class="o">.</span><span class="n">warn</span><span class="p">(</span>
+<span class="g g-Whitespace">    </span><span class="mi">182</span>         <span class="s2">&quot;PySoundFile failed. Trying audioread instead.&quot;</span><span class="p">,</span> <span class="n">stacklevel</span><span class="o">=</span><span class="mi">2</span>
+<span class="g g-Whitespace">    </span><span class="mi">183</span>     <span class="p">)</span>
+<span class="ne">--&gt; </span><span class="mi">184</span>     <span class="n">y</span><span class="p">,</span> <span class="n">sr_native</span> <span class="o">=</span> <span class="n">__audioread_load</span><span class="p">(</span><span class="n">path</span><span class="p">,</span> <span class="n">offset</span><span class="p">,</span> <span class="n">duration</span><span class="p">,</span> <span class="n">dtype</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">185</span> <span class="k">else</span><span class="p">:</span>
+<span class="g g-Whitespace">    </span><span class="mi">186</span>     <span class="k">raise</span> <span class="n">exc</span>
+
+<span class="nn">File D:\Perkuliahan\Semester 5\Poyek Sains Data\PSD\venv_py\Lib\site-packages\decorator.py:235,</span> in <span class="ni">decorate.&lt;locals&gt;.fun</span><span class="nt">(*args, **kw)</span>
+<span class="g g-Whitespace">    </span><span class="mi">233</span> <span class="k">if</span> <span class="ow">not</span> <span class="n">kwsyntax</span><span class="p">:</span>
+<span class="g g-Whitespace">    </span><span class="mi">234</span>     <span class="n">args</span><span class="p">,</span> <span class="n">kw</span> <span class="o">=</span> <span class="n">fix</span><span class="p">(</span><span class="n">args</span><span class="p">,</span> <span class="n">kw</span><span class="p">,</span> <span class="n">sig</span><span class="p">)</span>
+<span class="ne">--&gt; </span><span class="mi">235</span> <span class="k">return</span> <span class="n">caller</span><span class="p">(</span><span class="n">func</span><span class="p">,</span> <span class="o">*</span><span class="p">(</span><span class="n">extras</span> <span class="o">+</span> <span class="n">args</span><span class="p">),</span> <span class="o">**</span><span class="n">kw</span><span class="p">)</span>
+
+<span class="nn">File D:\Perkuliahan\Semester 5\Poyek Sains Data\PSD\venv_py\Lib\site-packages\librosa\util\decorators.py:63,</span> in <span class="ni">deprecated.&lt;locals&gt;.__wrapper</span><span class="nt">(func, *args, **kwargs)</span>
+<span class="g g-Whitespace">     </span><span class="mi">54</span><span class="w"> </span><span class="sd">&quot;&quot;&quot;Warn the user, and then proceed.&quot;&quot;&quot;</span>
+<span class="g g-Whitespace">     </span><span class="mi">55</span> <span class="n">warnings</span><span class="o">.</span><span class="n">warn</span><span class="p">(</span>
+<span class="g g-Whitespace">     </span><span class="mi">56</span>     <span class="s2">&quot;</span><span class="si">{:s}</span><span class="s2">.</span><span class="si">{:s}</span><span class="se">\n\t</span><span class="s2">Deprecated as of librosa version </span><span class="si">{:s}</span><span class="s2">.&quot;</span>
+<span class="g g-Whitespace">     </span><span class="mi">57</span>     <span class="s2">&quot;</span><span class="se">\n\t</span><span class="s2">It will be removed in librosa version </span><span class="si">{:s}</span><span class="s2">.&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span>
+   <span class="p">(</span><span class="o">...</span><span class="p">)</span>     <span class="mi">61</span>     <span class="n">stacklevel</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span>  <span class="c1"># Would be 2, but the decorator adds a level</span>
+<span class="g g-Whitespace">     </span><span class="mi">62</span> <span class="p">)</span>
+<span class="ne">---&gt; </span><span class="mi">63</span> <span class="k">return</span> <span class="n">func</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+
+<span class="nn">File D:\Perkuliahan\Semester 5\Poyek Sains Data\PSD\venv_py\Lib\site-packages\librosa\core\audio.py:240,</span> in <span class="ni">__audioread_load</span><span class="nt">(path, offset, duration, dtype)</span>
+<span class="g g-Whitespace">    </span><span class="mi">237</span>     <span class="n">reader</span> <span class="o">=</span> <span class="n">path</span>
+<span class="g g-Whitespace">    </span><span class="mi">238</span> <span class="k">else</span><span class="p">:</span>
+<span class="g g-Whitespace">    </span><span class="mi">239</span>     <span class="c1"># If the input was not an audioread object, try to open it</span>
+<span class="ne">--&gt; </span><span class="mi">240</span>     <span class="n">reader</span> <span class="o">=</span> <span class="n">audioread</span><span class="o">.</span><span class="n">audio_open</span><span class="p">(</span><span class="n">path</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">242</span> <span class="k">with</span> <span class="n">reader</span> <span class="k">as</span> <span class="n">input_file</span><span class="p">:</span>
+<span class="g g-Whitespace">    </span><span class="mi">243</span>     <span class="n">sr_native</span> <span class="o">=</span> <span class="n">input_file</span><span class="o">.</span><span class="n">samplerate</span>
+
+<span class="nn">File D:\Perkuliahan\Semester 5\Poyek Sains Data\PSD\venv_py\Lib\site-packages\audioread\__init__.py:126,</span> in <span class="ni">audio_open</span><span class="nt">(path, backends)</span>
+<span class="g g-Whitespace">    </span><span class="mi">124</span> <span class="k">for</span> <span class="n">BackendClass</span> <span class="ow">in</span> <span class="n">backends</span><span class="p">:</span>
+<span class="g g-Whitespace">    </span><span class="mi">125</span>     <span class="k">try</span><span class="p">:</span>
+<span class="ne">--&gt; </span><span class="mi">126</span>         <span class="k">return</span> <span class="n">BackendClass</span><span class="p">(</span><span class="n">path</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">127</span>     <span class="k">except</span> <span class="n">DecodeError</span><span class="p">:</span>
+<span class="g g-Whitespace">    </span><span class="mi">128</span>         <span class="k">pass</span>
+
+<span class="nn">File D:\Perkuliahan\Semester 5\Poyek Sains Data\PSD\venv_py\Lib\site-packages\audioread\ffdec.py:171,</span> in <span class="ni">FFmpegAudioFile.__init__</span><span class="nt">(self, filename, block_size)</span>
+<span class="g g-Whitespace">    </span><span class="mi">168</span> <span class="bp">self</span><span class="o">.</span><span class="n">stdout_reader</span><span class="o">.</span><span class="n">start</span><span class="p">()</span>
+<span class="g g-Whitespace">    </span><span class="mi">170</span> <span class="c1"># Read relevant information from stderr.</span>
+<span class="ne">--&gt; </span><span class="mi">171</span> <span class="bp">self</span><span class="o">.</span><span class="n">_get_info</span><span class="p">()</span>
+<span class="g g-Whitespace">    </span><span class="mi">173</span> <span class="c1"># Start a separate thread to read the rest of the data from</span>
+<span class="g g-Whitespace">    </span><span class="mi">174</span> <span class="c1"># stderr. This (a) avoids filling up the OS buffer and (b)</span>
+<span class="g g-Whitespace">    </span><span class="mi">175</span> <span class="c1"># collects the error output for diagnosis.</span>
+<span class="g g-Whitespace">    </span><span class="mi">176</span> <span class="bp">self</span><span class="o">.</span><span class="n">stderr_reader</span> <span class="o">=</span> <span class="n">QueueReaderThread</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">proc</span><span class="o">.</span><span class="n">stderr</span><span class="p">)</span>
+
+<span class="nn">File D:\Perkuliahan\Semester 5\Poyek Sains Data\PSD\venv_py\Lib\site-packages\audioread\ffdec.py:215,</span> in <span class="ni">FFmpegAudioFile._get_info</span><span class="nt">(self)</span>
+<span class="g g-Whitespace">    </span><span class="mi">213</span> <span class="n">out_parts</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="g g-Whitespace">    </span><span class="mi">214</span> <span class="k">while</span> <span class="kc">True</span><span class="p">:</span>
+<span class="ne">--&gt; </span><span class="mi">215</span>     <span class="n">line</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">proc</span><span class="o">.</span><span class="n">stderr</span><span class="o">.</span><span class="n">readline</span><span class="p">()</span>
+<span class="g g-Whitespace">    </span><span class="mi">216</span>     <span class="k">if</span> <span class="ow">not</span> <span class="n">line</span><span class="p">:</span>
+<span class="g g-Whitespace">    </span><span class="mi">217</span>         <span class="c1"># EOF and data not found.</span>
+<span class="g g-Whitespace">    </span><span class="mi">218</span>         <span class="k">raise</span> <span class="n">CommunicationError</span><span class="p">(</span><span class="s2">&quot;stream info not found&quot;</span><span class="p">)</span>
+
+<span class="ne">KeyboardInterrupt</span>: 
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="feature-selection-using-information-gain">
+<h1><strong>Feature Selection using Information Gain</strong><a class="headerlink" href="#feature-selection-using-information-gain" title="Link to this heading">#</a></h1>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">feature_selection_information_gain</span><span class="p">(</span><span class="n">features_df</span><span class="p">):</span>
+    <span class="c1"># 1️⃣ Pisahkan fitur dan label</span>
+    <span class="n">X</span> <span class="o">=</span> <span class="n">features_df</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;label_aksi&quot;</span><span class="p">,</span> <span class="s2">&quot;label_identitas&quot;</span><span class="p">],</span> <span class="n">errors</span><span class="o">=</span><span class="s2">&quot;ignore&quot;</span><span class="p">)</span>
+    <span class="n">y_aksi</span> <span class="o">=</span> <span class="n">features_df</span><span class="p">[</span><span class="s2">&quot;label_aksi&quot;</span><span class="p">]</span>
+    <span class="n">y_identitas</span> <span class="o">=</span> <span class="n">features_df</span><span class="p">[</span><span class="s2">&quot;label_identitas&quot;</span><span class="p">]</span>
+
+    <span class="c1"># 2️⃣ Ambil hanya kolom numerik (hindari string seperti nama file)</span>
+    <span class="n">X</span> <span class="o">=</span> <span class="n">X</span><span class="o">.</span><span class="n">select_dtypes</span><span class="p">(</span><span class="n">include</span><span class="o">=</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">number</span><span class="p">])</span>
+
+    <span class="c1"># 3️⃣ Tangani missing value (NaN)</span>
+    <span class="n">imputer</span> <span class="o">=</span> <span class="n">SimpleImputer</span><span class="p">(</span><span class="n">strategy</span><span class="o">=</span><span class="s1">&#39;median&#39;</span><span class="p">)</span>
+    <span class="n">X_imputed</span> <span class="o">=</span> <span class="n">imputer</span><span class="o">.</span><span class="n">fit_transform</span><span class="p">(</span><span class="n">X</span><span class="p">)</span>
+
+    <span class="c1"># 4️⃣ Encode label menjadi angka</span>
+    <span class="n">le_aksi</span> <span class="o">=</span> <span class="n">LabelEncoder</span><span class="p">()</span>
+    <span class="n">le_identitas</span> <span class="o">=</span> <span class="n">LabelEncoder</span><span class="p">()</span>
+    <span class="n">y_aksi_encoded</span> <span class="o">=</span> <span class="n">le_aksi</span><span class="o">.</span><span class="n">fit_transform</span><span class="p">(</span><span class="n">y_aksi</span><span class="p">)</span>
+    <span class="n">y_identitas_encoded</span> <span class="o">=</span> <span class="n">le_identitas</span><span class="o">.</span><span class="n">fit_transform</span><span class="p">(</span><span class="n">y_identitas</span><span class="p">)</span>
+
+    <span class="c1"># 5️⃣ Hitung Information Gain (Mutual Information)</span>
+    <span class="n">ig_aksi</span> <span class="o">=</span> <span class="n">mutual_info_classif</span><span class="p">(</span><span class="n">X_imputed</span><span class="p">,</span> <span class="n">y_aksi_encoded</span><span class="p">,</span> <span class="n">discrete_features</span><span class="o">=</span><span class="s1">&#39;auto&#39;</span><span class="p">)</span>
+    <span class="n">ig_identitas</span> <span class="o">=</span> <span class="n">mutual_info_classif</span><span class="p">(</span><span class="n">X_imputed</span><span class="p">,</span> <span class="n">y_identitas_encoded</span><span class="p">,</span> <span class="n">discrete_features</span><span class="o">=</span><span class="s1">&#39;auto&#39;</span><span class="p">)</span>
+
+    <span class="c1"># 6️⃣ Gabungkan hasil ke DataFrame</span>
+    <span class="n">ig_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span>
+        <span class="s2">&quot;Feature&quot;</span><span class="p">:</span> <span class="n">X</span><span class="o">.</span><span class="n">columns</span><span class="p">,</span>
+        <span class="s2">&quot;IG_Aksi&quot;</span><span class="p">:</span> <span class="n">ig_aksi</span><span class="p">,</span>
+        <span class="s2">&quot;IG_Identitas&quot;</span><span class="p">:</span> <span class="n">ig_identitas</span>
+    <span class="p">})</span><span class="o">.</span><span class="n">sort_values</span><span class="p">(</span><span class="n">by</span><span class="o">=</span><span class="s2">&quot;IG_Aksi&quot;</span><span class="p">,</span> <span class="n">ascending</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+
+    <span class="c1"># 7️⃣ Visualisasi skor</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">14</span><span class="p">,</span> <span class="mi">6</span><span class="p">))</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">bar</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">ig_df</span><span class="p">)),</span> <span class="n">ig_df</span><span class="p">[</span><span class="s2">&quot;IG_Aksi&quot;</span><span class="p">])</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">xticks</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">ig_df</span><span class="p">)),</span> <span class="n">ig_df</span><span class="p">[</span><span class="s2">&quot;Feature&quot;</span><span class="p">],</span> <span class="n">rotation</span><span class="o">=</span><span class="mi">90</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;Information Gain terhadap Label Aksi&quot;</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;Fitur&quot;</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;Skor IG&quot;</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+
+    <span class="k">return</span> <span class="n">ig_df</span>
+</pre></div>
+</div>
+</div>
+</div>
+<section id="show-score-information-gain">
+<h2><em>Show Score Information Gain</em><a class="headerlink" href="#show-score-information-gain" title="Link to this heading">#</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s2">&quot;__main__&quot;</span><span class="p">:</span>
+    <span class="n">ig_results</span> <span class="o">=</span> <span class="n">feature_selection_information_gain</span><span class="p">(</span><span class="n">features_df</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">🔝 10 fitur dengan Information Gain tertinggi terhadap label_aksi:&quot;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">ig_results</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">10</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/b84753c26bcae492ec5c6fdec8a4acb43eb4a40dfc6e9fe469a74b2e5d569c2e.png" src="_images/b84753c26bcae492ec5c6fdec8a4acb43eb4a40dfc6e9fe469a74b2e5d569c2e.png" />
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>🔝 10 fitur dengan Information Gain tertinggi terhadap label_aksi:
+                                       Feature   IG_Aksi  IG_Identitas
+156  0_Spectrogram mean coefficient_10064.52Hz  0.229275      0.661489
+66                           0_Power bandwidth  0.218374      0.229815
+186   0_Spectrogram mean coefficient_9290.32Hz  0.217301      0.683429
+157  0_Spectrogram mean coefficient_10838.71Hz  0.199748      0.650519
+161  0_Spectrogram mean coefficient_13935.48Hz  0.190200      0.672459
+196                 0_Wavelet energy_12000.0Hz  0.188961      0.661489
+136                          0_Wavelet entropy  0.181960      0.174322
+20                     0_Fundamental frequency  0.179550      0.478973
+164  0_Spectrogram mean coefficient_15483.87Hz  0.178603      0.650519
+205     0_Wavelet standard deviation_12000.0Hz  0.175366      0.661489
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">feature_selection_information_gain</span><span class="p">(</span><span class="n">features_df</span><span class="p">):</span>
+
+    <span class="c1"># 1️⃣ Pisahkan fitur dan label</span>
+    <span class="n">X</span> <span class="o">=</span> <span class="n">features_df</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;label_aksi&quot;</span><span class="p">,</span> <span class="s2">&quot;label_identitas&quot;</span><span class="p">])</span>
+    <span class="n">y_aksi</span> <span class="o">=</span> <span class="n">features_df</span><span class="p">[</span><span class="s2">&quot;label_aksi&quot;</span><span class="p">]</span>
+
+    <span class="c1"># 2️⃣ Pilih hanya kolom numerik</span>
+    <span class="n">X_numeric</span> <span class="o">=</span> <span class="n">X</span><span class="o">.</span><span class="n">select_dtypes</span><span class="p">(</span><span class="n">include</span><span class="o">=</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">number</span><span class="p">])</span>
+
+    <span class="c1"># 3️⃣ Tangani missing value</span>
+    <span class="n">imputer</span> <span class="o">=</span> <span class="n">SimpleImputer</span><span class="p">(</span><span class="n">strategy</span><span class="o">=</span><span class="s1">&#39;median&#39;</span><span class="p">)</span>
+    <span class="n">X_imputed</span> <span class="o">=</span> <span class="n">imputer</span><span class="o">.</span><span class="n">fit_transform</span><span class="p">(</span><span class="n">X_numeric</span><span class="p">)</span>
+
+    <span class="c1"># 4️⃣ Encode label</span>
+    <span class="n">le_aksi</span> <span class="o">=</span> <span class="n">LabelEncoder</span><span class="p">()</span>
+    <span class="n">y_aksi_encoded</span> <span class="o">=</span> <span class="n">le_aksi</span><span class="o">.</span><span class="n">fit_transform</span><span class="p">(</span><span class="n">y_aksi</span><span class="p">)</span>
+
+    <span class="c1"># 5️⃣ Hitung information gain</span>
+    <span class="n">ig_scores</span> <span class="o">=</span> <span class="n">mutual_info_classif</span><span class="p">(</span><span class="n">X_imputed</span><span class="p">,</span> <span class="n">y_aksi_encoded</span><span class="p">,</span> <span class="n">discrete_features</span><span class="o">=</span><span class="s1">&#39;auto&#39;</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">42</span><span class="p">)</span>
+
+    <span class="n">ig_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span>
+        <span class="s2">&quot;Feature&quot;</span><span class="p">:</span> <span class="n">X_numeric</span><span class="o">.</span><span class="n">columns</span><span class="p">,</span>
+        <span class="s2">&quot;IG_Score&quot;</span><span class="p">:</span> <span class="n">ig_scores</span>
+    <span class="p">})</span><span class="o">.</span><span class="n">sort_values</span><span class="p">(</span><span class="n">by</span><span class="o">=</span><span class="s2">&quot;IG_Score&quot;</span><span class="p">,</span> <span class="n">ascending</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span><span class="o">.</span><span class="n">reset_index</span><span class="p">(</span><span class="n">drop</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+    <span class="c1"># ✅ Gunakan hanya kolom numerik, bukan X.columns</span>
+    <span class="n">X_imputed_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">X_imputed</span><span class="p">,</span> <span class="n">columns</span><span class="o">=</span><span class="n">X_numeric</span><span class="o">.</span><span class="n">columns</span><span class="p">)</span>
+
+    <span class="k">return</span> <span class="n">ig_df</span><span class="p">,</span> <span class="n">X_imputed_df</span><span class="p">,</span> <span class="n">y_aksi_encoded</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">evaluate_feature_reduction</span><span class="p">(</span><span class="n">ig_df</span><span class="p">,</span> <span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">step</span><span class="o">=</span><span class="mi">1</span><span class="p">):</span>
+    <span class="c1"># 1️⃣ Buang fitur dengan IG = 0</span>
+    <span class="n">ig_df</span> <span class="o">=</span> <span class="n">ig_df</span><span class="p">[</span><span class="n">ig_df</span><span class="p">[</span><span class="s2">&quot;IG_Score&quot;</span><span class="p">]</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">reset_index</span><span class="p">(</span><span class="n">drop</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Total fitur aktif setelah filter IG&gt;0: </span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">ig_df</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+
+    <span class="n">results</span> <span class="o">=</span> <span class="p">[]</span>
+
+    <span class="c1"># 2️⃣ Looping dari semua fitur hingga 1 fitur (step 5)</span>
+    <span class="k">for</span> <span class="n">n_features</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">ig_df</span><span class="p">),</span> <span class="mi">0</span><span class="p">,</span> <span class="o">-</span><span class="n">step</span><span class="p">):</span>
+        <span class="n">top_features</span> <span class="o">=</span> <span class="n">ig_df</span><span class="p">[</span><span class="s2">&quot;Feature&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">iloc</span><span class="p">[:</span><span class="n">n_features</span><span class="p">]</span><span class="o">.</span><span class="n">tolist</span><span class="p">()</span>
+
+        <span class="c1"># Ambil subset X</span>
+        <span class="n">X_subset</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">columns</span><span class="o">=</span><span class="n">ig_df</span><span class="p">[</span><span class="s2">&quot;Feature&quot;</span><span class="p">])[</span><span class="n">top_features</span><span class="p">]</span>
+
+        <span class="c1"># Split data (train/test)</span>
+        <span class="n">X_train</span><span class="p">,</span> <span class="n">X_test</span><span class="p">,</span> <span class="n">y_train</span><span class="p">,</span> <span class="n">y_test</span> <span class="o">=</span> <span class="n">train_test_split</span><span class="p">(</span>
+            <span class="n">X_subset</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">test_size</span><span class="o">=</span><span class="mf">0.2</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">42</span>
+        <span class="p">)</span>
+
+        <span class="c1"># Model KNN</span>
+        <span class="n">model</span> <span class="o">=</span> <span class="n">KNeighborsClassifier</span><span class="p">(</span><span class="n">n_neighbors</span><span class="o">=</span><span class="mi">5</span><span class="p">)</span>
+        <span class="n">model</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">)</span>
+        <span class="n">y_pred</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X_test</span><span class="p">)</span>
+
+        <span class="n">acc</span> <span class="o">=</span> <span class="n">accuracy_score</span><span class="p">(</span><span class="n">y_test</span><span class="p">,</span> <span class="n">y_pred</span><span class="p">)</span>
+
+        <span class="n">results</span><span class="o">.</span><span class="n">append</span><span class="p">({</span>
+            <span class="s2">&quot;Jumlah_Fitur&quot;</span><span class="p">:</span> <span class="n">n_features</span><span class="p">,</span>
+            <span class="s2">&quot;Akurasi&quot;</span><span class="p">:</span> <span class="n">acc</span>
+        <span class="p">})</span>
+
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Fitur: </span><span class="si">{</span><span class="n">n_features</span><span class="si">:</span><span class="s2">3d</span><span class="si">}</span><span class="s2"> | Akurasi: </span><span class="si">{</span><span class="n">acc</span><span class="si">:</span><span class="s2">.4f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+
+    <span class="c1"># 3️⃣ Simpan hasil ke DataFrame</span>
+    <span class="n">results_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">results</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">results_df</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="show-score-valuation-with-reduce-feature">
+<h2><em>Show Score Valuation with Reduce Feature</em><a class="headerlink" href="#show-score-valuation-with-reduce-feature" title="Link to this heading">#</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s2">&quot;__main__&quot;</span><span class="p">:</span>
+    <span class="c1"># Asumsikan features_df sudah kamu punya dari tahap TSFEL</span>
+    <span class="n">ig_df</span><span class="p">,</span> <span class="n">X_imputed</span><span class="p">,</span> <span class="n">y_aksi_encoded</span> <span class="o">=</span> <span class="n">feature_selection_information_gain</span><span class="p">(</span><span class="n">features_df</span><span class="p">)</span>
+
+    <span class="c1"># Evaluasi performa dengan pengurangan step 5</span>
+    <span class="n">results_df</span> <span class="o">=</span> <span class="n">evaluate_feature_reduction</span><span class="p">(</span><span class="n">ig_df</span><span class="p">,</span> <span class="n">X_imputed</span><span class="p">,</span> <span class="n">y_aksi_encoded</span><span class="p">,</span> <span class="n">step</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+
+    <span class="c1"># ============================================================</span>
+    <span class="c1"># 📈 Visualisasi hasil</span>
+    <span class="c1"># ============================================================</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">5</span><span class="p">))</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">results_df</span><span class="p">[</span><span class="s2">&quot;Jumlah_Fitur&quot;</span><span class="p">],</span> <span class="n">results_df</span><span class="p">[</span><span class="s2">&quot;Akurasi&quot;</span><span class="p">],</span> <span class="n">marker</span><span class="o">=</span><span class="s1">&#39;o&#39;</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s1">&#39;-&#39;</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;Evaluasi Akurasi terhadap Jumlah Fitur (KNN + Information Gain)&quot;</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;Jumlah Fitur yang Digunakan&quot;</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;Akurasi Model&quot;</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">gca</span><span class="p">()</span><span class="o">.</span><span class="n">invert_xaxis</span><span class="p">()</span>  <span class="c1"># dari banyak ke sedikit fitur</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+
+    <span class="c1"># Menampilkan fitur optimal</span>
+    <span class="n">best_row</span> <span class="o">=</span> <span class="n">results_df</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">results_df</span><span class="p">[</span><span class="s2">&quot;Akurasi&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">idxmax</span><span class="p">()]</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">🎯 Jumlah fitur optimal: </span><span class="si">{</span><span class="n">best_row</span><span class="p">[</span><span class="s1">&#39;Jumlah_Fitur&#39;</span><span class="p">]</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;📊 Akurasi tertinggi: </span><span class="si">{</span><span class="n">best_row</span><span class="p">[</span><span class="s1">&#39;Akurasi&#39;</span><span class="p">]</span><span class="si">:</span><span class="s2">.4f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Total fitur aktif setelah filter IG&gt;0: 172
+Fitur: 172 | Akurasi: 0.4125
+Fitur: 171 | Akurasi: 0.4125
+Fitur: 170 | Akurasi: 0.4125
+Fitur: 169 | Akurasi: 0.4125
+Fitur: 168 | Akurasi: 0.4125
+Fitur: 167 | Akurasi: 0.4125
+Fitur: 166 | Akurasi: 0.4125
+Fitur: 165 | Akurasi: 0.4125
+Fitur: 164 | Akurasi: 0.4125
+Fitur: 163 | Akurasi: 0.4125
+Fitur: 162 | Akurasi: 0.4125
+Fitur: 161 | Akurasi: 0.4125
+Fitur: 160 | Akurasi: 0.4125
+Fitur: 159 | Akurasi: 0.4125
+Fitur: 158 | Akurasi: 0.4125
+Fitur: 157 | Akurasi: 0.4125
+Fitur: 156 | Akurasi: 0.4125
+Fitur: 155 | Akurasi: 0.4125
+Fitur: 154 | Akurasi: 0.4125
+Fitur: 153 | Akurasi: 0.4125
+Fitur: 152 | Akurasi: 0.4125
+Fitur: 151 | Akurasi: 0.4125
+Fitur: 150 | Akurasi: 0.4125
+Fitur: 149 | Akurasi: 0.4125
+Fitur: 148 | Akurasi: 0.4125
+Fitur: 147 | Akurasi: 0.4125
+Fitur: 146 | Akurasi: 0.4125
+Fitur: 145 | Akurasi: 0.4125
+Fitur: 144 | Akurasi: 0.4125
+Fitur: 143 | Akurasi: 0.4125
+Fitur: 142 | Akurasi: 0.4125
+Fitur: 141 | Akurasi: 0.6625
+Fitur: 140 | Akurasi: 0.6625
+Fitur: 139 | Akurasi: 0.6625
+Fitur: 138 | Akurasi: 0.6625
+Fitur: 137 | Akurasi: 0.6625
+Fitur: 136 | Akurasi: 0.6625
+Fitur: 135 | Akurasi: 0.6625
+Fitur: 134 | Akurasi: 0.6625
+Fitur: 133 | Akurasi: 0.6625
+Fitur: 132 | Akurasi: 0.6625
+Fitur: 131 | Akurasi: 0.6625
+Fitur: 130 | Akurasi: 0.6625
+Fitur: 129 | Akurasi: 0.6625
+Fitur: 128 | Akurasi: 0.6625
+Fitur: 127 | Akurasi: 0.6625
+Fitur: 126 | Akurasi: 0.6625
+Fitur: 125 | Akurasi: 0.6625
+Fitur: 124 | Akurasi: 0.6625
+Fitur: 123 | Akurasi: 0.6625
+Fitur: 122 | Akurasi: 0.6625
+Fitur: 121 | Akurasi: 0.6625
+Fitur: 120 | Akurasi: 0.6625
+Fitur: 119 | Akurasi: 0.6625
+Fitur: 118 | Akurasi: 0.6625
+Fitur: 117 | Akurasi: 0.6625
+Fitur: 116 | Akurasi: 0.6625
+Fitur: 115 | Akurasi: 0.6625
+Fitur: 114 | Akurasi: 0.6625
+Fitur: 113 | Akurasi: 0.6625
+Fitur: 112 | Akurasi: 0.6625
+Fitur: 111 | Akurasi: 0.6625
+Fitur: 110 | Akurasi: 0.6625
+Fitur: 109 | Akurasi: 0.6625
+Fitur: 108 | Akurasi: 0.6625
+Fitur: 107 | Akurasi: 0.6625
+Fitur: 106 | Akurasi: 0.6625
+Fitur: 105 | Akurasi: 0.6625
+Fitur: 104 | Akurasi: 0.6625
+Fitur: 103 | Akurasi: 0.7375
+Fitur: 102 | Akurasi: 0.7375
+Fitur: 101 | Akurasi: 0.7375
+Fitur: 100 | Akurasi: 0.7375
+Fitur:  99 | Akurasi: 0.7375
+Fitur:  98 | Akurasi: 0.7375
+Fitur:  97 | Akurasi: 0.7625
+Fitur:  96 | Akurasi: 0.7625
+Fitur:  95 | Akurasi: 0.7625
+Fitur:  94 | Akurasi: 0.7625
+Fitur:  93 | Akurasi: 0.7625
+Fitur:  92 | Akurasi: 0.7625
+Fitur:  91 | Akurasi: 0.7625
+Fitur:  90 | Akurasi: 0.7625
+Fitur:  89 | Akurasi: 0.7625
+Fitur:  88 | Akurasi: 0.7500
+Fitur:  87 | Akurasi: 0.7500
+Fitur:  86 | Akurasi: 0.7500
+Fitur:  85 | Akurasi: 0.7500
+Fitur:  84 | Akurasi: 0.7500
+Fitur:  83 | Akurasi: 0.7500
+Fitur:  82 | Akurasi: 0.7500
+Fitur:  81 | Akurasi: 0.7500
+Fitur:  80 | Akurasi: 0.7500
+Fitur:  79 | Akurasi: 0.7500
+Fitur:  78 | Akurasi: 0.7500
+Fitur:  77 | Akurasi: 0.7375
+Fitur:  76 | Akurasi: 0.7375
+Fitur:  75 | Akurasi: 0.7375
+Fitur:  74 | Akurasi: 0.7375
+Fitur:  73 | Akurasi: 0.7375
+Fitur:  72 | Akurasi: 0.7375
+Fitur:  71 | Akurasi: 0.7375
+Fitur:  70 | Akurasi: 0.7375
+Fitur:  69 | Akurasi: 0.7375
+Fitur:  68 | Akurasi: 0.7375
+Fitur:  67 | Akurasi: 0.7375
+Fitur:  66 | Akurasi: 0.7375
+Fitur:  65 | Akurasi: 0.7250
+Fitur:  64 | Akurasi: 0.7250
+Fitur:  63 | Akurasi: 0.7250
+Fitur:  62 | Akurasi: 0.7250
+Fitur:  61 | Akurasi: 0.7250
+Fitur:  60 | Akurasi: 0.7250
+Fitur:  59 | Akurasi: 0.7250
+Fitur:  58 | Akurasi: 0.7250
+Fitur:  57 | Akurasi: 0.7250
+Fitur:  56 | Akurasi: 0.7250
+Fitur:  55 | Akurasi: 0.7250
+Fitur:  54 | Akurasi: 0.7250
+Fitur:  53 | Akurasi: 0.7250
+Fitur:  52 | Akurasi: 0.7250
+Fitur:  51 | Akurasi: 0.7250
+Fitur:  50 | Akurasi: 0.7250
+Fitur:  49 | Akurasi: 0.7250
+Fitur:  48 | Akurasi: 0.7250
+Fitur:  47 | Akurasi: 0.7250
+Fitur:  46 | Akurasi: 0.7250
+Fitur:  45 | Akurasi: 0.7250
+Fitur:  44 | Akurasi: 0.7250
+Fitur:  43 | Akurasi: 0.7250
+Fitur:  42 | Akurasi: 0.7250
+Fitur:  41 | Akurasi: 0.7250
+Fitur:  40 | Akurasi: 0.7250
+Fitur:  39 | Akurasi: 0.7250
+Fitur:  38 | Akurasi: 0.7250
+Fitur:  37 | Akurasi: 0.7250
+Fitur:  36 | Akurasi: 0.7250
+Fitur:  35 | Akurasi: 0.7250
+Fitur:  34 | Akurasi: 0.7250
+Fitur:  33 | Akurasi: 0.7250
+Fitur:  32 | Akurasi: 0.7250
+Fitur:  31 | Akurasi: 0.7250
+Fitur:  30 | Akurasi: 0.7250
+Fitur:  29 | Akurasi: 0.7250
+Fitur:  28 | Akurasi: 0.7250
+Fitur:  27 | Akurasi: 0.7250
+Fitur:  26 | Akurasi: 0.7625
+Fitur:  25 | Akurasi: 0.7625
+Fitur:  24 | Akurasi: 0.7625
+Fitur:  23 | Akurasi: 0.7625
+Fitur:  22 | Akurasi: 0.7625
+Fitur:  21 | Akurasi: 0.7625
+Fitur:  20 | Akurasi: 0.7625
+Fitur:  19 | Akurasi: 0.7625
+Fitur:  18 | Akurasi: 0.7625
+Fitur:  17 | Akurasi: 0.8000
+Fitur:  16 | Akurasi: 0.8000
+Fitur:  15 | Akurasi: 0.8000
+Fitur:  14 | Akurasi: 0.8000
+Fitur:  13 | Akurasi: 0.8000
+Fitur:  12 | Akurasi: 0.8000
+Fitur:  11 | Akurasi: 0.8000
+Fitur:  10 | Akurasi: 0.8000
+Fitur:   9 | Akurasi: 0.8000
+Fitur:   8 | Akurasi: 0.7000
+Fitur:   7 | Akurasi: 0.7000
+Fitur:   6 | Akurasi: 0.7000
+Fitur:   5 | Akurasi: 0.7000
+Fitur:   4 | Akurasi: 0.7000
+Fitur:   3 | Akurasi: 0.7000
+Fitur:   2 | Akurasi: 0.6375
+Fitur:   1 | Akurasi: 0.6500
+</pre></div>
+</div>
+<img alt="_images/f28871f777592972b7ab899380932dfee91d181300d4c31cbfb69c9570cf1703.png" src="_images/f28871f777592972b7ab899380932dfee91d181300d4c31cbfb69c9570cf1703.png" />
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>🎯 Jumlah fitur optimal: 17.0
+📊 Akurasi tertinggi: 0.8000
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./."
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="project-timeseries-audio.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title"><em><strong>Project Time Series Audio Dataset</strong></em></p>
+      </div>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#"><strong>Membaca Dataset</strong></a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#ekstraksi-fitur"><strong>Ekstraksi Fitur</strong></a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#feature-selection-using-information-gain"><strong>Feature Selection using Information Gain</strong></a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#show-score-information-gain"><em>Show Score Information Gain</em></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#show-score-valuation-with-reduce-feature"><em>Show Score Valuation with Reduce Feature</em></a></li>
+</ul>
+</li>
+</ul>
+
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Alif Fitrah
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2023.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

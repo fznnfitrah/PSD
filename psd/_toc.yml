@@ -28,8 +28,10 @@ chapters:
 
   - file: project-timeseries-forecasting
     title: Project TimeSeries Forecasting
-    sections: 
+    sections:
       - file: project-timeseries-autoCorrelation
         title: TimeSeries Forecasting with Feature Selection (Revisi)
       - file: project-timeseries-audio
         title: TimeSeries Analisis Audio Fitur Analitik
+      - file: project-timeseries-audio-multilabel
+        title: TimeSeries Analisis Audio Multi Label

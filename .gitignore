@@ -1,3 +1,8 @@
-venv_py3.11
+venv_py
 dataset
 saved_models
+.env
+image
+_build
+bank-additional-full.csv
+requirements(1).tx
