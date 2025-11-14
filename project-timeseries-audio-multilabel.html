@@ -60,6 +60,7 @@
     <script>DOCUMENTATION_OPTIONS.pagename = 'project-timeseries-audio-multilabel';</script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Project Time Series Audio Dataset With MultiLabel" href="project-timeseries-audio-multilabel%20copy.html" />
     <link rel="prev" title="Project Time Series Audio Dataset" href="project-timeseries-audio.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
@@ -197,6 +198,7 @@
 <li class="toctree-l2"><a class="reference internal" href="project-timeseries-autoCorrelation.html">TimeSeries Forecasting with Feature Selection (Revisi)</a></li>
 <li class="toctree-l2"><a class="reference internal" href="project-timeseries-audio.html">TimeSeries Analisis Audio Fitur Analitik</a></li>
 <li class="toctree-l2 current active"><a class="current reference internal" href="#">TimeSeries Analisis Audio Multi Label</a></li>
+<li class="toctree-l2"><a class="reference internal" href="project-timeseries-audio-multilabel%20copy.html">TimeSeries Analisis Audio Multi Label (Revisi)</a></li>
 </ul>
 </details></li>
 </ul>
@@ -604,7 +606,7 @@ document.write(`
 📂 Membaca folder: buka fauzan ...
 </pre></div>
 </div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>C:\Users\MyBook Z Series\AppData\Local\Temp\ipykernel_13796\2150380174.py:38: UserWarning: PySoundFile failed. Trying audioread instead.
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>C:\Users\MyBook Z Series\AppData\Local\Temp\ipykernel_14224\2150380174.py:38: UserWarning: PySoundFile failed. Trying audioread instead.
   audio_signal, sr = librosa.load(file_path, sr=None)
 D:\Perkuliahan\Semester 5\Poyek Sains Data\PSD\venv_py\Lib\site-packages\librosa\core\audio.py:184: FutureWarning: librosa.core.audio.__audioread_load
 	Deprecated as of librosa version 0.10.0.
@@ -612,7 +614,7 @@ D:\Perkuliahan\Semester 5\Poyek Sains Data\PSD\venv_py\Lib\site-packages\librosa
   y, sr_native = __audioread_load(path, offset, duration, dtype)
 </pre></div>
 </div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>C:\Users\MyBook Z Series\AppData\Local\Temp\ipykernel_13796\2150380174.py:38: UserWarning: PySoundFile failed. Trying audioread instead.
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>C:\Users\MyBook Z Series\AppData\Local\Temp\ipykernel_14224\2150380174.py:38: UserWarning: PySoundFile failed. Trying audioread instead.
   audio_signal, sr = librosa.load(file_path, sr=None)
 D:\Perkuliahan\Semester 5\Poyek Sains Data\PSD\venv_py\Lib\site-packages\librosa\core\audio.py:184: FutureWarning: librosa.core.audio.__audioread_load
 	Deprecated as of librosa version 0.10.0.
@@ -626,88 +628,58 @@ D:\Perkuliahan\Semester 5\Poyek Sains Data\PSD\venv_py\Lib\site-packages\librosa
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>📂 Membaca folder: tutup fauzan ...
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>📂 Membaca folder: tutup fikri ...
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>✅ Proses pembacaan data selesai.
-📊 Total file berhasil dibaca: 400
-🚀 Memulai proses ekstraksi fitur menggunakan TSFEL...
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>D:\Perkuliahan\Semester 5\Poyek Sains Data\PSD\venv_py\Lib\site-packages\tsfel\feature_extraction\calc_features.py:195: SyntaxWarning: invalid escape sequence &#39;\*&#39;
-  \**kwargs:
-</pre></div>
-</div>
 <div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
 <span class="ne">KeyboardInterrupt</span><span class="g g-Whitespace">                         </span>Traceback (most recent call last)
-<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">5</span><span class="p">],</span> <span class="n">line</span> <span class="mi">4</span>
+<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">5</span><span class="p">],</span> <span class="n">line</span> <span class="mi">3</span>
 <span class="g g-Whitespace">      </span><span class="mi">1</span> <span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s2">&quot;__main__&quot;</span><span class="p">:</span>
 <span class="g g-Whitespace">      </span><span class="mi">2</span>     <span class="c1"># Jalankan kode membaca dataset</span>
-<span class="g g-Whitespace">      </span><span class="mi">3</span>     <span class="n">dataset</span> <span class="o">=</span> <span class="n">load_audio_dataset</span><span class="p">()</span>
-<span class="ne">----&gt; </span><span class="mi">4</span>     <span class="n">features_df</span> <span class="o">=</span> <span class="n">extract_features_tsfel</span><span class="p">(</span><span class="n">dataset</span><span class="p">)</span>
+<span class="ne">----&gt; </span><span class="mi">3</span>     <span class="n">dataset</span> <span class="o">=</span> <span class="n">load_audio_dataset</span><span class="p">()</span>
+<span class="g g-Whitespace">      </span><span class="mi">4</span>     <span class="n">features_df</span> <span class="o">=</span> <span class="n">extract_features_tsfel</span><span class="p">(</span><span class="n">dataset</span><span class="p">)</span>
 
-<span class="nn">Cell In[4], line 20,</span> in <span class="ni">extract_features_tsfel</span><span class="nt">(data_list)</span>
-<span class="g g-Whitespace">     </span><span class="mi">16</span> <span class="n">sr</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="s1">&#39;sampling_rate&#39;</span><span class="p">]</span>
-<span class="g g-Whitespace">     </span><span class="mi">18</span> <span class="k">try</span><span class="p">:</span>
-<span class="g g-Whitespace">     </span><span class="mi">19</span>     <span class="c1"># 2️⃣ Ekstraksi fitur untuk satu sinyal</span>
-<span class="ne">---&gt; </span><span class="mi">20</span>     <span class="n">features</span> <span class="o">=</span> <span class="n">tsfel</span><span class="o">.</span><span class="n">time_series_features_extractor</span><span class="p">(</span><span class="n">cfg</span><span class="p">,</span> <span class="n">signal</span><span class="p">,</span> <span class="n">fs</span><span class="o">=</span><span class="n">sr</span><span class="p">,</span> <span class="n">verbose</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
-<span class="g g-Whitespace">     </span><span class="mi">22</span>     <span class="c1"># 3️⃣ Tambahkan label &amp; metadata ke hasil fitur</span>
-<span class="g g-Whitespace">     </span><span class="mi">23</span>     <span class="n">features</span><span class="p">[</span><span class="s1">&#39;filename&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="s1">&#39;filename&#39;</span><span class="p">]</span>
+<span class="nn">Cell In[3], line 38,</span> in <span class="ni">load_audio_dataset</span><span class="nt">(dataset_path, valid_exts)</span>
+<span class="g g-Whitespace">     </span><span class="mi">34</span> <span class="n">file_path</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">folder_path</span><span class="p">,</span> <span class="n">filename</span><span class="p">)</span>
+<span class="g g-Whitespace">     </span><span class="mi">36</span> <span class="k">try</span><span class="p">:</span>
+<span class="g g-Whitespace">     </span><span class="mi">37</span>     <span class="c1"># Membaca file audio</span>
+<span class="ne">---&gt; </span><span class="mi">38</span>     <span class="n">audio_signal</span><span class="p">,</span> <span class="n">sr</span> <span class="o">=</span> <span class="n">librosa</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="n">file_path</span><span class="p">,</span> <span class="n">sr</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span>
+<span class="g g-Whitespace">     </span><span class="mi">39</span>     <span class="n">data_list</span><span class="o">.</span><span class="n">append</span><span class="p">({</span>
+<span class="g g-Whitespace">     </span><span class="mi">40</span>         <span class="s1">&#39;filename&#39;</span><span class="p">:</span> <span class="n">filename</span><span class="p">,</span>
+<span class="g g-Whitespace">     </span><span class="mi">41</span>         <span class="s1">&#39;audio_signal&#39;</span><span class="p">:</span> <span class="n">audio_signal</span><span class="p">,</span>
+   <span class="p">(</span><span class="o">...</span><span class="p">)</span>     <span class="mi">44</span>         <span class="s1">&#39;label_identitas&#39;</span><span class="p">:</span> <span class="n">label_identitas</span>
+<span class="g g-Whitespace">     </span><span class="mi">45</span>     <span class="p">})</span>
+<span class="g g-Whitespace">     </span><span class="mi">47</span> <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
 
-<span class="nn">File D:\Perkuliahan\Semester 5\Poyek Sains Data\PSD\venv_py\Lib\site-packages\tsfel\feature_extraction\calc_features.py:379,</span> in <span class="ni">time_series_features_extractor</span><span class="nt">(config, timeseries, fs, window_size, overlap, verbose, **kwargs)</span>
-<span class="g g-Whitespace">    </span><span class="mi">374</span>         <span class="k">raise</span> <span class="ne">SystemExit</span><span class="p">(</span>
-<span class="g g-Whitespace">    </span><span class="mi">375</span>             <span class="s2">&quot;n_jobs value is not valid. &quot;</span> <span class="s2">&quot;Choose an integer value or None for no multiprocessing.&quot;</span><span class="p">,</span>
-<span class="g g-Whitespace">    </span><span class="mi">376</span>         <span class="p">)</span>
-<span class="g g-Whitespace">    </span><span class="mi">377</span> <span class="c1"># single window</span>
-<span class="g g-Whitespace">    </span><span class="mi">378</span> <span class="k">else</span><span class="p">:</span>
-<span class="ne">--&gt; </span><span class="mi">379</span>     <span class="n">features_final</span> <span class="o">=</span> <span class="n">calc_window_features</span><span class="p">(</span>
-<span class="g g-Whitespace">    </span><span class="mi">380</span>         <span class="n">config</span><span class="p">,</span>
-<span class="g g-Whitespace">    </span><span class="mi">381</span>         <span class="n">timeseries</span><span class="p">,</span>
-<span class="g g-Whitespace">    </span><span class="mi">382</span>         <span class="n">fs</span><span class="p">,</span>
-<span class="g g-Whitespace">    </span><span class="mi">383</span>         <span class="n">verbose</span><span class="o">=</span><span class="n">verbose</span><span class="p">,</span>
-<span class="g g-Whitespace">    </span><span class="mi">384</span>         <span class="n">features_path</span><span class="o">=</span><span class="n">features_path</span><span class="p">,</span>
-<span class="g g-Whitespace">    </span><span class="mi">385</span>         <span class="n">header_names</span><span class="o">=</span><span class="n">names</span><span class="p">,</span>
-<span class="g g-Whitespace">    </span><span class="mi">386</span>         <span class="n">single_window</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
-<span class="g g-Whitespace">    </span><span class="mi">387</span>     <span class="p">)</span>
-<span class="g g-Whitespace">    </span><span class="mi">389</span> <span class="c1"># Assuring the same feature extraction order</span>
-<span class="g g-Whitespace">    </span><span class="mi">390</span> <span class="n">features_final</span> <span class="o">=</span> <span class="n">features_final</span><span class="o">.</span><span class="n">reindex</span><span class="p">(</span><span class="nb">sorted</span><span class="p">(</span><span class="n">features_final</span><span class="o">.</span><span class="n">columns</span><span class="p">),</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="nn">File D:\Perkuliahan\Semester 5\Poyek Sains Data\PSD\venv_py\Lib\site-packages\librosa\core\audio.py:176,</span> in <span class="ni">load</span><span class="nt">(path, sr, mono, offset, duration, dtype, res_type)</span>
+<span class="g g-Whitespace">    </span><span class="mi">173</span> <span class="k">else</span><span class="p">:</span>
+<span class="g g-Whitespace">    </span><span class="mi">174</span>     <span class="c1"># Otherwise try soundfile first, and then fall back if necessary</span>
+<span class="g g-Whitespace">    </span><span class="mi">175</span>     <span class="k">try</span><span class="p">:</span>
+<span class="ne">--&gt; </span><span class="mi">176</span>         <span class="n">y</span><span class="p">,</span> <span class="n">sr_native</span> <span class="o">=</span> <span class="n">__soundfile_load</span><span class="p">(</span><span class="n">path</span><span class="p">,</span> <span class="n">offset</span><span class="p">,</span> <span class="n">duration</span><span class="p">,</span> <span class="n">dtype</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">178</span>     <span class="k">except</span> <span class="n">sf</span><span class="o">.</span><span class="n">SoundFileRuntimeError</span> <span class="k">as</span> <span class="n">exc</span><span class="p">:</span>
+<span class="g g-Whitespace">    </span><span class="mi">179</span>         <span class="c1"># If soundfile failed, try audioread instead</span>
+<span class="g g-Whitespace">    </span><span class="mi">180</span>         <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">path</span><span class="p">,</span> <span class="p">(</span><span class="nb">str</span><span class="p">,</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">PurePath</span><span class="p">)):</span>
 
-<span class="nn">File D:\Perkuliahan\Semester 5\Poyek Sains Data\PSD\venv_py\Lib\site-packages\tsfel\feature_extraction\calc_features.py:517,</span> in <span class="ni">calc_window_features</span><span class="nt">(config, window, fs, verbose, single_window, **kwargs)</span>
-<span class="g g-Whitespace">    </span><span class="mi">515</span> <span class="k">for</span> <span class="n">ax</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">header_names</span><span class="p">)):</span>
-<span class="g g-Whitespace">    </span><span class="mi">516</span>     <span class="n">sig_ax</span> <span class="o">=</span> <span class="n">window</span> <span class="k">if</span> <span class="n">single_axis</span> <span class="k">else</span> <span class="n">window</span><span class="p">[:,</span> <span class="n">ax</span><span class="p">]</span>
-<span class="ne">--&gt; </span><span class="mi">517</span>     <span class="n">eval_result_ax</span> <span class="o">=</span> <span class="n">feature_funcs</span><span class="p">[</span><span class="n">func_total</span><span class="p">](</span><span class="n">sig_ax</span><span class="p">,</span> <span class="o">**</span><span class="n">parameters_total</span><span class="p">)</span>
-<span class="g g-Whitespace">    </span><span class="mi">518</span>     <span class="c1"># Function returns more than one element</span>
-<span class="g g-Whitespace">    </span><span class="mi">519</span>     <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">eval_result_ax</span><span class="p">,</span> <span class="nb">tuple</span><span class="p">):</span>
+<span class="nn">File D:\Perkuliahan\Semester 5\Poyek Sains Data\PSD\venv_py\Lib\site-packages\librosa\core\audio.py:209,</span> in <span class="ni">__soundfile_load</span><span class="nt">(path, offset, duration, dtype)</span>
+<span class="g g-Whitespace">    </span><span class="mi">206</span>     <span class="n">context</span> <span class="o">=</span> <span class="n">path</span>
+<span class="g g-Whitespace">    </span><span class="mi">207</span> <span class="k">else</span><span class="p">:</span>
+<span class="g g-Whitespace">    </span><span class="mi">208</span>     <span class="c1"># Otherwise, create the soundfile object</span>
+<span class="ne">--&gt; </span><span class="mi">209</span>     <span class="n">context</span> <span class="o">=</span> <span class="n">sf</span><span class="o">.</span><span class="n">SoundFile</span><span class="p">(</span><span class="n">path</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">211</span> <span class="k">with</span> <span class="n">context</span> <span class="k">as</span> <span class="n">sf_desc</span><span class="p">:</span>
+<span class="g g-Whitespace">    </span><span class="mi">212</span>     <span class="n">sr_native</span> <span class="o">=</span> <span class="n">sf_desc</span><span class="o">.</span><span class="n">samplerate</span>
 
-<span class="nn">File D:\Perkuliahan\Semester 5\Poyek Sains Data\PSD\venv_py\Lib\site-packages\tsfel\feature_extraction\features.py:1727,</span> in <span class="ni">wavelet_std</span><span class="nt">(signal, fs, wavelet, max_width)</span>
-<span class="g g-Whitespace">   </span><span class="mi">1724</span> <span class="n">max_width</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">max_width</span><span class="p">)</span>
-<span class="g g-Whitespace">   </span><span class="mi">1725</span> <span class="n">widths</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">max_width</span><span class="p">)</span>
-<span class="ne">-&gt; </span><span class="mi">1727</span> <span class="n">coeffs</span><span class="p">,</span> <span class="n">frequencies</span> <span class="o">=</span> <span class="n">continuous_wavelet_transform</span><span class="p">(</span><span class="n">signal</span><span class="o">=</span><span class="n">signal</span><span class="p">,</span> <span class="n">fs</span><span class="o">=</span><span class="n">fs</span><span class="p">,</span> <span class="n">wavelet</span><span class="o">=</span><span class="n">wavelet</span><span class="p">,</span> <span class="n">widths</span><span class="o">=</span><span class="n">widths</span><span class="p">)</span>
-<span class="g g-Whitespace">   </span><span class="mi">1728</span> <span class="n">f_keys</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">round</span><span class="p">(</span><span class="n">frequencies</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">str</span><span class="p">)</span>
-<span class="g g-Whitespace">   </span><span class="mi">1730</span> <span class="k">return</span> <span class="p">{</span><span class="s2">&quot;names&quot;</span><span class="p">:</span> <span class="p">[</span><span class="n">f</span> <span class="o">+</span> <span class="s2">&quot;Hz&quot;</span> <span class="k">for</span> <span class="n">f</span> <span class="ow">in</span> <span class="n">f_keys</span><span class="p">],</span> <span class="s2">&quot;values&quot;</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">std</span><span class="p">(</span><span class="n">coeffs</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)}</span>
+<span class="nn">File D:\Perkuliahan\Semester 5\Poyek Sains Data\PSD\venv_py\Lib\site-packages\soundfile.py:690,</span> in <span class="ni">SoundFile.__init__</span><span class="nt">(self, file, mode, samplerate, channels, subtype, endian, format, closefd, compression_level, bitrate_mode)</span>
+<span class="g g-Whitespace">    </span><span class="mi">687</span> <span class="bp">self</span><span class="o">.</span><span class="n">_bitrate_mode</span> <span class="o">=</span> <span class="n">bitrate_mode</span>
+<span class="g g-Whitespace">    </span><span class="mi">688</span> <span class="bp">self</span><span class="o">.</span><span class="n">_info</span> <span class="o">=</span> <span class="n">_create_info_struct</span><span class="p">(</span><span class="n">file</span><span class="p">,</span> <span class="n">mode</span><span class="p">,</span> <span class="n">samplerate</span><span class="p">,</span> <span class="n">channels</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">689</span>                                  <span class="nb">format</span><span class="p">,</span> <span class="n">subtype</span><span class="p">,</span> <span class="n">endian</span><span class="p">)</span>
+<span class="ne">--&gt; </span><span class="mi">690</span> <span class="bp">self</span><span class="o">.</span><span class="n">_file</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_open</span><span class="p">(</span><span class="n">file</span><span class="p">,</span> <span class="n">mode_int</span><span class="p">,</span> <span class="n">closefd</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">691</span> <span class="k">if</span> <span class="nb">set</span><span class="p">(</span><span class="n">mode</span><span class="p">)</span><span class="o">.</span><span class="n">issuperset</span><span class="p">(</span><span class="s1">&#39;r+&#39;</span><span class="p">)</span> <span class="ow">and</span> <span class="bp">self</span><span class="o">.</span><span class="n">seekable</span><span class="p">():</span>
+<span class="g g-Whitespace">    </span><span class="mi">692</span>     <span class="c1"># Move write position to 0 (like in Python file objects)</span>
+<span class="g g-Whitespace">    </span><span class="mi">693</span>     <span class="bp">self</span><span class="o">.</span><span class="n">seek</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
 
-<span class="nn">File D:\Perkuliahan\Semester 5\Poyek Sains Data\PSD\venv_py\Lib\site-packages\tsfel\feature_extraction\features_utils.py:371,</span> in <span class="ni">continuous_wavelet_transform</span><span class="nt">(signal, fs, wavelet, widths)</span>
-<span class="g g-Whitespace">    </span><span class="mi">351</span> <span class="k">def</span><span class="w"> </span><span class="nf">continuous_wavelet_transform</span><span class="p">(</span><span class="n">signal</span><span class="p">,</span> <span class="n">fs</span><span class="p">,</span> <span class="n">wavelet</span><span class="o">=</span><span class="s2">&quot;mexh&quot;</span><span class="p">,</span> <span class="n">widths</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">10</span><span class="p">)):</span>
-<span class="g g-Whitespace">    </span><span class="mi">352</span><span class="w">     </span><span class="sd">&quot;&quot;&quot;Computes CWT (continuous wavelet transform) of the signal.</span>
-<span class="g g-Whitespace">    </span><span class="mi">353</span><span class="sd"> </span>
-<span class="g g-Whitespace">    </span><span class="mi">354</span><span class="sd">     Parameters</span>
-<span class="sd">   (...)    368         matrix with size (len(widths),len(signal))</span>
-<span class="g g-Whitespace">    </span><span class="mi">369</span><span class="sd">     &quot;&quot;&quot;</span>
-<span class="ne">--&gt; </span><span class="mi">371</span>     <span class="n">coefficients</span><span class="p">,</span> <span class="n">frequencies</span> <span class="o">=</span> <span class="n">pywt</span><span class="o">.</span><span class="n">cwt</span><span class="p">(</span><span class="n">signal</span><span class="p">,</span> <span class="n">widths</span><span class="p">,</span> <span class="n">wavelet</span><span class="p">,</span> <span class="n">sampling_period</span><span class="o">=</span><span class="mi">1</span> <span class="o">/</span> <span class="n">fs</span><span class="p">)</span>
-<span class="g g-Whitespace">    </span><span class="mi">373</span>     <span class="k">return</span> <span class="n">coefficients</span><span class="p">,</span> <span class="n">frequencies</span>
-
-<span class="nn">File D:\Perkuliahan\Semester 5\Poyek Sains Data\PSD\venv_py\Lib\site-packages\pywt\_cwt.py:157,</span> in <span class="ni">cwt</span><span class="nt">(data, scales, wavelet, sampling_period, method, axis, precision)</span>
-<span class="g g-Whitespace">    </span><span class="mi">155</span> <span class="k">if</span> <span class="n">method</span> <span class="o">==</span> <span class="s1">&#39;conv&#39;</span><span class="p">:</span>
-<span class="g g-Whitespace">    </span><span class="mi">156</span>     <span class="k">if</span> <span class="n">data</span><span class="o">.</span><span class="n">ndim</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
-<span class="ne">--&gt; </span><span class="mi">157</span>         <span class="n">conv</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">convolve</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">int_psi_scale</span><span class="p">)</span>
-<span class="g g-Whitespace">    </span><span class="mi">158</span>     <span class="k">else</span><span class="p">:</span>
-<span class="g g-Whitespace">    </span><span class="mi">159</span>         <span class="c1"># batch convolution via loop</span>
-<span class="g g-Whitespace">    </span><span class="mi">160</span>         <span class="n">conv_shape</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">data</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
-
-<span class="nn">File D:\Perkuliahan\Semester 5\Poyek Sains Data\PSD\venv_py\Lib\site-packages\numpy\_core\numeric.py:903,</span> in <span class="ni">convolve</span><span class="nt">(a, v, mode)</span>
-<span class="g g-Whitespace">    </span><span class="mi">901</span> <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">v</span><span class="p">)</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
-<span class="g g-Whitespace">    </span><span class="mi">902</span>     <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s1">&#39;v cannot be empty&#39;</span><span class="p">)</span>
-<span class="ne">--&gt; </span><span class="mi">903</span> <span class="k">return</span> <span class="n">multiarray</span><span class="o">.</span><span class="n">correlate</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">v</span><span class="p">[::</span><span class="o">-</span><span class="mi">1</span><span class="p">],</span> <span class="n">mode</span><span class="p">)</span>
+<span class="nn">File D:\Perkuliahan\Semester 5\Poyek Sains Data\PSD\venv_py\Lib\site-packages\soundfile.py:1254,</span> in <span class="ni">SoundFile._open</span><span class="nt">(self, file, mode_int, closefd)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1252</span>         <span class="k">else</span><span class="p">:</span>
+<span class="g g-Whitespace">   </span><span class="mi">1253</span>             <span class="n">file</span> <span class="o">=</span> <span class="n">file</span><span class="o">.</span><span class="n">encode</span><span class="p">(</span><span class="n">_sys</span><span class="o">.</span><span class="n">getfilesystemencoding</span><span class="p">())</span>
+<span class="ne">-&gt; </span><span class="mi">1254</span>     <span class="n">file_ptr</span> <span class="o">=</span> <span class="n">openfunction</span><span class="p">(</span><span class="n">file</span><span class="p">,</span> <span class="n">mode_int</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_info</span><span class="p">)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1255</span> <span class="k">elif</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">file</span><span class="p">,</span> <span class="nb">int</span><span class="p">):</span>
+<span class="g g-Whitespace">   </span><span class="mi">1256</span>     <span class="n">file_ptr</span> <span class="o">=</span> <span class="n">_snd</span><span class="o">.</span><span class="n">sf_open_fd</span><span class="p">(</span><span class="n">file</span><span class="p">,</span> <span class="n">mode_int</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_info</span><span class="p">,</span> <span class="n">closefd</span><span class="p">)</span>
 
 <span class="ne">KeyboardInterrupt</span>: 
 </pre></div>
@@ -776,19 +748,19 @@ D:\Perkuliahan\Semester 5\Poyek Sains Data\PSD\venv_py\Lib\site-packages\librosa
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/abf1a529564106c7d79180bb58f8114a36c167b0530ebbdeb1c115349d8d2c49.png" src="_images/abf1a529564106c7d79180bb58f8114a36c167b0530ebbdeb1c115349d8d2c49.png" />
+<img alt="_images/30098120eb402c3da66679a893dbe18dcc00f1144b9941003cb212f3a9cae54b.png" src="_images/30098120eb402c3da66679a893dbe18dcc00f1144b9941003cb212f3a9cae54b.png" />
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>🔝 10 fitur dengan Information Gain tertinggi terhadap label_aksi:
                                        Feature   IG_Aksi  IG_Identitas
-156  0_Spectrogram mean coefficient_10064.52Hz  0.274687      0.661489
-186   0_Spectrogram mean coefficient_9290.32Hz  0.238721      0.683429
-66                           0_Power bandwidth  0.217958      0.229815
-157  0_Spectrogram mean coefficient_10838.71Hz  0.215646      0.650519
-164  0_Spectrogram mean coefficient_15483.87Hz  0.202114      0.650519
-162  0_Spectrogram mean coefficient_14709.68Hz  0.198843      0.672459
+156  0_Spectrogram mean coefficient_10064.52Hz  0.222033      0.661489
+157  0_Spectrogram mean coefficient_10838.71Hz  0.219013      0.650519
+66                           0_Power bandwidth  0.218374      0.229815
+158   0_Spectrogram mean coefficient_11612.9Hz  0.213727      0.672459
+186   0_Spectrogram mean coefficient_9290.32Hz  0.194501      0.683429
+196                 0_Wavelet energy_12000.0Hz  0.192976      0.661489
+162  0_Spectrogram mean coefficient_14709.68Hz  0.191832      0.672459
 136                          0_Wavelet entropy  0.181960      0.174322
-20                     0_Fundamental frequency  0.181139      0.478973
-161  0_Spectrogram mean coefficient_13935.48Hz  0.178258      0.672459
-196                 0_Wavelet energy_12000.0Hz  0.174477      0.661489
+20                     0_Fundamental frequency  0.181640      0.478973
+164  0_Spectrogram mean coefficient_15483.87Hz  0.175042      0.650519
 </pre></div>
 </div>
 </div>
@@ -1102,7 +1074,7 @@ Fitur:   1 | Akurasi: 0.6500
 <span class="n">X_all</span> <span class="o">=</span> <span class="n">features_df</span><span class="o">.</span><span class="n">select_dtypes</span><span class="p">(</span><span class="n">include</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;number&#39;</span><span class="p">])</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
 
 <span class="c1"># 10 fitur terbaik dari hasil Information Gain</span>
-<span class="n">top_features</span> <span class="o">=</span> <span class="n">ig_df</span><span class="p">[</span><span class="s2">&quot;Feature&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">iloc</span><span class="p">[:</span><span class="mi">9</span><span class="p">]</span><span class="o">.</span><span class="n">tolist</span><span class="p">()</span>
+<span class="n">top_features</span> <span class="o">=</span> <span class="n">ig_df</span><span class="p">[</span><span class="s2">&quot;Feature&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">iloc</span><span class="p">[:</span><span class="mi">17</span><span class="p">]</span><span class="o">.</span><span class="n">tolist</span><span class="p">()</span>
 
 <span class="c1"># Dataset dengan 10 fitur terpilih</span>
 <span class="n">X_selected</span> <span class="o">=</span> <span class="n">X_all</span><span class="p">[</span><span class="n">top_features</span><span class="p">]</span>
@@ -1153,7 +1125,7 @@ Fitur:   1 | Akurasi: 0.6500
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Jumlah data (baris): 400
 Jumlah fitur total: 223
-Jumlah fitur terpilih: 9
+Jumlah fitur terpilih: 17
 </pre></div>
 </div>
 </div>
@@ -1190,12 +1162,12 @@ Jumlah fitur terpilih: 9
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/1976bbc506617a9261b8995c8aadb5493a1c0732a22b32fa6dd54623f00dccfb.png" src="_images/1976bbc506617a9261b8995c8aadb5493a1c0732a22b32fa6dd54623f00dccfb.png" />
+<img alt="_images/1879f65d24fcdafa95afa2440028511784e62c5253e803844474fa930012d04e.png" src="_images/1879f65d24fcdafa95afa2440028511784e62c5253e803844474fa930012d04e.png" />
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>📘 Ringkasan PCA:
 Total komponen (semua fitur): 223
-Total komponen (fitur terpilih): 9
+Total komponen (fitur terpilih): 17
 Explained variance (semua fitur, 5 pertama): [0.23809842 0.17796223 0.13464869 0.06918949 0.04534788]
-Explained variance (fitur terpilih, 5 pertama): [0.53703687 0.1430729  0.10466968 0.06108093 0.05803267]
+Explained variance (fitur terpilih, 5 pertama): [0.5697452  0.14062048 0.06231237 0.04783545 0.03762878]
 </pre></div>
 </div>
 </div>
@@ -1236,7 +1208,7 @@ Explained variance (fitur terpilih, 5 pertama): [0.53703687 0.1430729  0.1046696
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/e3ef79f8a4a34eaed11eb2a344bae27802f8447f00966b42d6978cde00a837c0.png" src="_images/e3ef79f8a4a34eaed11eb2a344bae27802f8447f00966b42d6978cde00a837c0.png" />
+<img alt="_images/5e669adc4642b7647b3e5dd2f5736d2a8d9674567b7060765264e4976ad2199b.png" src="_images/5e669adc4642b7647b3e5dd2f5736d2a8d9674567b7060765264e4976ad2199b.png" />
 </div>
 </div>
 </section>
@@ -1266,7 +1238,7 @@ Explained variance (fitur terpilih, 5 pertama): [0.53703687 0.1430729  0.1046696
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/390e9caa6b0530822148e8e0a4122ecaccf145fede2e81bd1e20c114096d6116.png" src="_images/390e9caa6b0530822148e8e0a4122ecaccf145fede2e81bd1e20c114096d6116.png" />
+<img alt="_images/acb086d86edcbb8ab9ce9faa0c2d03c4d95792c822edb8acb3b235f2cf404854.png" src="_images/acb086d86edcbb8ab9ce9faa0c2d03c4d95792c822edb8acb3b235f2cf404854.png" />
 </div>
 </div>
 </section>
@@ -1298,33 +1270,40 @@ Explained variance (fitur terpilih, 5 pertama): [0.53703687 0.1430729  0.1046696
 </div>
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>✅ Dataset siap pakai:
-- df_ig_ready: (400, 10) (fitur terpilih)
+- df_ig_ready: (400, 18) (fitur terpilih)
 - df_pca_all_ready: (400, 224) (PCA semua fitur)
-- df_pca_selected_ready: (400, 10) (PCA fitur terpilih)
+- df_pca_selected_ready: (400, 18) (PCA fitur terpilih)
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">df_pca_selected_ready</span><span class="o">.</span><span class="n">tail</span><span class="p">())</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">df_pca_selected_ready</span><span class="o">.</span><span class="n">head</span><span class="p">())</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>          PC1       PC2       PC3       PC4       PC5       PC6       PC7  \
-395 -2.779099 -0.635367  1.481989 -0.420333 -0.134011 -0.110686 -0.009335   
-396 -2.560596 -0.608019 -0.452654 -0.442295  0.094328 -0.109178  0.013878   
-397 -2.471829 -0.652541 -0.715478 -0.303465  0.137607 -0.137801  0.065333   
-398 -2.225932 -0.769865 -0.521065  0.308748  0.177242 -0.046993  0.051670   
-399 -2.718479 -0.487734  1.631285 -0.189047 -0.089487 -0.088530 -0.007955   
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>        PC1       PC2       PC3       PC4       PC5       PC6       PC7  \
+0  0.386481  4.025372 -0.237875 -0.098008 -0.210907 -0.169478  0.181546   
+1  0.423053  4.235946 -0.394078 -0.121514 -0.115175 -0.125591  0.126667   
+2  0.276092  3.691232  0.094253 -0.453341 -0.352889 -0.170526  0.196656   
+3  0.062217  1.659727  0.260298 -0.382079 -0.007761  0.049533 -0.012519   
+4  0.006466  2.474854  0.812851 -1.058912 -0.285404  0.030133 -0.002614   
 
-          PC8       PC9  target  
-395 -0.116611 -0.021481       1  
-396 -0.196274  0.048303       1  
-397 -0.206228  0.094992       1  
-398 -0.202786  0.056437       1  
-399 -0.139553 -0.037063       1  
+        PC8       PC9      PC10      PC11      PC12      PC13      PC14  \
+0 -0.679556 -0.018706  0.056674  0.080083  0.337188 -0.209493  0.016965   
+1 -0.477825 -0.016598  0.003912  0.189161  0.310832 -0.182988  0.046080   
+2 -0.562747 -0.026983  0.069602 -0.011823  0.208204 -0.113013 -0.024048   
+3  0.525541 -0.029439 -0.079746 -0.193696 -0.522938  0.261051 -0.020408   
+4  0.623545 -0.027697 -0.074892  0.067947 -0.314182  0.288297 -0.029102   
+
+       PC15      PC16          PC17  target  
+0 -0.064535 -0.014757  1.188437e-12       0  
+1 -0.087482 -0.010276  1.791629e-12       0  
+2 -0.033491 -0.019699  1.042135e-12       0  
+3  0.046484 -0.001519  3.396983e-13       0  
+4 -0.000631 -0.015394  1.674513e-12       0  
 </pre></div>
 </div>
 </div>
@@ -1343,6 +1322,37 @@ Explained variance (fitur terpilih, 5 pertama): [0.53703687 0.1430729  0.1046696
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df_ig_ready</span><span class="p">[</span><span class="s1">&#39;target&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">features_df</span><span class="p">[</span><span class="s1">&#39;target_gabungan&#39;</span><span class="p">]</span>
 <span class="n">df_pca_all_ready</span><span class="p">[</span><span class="s1">&#39;target&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">features_df</span><span class="p">[</span><span class="s1">&#39;target_gabungan&#39;</span><span class="p">]</span>
 <span class="n">df_pca_selected_ready</span><span class="p">[</span><span class="s1">&#39;target&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">features_df</span><span class="p">[</span><span class="s1">&#39;target_gabungan&#39;</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">df_pca_selected_ready</span><span class="o">.</span><span class="n">head</span><span class="p">())</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>        PC1       PC2       PC3       PC4       PC5       PC6       PC7  \
+0  0.386481  4.025372 -0.237875 -0.098008 -0.210907 -0.169478  0.181546   
+1  0.423053  4.235946 -0.394078 -0.121514 -0.115175 -0.125591  0.126667   
+2  0.276092  3.691232  0.094253 -0.453341 -0.352889 -0.170526  0.196656   
+3  0.062217  1.659727  0.260298 -0.382079 -0.007761  0.049533 -0.012519   
+4  0.006466  2.474854  0.812851 -1.058912 -0.285404  0.030133 -0.002614   
+
+        PC8       PC9      PC10      PC11      PC12      PC13      PC14  \
+0 -0.679556 -0.018706  0.056674  0.080083  0.337188 -0.209493  0.016965   
+1 -0.477825 -0.016598  0.003912  0.189161  0.310832 -0.182988  0.046080   
+2 -0.562747 -0.026983  0.069602 -0.011823  0.208204 -0.113013 -0.024048   
+3  0.525541 -0.029439 -0.079746 -0.193696 -0.522938  0.261051 -0.020408   
+4  0.623545 -0.027697 -0.074892  0.067947 -0.314182  0.288297 -0.029102   
+
+       PC15      PC16          PC17       target  
+0 -0.064535 -0.014757  1.188437e-12  fauzan_buka  
+1 -0.087482 -0.010276  1.791629e-12  fauzan_buka  
+2 -0.033491 -0.019699  1.042135e-12  fauzan_buka  
+3  0.046484 -0.001519  3.396983e-13  fauzan_buka  
+4 -0.000631 -0.015394  1.674513e-12  fauzan_buka  
 </pre></div>
 </div>
 </div>
@@ -1419,23 +1429,23 @@ Explained variance (fitur terpilih, 5 pertama): [0.53703687 0.1430729  0.1046696
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>KNN             | Acc: 0.8475 | F1: 0.8481
-SVM (RBF)       | Acc: 0.8275 | F1: 0.8258
-Random Forest   | Acc: 0.8625 | F1: 0.8621
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>KNN             | Acc: 0.8650 | F1: 0.8654
+SVM (RBF)       | Acc: 0.8350 | F1: 0.8317
+Random Forest   | Acc: 0.8950 | F1: 0.8946
 
 📊 Hasil Perbandingan Model:
            Model  Akurasi (mean)  Presisi (mean)  Recall (mean)  \
-2  Random Forest          0.8625          0.8675         0.8625   
-0            KNN          0.8475          0.8552         0.8475   
-1      SVM (RBF)          0.8275          0.8307         0.8275   
+2  Random Forest           0.895          0.9009          0.895   
+0            KNN           0.865          0.8757          0.865   
+1      SVM (RBF)           0.835          0.8482          0.835   
 
    F1-Score (mean)  Std Akurasi  
-2           0.8621       0.0285  
-0           0.8481       0.0348  
-1           0.8258       0.0200  
+2           0.8946       0.0203  
+0           0.8654       0.0289  
+1           0.8317       0.0278  
 </pre></div>
 </div>
-<img alt="_images/0bdc5116e7a832e5a9230105d500ccebf7109ee969ef5af802abb917ded602f7.png" src="_images/0bdc5116e7a832e5a9230105d500ccebf7109ee969ef5af802abb917ded602f7.png" />
+<img alt="_images/a34caff4395016b4e2a6a9e2d4290ed85923b442beaba67f5b79bf3bec905f76.png" src="_images/a34caff4395016b4e2a6a9e2d4290ed85923b442beaba67f5b79bf3bec905f76.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -1458,36 +1468,70 @@ Random Forest   | Acc: 0.8625 | F1: 0.8621
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/db113d5f68e99f101ef5d6ef57347e49813fa430885f08dfa6175a07db6b4c60.png" src="_images/db113d5f68e99f101ef5d6ef57347e49813fa430885f08dfa6175a07db6b4c60.png" />
+<img alt="_images/b85c35dae4677bb7510fd33da40ba8fa27f92a3ace1383966d8d64540956834c.png" src="_images/b85c35dae4677bb7510fd33da40ba8fa27f92a3ace1383966d8d64540956834c.png" />
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">filename</span> <span class="o">=</span> <span class="s2">&quot;random_forest_audio_multilabel.joblib&quot;</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># 💾 7️⃣ PENYIMPANAN MODEL TERBAIK</span>
 
-<span class="n">joblib</span><span class="o">.</span><span class="n">dump</span><span class="p">(</span><span class="n">model</span><span class="p">,</span> <span class="s2">&quot;saved_models/&quot;</span> <span class="o">+</span> <span class="n">filename</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;✅ Model </span><span class="si">{</span><span class="n">filename</span><span class="si">}</span><span class="s2"> berhasil disimpan.&quot;</span><span class="p">)</span>
+<span class="c1"># 1. Tentukan model terbaik berdasarkan hasil evaluasi</span>
+<span class="n">best_model_name</span> <span class="o">=</span> <span class="n">results_df</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="s2">&quot;Model&quot;</span><span class="p">]</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">🏆 Model terbaik adalah: </span><span class="si">{</span><span class="n">best_model_name</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+
+<span class="c1"># 2. Ambil objek model terbaik dari dictionary &#39;models&#39;</span>
+<span class="n">best_model</span> <span class="o">=</span> <span class="n">models</span><span class="p">[</span><span class="n">best_model_name</span><span class="p">]</span>
+
+<span class="c1"># 3. Latih ulang model terbaik pada SELURUH data (X, y)</span>
+<span class="c1">#    PENTING: agar model siap dipakai untuk prediksi data baru</span>
+<span class="n">best_model</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;🔄 Melatih ulang </span><span class="si">{</span><span class="n">best_model_name</span><span class="si">}</span><span class="s2"> pada seluruh dataset...&quot;</span><span class="p">)</span>
+
+<span class="c1"># 4. Simpan model yang sudah dilatih</span>
+<span class="n">model_filename</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;saved_models/audio-multilabel/</span><span class="si">{</span><span class="n">best_model_name</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s1">&#39; &#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;_&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span><span class="si">}</span><span class="s2">_audio_multilabel(17).pkl&quot;</span>
+<span class="n">joblib</span><span class="o">.</span><span class="n">dump</span><span class="p">(</span><span class="n">best_model</span><span class="p">,</span> <span class="n">model_filename</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;✅ Model berhasil disimpan ke: </span><span class="si">{</span><span class="n">model_filename</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+
+<span class="c1"># 5. Simpan komponen preprocessing (Wajib agar deployment lancar)</span>
+<span class="n">joblib</span><span class="o">.</span><span class="n">dump</span><span class="p">(</span><span class="n">pca_selected</span><span class="p">,</span> <span class="s2">&quot;saved_models/audio-multilabel/pca_selected_audio_multilabel(17).pkl&quot;</span><span class="p">)</span>
+<span class="n">joblib</span><span class="o">.</span><span class="n">dump</span><span class="p">(</span><span class="n">scaler</span><span class="p">,</span> <span class="s2">&quot;saved_models/audio-multilabel/scaler_audio_multilabel(17).pkl&quot;</span><span class="p">)</span>
+<span class="n">joblib</span><span class="o">.</span><span class="n">dump</span><span class="p">(</span><span class="n">le</span><span class="p">,</span> <span class="s2">&quot;saved_models/audio-multilabel/label_encoder_audio_multilabel(17).pkl&quot;</span><span class="p">)</span> <span class="c1"># Jangan lupa Label Encoder!</span>
+<span class="n">joblib</span><span class="o">.</span><span class="n">dump</span><span class="p">(</span><span class="n">imputer</span><span class="p">,</span> <span class="s2">&quot;saved_models/audio-multilabel/imputer_audio_multilabel(17).pkl&quot;</span><span class="p">)</span>   <span class="c1"># Dan Imputer jika dipakai!</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;📦 Semua komponen preprocessing berhasil disimpan.&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>✅ Model random_forest_audio_multilabel.joblib berhasil disimpan.
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>🏆 Model terbaik adalah: Random Forest
+🔄 Melatih ulang Random Forest pada seluruh dataset...
+✅ Model berhasil disimpan ke: saved_models/audio-multilabel/random_forest_audio_multilabel(17).pkl
+📦 Semua komponen preprocessing berhasil disimpan.
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Jika kamu juga ingin menyimpan PCA-nya (misal objek bernama pca_selected)</span>
-<span class="n">joblib</span><span class="o">.</span><span class="n">dump</span><span class="p">(</span><span class="n">pca_selected</span><span class="p">,</span> <span class="s2">&quot;saved_models/pca_selected_audio_multilabel.joblib&quot;</span><span class="p">)</span>
-
-<span class="c1"># Jika kamu menggunakan StandardScaler sebelumnya</span>
-<span class="n">joblib</span><span class="o">.</span><span class="n">dump</span><span class="p">(</span><span class="n">scaler</span><span class="p">,</span> <span class="s2">&quot;saved_models/scaler_audio_multilabel.joblib&quot;</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">top_features</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&#39;saved_models/scaler_audio_multilabel.joblib&#39;]
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&#39;0_Spectrogram mean coefficient_10064.52Hz&#39;, &#39;0_Spectrogram mean coefficient_9290.32Hz&#39;, &#39;0_Power bandwidth&#39;, &#39;0_Spectrogram mean coefficient_11612.9Hz&#39;, &#39;0_Spectrogram mean coefficient_10838.71Hz&#39;, &#39;0_Spectrogram mean coefficient_15483.87Hz&#39;, &#39;0_Spectrogram mean coefficient_14709.68Hz&#39;, &#39;0_Wavelet entropy&#39;, &#39;0_Fundamental frequency&#39;, &#39;0_Wavelet standard deviation_12000.0Hz&#39;, &#39;0_Spectrogram mean coefficient_17032.26Hz&#39;, &#39;0_Spectral entropy&#39;, &#39;0_Spectrogram mean coefficient_13935.48Hz&#39;, &#39;0_Autocorrelation&#39;, &#39;0_Wavelet variance_12000.0Hz&#39;, &#39;0_Wavelet energy_12000.0Hz&#39;, &#39;0_Spectrogram mean coefficient_12387.1Hz&#39;]
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">joblib</span><span class="o">.</span><span class="n">dump</span><span class="p">(</span><span class="n">top_features</span><span class="p">,</span> <span class="s2">&quot;saved_models/audio-multilabel/selected_features_17feature.pkl&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;✅ Daftar nama fitur terpilih berhasil disimpan.&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>✅ Daftar nama fitur terpilih berhasil disimpan.
 </pre></div>
 </div>
 </div>
@@ -1534,6 +1578,15 @@ Random Forest   | Acc: 0.8625 | F1: 0.8621
         <p class="prev-next-subtitle">previous</p>
         <p class="prev-next-title"><em><strong>Project Time Series Audio Dataset</strong></em></p>
       </div>
+    </a>
+    <a class="right-next"
+       href="project-timeseries-audio-multilabel%20copy.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title"><em><strong>Project Time Series Audio Dataset With MultiLabel</strong></em></p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
     </a>
 </div>
                 </footer>

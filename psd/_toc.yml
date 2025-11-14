@@ -35,3 +35,5 @@ chapters:
         title: TimeSeries Analisis Audio Fitur Analitik
       - file: project-timeseries-audio-multilabel
         title: TimeSeries Analisis Audio Multi Label
+      - file: project-timeseries-audio-multilabel copy
+        title: TimeSeries Analisis Audio Multi Label (Revisi)
