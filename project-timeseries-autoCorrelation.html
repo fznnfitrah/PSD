@@ -197,8 +197,8 @@
 <li class="toctree-l1 current active has-children"><a class="reference internal" href="project-timeseries-forecasting.html">Project TimeSeries Forecasting</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
 <li class="toctree-l2 current active"><a class="current reference internal" href="#">TimeSeries Forecasting with Feature Selection (Revisi)</a></li>
 <li class="toctree-l2"><a class="reference internal" href="project-timeseries-audio.html">TimeSeries Analisis Audio Fitur Analitik</a></li>
-<li class="toctree-l2"><a class="reference internal" href="project-timeseries-audio-multilabel.html">TimeSeries Analisis Audio Multi Label</a></li>
-<li class="toctree-l2"><a class="reference internal" href="project-timeseries-audio-multilabel%20copy.html">TimeSeries Analisis Audio Multi Label (Revisi)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="project-timeseries-audio-multilabel.html">TimeSeries Analisis Audio Multi Label With Information Gain</a></li>
+<li class="toctree-l2"><a class="reference internal" href="project-timeseries-audio-multilabel-2-models.html">TimeSeries Analisis Audio Multi Label 2 Models</a></li>
 </ul>
 </details></li>
 </ul>
@@ -563,7 +563,7 @@ dtype: int64
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>C:\Users\MyBook Z Series\AppData\Local\Temp\ipykernel_16860\22787649.py:15: UserWarning: Glyph 8322 (\N{SUBSCRIPT TWO}) missing from font(s) Arial.
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>C:\Users\MyBook Z Series\AppData\Local\Temp\ipykernel_20124\22787649.py:15: UserWarning: Glyph 8322 (\N{SUBSCRIPT TWO}) missing from font(s) Arial.
   plt.tight_layout()
 D:\Perkuliahan\Semester 5\Poyek Sains Data\PSD\venv_py\Lib\site-packages\IPython\core\pylabtools.py:170: UserWarning: Glyph 8322 (\N{SUBSCRIPT TWO}) missing from font(s) Arial.
   fig.canvas.print_figure(bytes_io, **kw)
@@ -697,7 +697,7 @@ dtype: int64
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>C:\Users\MyBook Z Series\AppData\Local\Temp\ipykernel_16860\2466481591.py:19: UserWarning: Glyph 8322 (\N{SUBSCRIPT TWO}) missing from font(s) Arial.
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>C:\Users\MyBook Z Series\AppData\Local\Temp\ipykernel_20124\2466481591.py:19: UserWarning: Glyph 8322 (\N{SUBSCRIPT TWO}) missing from font(s) Arial.
   plt.tight_layout()
 D:\Perkuliahan\Semester 5\Poyek Sains Data\PSD\venv_py\Lib\site-packages\IPython\core\pylabtools.py:170: UserWarning: Glyph 8322 (\N{SUBSCRIPT TWO}) missing from font(s) Arial.
   fig.canvas.print_figure(bytes_io, **kw)
@@ -1004,7 +1004,9 @@ Dimensi data baru: (3580, 31)
 </div>
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>## Korelasi Setiap Fitur Lag terhadap &#39;target&#39; ##
-t-1     0.706438
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>t-1     0.706438
 t-2     0.582764
 t-3     0.513884
 t-4     0.449376
@@ -1055,7 +1057,7 @@ Name: target, dtype: float64
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>C:\Users\MyBook Z Series\AppData\Local\Temp\ipykernel_16860\2271241154.py:2: FutureWarning: 
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>C:\Users\MyBook Z Series\AppData\Local\Temp\ipykernel_20124\2271241154.py:2: FutureWarning: 
 
 Passing `palette` without assigning `hue` is deprecated and will be removed in v0.14.0. Assign the `y` variable to `hue` and set `legend=False` for the same effect.
 

@@ -49,14 +49,9 @@ nbclient.exceptions.CellTimeoutError: A cell timed out while it was being execut
 The message was: Cell execution timed out.
 Here is a preview of the cell contents:
 -------------------
-# --- Bagian Eksekusi ---
-if 'data_list' in locals():
-    print("Menjalankan ekstraksi fitur pada 'data_list' yang sudah dimuat...")
-    features_df = extract_features_tsfel(data_list)
-    
-    print("\nContoh 5 baris pertama dari DataFrame fitur (features_df):")
-    display(features_df.tail())
-else:
-    print("ERROR: Variabel 'data_list' tidak ditemukan. Jalankan ulang Cell 4.")
+if __name__ == "__main__":
+    # Jalankan kode membaca dataset
+    dataset = load_audio_from_csv(csv_path, dataset_path, target_sr=16000)
+    features_df = extract_features_tsfel(dataset)
 -------------------
 
