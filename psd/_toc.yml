@@ -31,9 +31,13 @@ chapters:
     sections:
       - file: project-timeseries-autoCorrelation
         title: TimeSeries Forecasting with Feature Selection (Revisi)
-      - file: project-timeseries-audio
+      - file: project-timeseries-audio Single Fitur
         title: TimeSeries Analisis Audio Fitur Analitik
       - file: project-timeseries-audio-multilabel
         title: TimeSeries Analisis Audio Multi Label With Information Gain
       - file: project-timeseries-audio-multilabel-2-models
         title: TimeSeries Analisis Audio Multi Label 2 Models
+      - file: clustering-timeseries-audio
+        title: Clustering TimeSeries Audio use Dynamic Time Warping
+  - file: uas-timeseries.ipynb
+    title: UAS TimeSeries

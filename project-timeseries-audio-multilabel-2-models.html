@@ -60,6 +60,7 @@
     <script>DOCUMENTATION_OPTIONS.pagename = 'project-timeseries-audio-multilabel-2-models';</script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Clustering Audio Using Dynamic Time Warping" href="clustering-timeseries-audio.html" />
     <link rel="prev" title="Project Time Series Audio Dataset With MultiLabel Using Information Gain" href="project-timeseries-audio-multilabel.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
@@ -195,11 +196,12 @@
 </details></li>
 <li class="toctree-l1 current active has-children"><a class="reference internal" href="project-timeseries-forecasting.html">Project TimeSeries Forecasting</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="project-timeseries-autoCorrelation.html">TimeSeries Forecasting with Feature Selection (Revisi)</a></li>
-<li class="toctree-l2"><a class="reference internal" href="project-timeseries-audio.html">TimeSeries Analisis Audio Fitur Analitik</a></li>
 <li class="toctree-l2"><a class="reference internal" href="project-timeseries-audio-multilabel.html">TimeSeries Analisis Audio Multi Label With Information Gain</a></li>
 <li class="toctree-l2 current active"><a class="current reference internal" href="#">TimeSeries Analisis Audio Multi Label 2 Models</a></li>
+<li class="toctree-l2"><a class="reference internal" href="clustering-timeseries-audio.html">Clustering TimeSeries Audio use Dynamic Time Warping</a></li>
 </ul>
 </details></li>
+<li class="toctree-l1"><a class="reference internal" href="uas-timeseries.html">UAS TimeSeries</a></li>
 </ul>
 
     </div>
@@ -402,14 +404,14 @@ document.write(`
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#visualisasi-score-fitur-information-gain"><em>Visualisasi Score Fitur Information Gain</em></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#cek-fitur-domain"><em>Cek Fitur Domain</em></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#memilih-top-fitur"><em>Memilih Top Fitur</em></a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#melakukan-pca-terhadap-semua-fitur-dan-jumlah-optimal-fitur"><em>Melakukan PCA Terhadap Semua Fitur dan Jumlah Optimal Fitur</em></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#normalisasi-dataset"><em>Normalisasi Dataset</em></a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id1"><strong>Melakukan PCA terhadap Semua Fitur dan Jumlah Optimal Fitur</strong></a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id2"><em>Melakukan PCA Terhadap Semua Fitur dan Jumlah Optimal Fitur</em></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#modeling-dan-evaluasi"><strong>Modeling dan Evaluasi</strong></a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#evaluasi-model"><em>Evaluasi model</em></a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#visualisasi-perbandingan-pca-full-fitur-dan-jumlah-optimal-fitur"><strong>Visualisasi Perbandingan PCA Full Fitur dan Jumlah Optimal Fitur</strong></a><ul class="nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#testing-2-model"><strong>Testing 2 Model</strong></a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#simpan-model"><em>Simpan Model</em></a></li>
 </ul>
 </li>
@@ -665,42 +667,73 @@ document.write(`
 <span class="g g-Whitespace">    </span><span class="mi">389</span> <span class="c1"># Assuring the same feature extraction order</span>
 <span class="g g-Whitespace">    </span><span class="mi">390</span> <span class="n">features_final</span> <span class="o">=</span> <span class="n">features_final</span><span class="o">.</span><span class="n">reindex</span><span class="p">(</span><span class="nb">sorted</span><span class="p">(</span><span class="n">features_final</span><span class="o">.</span><span class="n">columns</span><span class="p">),</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
 
-<span class="nn">File D:\Perkuliahan\Semester 5\Poyek Sains Data\PSD\venv_py\Lib\site-packages\tsfel\feature_extraction\calc_features.py:517,</span> in <span class="ni">calc_window_features</span><span class="nt">(config, window, fs, verbose, single_window, **kwargs)</span>
+<span class="nn">File D:\Perkuliahan\Semester 5\Poyek Sains Data\PSD\venv_py\Lib\site-packages\tsfel\feature_extraction\calc_features.py:509,</span> in <span class="ni">calc_window_features</span><span class="nt">(config, window, fs, verbose, single_window, **kwargs)</span>
+<span class="g g-Whitespace">    </span><span class="mi">507</span> <span class="c1"># Eval feature results</span>
+<span class="g g-Whitespace">    </span><span class="mi">508</span> <span class="k">if</span> <span class="n">single_axis</span><span class="p">:</span>
+<span class="ne">--&gt; </span><span class="mi">509</span>     <span class="n">eval_result</span> <span class="o">=</span> <span class="n">feature_funcs</span><span class="p">[</span><span class="n">func_total</span><span class="p">](</span>
+<span class="g g-Whitespace">    </span><span class="mi">510</span>         <span class="n">window</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">511</span>         <span class="o">**</span><span class="n">parameters_total</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">512</span>     <span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">513</span>     <span class="n">eval_result</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="n">eval_result</span><span class="p">])</span>
 <span class="g g-Whitespace">    </span><span class="mi">515</span> <span class="k">for</span> <span class="n">ax</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">header_names</span><span class="p">)):</span>
-<span class="g g-Whitespace">    </span><span class="mi">516</span>     <span class="n">sig_ax</span> <span class="o">=</span> <span class="n">window</span> <span class="k">if</span> <span class="n">single_axis</span> <span class="k">else</span> <span class="n">window</span><span class="p">[:,</span> <span class="n">ax</span><span class="p">]</span>
-<span class="ne">--&gt; </span><span class="mi">517</span>     <span class="n">eval_result_ax</span> <span class="o">=</span> <span class="n">feature_funcs</span><span class="p">[</span><span class="n">func_total</span><span class="p">](</span><span class="n">sig_ax</span><span class="p">,</span> <span class="o">**</span><span class="n">parameters_total</span><span class="p">)</span>
-<span class="g g-Whitespace">    </span><span class="mi">518</span>     <span class="c1"># Function returns more than one element</span>
-<span class="g g-Whitespace">    </span><span class="mi">519</span>     <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">eval_result_ax</span><span class="p">,</span> <span class="nb">tuple</span><span class="p">):</span>
 
-<span class="nn">File D:\Perkuliahan\Semester 5\Poyek Sains Data\PSD\venv_py\Lib\site-packages\tsfel\feature_extraction\features.py:1664,</span> in <span class="ni">wavelet_entropy</span><span class="nt">(signal, fs, wavelet, max_width)</span>
-<span class="g g-Whitespace">   </span><span class="mi">1660</span> <span class="n">max_width</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">max_width</span><span class="p">)</span>
-<span class="g g-Whitespace">   </span><span class="mi">1662</span> <span class="n">widths</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">max_width</span><span class="p">)</span>
-<span class="ne">-&gt; </span><span class="mi">1664</span> <span class="n">coeffs</span><span class="p">,</span> <span class="n">_</span> <span class="o">=</span> <span class="n">continuous_wavelet_transform</span><span class="p">(</span><span class="n">signal</span><span class="o">=</span><span class="n">signal</span><span class="p">,</span> <span class="n">fs</span><span class="o">=</span><span class="n">fs</span><span class="p">,</span> <span class="n">wavelet</span><span class="o">=</span><span class="n">wavelet</span><span class="p">,</span> <span class="n">widths</span><span class="o">=</span><span class="n">widths</span><span class="p">)</span>
-<span class="g g-Whitespace">   </span><span class="mi">1665</span> <span class="n">energy_scale</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">coeffs</span><span class="p">),</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
-<span class="g g-Whitespace">   </span><span class="mi">1666</span> <span class="n">t_energy</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">energy_scale</span><span class="p">)</span>
+<span class="nn">File D:\Perkuliahan\Semester 5\Poyek Sains Data\PSD\venv_py\Lib\site-packages\tsfel\feature_extraction\features.py:1143,</span> in <span class="ni">spectral_kurtosis</span><span class="nt">(signal, fs)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1122</span><span class="w"> </span><span class="sd">&quot;&quot;&quot;Measures the flatness of a distribution around its mean value.</span>
+<span class="g g-Whitespace">   </span><span class="mi">1123</span><span class="sd"> </span>
+<span class="g g-Whitespace">   </span><span class="mi">1124</span><span class="sd"> Description and formula in Article:</span>
+<span class="sd">   (...)   1140     Spectral Kurtosis</span>
+<span class="g g-Whitespace">   </span><span class="mi">1141</span><span class="sd"> &quot;&quot;&quot;</span>
+<span class="g g-Whitespace">   </span><span class="mi">1142</span> <span class="n">f</span><span class="p">,</span> <span class="n">fmag</span> <span class="o">=</span> <span class="n">calc_fft</span><span class="p">(</span><span class="n">signal</span><span class="p">,</span> <span class="n">fs</span><span class="p">)</span>
+<span class="ne">-&gt; </span><span class="mi">1143</span> <span class="k">if</span> <span class="ow">not</span> <span class="n">spectral_spread</span><span class="p">(</span><span class="n">signal</span><span class="p">,</span> <span class="n">fs</span><span class="p">):</span>
+<span class="g g-Whitespace">   </span><span class="mi">1144</span>     <span class="k">return</span> <span class="mi">0</span>
+<span class="g g-Whitespace">   </span><span class="mi">1145</span> <span class="k">else</span><span class="p">:</span>
 
-<span class="nn">File D:\Perkuliahan\Semester 5\Poyek Sains Data\PSD\venv_py\Lib\site-packages\tsfel\feature_extraction\features_utils.py:371,</span> in <span class="ni">continuous_wavelet_transform</span><span class="nt">(signal, fs, wavelet, widths)</span>
-<span class="g g-Whitespace">    </span><span class="mi">351</span> <span class="k">def</span><span class="w"> </span><span class="nf">continuous_wavelet_transform</span><span class="p">(</span><span class="n">signal</span><span class="p">,</span> <span class="n">fs</span><span class="p">,</span> <span class="n">wavelet</span><span class="o">=</span><span class="s2">&quot;mexh&quot;</span><span class="p">,</span> <span class="n">widths</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">10</span><span class="p">)):</span>
-<span class="g g-Whitespace">    </span><span class="mi">352</span><span class="w">     </span><span class="sd">&quot;&quot;&quot;Computes CWT (continuous wavelet transform) of the signal.</span>
-<span class="g g-Whitespace">    </span><span class="mi">353</span><span class="sd"> </span>
-<span class="g g-Whitespace">    </span><span class="mi">354</span><span class="sd">     Parameters</span>
-<span class="sd">   (...)    368         matrix with size (len(widths),len(signal))</span>
-<span class="g g-Whitespace">    </span><span class="mi">369</span><span class="sd">     &quot;&quot;&quot;</span>
-<span class="ne">--&gt; </span><span class="mi">371</span>     <span class="n">coefficients</span><span class="p">,</span> <span class="n">frequencies</span> <span class="o">=</span> <span class="n">pywt</span><span class="o">.</span><span class="n">cwt</span><span class="p">(</span><span class="n">signal</span><span class="p">,</span> <span class="n">widths</span><span class="p">,</span> <span class="n">wavelet</span><span class="p">,</span> <span class="n">sampling_period</span><span class="o">=</span><span class="mi">1</span> <span class="o">/</span> <span class="n">fs</span><span class="p">)</span>
-<span class="g g-Whitespace">    </span><span class="mi">373</span>     <span class="k">return</span> <span class="n">coefficients</span><span class="p">,</span> <span class="n">frequencies</span>
+<span class="nn">File D:\Perkuliahan\Semester 5\Poyek Sains Data\PSD\venv_py\Lib\site-packages\tsfel\feature_extraction\features.py:1205,</span> in <span class="ni">spectral_spread</span><span class="nt">(signal, fs)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1184</span><span class="w"> </span><span class="sd">&quot;&quot;&quot;Measures the spread of the spectrum around its mean value.</span>
+<span class="g g-Whitespace">   </span><span class="mi">1185</span><span class="sd"> </span>
+<span class="g g-Whitespace">   </span><span class="mi">1186</span><span class="sd"> Description and formula in Article:</span>
+<span class="sd">   (...)   1202     Spectral Spread</span>
+<span class="g g-Whitespace">   </span><span class="mi">1203</span><span class="sd"> &quot;&quot;&quot;</span>
+<span class="g g-Whitespace">   </span><span class="mi">1204</span> <span class="n">f</span><span class="p">,</span> <span class="n">fmag</span> <span class="o">=</span> <span class="n">calc_fft</span><span class="p">(</span><span class="n">signal</span><span class="p">,</span> <span class="n">fs</span><span class="p">)</span>
+<span class="ne">-&gt; </span><span class="mi">1205</span> <span class="n">spect_centroid</span> <span class="o">=</span> <span class="n">spectral_centroid</span><span class="p">(</span><span class="n">signal</span><span class="p">,</span> <span class="n">fs</span><span class="p">)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1207</span> <span class="k">if</span> <span class="ow">not</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">fmag</span><span class="p">):</span>
+<span class="g g-Whitespace">   </span><span class="mi">1208</span>     <span class="k">return</span> <span class="mi">0</span>
 
-<span class="nn">File D:\Perkuliahan\Semester 5\Poyek Sains Data\PSD\venv_py\Lib\site-packages\pywt\_cwt.py:157,</span> in <span class="ni">cwt</span><span class="nt">(data, scales, wavelet, sampling_period, method, axis, precision)</span>
-<span class="g g-Whitespace">    </span><span class="mi">155</span> <span class="k">if</span> <span class="n">method</span> <span class="o">==</span> <span class="s1">&#39;conv&#39;</span><span class="p">:</span>
-<span class="g g-Whitespace">    </span><span class="mi">156</span>     <span class="k">if</span> <span class="n">data</span><span class="o">.</span><span class="n">ndim</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
-<span class="ne">--&gt; </span><span class="mi">157</span>         <span class="n">conv</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">convolve</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">int_psi_scale</span><span class="p">)</span>
-<span class="g g-Whitespace">    </span><span class="mi">158</span>     <span class="k">else</span><span class="p">:</span>
-<span class="g g-Whitespace">    </span><span class="mi">159</span>         <span class="c1"># batch convolution via loop</span>
-<span class="g g-Whitespace">    </span><span class="mi">160</span>         <span class="n">conv_shape</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">data</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
+<span class="nn">File D:\Perkuliahan\Semester 5\Poyek Sains Data\PSD\venv_py\Lib\site-packages\tsfel\feature_extraction\features.py:1073,</span> in <span class="ni">spectral_centroid</span><span class="nt">(signal, fs)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1050</span> <span class="nd">@set_domain</span><span class="p">(</span><span class="s2">&quot;domain&quot;</span><span class="p">,</span> <span class="s2">&quot;spectral&quot;</span><span class="p">)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1051</span> <span class="nd">@set_domain</span><span class="p">(</span><span class="s2">&quot;tag&quot;</span><span class="p">,</span> <span class="s2">&quot;audio&quot;</span><span class="p">)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1052</span> <span class="k">def</span><span class="w"> </span><span class="nf">spectral_centroid</span><span class="p">(</span><span class="n">signal</span><span class="p">,</span> <span class="n">fs</span><span class="p">):</span>
+<span class="g g-Whitespace">   </span><span class="mi">1053</span><span class="w">     </span><span class="sd">&quot;&quot;&quot;Barycenter of the spectrum.</span>
+<span class="g g-Whitespace">   </span><span class="mi">1054</span><span class="sd"> </span>
+<span class="g g-Whitespace">   </span><span class="mi">1055</span><span class="sd">     Description and formula in Article:</span>
+<span class="sd">   (...)   1071         Centroid</span>
+<span class="g g-Whitespace">   </span><span class="mi">1072</span><span class="sd">     &quot;&quot;&quot;</span>
+<span class="ne">-&gt; </span><span class="mi">1073</span>     <span class="n">f</span><span class="p">,</span> <span class="n">fmag</span> <span class="o">=</span> <span class="n">calc_fft</span><span class="p">(</span><span class="n">signal</span><span class="p">,</span> <span class="n">fs</span><span class="p">)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1074</span>     <span class="k">if</span> <span class="ow">not</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">fmag</span><span class="p">):</span>
+<span class="g g-Whitespace">   </span><span class="mi">1075</span>         <span class="k">return</span> <span class="mi">0</span>
 
-<span class="nn">File D:\Perkuliahan\Semester 5\Poyek Sains Data\PSD\venv_py\Lib\site-packages\numpy\_core\numeric.py:903,</span> in <span class="ni">convolve</span><span class="nt">(a, v, mode)</span>
-<span class="g g-Whitespace">    </span><span class="mi">901</span> <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">v</span><span class="p">)</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
-<span class="g g-Whitespace">    </span><span class="mi">902</span>     <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s1">&#39;v cannot be empty&#39;</span><span class="p">)</span>
-<span class="ne">--&gt; </span><span class="mi">903</span> <span class="k">return</span> <span class="n">multiarray</span><span class="o">.</span><span class="n">correlate</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">v</span><span class="p">[::</span><span class="o">-</span><span class="mi">1</span><span class="p">],</span> <span class="n">mode</span><span class="p">)</span>
+<span class="nn">File D:\Perkuliahan\Semester 5\Poyek Sains Data\PSD\venv_py\Lib\site-packages\tsfel\feature_extraction\features_utils.py:73,</span> in <span class="ni">calc_fft</span><span class="nt">(signal, fs)</span>
+<span class="g g-Whitespace">     </span><span class="mi">55</span> <span class="k">def</span><span class="w"> </span><span class="nf">calc_fft</span><span class="p">(</span><span class="n">signal</span><span class="p">,</span> <span class="n">fs</span><span class="p">):</span>
+<span class="g g-Whitespace">     </span><span class="mi">56</span><span class="w">     </span><span class="sd">&quot;&quot;&quot;This functions computes the fft of a signal.</span>
+<span class="g g-Whitespace">     </span><span class="mi">57</span><span class="sd"> </span>
+<span class="g g-Whitespace">     </span><span class="mi">58</span><span class="sd">     Parameters</span>
+<span class="sd">   (...)     70         Amplitude of the frequency values (yy axis)</span>
+<span class="g g-Whitespace">     </span><span class="mi">71</span><span class="sd">     &quot;&quot;&quot;</span>
+<span class="ne">---&gt; </span><span class="mi">73</span>     <span class="n">fmag</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">fft</span><span class="o">.</span><span class="n">rfft</span><span class="p">(</span><span class="n">signal</span><span class="p">))</span>
+<span class="g g-Whitespace">     </span><span class="mi">74</span>     <span class="n">f</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">fft</span><span class="o">.</span><span class="n">rfftfreq</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">signal</span><span class="p">),</span> <span class="n">d</span><span class="o">=</span><span class="mi">1</span> <span class="o">/</span> <span class="n">fs</span><span class="p">)</span>
+<span class="g g-Whitespace">     </span><span class="mi">76</span>     <span class="k">return</span> <span class="n">f</span><span class="o">.</span><span class="n">copy</span><span class="p">(),</span> <span class="n">fmag</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+
+<span class="nn">File D:\Perkuliahan\Semester 5\Poyek Sains Data\PSD\venv_py\Lib\site-packages\numpy\fft\_pocketfft.py:417,</span> in <span class="ni">rfft</span><span class="nt">(a, n, axis, norm, out)</span>
+<span class="g g-Whitespace">    </span><span class="mi">415</span> <span class="k">if</span> <span class="n">n</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+<span class="g g-Whitespace">    </span><span class="mi">416</span>     <span class="n">n</span> <span class="o">=</span> <span class="n">a</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="n">axis</span><span class="p">]</span>
+<span class="ne">--&gt; </span><span class="mi">417</span> <span class="n">output</span> <span class="o">=</span> <span class="n">_raw_fft</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">n</span><span class="p">,</span> <span class="n">axis</span><span class="p">,</span> <span class="kc">True</span><span class="p">,</span> <span class="kc">True</span><span class="p">,</span> <span class="n">norm</span><span class="p">,</span> <span class="n">out</span><span class="o">=</span><span class="n">out</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">418</span> <span class="k">return</span> <span class="n">output</span>
+
+<span class="nn">File D:\Perkuliahan\Semester 5\Poyek Sains Data\PSD\venv_py\Lib\site-packages\numpy\fft\_pocketfft.py:101,</span> in <span class="ni">_raw_fft</span><span class="nt">(a, n, axis, is_real, is_forward, norm, out)</span>
+<span class="g g-Whitespace">     </span><span class="mi">97</span> <span class="k">elif</span> <span class="p">((</span><span class="n">shape</span> <span class="o">:=</span> <span class="nb">getattr</span><span class="p">(</span><span class="n">out</span><span class="p">,</span> <span class="s2">&quot;shape&quot;</span><span class="p">,</span> <span class="kc">None</span><span class="p">))</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span>
+<span class="g g-Whitespace">     </span><span class="mi">98</span>       <span class="ow">and</span> <span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">shape</span><span class="p">)</span> <span class="o">!=</span> <span class="n">a</span><span class="o">.</span><span class="n">ndim</span> <span class="ow">or</span> <span class="n">shape</span><span class="p">[</span><span class="n">axis</span><span class="p">]</span> <span class="o">!=</span> <span class="n">n_out</span><span class="p">)):</span>
+<span class="g g-Whitespace">     </span><span class="mi">99</span>     <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;output array has wrong shape.&quot;</span><span class="p">)</span>
+<span class="ne">--&gt; </span><span class="mi">101</span> <span class="k">return</span> <span class="n">ufunc</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">fct</span><span class="p">,</span> <span class="n">axes</span><span class="o">=</span><span class="p">[(</span><span class="n">axis</span><span class="p">,),</span> <span class="p">(),</span> <span class="p">(</span><span class="n">axis</span><span class="p">,)],</span> <span class="n">out</span><span class="o">=</span><span class="n">out</span><span class="p">)</span>
 
 <span class="ne">KeyboardInterrupt</span>: 
 </pre></div>
@@ -1717,8 +1750,8 @@ Model Identitas: 2.0 fitur | Akurasi: 1.0000
 </div>
 </div>
 </section>
-<section id="melakukan-pca-terhadap-semua-fitur-dan-jumlah-optimal-fitur">
-<h3><em>Melakukan PCA Terhadap Semua Fitur dan Jumlah Optimal Fitur</em><a class="headerlink" href="#melakukan-pca-terhadap-semua-fitur-dan-jumlah-optimal-fitur" title="Link to this heading">#</a></h3>
+<section id="normalisasi-dataset">
+<h3><em>Normalisasi Dataset</em><a class="headerlink" href="#normalisasi-dataset" title="Link to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">normalisasi_data_final</span><span class="p">(</span><span class="n">X_filtered</span><span class="p">):</span>
@@ -1779,8 +1812,8 @@ Model Identitas: 2.0 fitur | Akurasi: 1.0000
 </div>
 </section>
 </section>
-<section id="id1">
-<h2><strong>Melakukan PCA terhadap Semua Fitur dan Jumlah Optimal Fitur</strong><a class="headerlink" href="#id1" title="Link to this heading">#</a></h2>
+<section id="modeling-dan-evaluasi">
+<h2><strong>Modeling dan Evaluasi</strong><a class="headerlink" href="#modeling-dan-evaluasi" title="Link to this heading">#</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">latih_model_final</span><span class="p">(</span><span class="n">X_scaled</span><span class="p">,</span> <span class="n">y_target</span><span class="p">):</span>
@@ -1832,8 +1865,8 @@ Model Identitas: 2.0 fitur | Akurasi: 1.0000
 </div>
 </div>
 </div>
-<section id="id2">
-<h3><em>Melakukan PCA Terhadap Semua Fitur dan Jumlah Optimal Fitur</em><a class="headerlink" href="#id2" title="Link to this heading">#</a></h3>
+<section id="evaluasi-model">
+<h3><em>Evaluasi model</em><a class="headerlink" href="#evaluasi-model" title="Link to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">evaluasi_model_final</span><span class="p">(</span>
@@ -1995,8 +2028,8 @@ Confusion Matrix:
 </div>
 </section>
 </section>
-<section id="visualisasi-perbandingan-pca-full-fitur-dan-jumlah-optimal-fitur">
-<h2><strong>Visualisasi Perbandingan PCA Full Fitur dan Jumlah Optimal Fitur</strong><a class="headerlink" href="#visualisasi-perbandingan-pca-full-fitur-dan-jumlah-optimal-fitur" title="Link to this heading">#</a></h2>
+<section id="testing-2-model">
+<h2><strong>Testing 2 Model</strong><a class="headerlink" href="#testing-2-model" title="Link to this heading">#</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">predict_new_audio_spesialis</span><span class="p">(</span>
@@ -2157,14 +2190,14 @@ d:\Perkuliahan\Semester 5\Poyek Sains Data\PSD\venv_py\Lib\site-packages\sklearn
 <h3><em>Simpan Model</em><a class="headerlink" href="#simpan-model" title="Link to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">package_aksi</span> <span class="o">=</span> <span class="p">{</span>
-    <span class="s2">&quot;model&quot;</span><span class="p">:</span> <span class="n">model_aksi</span><span class="p">,</span>
-    <span class="s2">&quot;scaler&quot;</span><span class="p">:</span> <span class="n">scaler_aksi</span><span class="p">,</span>
-    <span class="s2">&quot;selected_features&quot;</span><span class="p">:</span> <span class="n">top_features_aksi</span><span class="p">,</span>
-    <span class="s2">&quot;labels&quot;</span><span class="p">:</span> <span class="p">{</span><span class="mi">1</span><span class="p">:</span> <span class="s2">&quot;Buka&quot;</span><span class="p">,</span> <span class="mi">0</span><span class="p">:</span> <span class="s2">&quot;Tutup&quot;</span><span class="p">}</span> <span class="c1"># Label sesuai y_aksi (1=buka)</span>
-<span class="p">}</span>
-<span class="n">joblib</span><span class="o">.</span><span class="n">dump</span><span class="p">(</span><span class="n">package_aksi</span><span class="p">,</span> <span class="s2">&quot;saved_models/audio-multilabel(1)/model_aksi_final.pkl&quot;</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;✅ Model Aksi final berhasil disimpan.&quot;</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># package_aksi = {</span>
+<span class="c1">#     &quot;model&quot;: model_aksi,</span>
+<span class="c1">#     &quot;scaler&quot;: scaler_aksi,</span>
+<span class="c1">#     &quot;selected_features&quot;: top_features_aksi,</span>
+<span class="c1">#     &quot;labels&quot;: {1: &quot;Buka&quot;, 0: &quot;Tutup&quot;} # Label sesuai y_aksi (1=buka)</span>
+<span class="c1"># }</span>
+<span class="c1"># joblib.dump(package_aksi, &quot;saved_models/audio-multilabel(1)/model_aksi_final.pkl&quot;)</span>
+<span class="c1"># print(&quot;✅ Model Aksi final berhasil disimpan.&quot;)</span>
 </pre></div>
 </div>
 </div>
@@ -2176,14 +2209,14 @@ d:\Perkuliahan\Semester 5\Poyek Sains Data\PSD\venv_py\Lib\site-packages\sklearn
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">package_identitas</span> <span class="o">=</span> <span class="p">{</span>
-    <span class="s2">&quot;model&quot;</span><span class="p">:</span> <span class="n">model_identitas</span><span class="p">,</span>
-    <span class="s2">&quot;scaler&quot;</span><span class="p">:</span> <span class="n">scaler_identitas</span><span class="p">,</span>
-    <span class="s2">&quot;selected_features&quot;</span><span class="p">:</span> <span class="n">top_features_identitas</span><span class="p">,</span>
-    <span class="s2">&quot;labels&quot;</span><span class="p">:</span> <span class="p">{</span><span class="mi">1</span><span class="p">:</span> <span class="s2">&quot;Fikri&quot;</span><span class="p">,</span> <span class="mi">0</span><span class="p">:</span> <span class="s2">&quot;Fauzan&quot;</span><span class="p">}</span> <span class="c1"># Label sesuai y_identitas (1=fikri)</span>
-<span class="p">}</span>
-<span class="n">joblib</span><span class="o">.</span><span class="n">dump</span><span class="p">(</span><span class="n">package_identitas</span><span class="p">,</span> <span class="s2">&quot;saved_models/audio-multilabel(1)/model_identitas_final.pkl&quot;</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;✅ Model Identitas final berhasil disimpan.&quot;</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># package_identitas = {</span>
+<span class="c1">#     &quot;model&quot;: model_identitas,</span>
+<span class="c1">#     &quot;scaler&quot;: scaler_identitas,</span>
+<span class="c1">#     &quot;selected_features&quot;: top_features_identitas,</span>
+<span class="c1">#     &quot;labels&quot;: {1: &quot;Fikri&quot;, 0: &quot;Fauzan&quot;} # Label sesuai y_identitas (1=fikri)</span>
+<span class="c1"># }</span>
+<span class="c1"># joblib.dump(package_identitas, &quot;saved_models/audio-multilabel(1)/model_identitas_final.pkl&quot;)</span>
+<span class="c1"># print(&quot;✅ Model Identitas final berhasil disimpan.&quot;)</span>
 </pre></div>
 </div>
 </div>
@@ -2236,6 +2269,15 @@ d:\Perkuliahan\Semester 5\Poyek Sains Data\PSD\venv_py\Lib\site-packages\sklearn
         <p class="prev-next-title"><em><strong>Project Time Series Audio Dataset With MultiLabel Using Information Gain</strong></em></p>
       </div>
     </a>
+    <a class="right-next"
+       href="clustering-timeseries-audio.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title"><em><strong>Clustering Audio Using Dynamic Time Warping</strong></em></p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
 </div>
                 </footer>
               
@@ -2259,14 +2301,14 @@ d:\Perkuliahan\Semester 5\Poyek Sains Data\PSD\venv_py\Lib\site-packages\sklearn
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#visualisasi-score-fitur-information-gain"><em>Visualisasi Score Fitur Information Gain</em></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#cek-fitur-domain"><em>Cek Fitur Domain</em></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#memilih-top-fitur"><em>Memilih Top Fitur</em></a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#melakukan-pca-terhadap-semua-fitur-dan-jumlah-optimal-fitur"><em>Melakukan PCA Terhadap Semua Fitur dan Jumlah Optimal Fitur</em></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#normalisasi-dataset"><em>Normalisasi Dataset</em></a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id1"><strong>Melakukan PCA terhadap Semua Fitur dan Jumlah Optimal Fitur</strong></a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id2"><em>Melakukan PCA Terhadap Semua Fitur dan Jumlah Optimal Fitur</em></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#modeling-dan-evaluasi"><strong>Modeling dan Evaluasi</strong></a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#evaluasi-model"><em>Evaluasi model</em></a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#visualisasi-perbandingan-pca-full-fitur-dan-jumlah-optimal-fitur"><strong>Visualisasi Perbandingan PCA Full Fitur dan Jumlah Optimal Fitur</strong></a><ul class="nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#testing-2-model"><strong>Testing 2 Model</strong></a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#simpan-model"><em>Simpan Model</em></a></li>
 </ul>
 </li>

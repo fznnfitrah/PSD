@@ -1,0 +1,1128 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="./" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Clustering Audio Using Dynamic Time Warping &#8212; Project Science Data</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+
+  
+  <link href="_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=03e43079" />
+    <link rel="stylesheet" type="text/css" href="_static/styles/sphinx-book-theme.css?v=eba8b062" />
+    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.8ecb98da25f57f5357bf6f572d296f466b2cfe2517ffebfabe82451661e28f02.css" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-design.min.css?v=95c83b7e" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+    <script src="_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="_static/doctools.js?v=9a2dae69"></script>
+    <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="_static/copybutton.js?v=f281be69"></script>
+    <script src="_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="_static/togglebutton.js?v=4a39c7ea"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="_static/design-tabs.js?v=f930bc37"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'clustering-timeseries-audio';</script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Ujian Akhir Semester Menggunakan Data TimeSeries UCR" href="uas-timeseries.html" />
+    <link rel="prev" title="Project Time Series Audio Dataset With MultiLabel" href="project-timeseries-audio-multilabel-2-models.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="intro.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="_static/me.jpg" class="logo__image only-light" alt="Project Science Data - Home"/>
+    <script>document.write(`<img src="_static/me.jpg" class="logo__image only-dark" alt="Project Science Data - Home"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="intro.html">
+                    Welcome to My Jupyter Book
+                </a>
+            </li>
+        </ul>
+        <ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="bisnis.html">Bussines Understanding</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="dataUnderstanding.html">Data Understanding</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="explorationData.html">Exploration Data</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="dataProcessing.html">Data Processing</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="outlier_detection.html">Outliers Detection</a></li>
+<li class="toctree-l2"><a class="reference internal" href="oversampling-data.html">Oversampling Data</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ensembleLearning.html"><strong>Menghapus Dataset</strong></a></li>
+
+
+<li class="toctree-l2"><a class="reference internal" href="bagging_method.html">Bagging Metode</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="project-timeseries-forecasting.html">Project TimeSeries Forecasting</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="project-timeseries-autoCorrelation.html">TimeSeries Forecasting with Feature Selection (Revisi)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="project-timeseries-audio-multilabel.html">TimeSeries Analisis Audio Multi Label With Information Gain</a></li>
+<li class="toctree-l2"><a class="reference internal" href="project-timeseries-audio-multilabel-2-models.html">TimeSeries Analisis Audio Multi Label 2 Models</a></li>
+<li class="toctree-l2 current active"><a class="current reference internal" href="#">Clustering TimeSeries Audio use Dynamic Time Warping</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1"><a class="reference internal" href="uas-timeseries.html">UAS TimeSeries</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/executablebooks/jupyter-book" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/executablebooks/jupyter-book/issues/new?title=Issue%20on%20page%20%2Fclustering-timeseries-audio.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="_sources/clustering-timeseries-audio.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Clustering Audio Using Dynamic Time Warping</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#convert-data-audio"><strong>Convert Data Audio</strong></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#membaca-dataset-audio"><strong>Membaca Dataset Audio</strong></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ekstraksi-fitur-dengan-librosa-dan-tsfel"><strong>Ekstraksi Fitur dengan Librosa dan TSFEL</strong></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#gak-tau">Gak tau</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="clustering-audio-using-dynamic-time-warping">
+<h1><em><strong>Clustering Audio Using Dynamic Time Warping</strong></em><a class="headerlink" href="#clustering-audio-using-dynamic-time-warping" title="Link to this heading">#</a></h1>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">os</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+
+<span class="kn">from</span><span class="w"> </span><span class="nn">pydub</span><span class="w"> </span><span class="kn">import</span> <span class="n">AudioSegment</span>
+
+<span class="kn">import</span><span class="w"> </span><span class="nn">librosa</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">tsfel</span>
+</pre></div>
+</div>
+</div>
+</div>
+<section id="convert-data-audio">
+<h2><strong>Convert Data Audio</strong><a class="headerlink" href="#convert-data-audio" title="Link to this heading">#</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">convert_to_wav</span><span class="p">(</span><span class="n">input_path</span><span class="p">,</span> <span class="n">output_path</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Konversi file audio apapun (AAC, M4A, MP3) menjadi WAV.&quot;&quot;&quot;</span>
+    <span class="n">audio</span> <span class="o">=</span> <span class="n">AudioSegment</span><span class="o">.</span><span class="n">from_file</span><span class="p">(</span><span class="n">input_path</span><span class="p">)</span>
+    <span class="n">audio</span> <span class="o">=</span> <span class="n">audio</span><span class="o">.</span><span class="n">set_frame_rate</span><span class="p">(</span><span class="mi">22050</span><span class="p">)</span>  <span class="c1"># Sample rate standar librosa</span>
+    <span class="n">audio</span><span class="o">.</span><span class="n">export</span><span class="p">(</span><span class="n">output_path</span><span class="p">,</span> <span class="nb">format</span><span class="o">=</span><span class="s2">&quot;wav&quot;</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">output_path</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">RAW_DIR</span> <span class="o">=</span> <span class="s2">&quot;dataset/audio&quot;</span>
+<span class="n">PROCESSED_DIR</span> <span class="o">=</span> <span class="s2">&quot;dataset/processed_audio_fauzan&quot;</span>
+
+<span class="c1"># os.makedirs(PROCESSED_DIR, exist_ok=True)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">batch_convert_audio</span><span class="p">():</span>
+    <span class="k">for</span> <span class="n">label</span> <span class="ow">in</span> <span class="n">os</span><span class="o">.</span><span class="n">listdir</span><span class="p">(</span><span class="n">RAW_DIR</span><span class="p">):</span>
+
+        <span class="n">raw_folder</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">RAW_DIR</span><span class="p">,</span> <span class="n">label</span><span class="p">)</span>
+
+        <span class="c1"># skip jika raw_folder adalah file, bukan folder</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">isdir</span><span class="p">(</span><span class="n">raw_folder</span><span class="p">):</span>
+            <span class="k">continue</span>
+
+        <span class="n">processed_folder</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">PROCESSED_DIR</span><span class="p">,</span> <span class="n">label</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s2">&quot; &quot;</span><span class="p">,</span> <span class="s2">&quot;_&quot;</span><span class="p">))</span>
+        <span class="n">os</span><span class="o">.</span><span class="n">makedirs</span><span class="p">(</span><span class="n">processed_folder</span><span class="p">,</span> <span class="n">exist_ok</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+        <span class="k">for</span> <span class="n">fname</span> <span class="ow">in</span> <span class="n">os</span><span class="o">.</span><span class="n">listdir</span><span class="p">(</span><span class="n">raw_folder</span><span class="p">):</span>
+            <span class="n">input_path</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">raw_folder</span><span class="p">,</span> <span class="n">fname</span><span class="p">)</span>
+
+            <span class="c1"># skip semua item yang bukan file (folder akan dilewati)</span>
+            <span class="k">if</span> <span class="ow">not</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">isfile</span><span class="p">(</span><span class="n">input_path</span><span class="p">):</span>
+                <span class="k">continue</span>
+
+            <span class="c1"># hanya proses file audio yang valid</span>
+            <span class="n">ext</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">splitext</span><span class="p">(</span><span class="n">fname</span><span class="p">)[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span>
+            <span class="k">if</span> <span class="n">ext</span> <span class="ow">not</span> <span class="ow">in</span> <span class="p">[</span><span class="s2">&quot;.aac&quot;</span><span class="p">,</span> <span class="s2">&quot;.m4a&quot;</span><span class="p">,</span> <span class="s2">&quot;.mp3&quot;</span><span class="p">,</span> <span class="s2">&quot;.wav&quot;</span><span class="p">]:</span>
+                <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Skipping non-audio: </span><span class="si">{</span><span class="n">fname</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+                <span class="k">continue</span>
+
+            <span class="n">output_name</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">splitext</span><span class="p">(</span><span class="n">fname</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span> <span class="o">+</span> <span class="s2">&quot;.wav&quot;</span>
+            <span class="n">output_path</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">processed_folder</span><span class="p">,</span> <span class="n">output_name</span><span class="p">)</span>
+
+            <span class="k">if</span> <span class="n">ext</span> <span class="o">==</span> <span class="s2">&quot;.wav&quot;</span><span class="p">:</span>
+                <span class="k">continue</span>  <span class="c1"># jika sudah wav, tidak perlu konversi</span>
+
+            <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Mengkonversi: </span><span class="si">{</span><span class="n">input_path</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+            <span class="n">convert_to_wav</span><span class="p">(</span><span class="n">input_path</span><span class="p">,</span> <span class="n">output_path</span><span class="p">)</span>
+
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Konversi selesai!&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># batch_convert_audio()</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="membaca-dataset-audio">
+<h2><strong>Membaca Dataset Audio</strong><a class="headerlink" href="#membaca-dataset-audio" title="Link to this heading">#</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">PROCESSED_DIR</span> <span class="o">=</span> <span class="s2">&quot;dataset/audio/processed_audio_fauzan&quot;</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">load_all_audio</span><span class="p">():</span>
+    <span class="n">audio_data</span> <span class="o">=</span> <span class="p">{}</span>
+
+    <span class="k">for</span> <span class="n">label</span> <span class="ow">in</span> <span class="n">os</span><span class="o">.</span><span class="n">listdir</span><span class="p">(</span><span class="n">PROCESSED_DIR</span><span class="p">):</span>
+        <span class="n">folder_path</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">PROCESSED_DIR</span><span class="p">,</span> <span class="n">label</span><span class="p">)</span>
+
+        <span class="c1"># skip jika bukan folder</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">isdir</span><span class="p">(</span><span class="n">folder_path</span><span class="p">):</span>
+            <span class="k">continue</span>
+
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Loading folder: </span><span class="si">{</span><span class="n">label</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+        <span class="n">audio_data</span><span class="p">[</span><span class="n">label</span><span class="p">]</span> <span class="o">=</span> <span class="p">[]</span>
+
+        <span class="k">for</span> <span class="n">fname</span> <span class="ow">in</span> <span class="n">os</span><span class="o">.</span><span class="n">listdir</span><span class="p">(</span><span class="n">folder_path</span><span class="p">):</span>
+            <span class="k">if</span> <span class="ow">not</span> <span class="n">fname</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span><span class="o">.</span><span class="n">endswith</span><span class="p">(</span><span class="s2">&quot;.wav&quot;</span><span class="p">):</span>
+                <span class="k">continue</span>  <span class="c1"># hanya terima wav</span>
+
+            <span class="n">file_path</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">folder_path</span><span class="p">,</span> <span class="n">fname</span><span class="p">)</span>
+
+            <span class="c1"># Load audio dengan librosa</span>
+            <span class="n">signal</span><span class="p">,</span> <span class="n">sr</span> <span class="o">=</span> <span class="n">librosa</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="n">file_path</span><span class="p">,</span> <span class="n">sr</span><span class="o">=</span><span class="mi">22050</span><span class="p">)</span>
+
+            <span class="n">audio_data</span><span class="p">[</span><span class="n">label</span><span class="p">]</span><span class="o">.</span><span class="n">append</span><span class="p">({</span>
+                <span class="s2">&quot;filename&quot;</span><span class="p">:</span> <span class="n">fname</span><span class="p">,</span>
+                <span class="s2">&quot;signal&quot;</span><span class="p">:</span> <span class="n">signal</span><span class="p">,</span>
+                <span class="s2">&quot;sr&quot;</span><span class="p">:</span> <span class="n">sr</span>
+            <span class="p">})</span>
+
+            <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;  Loaded: </span><span class="si">{</span><span class="n">fname</span><span class="si">}</span><span class="s2">, length=</span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">signal</span><span class="p">)</span><span class="si">}</span><span class="s2"> samples&quot;</span><span class="p">)</span>
+
+    <span class="k">return</span> <span class="n">audio_data</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">audio_dataset</span> <span class="o">=</span> <span class="n">load_all_audio</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Loading folder: buka_fauzan
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  Loaded: 20251030_183541.wav, length=37888 samples
+  Loaded: 20251030_183623.wav, length=29184 samples
+  Loaded: 20251030_183635.wav, length=61440 samples
+  Loaded: 20251030_183717.wav, length=39936 samples
+  Loaded: 20251030_183723.wav, length=36352 samples
+  Loaded: 20251030_183736.wav, length=43008 samples
+  Loaded: 20251030_183740.wav, length=47616 samples
+  Loaded: 20251030_183748.wav, length=29696 samples
+  Loaded: 20251030_183754.wav, length=34816 samples
+  Loaded: 20251030_183813.wav, length=30720 samples
+  Loaded: 20251030_183817.wav, length=40960 samples
+  Loaded: 20251030_183835.wav, length=34304 samples
+  Loaded: 20251030_183938.wav, length=31232 samples
+  Loaded: 20251030_183942.wav, length=41472 samples
+  Loaded: 20251030_183947.wav, length=38912 samples
+  Loaded: 20251030_183957.wav, length=32768 samples
+  Loaded: 20251030_184003.wav, length=37888 samples
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  Loaded: 20251030_184011.wav, length=32256 samples
+  Loaded: 20251030_184015.wav, length=34304 samples
+  Loaded: 20251030_184032.wav, length=38912 samples
+  Loaded: 20251030_184115.wav, length=34816 samples
+  Loaded: 20251030_184245.wav, length=52224 samples
+  Loaded: 20251030_184255.wav, length=49152 samples
+  Loaded: 20251030_184311.wav, length=40448 samples
+  Loaded: 20251030_184317.wav, length=55296 samples
+  Loaded: 20251030_184325.wav, length=65536 samples
+  Loaded: 20251030_184350.wav, length=57344 samples
+  Loaded: 20251030_184409.wav, length=37888 samples
+  Loaded: 20251030_184415.wav, length=35840 samples
+  Loaded: 20251030_184419.wav, length=60928 samples
+  Loaded: 20251030_184514.wav, length=54272 samples
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  Loaded: 20251030_184527.wav, length=50176 samples
+  Loaded: 20251030_184535.wav, length=43008 samples
+  Loaded: 20251030_184546.wav, length=46080 samples
+  Loaded: 20251030_184603.wav, length=38912 samples
+  Loaded: 20251030_184648.wav, length=54784 samples
+  Loaded: 20251030_184702.wav, length=31744 samples
+  Loaded: 20251030_184714.wav, length=31744 samples
+  Loaded: 20251030_184723.wav, length=31232 samples
+  Loaded: 20251102_090356.wav, length=38912 samples
+  Loaded: 20251102_090404.wav, length=40448 samples
+  Loaded: 20251102_090430.wav, length=31744 samples
+  Loaded: 20251102_090439.wav, length=46592 samples
+  Loaded: 20251102_090451.wav, length=35840 samples
+  Loaded: 20251102_090456.wav, length=35328 samples
+  Loaded: 20251102_090522.wav, length=31232 samples
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  Loaded: 20251102_090529.wav, length=42496 samples
+  Loaded: 20251102_090556.wav, length=60416 samples
+  Loaded: 20251102_090608.wav, length=64000 samples
+  Loaded: 20251102_090619.wav, length=40960 samples
+  Loaded: 20251102_090702.wav, length=33280 samples
+  Loaded: 20251102_090717.wav, length=33280 samples
+  Loaded: 20251102_090744.wav, length=31744 samples
+  Loaded: 20251102_090750.wav, length=32256 samples
+  Loaded: 20251102_090812.wav, length=24064 samples
+  Loaded: 20251102_090818.wav, length=34304 samples
+  Loaded: 20251102_091949.wav, length=33792 samples
+  Loaded: 20251102_091955.wav, length=47104 samples
+  Loaded: 20251102_092739.wav, length=31232 samples
+  Loaded: 20251102_092746.wav, length=36864 samples
+  Loaded: 20251102_092755.wav, length=47104 samples
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  Loaded: 20251102_092804.wav, length=40448 samples
+  Loaded: 20251102_092813.wav, length=33792 samples
+  Loaded: 20251102_092818.wav, length=39424 samples
+  Loaded: 20251102_093506.wav, length=29696 samples
+  Loaded: 20251102_102246.wav, length=32768 samples
+  Loaded: 20251102_102249.wav, length=35840 samples
+  Loaded: 20251102_102252.wav, length=31232 samples
+  Loaded: 20251102_102301.wav, length=35328 samples
+  Loaded: 20251102_102307.wav, length=31744 samples
+  Loaded: 20251102_102319.wav, length=32256 samples
+  Loaded: 20251102_102324.wav, length=43520 samples
+  Loaded: 20251102_102332.wav, length=31232 samples
+  Loaded: 20251102_102358.wav, length=27648 samples
+  Loaded: 20251102_102403.wav, length=41984 samples
+  Loaded: 20251102_102406.wav, length=39936 samples
+  Loaded: 20251102_102414.wav, length=31744 samples
+  Loaded: 20251102_102419.wav, length=36352 samples
+  Loaded: 20251102_102424.wav, length=38912 samples
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  Loaded: 20251102_102437.wav, length=31232 samples
+  Loaded: 20251102_102443.wav, length=40448 samples
+  Loaded: 20251102_102449.wav, length=36352 samples
+  Loaded: buka 50.wav, length=40960 samples
+  Loaded: buka1.wav, length=56832 samples
+  Loaded: buka10.wav, length=42496 samples
+  Loaded: buka100.wav, length=43008 samples
+  Loaded: buka2.wav, length=44032 samples
+  Loaded: buka20.wav, length=24576 samples
+  Loaded: buka3.wav, length=37376 samples
+  Loaded: buka30.wav, length=40448 samples
+  Loaded: buka4.wav, length=30720 samples
+  Loaded: buka40.wav, length=55296 samples
+  Loaded: buka5.wav, length=29696 samples
+  Loaded: buka51.wav, length=44032 samples
+  Loaded: buka6.wav, length=30720 samples
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  Loaded: buka60.wav, length=47104 samples
+  Loaded: buka70.wav, length=35840 samples
+  Loaded: buka80.wav, length=56320 samples
+  Loaded: buka81.wav, length=28160 samples
+  Loaded: buka90.wav, length=35328 samples
+Loading folder: tutup_fauzan
+  Loaded: 20251031_052203.wav, length=41472 samples
+  Loaded: 20251031_052207.wav, length=35328 samples
+  Loaded: 20251031_052211.wav, length=46080 samples
+  Loaded: 20251031_052215.wav, length=45056 samples
+  Loaded: 20251031_052219.wav, length=41472 samples
+  Loaded: 20251031_052242.wav, length=37376 samples
+  Loaded: 20251031_052247.wav, length=46592 samples
+  Loaded: 20251031_052253.wav, length=48128 samples
+  Loaded: 20251031_052331.wav, length=37888 samples
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  Loaded: 20251031_052341.wav, length=50688 samples
+  Loaded: 20251031_052346.wav, length=49664 samples
+  Loaded: 20251031_052353.wav, length=45568 samples
+  Loaded: 20251031_052357.wav, length=41984 samples
+  Loaded: 20251031_052402.wav, length=46592 samples
+  Loaded: 20251031_052406.wav, length=39424 samples
+  Loaded: 20251031_052419.wav, length=41984 samples
+  Loaded: 20251031_052425.wav, length=38912 samples
+  Loaded: 20251031_135230.wav, length=30208 samples
+  Loaded: 20251031_135243.wav, length=44032 samples
+  Loaded: 20251031_135336.wav, length=31232 samples
+  Loaded: 20251031_135426.wav, length=40448 samples
+  Loaded: 20251031_135436.wav, length=45056 samples
+  Loaded: 20251031_135444.wav, length=45056 samples
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  Loaded: 20251031_135452.wav, length=37376 samples
+  Loaded: 20251031_135517.wav, length=40960 samples
+  Loaded: 20251031_135541.wav, length=47616 samples
+  Loaded: 20251031_135737.wav, length=34304 samples
+  Loaded: 20251031_142112.wav, length=33792 samples
+  Loaded: 20251031_142118.wav, length=42496 samples
+  Loaded: 20251031_142126.wav, length=55296 samples
+  Loaded: 20251031_142138.wav, length=47104 samples
+  Loaded: 20251031_142155.wav, length=35328 samples
+  Loaded: 20251031_142205.wav, length=56832 samples
+  Loaded: 20251031_142227.wav, length=47616 samples
+  Loaded: 20251031_142245.wav, length=39424 samples
+  Loaded: 20251031_142540.wav, length=44032 samples
+  Loaded: 20251031_142548.wav, length=35840 samples
+  Loaded: 20251031_142556.wav, length=49152 samples
+  Loaded: 20251031_142701.wav, length=37376 samples
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  Loaded: 20251031_142710.wav, length=35840 samples
+  Loaded: 20251031_143222.wav, length=34304 samples
+  Loaded: 20251031_145154.wav, length=40448 samples
+  Loaded: 20251031_145321.wav, length=31232 samples
+  Loaded: 20251031_145331.wav, length=37376 samples
+  Loaded: 20251102_094601.wav, length=31232 samples
+  Loaded: 20251102_094608.wav, length=38400 samples
+  Loaded: 20251102_094612.wav, length=36352 samples
+  Loaded: 20251102_094616.wav, length=43520 samples
+  Loaded: 20251102_094619.wav, length=47104 samples
+  Loaded: 20251102_094642.wav, length=39936 samples
+  Loaded: 20251102_094646.wav, length=43520 samples
+  Loaded: 20251102_094704.wav, length=41472 samples
+  Loaded: 20251102_094712.wav, length=40448 samples
+  Loaded: 20251102_094856.wav, length=31232 samples
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  Loaded: 20251102_094859.wav, length=34304 samples
+  Loaded: 20251102_094902.wav, length=38400 samples
+  Loaded: 20251102_094929.wav, length=31232 samples
+  Loaded: 20251102_094934.wav, length=42496 samples
+  Loaded: 20251102_094937.wav, length=40448 samples
+  Loaded: 20251102_100720.wav, length=31744 samples
+  Loaded: 20251102_100723.wav, length=34304 samples
+  Loaded: 20251102_100901.wav, length=28160 samples
+  Loaded: 20251102_101521.wav, length=31232 samples
+  Loaded: 20251102_101524.wav, length=36352 samples
+  Loaded: 20251102_101527.wav, length=35840 samples
+  Loaded: 20251102_101530.wav, length=31232 samples
+  Loaded: 20251102_101543.wav, length=34816 samples
+  Loaded: 20251102_101547.wav, length=40960 samples
+  Loaded: 20251102_101555.wav, length=42496 samples
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  Loaded: 20251102_101559.wav, length=40960 samples
+  Loaded: 20251102_101629.wav, length=31744 samples
+  Loaded: 20251102_101635.wav, length=39936 samples
+  Loaded: 20251102_101638.wav, length=35328 samples
+  Loaded: 20251102_101641.wav, length=36352 samples
+  Loaded: 20251102_101652.wav, length=37376 samples
+  Loaded: 20251102_101702.wav, length=34304 samples
+  Loaded: 20251102_101712.wav, length=32768 samples
+  Loaded: 20251102_101719.wav, length=29696 samples
+  Loaded: 20251102_101724.wav, length=34304 samples
+  Loaded: 20251102_101759.wav, length=37888 samples
+  Loaded: 20251102_101802.wav, length=32256 samples
+  Loaded: 20251102_101805.wav, length=37376 samples
+  Loaded: 20251102_102133.wav, length=38912 samples
+  Loaded: 20251102_102137.wav, length=34816 samples
+  Loaded: 20251102_102145.wav, length=29184 samples
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  Loaded: 20251102_102150.wav, length=33280 samples
+  Loaded: 20251102_102155.wav, length=35328 samples
+  Loaded: 20251102_102208.wav, length=31744 samples
+  Loaded: tutup1.wav, length=38912 samples
+  Loaded: tutup10.wav, length=42496 samples
+  Loaded: tutup100.wav, length=33280 samples
+  Loaded: tutup20.wav, length=44544 samples
+  Loaded: tutup30.wav, length=48128 samples
+  Loaded: tutup40.wav, length=46592 samples
+  Loaded: tutup50.wav, length=35840 samples
+  Loaded: tutup51.wav, length=32768 samples
+  Loaded: tutup60.wav, length=43520 samples
+  Loaded: tutup70.wav, length=29696 samples
+  Loaded: tutup80.wav, length=38400 samples
+  Loaded: tutup90.wav, length=30720 samples
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="ekstraksi-fitur-dengan-librosa-dan-tsfel">
+<h2><strong>Ekstraksi Fitur dengan Librosa dan TSFEL</strong><a class="headerlink" href="#ekstraksi-fitur-dengan-librosa-dan-tsfel" title="Link to this heading">#</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">extract_features_librosa</span><span class="p">(</span><span class="n">signal</span><span class="p">,</span> <span class="n">sr</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Ekstrak fitur audio menggunakan Librosa.</span>
+<span class="sd">       Output = 1 vektor fitur panjang tetap.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="n">features</span> <span class="o">=</span> <span class="p">[]</span>
+
+    <span class="c1"># --- MFCC ---</span>
+    <span class="n">mfcc</span> <span class="o">=</span> <span class="n">librosa</span><span class="o">.</span><span class="n">feature</span><span class="o">.</span><span class="n">mfcc</span><span class="p">(</span><span class="n">y</span><span class="o">=</span><span class="n">signal</span><span class="p">,</span> <span class="n">sr</span><span class="o">=</span><span class="n">sr</span><span class="p">,</span> <span class="n">n_mfcc</span><span class="o">=</span><span class="mi">13</span><span class="p">)</span>
+    <span class="n">mfcc_mean</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">mfcc</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+    <span class="n">mfcc_std</span>  <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">std</span><span class="p">(</span><span class="n">mfcc</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+    <span class="n">features</span><span class="o">.</span><span class="n">extend</span><span class="p">(</span><span class="n">mfcc_mean</span><span class="p">)</span>
+    <span class="n">features</span><span class="o">.</span><span class="n">extend</span><span class="p">(</span><span class="n">mfcc_std</span><span class="p">)</span>
+
+    <span class="c1"># --- Spectral centroid ---</span>
+    <span class="n">centroid</span> <span class="o">=</span> <span class="n">librosa</span><span class="o">.</span><span class="n">feature</span><span class="o">.</span><span class="n">spectral_centroid</span><span class="p">(</span><span class="n">y</span><span class="o">=</span><span class="n">signal</span><span class="p">,</span> <span class="n">sr</span><span class="o">=</span><span class="n">sr</span><span class="p">)</span>
+    <span class="n">features</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">centroid</span><span class="p">))</span>
+
+    <span class="c1"># --- Spectral bandwidth ---</span>
+    <span class="n">bandwidth</span> <span class="o">=</span> <span class="n">librosa</span><span class="o">.</span><span class="n">feature</span><span class="o">.</span><span class="n">spectral_bandwidth</span><span class="p">(</span><span class="n">y</span><span class="o">=</span><span class="n">signal</span><span class="p">,</span> <span class="n">sr</span><span class="o">=</span><span class="n">sr</span><span class="p">)</span>
+    <span class="n">features</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">bandwidth</span><span class="p">))</span>
+
+    <span class="c1"># --- Zero-crossing rate ---</span>
+    <span class="n">zcr</span> <span class="o">=</span> <span class="n">librosa</span><span class="o">.</span><span class="n">feature</span><span class="o">.</span><span class="n">zero_crossing_rate</span><span class="p">(</span><span class="n">signal</span><span class="p">)</span>
+    <span class="n">features</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">zcr</span><span class="p">))</span>
+
+    <span class="c1"># --- RMS energy ---</span>
+    <span class="n">rms</span> <span class="o">=</span> <span class="n">librosa</span><span class="o">.</span><span class="n">feature</span><span class="o">.</span><span class="n">rms</span><span class="p">(</span><span class="n">y</span><span class="o">=</span><span class="n">signal</span><span class="p">)</span>
+    <span class="n">features</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">rms</span><span class="p">))</span>
+
+    <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">features</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">extract_features_tsfel</span><span class="p">(</span><span class="n">signal</span><span class="p">,</span> <span class="n">sr</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Ekstrak fitur menggunakan TSFEL.</span>
+<span class="sd">       Mengembalikan 1 vektor fitur (numpy).</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="c1"># convert ke dataframe (tsfel butuh DF/series)</span>
+    <span class="n">df_signal</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">signal</span><span class="p">)</span>
+
+    <span class="c1"># ambil konfigurasi default (time, statistical, spectral)</span>
+    <span class="n">cfg</span> <span class="o">=</span> <span class="n">tsfel</span><span class="o">.</span><span class="n">get_features_by_domain</span><span class="p">()</span>
+
+    <span class="c1"># ekstraksi fitur</span>
+    <span class="n">extracted</span> <span class="o">=</span> <span class="n">tsfel</span><span class="o">.</span><span class="n">time_series_features_extractor</span><span class="p">(</span>
+        <span class="n">cfg</span><span class="p">,</span> <span class="n">df_signal</span><span class="p">,</span> <span class="n">fs</span><span class="o">=</span><span class="n">sr</span><span class="p">,</span> <span class="n">verbose</span><span class="o">=</span><span class="mi">0</span>
+    <span class="p">)</span>
+
+    <span class="c1"># ubah dataframe → numpy vector</span>
+    <span class="n">vec</span> <span class="o">=</span> <span class="n">extracted</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">values</span>
+
+    <span class="k">return</span> <span class="n">vec</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">build_feature_dataset</span><span class="p">(</span><span class="n">audio_dataset</span><span class="p">,</span> <span class="n">method</span><span class="o">=</span><span class="s2">&quot;librosa&quot;</span><span class="p">):</span>
+    <span class="n">X</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="n">y</span> <span class="o">=</span> <span class="p">[]</span>
+
+    <span class="k">for</span> <span class="n">label</span><span class="p">,</span> <span class="n">items</span> <span class="ow">in</span> <span class="n">audio_dataset</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+        <span class="k">for</span> <span class="n">item</span> <span class="ow">in</span> <span class="n">items</span><span class="p">:</span>
+            <span class="n">sig</span> <span class="o">=</span> <span class="n">item</span><span class="p">[</span><span class="s2">&quot;signal&quot;</span><span class="p">]</span>
+            <span class="n">sr</span> <span class="o">=</span> <span class="n">item</span><span class="p">[</span><span class="s2">&quot;sr&quot;</span><span class="p">]</span>
+
+            <span class="k">if</span> <span class="n">method</span> <span class="o">==</span> <span class="s2">&quot;librosa&quot;</span><span class="p">:</span>
+                <span class="n">feat</span> <span class="o">=</span> <span class="n">extract_features_librosa</span><span class="p">(</span><span class="n">sig</span><span class="p">,</span> <span class="n">sr</span><span class="p">)</span>
+            <span class="k">elif</span> <span class="n">method</span> <span class="o">==</span> <span class="s2">&quot;tsfel&quot;</span><span class="p">:</span>
+                <span class="n">feat</span> <span class="o">=</span> <span class="n">extract_features_tsfel</span><span class="p">(</span><span class="n">sig</span><span class="p">,</span> <span class="n">sr</span><span class="p">)</span>
+
+            <span class="n">X</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">feat</span><span class="p">)</span>
+            <span class="n">y</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">label</span><span class="p">)</span>
+
+    <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">X</span><span class="p">),</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">y</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">X_librosa</span><span class="p">,</span> <span class="n">y_librosa</span> <span class="o">=</span> <span class="n">build_feature_dataset</span><span class="p">(</span><span class="n">audio_dataset</span><span class="p">,</span> <span class="n">method</span><span class="o">=</span><span class="s2">&quot;librosa&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">X_tsfel</span><span class="p">,</span> <span class="n">y_tsfel</span> <span class="o">=</span> <span class="n">build_feature_dataset</span><span class="p">(</span><span class="n">audio_dataset</span><span class="p">,</span> <span class="n">method</span><span class="o">=</span><span class="s1">&#39;tsfel&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>D:\Perkuliahan\Semester 5\Poyek Sains Data\PSD\venv_py\Lib\site-packages\tsfel\feature_extraction\calc_features.py:195: SyntaxWarning: invalid escape sequence &#39;\*&#39;
+  \**kwargs:
+</pre></div>
+</div>
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">KeyboardInterrupt</span><span class="g g-Whitespace">                         </span>Traceback (most recent call last)
+<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">13</span><span class="p">],</span> <span class="n">line</span> <span class="mi">1</span>
+<span class="ne">----&gt; </span><span class="mi">1</span> <span class="n">X_tsfel</span><span class="p">,</span> <span class="n">y_tsfel</span> <span class="o">=</span> <span class="n">build_feature_dataset</span><span class="p">(</span><span class="n">audio_dataset</span><span class="p">,</span> <span class="n">method</span><span class="o">=</span><span class="s1">&#39;tsfel&#39;</span><span class="p">)</span>
+
+<span class="nn">Cell In[11], line 13,</span> in <span class="ni">build_feature_dataset</span><span class="nt">(audio_dataset, method)</span>
+<span class="g g-Whitespace">     </span><span class="mi">11</span>     <span class="n">feat</span> <span class="o">=</span> <span class="n">extract_features_librosa</span><span class="p">(</span><span class="n">sig</span><span class="p">,</span> <span class="n">sr</span><span class="p">)</span>
+<span class="g g-Whitespace">     </span><span class="mi">12</span> <span class="k">elif</span> <span class="n">method</span> <span class="o">==</span> <span class="s2">&quot;tsfel&quot;</span><span class="p">:</span>
+<span class="ne">---&gt; </span><span class="mi">13</span>     <span class="n">feat</span> <span class="o">=</span> <span class="n">extract_features_tsfel</span><span class="p">(</span><span class="n">sig</span><span class="p">,</span> <span class="n">sr</span><span class="p">)</span>
+<span class="g g-Whitespace">     </span><span class="mi">15</span> <span class="n">X</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">feat</span><span class="p">)</span>
+<span class="g g-Whitespace">     </span><span class="mi">16</span> <span class="n">y</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">label</span><span class="p">)</span>
+
+<span class="nn">Cell In[10], line 13,</span> in <span class="ni">extract_features_tsfel</span><span class="nt">(signal, sr)</span>
+<span class="g g-Whitespace">     </span><span class="mi">10</span> <span class="n">cfg</span> <span class="o">=</span> <span class="n">tsfel</span><span class="o">.</span><span class="n">get_features_by_domain</span><span class="p">()</span>
+<span class="g g-Whitespace">     </span><span class="mi">12</span> <span class="c1"># ekstraksi fitur</span>
+<span class="ne">---&gt; </span><span class="mi">13</span> <span class="n">extracted</span> <span class="o">=</span> <span class="n">tsfel</span><span class="o">.</span><span class="n">time_series_features_extractor</span><span class="p">(</span>
+<span class="g g-Whitespace">     </span><span class="mi">14</span>     <span class="n">cfg</span><span class="p">,</span> <span class="n">df_signal</span><span class="p">,</span> <span class="n">fs</span><span class="o">=</span><span class="n">sr</span><span class="p">,</span> <span class="n">verbose</span><span class="o">=</span><span class="mi">0</span>
+<span class="g g-Whitespace">     </span><span class="mi">15</span> <span class="p">)</span>
+<span class="g g-Whitespace">     </span><span class="mi">17</span> <span class="c1"># ubah dataframe → numpy vector</span>
+<span class="g g-Whitespace">     </span><span class="mi">18</span> <span class="n">vec</span> <span class="o">=</span> <span class="n">extracted</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">values</span>
+
+<span class="nn">File D:\Perkuliahan\Semester 5\Poyek Sains Data\PSD\venv_py\Lib\site-packages\tsfel\feature_extraction\calc_features.py:379,</span> in <span class="ni">time_series_features_extractor</span><span class="nt">(config, timeseries, fs, window_size, overlap, verbose, **kwargs)</span>
+<span class="g g-Whitespace">    </span><span class="mi">374</span>         <span class="k">raise</span> <span class="ne">SystemExit</span><span class="p">(</span>
+<span class="g g-Whitespace">    </span><span class="mi">375</span>             <span class="s2">&quot;n_jobs value is not valid. &quot;</span> <span class="s2">&quot;Choose an integer value or None for no multiprocessing.&quot;</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">376</span>         <span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">377</span> <span class="c1"># single window</span>
+<span class="g g-Whitespace">    </span><span class="mi">378</span> <span class="k">else</span><span class="p">:</span>
+<span class="ne">--&gt; </span><span class="mi">379</span>     <span class="n">features_final</span> <span class="o">=</span> <span class="n">calc_window_features</span><span class="p">(</span>
+<span class="g g-Whitespace">    </span><span class="mi">380</span>         <span class="n">config</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">381</span>         <span class="n">timeseries</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">382</span>         <span class="n">fs</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">383</span>         <span class="n">verbose</span><span class="o">=</span><span class="n">verbose</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">384</span>         <span class="n">features_path</span><span class="o">=</span><span class="n">features_path</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">385</span>         <span class="n">header_names</span><span class="o">=</span><span class="n">names</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">386</span>         <span class="n">single_window</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">387</span>     <span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">389</span> <span class="c1"># Assuring the same feature extraction order</span>
+<span class="g g-Whitespace">    </span><span class="mi">390</span> <span class="n">features_final</span> <span class="o">=</span> <span class="n">features_final</span><span class="o">.</span><span class="n">reindex</span><span class="p">(</span><span class="nb">sorted</span><span class="p">(</span><span class="n">features_final</span><span class="o">.</span><span class="n">columns</span><span class="p">),</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+
+<span class="nn">File D:\Perkuliahan\Semester 5\Poyek Sains Data\PSD\venv_py\Lib\site-packages\tsfel\feature_extraction\calc_features.py:517,</span> in <span class="ni">calc_window_features</span><span class="nt">(config, window, fs, verbose, single_window, **kwargs)</span>
+<span class="g g-Whitespace">    </span><span class="mi">515</span> <span class="k">for</span> <span class="n">ax</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">header_names</span><span class="p">)):</span>
+<span class="g g-Whitespace">    </span><span class="mi">516</span>     <span class="n">sig_ax</span> <span class="o">=</span> <span class="n">window</span> <span class="k">if</span> <span class="n">single_axis</span> <span class="k">else</span> <span class="n">window</span><span class="p">[:,</span> <span class="n">ax</span><span class="p">]</span>
+<span class="ne">--&gt; </span><span class="mi">517</span>     <span class="n">eval_result_ax</span> <span class="o">=</span> <span class="n">feature_funcs</span><span class="p">[</span><span class="n">func_total</span><span class="p">](</span><span class="n">sig_ax</span><span class="p">,</span> <span class="o">**</span><span class="n">parameters_total</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">518</span>     <span class="c1"># Function returns more than one element</span>
+<span class="g g-Whitespace">    </span><span class="mi">519</span>     <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">eval_result_ax</span><span class="p">,</span> <span class="nb">tuple</span><span class="p">):</span>
+
+<span class="nn">File D:\Perkuliahan\Semester 5\Poyek Sains Data\PSD\venv_py\Lib\site-packages\tsfel\feature_extraction\features.py:1697,</span> in <span class="ni">wavelet_abs_mean</span><span class="nt">(signal, fs, wavelet, max_width)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1694</span> <span class="n">max_width</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">max_width</span><span class="p">)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1695</span> <span class="n">widths</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">max_width</span><span class="p">)</span>
+<span class="ne">-&gt; </span><span class="mi">1697</span> <span class="n">coeffs</span><span class="p">,</span> <span class="n">frequencies</span> <span class="o">=</span> <span class="n">continuous_wavelet_transform</span><span class="p">(</span><span class="n">signal</span><span class="o">=</span><span class="n">signal</span><span class="p">,</span> <span class="n">fs</span><span class="o">=</span><span class="n">fs</span><span class="p">,</span> <span class="n">wavelet</span><span class="o">=</span><span class="n">wavelet</span><span class="p">,</span> <span class="n">widths</span><span class="o">=</span><span class="n">widths</span><span class="p">)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1698</span> <span class="n">f_keys</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">round</span><span class="p">(</span><span class="n">frequencies</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">str</span><span class="p">)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1700</span> <span class="k">return</span> <span class="p">{</span><span class="s2">&quot;names&quot;</span><span class="p">:</span> <span class="p">[</span><span class="n">f</span> <span class="o">+</span> <span class="s2">&quot;Hz&quot;</span> <span class="k">for</span> <span class="n">f</span> <span class="ow">in</span> <span class="n">f_keys</span><span class="p">],</span> <span class="s2">&quot;values&quot;</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">coeffs</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">))}</span>
+
+<span class="nn">File D:\Perkuliahan\Semester 5\Poyek Sains Data\PSD\venv_py\Lib\site-packages\tsfel\feature_extraction\features_utils.py:371,</span> in <span class="ni">continuous_wavelet_transform</span><span class="nt">(signal, fs, wavelet, widths)</span>
+<span class="g g-Whitespace">    </span><span class="mi">351</span> <span class="k">def</span><span class="w"> </span><span class="nf">continuous_wavelet_transform</span><span class="p">(</span><span class="n">signal</span><span class="p">,</span> <span class="n">fs</span><span class="p">,</span> <span class="n">wavelet</span><span class="o">=</span><span class="s2">&quot;mexh&quot;</span><span class="p">,</span> <span class="n">widths</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">10</span><span class="p">)):</span>
+<span class="g g-Whitespace">    </span><span class="mi">352</span><span class="w">     </span><span class="sd">&quot;&quot;&quot;Computes CWT (continuous wavelet transform) of the signal.</span>
+<span class="g g-Whitespace">    </span><span class="mi">353</span><span class="sd"> </span>
+<span class="g g-Whitespace">    </span><span class="mi">354</span><span class="sd">     Parameters</span>
+<span class="sd">   (...)    368         matrix with size (len(widths),len(signal))</span>
+<span class="g g-Whitespace">    </span><span class="mi">369</span><span class="sd">     &quot;&quot;&quot;</span>
+<span class="ne">--&gt; </span><span class="mi">371</span>     <span class="n">coefficients</span><span class="p">,</span> <span class="n">frequencies</span> <span class="o">=</span> <span class="n">pywt</span><span class="o">.</span><span class="n">cwt</span><span class="p">(</span><span class="n">signal</span><span class="p">,</span> <span class="n">widths</span><span class="p">,</span> <span class="n">wavelet</span><span class="p">,</span> <span class="n">sampling_period</span><span class="o">=</span><span class="mi">1</span> <span class="o">/</span> <span class="n">fs</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">373</span>     <span class="k">return</span> <span class="n">coefficients</span><span class="p">,</span> <span class="n">frequencies</span>
+
+<span class="nn">File D:\Perkuliahan\Semester 5\Poyek Sains Data\PSD\venv_py\Lib\site-packages\pywt\_cwt.py:198,</span> in <span class="ni">cwt</span><span class="nt">(data, scales, wavelet, sampling_period, method, axis, precision)</span>
+<span class="g g-Whitespace">    </span><span class="mi">195</span>         <span class="n">coef</span> <span class="o">=</span> <span class="n">coef</span><span class="o">.</span><span class="n">swapaxes</span><span class="p">(</span><span class="n">axis</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">196</span>     <span class="n">out</span><span class="p">[</span><span class="n">i</span><span class="p">,</span> <span class="o">...</span><span class="p">]</span> <span class="o">=</span> <span class="n">coef</span>
+<span class="ne">--&gt; </span><span class="mi">198</span> <span class="n">frequencies</span> <span class="o">=</span> <span class="n">scale2frequency</span><span class="p">(</span><span class="n">wavelet</span><span class="p">,</span> <span class="n">scales</span><span class="p">,</span> <span class="n">precision</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">199</span> <span class="k">if</span> <span class="n">np</span><span class="o">.</span><span class="n">isscalar</span><span class="p">(</span><span class="n">frequencies</span><span class="p">):</span>
+<span class="g g-Whitespace">    </span><span class="mi">200</span>     <span class="n">frequencies</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="n">frequencies</span><span class="p">])</span>
+
+<span class="nn">File D:\Perkuliahan\Semester 5\Poyek Sains Data\PSD\venv_py\Lib\site-packages\pywt\_functions.py:183,</span> in <span class="ni">scale2frequency</span><span class="nt">(wavelet, scale, precision)</span>
+<span class="g g-Whitespace">    </span><span class="mi">162</span> <span class="k">def</span><span class="w"> </span><span class="nf">scale2frequency</span><span class="p">(</span><span class="n">wavelet</span><span class="p">,</span> <span class="n">scale</span><span class="p">,</span> <span class="n">precision</span><span class="o">=</span><span class="mi">8</span><span class="p">):</span>
+<span class="g g-Whitespace">    </span><span class="mi">163</span><span class="w">     </span><span class="sd">&quot;&quot;&quot;Convert from CWT &quot;scale&quot; to normalized frequency.</span>
+<span class="g g-Whitespace">    </span><span class="mi">164</span><span class="sd"> </span>
+<span class="g g-Whitespace">    </span><span class="mi">165</span><span class="sd">     Parameters</span>
+<span class="sd">   (...)    181 </span>
+<span class="g g-Whitespace">    </span><span class="mi">182</span><span class="sd">     &quot;&quot;&quot;</span>
+<span class="ne">--&gt; </span><span class="mi">183</span>     <span class="k">return</span> <span class="n">central_frequency</span><span class="p">(</span><span class="n">wavelet</span><span class="p">,</span> <span class="n">precision</span><span class="o">=</span><span class="n">precision</span><span class="p">)</span> <span class="o">/</span> <span class="n">scale</span>
+
+<span class="nn">File D:\Perkuliahan\Semester 5\Poyek Sains Data\PSD\venv_py\Lib\site-packages\pywt\_functions.py:155,</span> in <span class="ni">central_frequency</span><span class="nt">(wavelet, precision)</span>
+<span class="g g-Whitespace">    </span><span class="mi">152</span> <span class="n">domain</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="n">x</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">-</span> <span class="n">x</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+<span class="g g-Whitespace">    </span><span class="mi">153</span> <span class="k">assert</span> <span class="n">domain</span> <span class="o">&gt;</span> <span class="mi">0</span>
+<span class="ne">--&gt; </span><span class="mi">155</span> <span class="n">index</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">argmax</span><span class="p">(</span><span class="nb">abs</span><span class="p">(</span><span class="n">fft</span><span class="p">(</span><span class="n">psi</span><span class="p">)[</span><span class="mi">1</span><span class="p">:]))</span> <span class="o">+</span> <span class="mi">2</span>
+<span class="g g-Whitespace">    </span><span class="mi">156</span> <span class="k">if</span> <span class="n">index</span> <span class="o">&gt;</span> <span class="nb">len</span><span class="p">(</span><span class="n">psi</span><span class="p">)</span> <span class="o">/</span> <span class="mi">2</span><span class="p">:</span>
+<span class="g g-Whitespace">    </span><span class="mi">157</span>     <span class="n">index</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">psi</span><span class="p">)</span> <span class="o">-</span> <span class="n">index</span> <span class="o">+</span> <span class="mi">2</span>
+
+<span class="nn">File D:\Perkuliahan\Semester 5\Poyek Sains Data\PSD\venv_py\Lib\site-packages\numpy\fft\_pocketfft.py:215,</span> in <span class="ni">fft</span><span class="nt">(a, n, axis, norm, out)</span>
+<span class="g g-Whitespace">    </span><span class="mi">213</span> <span class="k">if</span> <span class="n">n</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+<span class="g g-Whitespace">    </span><span class="mi">214</span>     <span class="n">n</span> <span class="o">=</span> <span class="n">a</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="n">axis</span><span class="p">]</span>
+<span class="ne">--&gt; </span><span class="mi">215</span> <span class="n">output</span> <span class="o">=</span> <span class="n">_raw_fft</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">n</span><span class="p">,</span> <span class="n">axis</span><span class="p">,</span> <span class="kc">False</span><span class="p">,</span> <span class="kc">True</span><span class="p">,</span> <span class="n">norm</span><span class="p">,</span> <span class="n">out</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">216</span> <span class="k">return</span> <span class="n">output</span>
+
+<span class="nn">File D:\Perkuliahan\Semester 5\Poyek Sains Data\PSD\venv_py\Lib\site-packages\numpy\fft\_pocketfft.py:101,</span> in <span class="ni">_raw_fft</span><span class="nt">(a, n, axis, is_real, is_forward, norm, out)</span>
+<span class="g g-Whitespace">     </span><span class="mi">97</span> <span class="k">elif</span> <span class="p">((</span><span class="n">shape</span> <span class="o">:=</span> <span class="nb">getattr</span><span class="p">(</span><span class="n">out</span><span class="p">,</span> <span class="s2">&quot;shape&quot;</span><span class="p">,</span> <span class="kc">None</span><span class="p">))</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span>
+<span class="g g-Whitespace">     </span><span class="mi">98</span>       <span class="ow">and</span> <span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">shape</span><span class="p">)</span> <span class="o">!=</span> <span class="n">a</span><span class="o">.</span><span class="n">ndim</span> <span class="ow">or</span> <span class="n">shape</span><span class="p">[</span><span class="n">axis</span><span class="p">]</span> <span class="o">!=</span> <span class="n">n_out</span><span class="p">)):</span>
+<span class="g g-Whitespace">     </span><span class="mi">99</span>     <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;output array has wrong shape.&quot;</span><span class="p">)</span>
+<span class="ne">--&gt; </span><span class="mi">101</span> <span class="k">return</span> <span class="n">ufunc</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">fct</span><span class="p">,</span> <span class="n">axes</span><span class="o">=</span><span class="p">[(</span><span class="n">axis</span><span class="p">,),</span> <span class="p">(),</span> <span class="p">(</span><span class="n">axis</span><span class="p">,)],</span> <span class="n">out</span><span class="o">=</span><span class="n">out</span><span class="p">)</span>
+
+<span class="ne">KeyboardInterrupt</span>: 
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="gak-tau">
+<h2>Gak tau<a class="headerlink" href="#gak-tau" title="Link to this heading">#</a></h2>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./."
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="project-timeseries-audio-multilabel-2-models.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title"><em><strong>Project Time Series Audio Dataset With MultiLabel</strong></em></p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="uas-timeseries.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title"><em><strong>Ujian Akhir Semester Menggunakan Data TimeSeries UCR</strong></em></p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#convert-data-audio"><strong>Convert Data Audio</strong></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#membaca-dataset-audio"><strong>Membaca Dataset Audio</strong></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ekstraksi-fitur-dengan-librosa-dan-tsfel"><strong>Ekstraksi Fitur dengan Librosa dan TSFEL</strong></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#gak-tau">Gak tau</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Alif Fitrah
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2023.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>
