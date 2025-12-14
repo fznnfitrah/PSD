@@ -688,29 +688,17 @@ document.write(`
 <span class="g g-Whitespace">   </span><span class="mi">1144</span>     <span class="k">return</span> <span class="mi">0</span>
 <span class="g g-Whitespace">   </span><span class="mi">1145</span> <span class="k">else</span><span class="p">:</span>
 
-<span class="nn">File D:\Perkuliahan\Semester 5\Poyek Sains Data\PSD\venv_py\Lib\site-packages\tsfel\feature_extraction\features.py:1205,</span> in <span class="ni">spectral_spread</span><span class="nt">(signal, fs)</span>
-<span class="g g-Whitespace">   </span><span class="mi">1184</span><span class="w"> </span><span class="sd">&quot;&quot;&quot;Measures the spread of the spectrum around its mean value.</span>
+<span class="nn">File D:\Perkuliahan\Semester 5\Poyek Sains Data\PSD\venv_py\Lib\site-packages\tsfel\feature_extraction\features.py:1204,</span> in <span class="ni">spectral_spread</span><span class="nt">(signal, fs)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1182</span> <span class="nd">@set_domain</span><span class="p">(</span><span class="s2">&quot;domain&quot;</span><span class="p">,</span> <span class="s2">&quot;spectral&quot;</span><span class="p">)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1183</span> <span class="k">def</span><span class="w"> </span><span class="nf">spectral_spread</span><span class="p">(</span><span class="n">signal</span><span class="p">,</span> <span class="n">fs</span><span class="p">):</span>
+<span class="g g-Whitespace">   </span><span class="mi">1184</span><span class="w">     </span><span class="sd">&quot;&quot;&quot;Measures the spread of the spectrum around its mean value.</span>
 <span class="g g-Whitespace">   </span><span class="mi">1185</span><span class="sd"> </span>
-<span class="g g-Whitespace">   </span><span class="mi">1186</span><span class="sd"> Description and formula in Article:</span>
-<span class="sd">   (...)   1202     Spectral Spread</span>
-<span class="g g-Whitespace">   </span><span class="mi">1203</span><span class="sd"> &quot;&quot;&quot;</span>
-<span class="g g-Whitespace">   </span><span class="mi">1204</span> <span class="n">f</span><span class="p">,</span> <span class="n">fmag</span> <span class="o">=</span> <span class="n">calc_fft</span><span class="p">(</span><span class="n">signal</span><span class="p">,</span> <span class="n">fs</span><span class="p">)</span>
-<span class="ne">-&gt; </span><span class="mi">1205</span> <span class="n">spect_centroid</span> <span class="o">=</span> <span class="n">spectral_centroid</span><span class="p">(</span><span class="n">signal</span><span class="p">,</span> <span class="n">fs</span><span class="p">)</span>
-<span class="g g-Whitespace">   </span><span class="mi">1207</span> <span class="k">if</span> <span class="ow">not</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">fmag</span><span class="p">):</span>
-<span class="g g-Whitespace">   </span><span class="mi">1208</span>     <span class="k">return</span> <span class="mi">0</span>
-
-<span class="nn">File D:\Perkuliahan\Semester 5\Poyek Sains Data\PSD\venv_py\Lib\site-packages\tsfel\feature_extraction\features.py:1073,</span> in <span class="ni">spectral_centroid</span><span class="nt">(signal, fs)</span>
-<span class="g g-Whitespace">   </span><span class="mi">1050</span> <span class="nd">@set_domain</span><span class="p">(</span><span class="s2">&quot;domain&quot;</span><span class="p">,</span> <span class="s2">&quot;spectral&quot;</span><span class="p">)</span>
-<span class="g g-Whitespace">   </span><span class="mi">1051</span> <span class="nd">@set_domain</span><span class="p">(</span><span class="s2">&quot;tag&quot;</span><span class="p">,</span> <span class="s2">&quot;audio&quot;</span><span class="p">)</span>
-<span class="g g-Whitespace">   </span><span class="mi">1052</span> <span class="k">def</span><span class="w"> </span><span class="nf">spectral_centroid</span><span class="p">(</span><span class="n">signal</span><span class="p">,</span> <span class="n">fs</span><span class="p">):</span>
-<span class="g g-Whitespace">   </span><span class="mi">1053</span><span class="w">     </span><span class="sd">&quot;&quot;&quot;Barycenter of the spectrum.</span>
-<span class="g g-Whitespace">   </span><span class="mi">1054</span><span class="sd"> </span>
-<span class="g g-Whitespace">   </span><span class="mi">1055</span><span class="sd">     Description and formula in Article:</span>
-<span class="sd">   (...)   1071         Centroid</span>
-<span class="g g-Whitespace">   </span><span class="mi">1072</span><span class="sd">     &quot;&quot;&quot;</span>
-<span class="ne">-&gt; </span><span class="mi">1073</span>     <span class="n">f</span><span class="p">,</span> <span class="n">fmag</span> <span class="o">=</span> <span class="n">calc_fft</span><span class="p">(</span><span class="n">signal</span><span class="p">,</span> <span class="n">fs</span><span class="p">)</span>
-<span class="g g-Whitespace">   </span><span class="mi">1074</span>     <span class="k">if</span> <span class="ow">not</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">fmag</span><span class="p">):</span>
-<span class="g g-Whitespace">   </span><span class="mi">1075</span>         <span class="k">return</span> <span class="mi">0</span>
+<span class="g g-Whitespace">   </span><span class="mi">1186</span><span class="sd">     Description and formula in Article:</span>
+<span class="sd">   (...)   1202         Spectral Spread</span>
+<span class="g g-Whitespace">   </span><span class="mi">1203</span><span class="sd">     &quot;&quot;&quot;</span>
+<span class="ne">-&gt; </span><span class="mi">1204</span>     <span class="n">f</span><span class="p">,</span> <span class="n">fmag</span> <span class="o">=</span> <span class="n">calc_fft</span><span class="p">(</span><span class="n">signal</span><span class="p">,</span> <span class="n">fs</span><span class="p">)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1205</span>     <span class="n">spect_centroid</span> <span class="o">=</span> <span class="n">spectral_centroid</span><span class="p">(</span><span class="n">signal</span><span class="p">,</span> <span class="n">fs</span><span class="p">)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1207</span>     <span class="k">if</span> <span class="ow">not</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">fmag</span><span class="p">):</span>
 
 <span class="nn">File D:\Perkuliahan\Semester 5\Poyek Sains Data\PSD\venv_py\Lib\site-packages\tsfel\feature_extraction\features_utils.py:73,</span> in <span class="ni">calc_fft</span><span class="nt">(signal, fs)</span>
 <span class="g g-Whitespace">     </span><span class="mi">55</span> <span class="k">def</span><span class="w"> </span><span class="nf">calc_fft</span><span class="p">(</span><span class="n">signal</span><span class="p">,</span> <span class="n">fs</span><span class="p">):</span>
