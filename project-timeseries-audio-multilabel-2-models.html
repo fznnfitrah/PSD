@@ -667,38 +667,24 @@ document.write(`
 <span class="g g-Whitespace">    </span><span class="mi">389</span> <span class="c1"># Assuring the same feature extraction order</span>
 <span class="g g-Whitespace">    </span><span class="mi">390</span> <span class="n">features_final</span> <span class="o">=</span> <span class="n">features_final</span><span class="o">.</span><span class="n">reindex</span><span class="p">(</span><span class="nb">sorted</span><span class="p">(</span><span class="n">features_final</span><span class="o">.</span><span class="n">columns</span><span class="p">),</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
 
-<span class="nn">File D:\Perkuliahan\Semester 5\Poyek Sains Data\PSD\venv_py\Lib\site-packages\tsfel\feature_extraction\calc_features.py:509,</span> in <span class="ni">calc_window_features</span><span class="nt">(config, window, fs, verbose, single_window, **kwargs)</span>
-<span class="g g-Whitespace">    </span><span class="mi">507</span> <span class="c1"># Eval feature results</span>
-<span class="g g-Whitespace">    </span><span class="mi">508</span> <span class="k">if</span> <span class="n">single_axis</span><span class="p">:</span>
-<span class="ne">--&gt; </span><span class="mi">509</span>     <span class="n">eval_result</span> <span class="o">=</span> <span class="n">feature_funcs</span><span class="p">[</span><span class="n">func_total</span><span class="p">](</span>
-<span class="g g-Whitespace">    </span><span class="mi">510</span>         <span class="n">window</span><span class="p">,</span>
-<span class="g g-Whitespace">    </span><span class="mi">511</span>         <span class="o">**</span><span class="n">parameters_total</span><span class="p">,</span>
-<span class="g g-Whitespace">    </span><span class="mi">512</span>     <span class="p">)</span>
-<span class="g g-Whitespace">    </span><span class="mi">513</span>     <span class="n">eval_result</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="n">eval_result</span><span class="p">])</span>
+<span class="nn">File D:\Perkuliahan\Semester 5\Poyek Sains Data\PSD\venv_py\Lib\site-packages\tsfel\feature_extraction\calc_features.py:517,</span> in <span class="ni">calc_window_features</span><span class="nt">(config, window, fs, verbose, single_window, **kwargs)</span>
 <span class="g g-Whitespace">    </span><span class="mi">515</span> <span class="k">for</span> <span class="n">ax</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">header_names</span><span class="p">)):</span>
+<span class="g g-Whitespace">    </span><span class="mi">516</span>     <span class="n">sig_ax</span> <span class="o">=</span> <span class="n">window</span> <span class="k">if</span> <span class="n">single_axis</span> <span class="k">else</span> <span class="n">window</span><span class="p">[:,</span> <span class="n">ax</span><span class="p">]</span>
+<span class="ne">--&gt; </span><span class="mi">517</span>     <span class="n">eval_result_ax</span> <span class="o">=</span> <span class="n">feature_funcs</span><span class="p">[</span><span class="n">func_total</span><span class="p">](</span><span class="n">sig_ax</span><span class="p">,</span> <span class="o">**</span><span class="n">parameters_total</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">518</span>     <span class="c1"># Function returns more than one element</span>
+<span class="g g-Whitespace">    </span><span class="mi">519</span>     <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">eval_result_ax</span><span class="p">,</span> <span class="nb">tuple</span><span class="p">):</span>
 
-<span class="nn">File D:\Perkuliahan\Semester 5\Poyek Sains Data\PSD\venv_py\Lib\site-packages\tsfel\feature_extraction\features.py:1143,</span> in <span class="ni">spectral_kurtosis</span><span class="nt">(signal, fs)</span>
-<span class="g g-Whitespace">   </span><span class="mi">1122</span><span class="w"> </span><span class="sd">&quot;&quot;&quot;Measures the flatness of a distribution around its mean value.</span>
+<span class="nn">File D:\Perkuliahan\Semester 5\Poyek Sains Data\PSD\venv_py\Lib\site-packages\tsfel\feature_extraction\features.py:1142,</span> in <span class="ni">spectral_kurtosis</span><span class="nt">(signal, fs)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1120</span> <span class="nd">@set_domain</span><span class="p">(</span><span class="s2">&quot;domain&quot;</span><span class="p">,</span> <span class="s2">&quot;spectral&quot;</span><span class="p">)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1121</span> <span class="k">def</span><span class="w"> </span><span class="nf">spectral_kurtosis</span><span class="p">(</span><span class="n">signal</span><span class="p">,</span> <span class="n">fs</span><span class="p">):</span>
+<span class="g g-Whitespace">   </span><span class="mi">1122</span><span class="w">     </span><span class="sd">&quot;&quot;&quot;Measures the flatness of a distribution around its mean value.</span>
 <span class="g g-Whitespace">   </span><span class="mi">1123</span><span class="sd"> </span>
-<span class="g g-Whitespace">   </span><span class="mi">1124</span><span class="sd"> Description and formula in Article:</span>
-<span class="sd">   (...)   1140     Spectral Kurtosis</span>
-<span class="g g-Whitespace">   </span><span class="mi">1141</span><span class="sd"> &quot;&quot;&quot;</span>
-<span class="g g-Whitespace">   </span><span class="mi">1142</span> <span class="n">f</span><span class="p">,</span> <span class="n">fmag</span> <span class="o">=</span> <span class="n">calc_fft</span><span class="p">(</span><span class="n">signal</span><span class="p">,</span> <span class="n">fs</span><span class="p">)</span>
-<span class="ne">-&gt; </span><span class="mi">1143</span> <span class="k">if</span> <span class="ow">not</span> <span class="n">spectral_spread</span><span class="p">(</span><span class="n">signal</span><span class="p">,</span> <span class="n">fs</span><span class="p">):</span>
-<span class="g g-Whitespace">   </span><span class="mi">1144</span>     <span class="k">return</span> <span class="mi">0</span>
-<span class="g g-Whitespace">   </span><span class="mi">1145</span> <span class="k">else</span><span class="p">:</span>
-
-<span class="nn">File D:\Perkuliahan\Semester 5\Poyek Sains Data\PSD\venv_py\Lib\site-packages\tsfel\feature_extraction\features.py:1204,</span> in <span class="ni">spectral_spread</span><span class="nt">(signal, fs)</span>
-<span class="g g-Whitespace">   </span><span class="mi">1182</span> <span class="nd">@set_domain</span><span class="p">(</span><span class="s2">&quot;domain&quot;</span><span class="p">,</span> <span class="s2">&quot;spectral&quot;</span><span class="p">)</span>
-<span class="g g-Whitespace">   </span><span class="mi">1183</span> <span class="k">def</span><span class="w"> </span><span class="nf">spectral_spread</span><span class="p">(</span><span class="n">signal</span><span class="p">,</span> <span class="n">fs</span><span class="p">):</span>
-<span class="g g-Whitespace">   </span><span class="mi">1184</span><span class="w">     </span><span class="sd">&quot;&quot;&quot;Measures the spread of the spectrum around its mean value.</span>
-<span class="g g-Whitespace">   </span><span class="mi">1185</span><span class="sd"> </span>
-<span class="g g-Whitespace">   </span><span class="mi">1186</span><span class="sd">     Description and formula in Article:</span>
-<span class="sd">   (...)   1202         Spectral Spread</span>
-<span class="g g-Whitespace">   </span><span class="mi">1203</span><span class="sd">     &quot;&quot;&quot;</span>
-<span class="ne">-&gt; </span><span class="mi">1204</span>     <span class="n">f</span><span class="p">,</span> <span class="n">fmag</span> <span class="o">=</span> <span class="n">calc_fft</span><span class="p">(</span><span class="n">signal</span><span class="p">,</span> <span class="n">fs</span><span class="p">)</span>
-<span class="g g-Whitespace">   </span><span class="mi">1205</span>     <span class="n">spect_centroid</span> <span class="o">=</span> <span class="n">spectral_centroid</span><span class="p">(</span><span class="n">signal</span><span class="p">,</span> <span class="n">fs</span><span class="p">)</span>
-<span class="g g-Whitespace">   </span><span class="mi">1207</span>     <span class="k">if</span> <span class="ow">not</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">fmag</span><span class="p">):</span>
+<span class="g g-Whitespace">   </span><span class="mi">1124</span><span class="sd">     Description and formula in Article:</span>
+<span class="sd">   (...)   1140         Spectral Kurtosis</span>
+<span class="g g-Whitespace">   </span><span class="mi">1141</span><span class="sd">     &quot;&quot;&quot;</span>
+<span class="ne">-&gt; </span><span class="mi">1142</span>     <span class="n">f</span><span class="p">,</span> <span class="n">fmag</span> <span class="o">=</span> <span class="n">calc_fft</span><span class="p">(</span><span class="n">signal</span><span class="p">,</span> <span class="n">fs</span><span class="p">)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1143</span>     <span class="k">if</span> <span class="ow">not</span> <span class="n">spectral_spread</span><span class="p">(</span><span class="n">signal</span><span class="p">,</span> <span class="n">fs</span><span class="p">):</span>
+<span class="g g-Whitespace">   </span><span class="mi">1144</span>         <span class="k">return</span> <span class="mi">0</span>
 
 <span class="nn">File D:\Perkuliahan\Semester 5\Poyek Sains Data\PSD\venv_py\Lib\site-packages\tsfel\feature_extraction\features_utils.py:73,</span> in <span class="ni">calc_fft</span><span class="nt">(signal, fs)</span>
 <span class="g g-Whitespace">     </span><span class="mi">55</span> <span class="k">def</span><span class="w"> </span><span class="nf">calc_fft</span><span class="p">(</span><span class="n">signal</span><span class="p">,</span> <span class="n">fs</span><span class="p">):</span>

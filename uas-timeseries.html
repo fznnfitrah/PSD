@@ -502,7 +502,7 @@ Untuk menjamin validitas dan akurasi atlas digital yang dibangun, dilakukan pros
 </section>
 <section id="berikut-alurnya">
 <h3><strong>Berikut Alurnya</strong><a class="headerlink" href="#berikut-alurnya" title="Link to this heading">#</a></h3>
-<p><img alt="alur-proses-tulang" src="image%5Calur-proses-data-tulang.png" /></p>
+<p><img alt="alur-proses-tulang" src=".%5Cimage%5Calur-proses-data-tulang.png" /></p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
@@ -568,9 +568,9 @@ Install h5py to use hdf5 features: http://docs.h5py.org/
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>C:\Users\MyBook Z Series\AppData\Local\Temp\ipykernel_11312\3315311487.py:1: FutureWarning: The &#39;delim_whitespace&#39; keyword in pd.read_csv is deprecated and will be removed in a future version. Use ``sep=&#39;\s+&#39;`` instead
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>C:\Users\MyBook Z Series\AppData\Local\Temp\ipykernel_3536\3315311487.py:1: FutureWarning: The &#39;delim_whitespace&#39; keyword in pd.read_csv is deprecated and will be removed in a future version. Use ``sep=&#39;\s+&#39;`` instead
   df_train = pd.read_csv(train_path, delim_whitespace=True, header=None)
-C:\Users\MyBook Z Series\AppData\Local\Temp\ipykernel_11312\3315311487.py:2: FutureWarning: The &#39;delim_whitespace&#39; keyword in pd.read_csv is deprecated and will be removed in a future version. Use ``sep=&#39;\s+&#39;`` instead
+C:\Users\MyBook Z Series\AppData\Local\Temp\ipykernel_3536\3315311487.py:2: FutureWarning: The &#39;delim_whitespace&#39; keyword in pd.read_csv is deprecated and will be removed in a future version. Use ``sep=&#39;\s+&#39;`` instead
   df_test  = pd.read_csv(test_path,  delim_whitespace=True, header=None)
 </pre></div>
 </div>
@@ -982,7 +982,7 @@ Metodologi ekstraksi fitur pada sistem ini tidak menganalisis keseluruhan tangan
 <li><p><strong>EROI (<em>Epiphyseal Region of Interest</em>):</strong> Wilayah lempeng pertumbuhan (epifisis) yang krusial untuk menentukan tingkat kematangan tulang pada masa pubertas.</p></li>
 <li><p><strong>CROI (<em>Carpal Bone Region of Interest</em>):</strong> Wilayah tulang-tulang pergelangan tangan (karpal).</p></li>
 </ul>
-<p><img alt="image-tulang" src="image%5Cfoto-tulang-UAS.png" /></p>
+<p><img alt="image-tulang" src=".%5Cimage%5Cfoto-tulang-UAS.png" /></p>
 <p><strong>3. Ekstraksi Fitur Kuantitatif</strong>
 Setelah ROI teridentifikasi, sistem menerapkan teknik pemrosesan citra (berbasis <em>image processing</em>) untuk mengekstrak fitur kuantitatif yang merepresentasikan geometri dan morfologi tulang. Fitur-fitur ini mencakup pengukuran panjang, lebar, area, dan bentuk kontur tulang yang berkorelasi langsung dengan indeks kematangan Tanner, usia, jenis kelamin, dan ras. Hasil ekstraksi ini kemudian diklasifikasikan menjadi parameter usia tulang parsial, yaitu <em>Phalangeal Bone Age</em> (PBA), <em>Carpal Bone Age</em> (CBA), dan <em>Epiphyseal Bone Age</em> (EBA).</p>
 <p><strong>4. Lingkungan Komputasi</strong>
@@ -1108,17 +1108,21 @@ Seluruh algoritma pemrosesan citra dan ekstraksi fitur ini dikembangkan di atas 
 <span class="g g-Whitespace">     </span><span class="mi">25</span>         <span class="n">distances</span><span class="o">.</span><span class="n">append</span><span class="p">((</span><span class="n">d</span><span class="p">,</span> <span class="n">j</span><span class="p">))</span>
 <span class="g g-Whitespace">     </span><span class="mi">27</span> <span class="n">distances</span><span class="o">.</span><span class="n">sort</span><span class="p">(</span><span class="n">key</span><span class="o">=</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">x</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
 
-<span class="nn">File D:\Perkuliahan\Semester 5\Poyek Sains Data\PSD\venv_py\Lib\site-packages\dtaidistance\dtw.py:344,</span> in <span class="ni">distance</span><span class="nt">(s1, s2, only_ub, **kwargs)</span>
-<span class="g g-Whitespace">    </span><span class="mi">342</span> <span class="k">assert</span> <span class="n">j</span> <span class="o">+</span> <span class="mi">1</span> <span class="o">-</span> <span class="n">skipp</span> <span class="o">&gt;=</span> <span class="mi">0</span>
-<span class="g g-Whitespace">    </span><span class="mi">343</span> <span class="k">assert</span> <span class="n">j</span> <span class="o">-</span> <span class="n">skip</span> <span class="o">&gt;=</span> <span class="mi">0</span>
-<span class="ne">--&gt; </span><span class="mi">344</span> <span class="n">dtw</span><span class="p">[</span><span class="n">i1</span> <span class="o">*</span> <span class="n">length</span> <span class="o">+</span> <span class="n">j</span> <span class="o">+</span> <span class="mi">1</span> <span class="o">-</span> <span class="n">skip</span><span class="p">]</span> <span class="o">=</span> <span class="n">d</span> <span class="o">+</span> <span class="nb">min</span><span class="p">(</span><span class="n">dtw</span><span class="p">[</span><span class="n">i0</span> <span class="o">*</span> <span class="n">length</span> <span class="o">+</span> <span class="n">j</span> <span class="o">-</span> <span class="n">skipp</span><span class="p">],</span>
-<span class="g g-Whitespace">    </span><span class="mi">345</span>                                           <span class="n">dtw</span><span class="p">[</span><span class="n">i0</span> <span class="o">*</span> <span class="n">length</span> <span class="o">+</span> <span class="n">j</span> <span class="o">+</span> <span class="mi">1</span> <span class="o">-</span> <span class="n">skipp</span><span class="p">]</span> <span class="o">+</span> <span class="n">s</span><span class="o">.</span><span class="n">adj_penalty</span><span class="p">,</span>
-<span class="g g-Whitespace">    </span><span class="mi">346</span>                                           <span class="n">dtw</span><span class="p">[</span><span class="n">i1</span> <span class="o">*</span> <span class="n">length</span> <span class="o">+</span> <span class="n">j</span> <span class="o">-</span> <span class="n">skip</span><span class="p">]</span> <span class="o">+</span> <span class="n">s</span><span class="o">.</span><span class="n">adj_penalty</span><span class="p">)</span>
-<span class="g g-Whitespace">    </span><span class="mi">347</span> <span class="c1"># print(&#39;({},{}), ({},{}), ({},{})&#39;.format(i0, j - skipp, i0, j + 1 - skipp, i1, j - skip))</span>
-<span class="g g-Whitespace">    </span><span class="mi">348</span> <span class="c1"># print(&#39;{}, {}, {}&#39;.format(dtw[i0, j - skipp], dtw[i0, j + 1 - skipp], dtw[i1, j - skip]))</span>
-<span class="g g-Whitespace">    </span><span class="mi">349</span> <span class="c1"># print(&#39;i={}, j={}, d={}, skip={}, skipp={}&#39;.format(i,j,d,skip,skipp))</span>
-<span class="g g-Whitespace">    </span><span class="mi">350</span> <span class="c1"># print(dtw)</span>
-<span class="g g-Whitespace">    </span><span class="mi">351</span> <span class="k">if</span> <span class="n">dtw</span><span class="p">[</span><span class="n">i1</span> <span class="o">*</span> <span class="n">length</span> <span class="o">+</span> <span class="n">j</span> <span class="o">+</span> <span class="mi">1</span> <span class="o">-</span> <span class="n">skip</span><span class="p">]</span> <span class="o">&gt;</span> <span class="n">s</span><span class="o">.</span><span class="n">adj_max_dist</span><span class="p">:</span>
+<span class="nn">File D:\Perkuliahan\Semester 5\Poyek Sains Data\PSD\venv_py\Lib\site-packages\dtaidistance\dtw.py:337,</span> in <span class="ni">distance</span><span class="nt">(s1, s2, only_ub, **kwargs)</span>
+<span class="g g-Whitespace">    </span><span class="mi">334</span>     <span class="n">dtw</span><span class="p">[</span><span class="n">i1</span> <span class="o">*</span> <span class="n">length</span><span class="p">]</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="g g-Whitespace">    </span><span class="mi">335</span> <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">j_start</span><span class="p">,</span> <span class="n">j_end</span><span class="p">):</span>
+<span class="g g-Whitespace">    </span><span class="mi">336</span>     <span class="c1"># d = (s1[i] - s2[j])**2</span>
+<span class="ne">--&gt; </span><span class="mi">337</span>     <span class="n">d</span> <span class="o">=</span> <span class="n">idist_fn</span><span class="p">(</span><span class="n">s1</span><span class="p">[</span><span class="n">i</span><span class="p">],</span> <span class="n">s2</span><span class="p">[</span><span class="n">j</span><span class="p">])</span>
+<span class="g g-Whitespace">    </span><span class="mi">338</span>     <span class="k">if</span> <span class="n">d</span> <span class="o">&gt;</span> <span class="n">s</span><span class="o">.</span><span class="n">adj_max_step</span><span class="p">:</span>
+<span class="g g-Whitespace">    </span><span class="mi">339</span>         <span class="k">continue</span>
+
+<span class="nn">File D:\Perkuliahan\Semester 5\Poyek Sains Data\PSD\venv_py\Lib\site-packages\dtaidistance\innerdistance.py:46,</span> in <span class="ni">SquaredEuclidean.inner_dist</span><span class="nt">(x, y)</span>
+<span class="g g-Whitespace">     </span><span class="mi">44</span> <span class="k">class</span><span class="w"> </span><span class="nc">SquaredEuclidean</span><span class="p">:</span>
+<span class="ne">---&gt; </span><span class="mi">46</span>     <span class="nd">@staticmethod</span>
+<span class="g g-Whitespace">     </span><span class="mi">47</span>     <span class="k">def</span><span class="w"> </span><span class="nf">inner_dist</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">):</span>
+<span class="g g-Whitespace">     </span><span class="mi">48</span>         <span class="k">return</span> <span class="p">(</span><span class="n">x</span> <span class="o">-</span> <span class="n">y</span><span class="p">)</span> <span class="o">**</span> <span class="mi">2</span>
+<span class="g g-Whitespace">     </span><span class="mi">50</span>     <span class="nd">@staticmethod</span>
+<span class="g g-Whitespace">     </span><span class="mi">51</span>     <span class="k">def</span><span class="w"> </span><span class="nf">result</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
 
 <span class="ne">KeyboardInterrupt</span>: 
 </pre></div>
