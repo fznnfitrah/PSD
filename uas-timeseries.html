@@ -32,7 +32,7 @@
     <link rel="stylesheet" type="text/css" href="_static/styles/sphinx-book-theme.css?v=eba8b062" />
     <link rel="stylesheet" type="text/css" href="_static/togglebutton.css?v=13237357" />
     <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
-    <link rel="stylesheet" type="text/css" href="_static/mystnb.8ecb98da25f57f5357bf6f572d296f466b2cfe2517ffebfabe82451661e28f02.css" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.8ecb98da25f57f5357bf6f572d296f466b2cfe2517ffebfabe82451661e28f02.css?v=6644e6bb" />
     <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css?v=4fa983c6" />
     <link rel="stylesheet" type="text/css" href="_static/sphinx-design.min.css?v=95c83b7e" />
   
@@ -568,9 +568,9 @@ Install h5py to use hdf5 features: http://docs.h5py.org/
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>C:\Users\MyBook Z Series\AppData\Local\Temp\ipykernel_3536\3315311487.py:1: FutureWarning: The &#39;delim_whitespace&#39; keyword in pd.read_csv is deprecated and will be removed in a future version. Use ``sep=&#39;\s+&#39;`` instead
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>C:\Users\MyBook Z Series\AppData\Local\Temp\ipykernel_3916\3315311487.py:1: FutureWarning: The &#39;delim_whitespace&#39; keyword in pd.read_csv is deprecated and will be removed in a future version. Use ``sep=&#39;\s+&#39;`` instead
   df_train = pd.read_csv(train_path, delim_whitespace=True, header=None)
-C:\Users\MyBook Z Series\AppData\Local\Temp\ipykernel_3536\3315311487.py:2: FutureWarning: The &#39;delim_whitespace&#39; keyword in pd.read_csv is deprecated and will be removed in a future version. Use ``sep=&#39;\s+&#39;`` instead
+C:\Users\MyBook Z Series\AppData\Local\Temp\ipykernel_3916\3315311487.py:2: FutureWarning: The &#39;delim_whitespace&#39; keyword in pd.read_csv is deprecated and will be removed in a future version. Use ``sep=&#39;\s+&#39;`` instead
   df_test  = pd.read_csv(test_path,  delim_whitespace=True, header=None)
 </pre></div>
 </div>
@@ -1108,21 +1108,12 @@ Seluruh algoritma pemrosesan citra dan ekstraksi fitur ini dikembangkan di atas 
 <span class="g g-Whitespace">     </span><span class="mi">25</span>         <span class="n">distances</span><span class="o">.</span><span class="n">append</span><span class="p">((</span><span class="n">d</span><span class="p">,</span> <span class="n">j</span><span class="p">))</span>
 <span class="g g-Whitespace">     </span><span class="mi">27</span> <span class="n">distances</span><span class="o">.</span><span class="n">sort</span><span class="p">(</span><span class="n">key</span><span class="o">=</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">x</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
 
-<span class="nn">File D:\Perkuliahan\Semester 5\Poyek Sains Data\PSD\venv_py\Lib\site-packages\dtaidistance\dtw.py:337,</span> in <span class="ni">distance</span><span class="nt">(s1, s2, only_ub, **kwargs)</span>
-<span class="g g-Whitespace">    </span><span class="mi">334</span>     <span class="n">dtw</span><span class="p">[</span><span class="n">i1</span> <span class="o">*</span> <span class="n">length</span><span class="p">]</span> <span class="o">=</span> <span class="mi">0</span>
-<span class="g g-Whitespace">    </span><span class="mi">335</span> <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">j_start</span><span class="p">,</span> <span class="n">j_end</span><span class="p">):</span>
-<span class="g g-Whitespace">    </span><span class="mi">336</span>     <span class="c1"># d = (s1[i] - s2[j])**2</span>
-<span class="ne">--&gt; </span><span class="mi">337</span>     <span class="n">d</span> <span class="o">=</span> <span class="n">idist_fn</span><span class="p">(</span><span class="n">s1</span><span class="p">[</span><span class="n">i</span><span class="p">],</span> <span class="n">s2</span><span class="p">[</span><span class="n">j</span><span class="p">])</span>
-<span class="g g-Whitespace">    </span><span class="mi">338</span>     <span class="k">if</span> <span class="n">d</span> <span class="o">&gt;</span> <span class="n">s</span><span class="o">.</span><span class="n">adj_max_step</span><span class="p">:</span>
-<span class="g g-Whitespace">    </span><span class="mi">339</span>         <span class="k">continue</span>
-
-<span class="nn">File D:\Perkuliahan\Semester 5\Poyek Sains Data\PSD\venv_py\Lib\site-packages\dtaidistance\innerdistance.py:46,</span> in <span class="ni">SquaredEuclidean.inner_dist</span><span class="nt">(x, y)</span>
-<span class="g g-Whitespace">     </span><span class="mi">44</span> <span class="k">class</span><span class="w"> </span><span class="nc">SquaredEuclidean</span><span class="p">:</span>
-<span class="ne">---&gt; </span><span class="mi">46</span>     <span class="nd">@staticmethod</span>
-<span class="g g-Whitespace">     </span><span class="mi">47</span>     <span class="k">def</span><span class="w"> </span><span class="nf">inner_dist</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">):</span>
-<span class="g g-Whitespace">     </span><span class="mi">48</span>         <span class="k">return</span> <span class="p">(</span><span class="n">x</span> <span class="o">-</span> <span class="n">y</span><span class="p">)</span> <span class="o">**</span> <span class="mi">2</span>
-<span class="g g-Whitespace">     </span><span class="mi">50</span>     <span class="nd">@staticmethod</span>
-<span class="g g-Whitespace">     </span><span class="mi">51</span>     <span class="k">def</span><span class="w"> </span><span class="nf">result</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
+<span class="nn">File D:\Perkuliahan\Semester 5\Poyek Sains Data\PSD\venv_py\Lib\site-packages\dtaidistance\dtw.py:358,</span> in <span class="ni">distance</span><span class="nt">(s1, s2, only_ub, **kwargs)</span>
+<span class="g g-Whitespace">    </span><span class="mi">356</span>     <span class="k">else</span><span class="p">:</span>
+<span class="g g-Whitespace">    </span><span class="mi">357</span>         <span class="n">smaller_found</span> <span class="o">=</span> <span class="kc">True</span>
+<span class="ne">--&gt; </span><span class="mi">358</span>         <span class="n">ec_next</span> <span class="o">=</span> <span class="n">j</span> <span class="o">+</span> <span class="mi">1</span>
+<span class="g g-Whitespace">    </span><span class="mi">359</span> <span class="n">ec</span> <span class="o">=</span> <span class="n">ec_next</span>
+<span class="g g-Whitespace">    </span><span class="mi">360</span> <span class="k">if</span> <span class="n">psi_1e</span> <span class="o">!=</span> <span class="mi">0</span> <span class="ow">and</span> <span class="n">j_end</span> <span class="o">==</span> <span class="nb">len</span><span class="p">(</span><span class="n">s2</span><span class="p">)</span> <span class="ow">and</span> <span class="nb">len</span><span class="p">(</span><span class="n">s1</span><span class="p">)</span> <span class="o">-</span> <span class="mi">1</span> <span class="o">-</span> <span class="n">i</span> <span class="o">&lt;=</span> <span class="n">psi_1e</span><span class="p">:</span>
 
 <span class="ne">KeyboardInterrupt</span>: 
 </pre></div>
